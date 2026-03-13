@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <title>ShumDev Header</title>
+    <link rel="stylesheet" href="site/sass/main.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo">
+                <span class="logo-icon">S</span>
+                <span class="logo-text">ShumDev</span>
+            </a>
+
+            <nav class="nav desktop-nav">
+                <ul class="nav-list">
+                    <li><a href="#advantages">Преимущества</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#team">Команда</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <a href="#contact-form" class="btn-discuss">Обсудить проект</a>
+
+            <!-- Бургер -->
+            <button class="burger" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Мобильное меню (выезжает слева) -->
+        <div class="mobile-menu">
+            <div class="mobile-menu__content">
+                <ul class="mobile-nav-list">
+                    <li><a href="#advantages">Преимущества</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#team">Команда</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                    <li class="mobile-btn-wrap">
+                        <a href="#contact-form" class="btn-discuss mobile-btn">Обсудить проект</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <script src="site/JavaScript/js.js">
+
+    </script>
+
+</body>
+
+</html>
