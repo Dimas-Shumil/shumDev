@@ -71,32 +71,18 @@ body.no-scroll {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
     text-decoration: none;
-    font-weight: 800;
-    font-size: 1.5rem;
     color: white;
-    letter-spacing: -0.5px;
 
-    .logo-icon {
-        inline-size: 38px;
-        block-size: 38px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, $accent 0%, #5b21b6 100%);
-        border-radius: $radius;
-        color: white;
-        font-size: 1.4rem;
-        font-weight: 900;
-        box-shadow: 0 4px 12px rgba($accent, 0.35);
+    img {
+        width: auto;
+        height: 72px;
+        // margin-right: 12px;
     }
 
     .logo-text {
-        background: linear-gradient(to right, #c084fc, #e9d5ff);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        font-size: 1.2rem;
     }
 }
 
@@ -190,7 +176,7 @@ body.no-scroll {
     }
 
     
-    @media (max-width: 919px) {
+    @media (max-width: 1047px) {
         display: flex;
     }
 }
@@ -304,23 +290,23 @@ body.no-scroll {
 
 // MEDIA QUERIES
 
-@media (max-width: 1024px) {
+@media (max-width: 1048px) {
     .nav-list {
         gap: 24px;
         font-size: 0.98rem;
     }
-}
-
-@media (max-width: 920px) {
     .desktop-nav {
         display: none;
     }
-
+    
     .btn-discuss:not(.mobile-btn) {
         display: none;
     }
-
+    
     .header .container {
         justify-content: space-between;
     }
+}
+
+@media (max-width: 920px) {
 }

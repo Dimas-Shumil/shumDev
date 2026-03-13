@@ -51,31 +51,16 @@ body.no-scroll {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
   text-decoration: none;
-  font-weight: 800;
-  font-size: 1.5rem;
   color: white;
-  letter-spacing: -0.5px;
 }
-.logo .logo-icon {
-  inline-size: 38px;
-  block-size: 38px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
-  border-radius: 10px;
-  color: white;
-  font-size: 1.4rem;
-  font-weight: 900;
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+.logo img {
+  width: auto;
+  height: 72px;
 }
 .logo .logo-text {
-  background: linear-gradient(to right, #c084fc, #e9d5ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .nav {
@@ -150,7 +135,7 @@ body.no-scroll {
 .burger.active span:nth-child(3) {
   transform: translateY(-10.5px) rotate(-45deg);
 }
-@media (max-width: 919px) {
+@media (max-width: 1047px) {
   .burger {
     display: flex;
   }
@@ -246,13 +231,11 @@ body.no-scroll {
   font-size: 1.2rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1048px) {
   .nav-list {
     gap: 24px;
     font-size: 0.98rem;
   }
-}
-@media (max-width: 920px) {
   .desktop-nav {
     display: none;
   }
