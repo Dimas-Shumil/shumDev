@@ -1,66 +1,636 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site/css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
         rel="stylesheet">
-    <title>ShumDev Header</title>
-    <link rel="stylesheet" href="site/sass/main.css">
+    <title>shumDev</title>
 </head>
 
 <body>
+    <!-- Прелоудер -->
+    <!-- <div class="preloader" id="preloader">
+        <div class="smoke-container" id="smokeContainer"></div>
+        <div class="preloader-content">
+            <div class="fire-effect"></div>
+            <h1 class="loader-title">CoderXDreamer</h1>
+            <h1 class="loader-title mobile">Coder <br>X <br>Dreamer</h1>
+            <div class="loader-subtitle">Дмитрий | Frontend Разработчик</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">Запуск темных протоколов...</div>
+        </div>
+    </div> -->
+
+    <!-- Header -->
 
     <header class="header">
         <div class="container">
-            <a href="#" class="logo">
-                <img src="site/image/image-Photoroom.png" alt="">
-            </a>
+            <div class="header-content">
+                <a href="#home" class="logo">
+                    <div class="logo-icon">
+                        <img src="site/image/image-Photoroom.png" alt="logo">
+                    </div>
+                    <!-- <span>Дмитрий</span> -->
+                </a>
 
-            <nav class="nav desktop-nav">
-                <ul class="nav-list">
-                    <li><a href="#advantages">Преимущества</a></li>
-                    <li><a href="#services">Услуги</a></li>
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="#team">Команда</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
-                </ul>
-            </nav>
+                <nav class="nav">
+                    <a href="#Advantages" class="nav-link">Преимущества</a>
+                    <a href="#about" class="nav-link">Услуги</a>
+                    <a href="#projects" class="nav-link">О нас</a>
+                    <a href="#contact" class="nav-link">Команда</a>
+                    <a href="#contact" class="nav-link">Контакты</a>
+                </nav>
 
-            <a href="#contact-form" class="btn-discuss">Обсудить проект</a>
-
-            <!-- Бургер -->
-            <button class="burger" aria-label="Открыть меню">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-
-        <!-- Мобильное меню (выезжает слева) -->
-        <div class="mobile-menu">
-            <div class="mobile-menu__content">
-                <ul class="mobile-nav-list">
-                    <li><a href="#advantages">Преимущества</a></li>
-                    <li><a href="#services">Услуги</a></li>
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="#team">Команда</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
-                    <li class="mobile-btn-wrap">
-                        <a href="#contact-form" class="btn-discuss mobile-btn">Обсудить проект</a>
-                    </li>
-                </ul>
+                <button class="burger" aria-label="Меню">
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </button>
             </div>
         </div>
     </header>
 
-    <script src="site/JavaScript/js.js">
+    <!-- Hero Section -->
 
-    </script>
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">Frontend Разработчик</div>
+                    <h1 class="hero-title">
+                        <span class="hero-title__one"> Создаем</span> <span class="hero-title__two">
+                            цифровое</span> <span class="hero-title__three"> будущее</span></h1>
+                    <p class="hero-description">
+                        Мы проектируем и разрабатываем премиальные веб-приложения, лендинги и сложные сервисы, которые
+                        помогают бизнесу расти.
+                    </p>
+                    <!-- <ul class="hero-features">
+                        <li><i class="fas fa-check-circle"></i> HTML5, CSS3, JavaScript (ES6+)</li>
+                        <li><i class="fas fa-check-circle"></i> React, TypeScript, Sass</li>
+                        <li><i class="fas fa-check-circle"></i> Адаптивный дизайн и доступность</li>
+                        <li><i class="fas fa-check-circle"></i> Оптимизация производительности</li>
+                    </ul> -->
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-eye"></i> Посмотреть проекты
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-envelope"></i> Связаться со мной
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-container">
+                        <img src="site/image/hero-abstract.png" alt="images">
+                    </div>
+                    <div class="floating-element floating-1">
+                        <i class="fab fa-js fa-2x"><img src="site/img/js.png" width="50px" alt="icon js"></i>
+                    </div>
+                    <div class="floating-element floating-2">
+                        <i class="fab fa-react fa-2x"><img src="site/img/programing.png" width="50px" alt=""></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- company -->
+
+    <section id="Advantages" class="services">
+        <div class="container">
+            <h2 class="services__title">Почему выбирают нас</h2>
+            <p class="services__subtitle">
+                Разрабатываем современные кастомные сайты для организаций, которые работают как полноценный рекламный
+                инструмент 24/7.
+            </p>
+
+            <div class="services__grid">
+                <!-- Карточка 1 -->
+                <div class="service-card">
+                    <div class="service-card__icon">⚡</div>
+                    <h3 class="service-card__title">Индивидуальный подход</h3>
+                    <p class="service-card__text">
+                        Полностью кастомный сайт, разработанный с нуля под ваш бизнес. Никаких шаблонов и конструкторов
+                        — высокая скорость, гибкость и SEO-оптимизация.
+                    </p>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="service-card">
+                    <div class="service-card__icon">🖥️</div>
+                    <h3 class="service-card__title">Управление без программиста</h3>
+                    <p class="service-card__text">
+                        Удобная админ-панель: меняйте текст, добавляйте услуги, новости, фото, товары без знания кода.
+                    </p>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="service-card">
+                    <div class="service-card__icon">📲</div>
+                    <h3 class="service-card__title">Автоматизация заявок</h3>
+                    <p class="service-card__text">
+                        Заявки с сайта мгновенно приходят в Telegram и на email. Аналитика: кто заходил, что смотрел,
+                        сколько времени провел.
+                    </p>
+                </div>
+
+                <!-- Карточка 4 -->
+                <div class="service-card">
+                    <div class="service-card__icon">💰</div>
+                    <h3 class="service-card__title">Выгодная модель</h3>
+                    <p class="service-card__text">
+                        Разработка — бесплатно. Абонентская плата всего 5 000 ₽/мес включает поддержку, серверы и
+                        обновления. Никаких скрытых платежей.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Блок сравнения (дополнительная информация) -->
+            <div class="services__note">
+                <p>⚖️ <strong>Преимущества:</strong> аренда места в популярных онлайн-каталогах и справочниках обходится
+                    бизнесу в 20 000–50 000 ₽ ежемесячно — и это просто карточка с контактами.
+                    У нас вы получаете полноценный сайт, который принадлежит вам, с гораздо большими возможностями, а
+                    платите всего 5 000 ₽ в месяц.</p>
+                <p>⚖️ Создание аналогичного сайта в студии стоит от 150 000 ₽ разово +
+                    ежемесячная поддержка 10 000–20 000 ₽.
+                    Мы же разрабатываем сайт бесплатно, а абонентская плата — всего 5 000 ₽/мес. Вы экономите на старте
+                    и получаете полностью управляемый ресурс.</p>
+                <p>⚖️ Бюджет на контекстную рекламу в Яндекс.Директ / Google Ads часто
+                    составляет 30 000–50 000 ₽ в месяц и работает только пока вы платите.
+                    Сайт работает 24/7 без дополнительных вложений, привлекает клиентов из поиска и стоит всего 5 000
+                    ₽/мес.</p>
+                <p>⚖️ Размещение в справочниках — от 25 000 ₽/мес за карточку, разработка
+                    сайта под ключ — от 150 000 ₽.
+                    Мы даём вам полноценный сайт бесплатно, а поддержка и хостинг — всего 5 000 ₽/мес. Никаких скрытых
+                    платежей.</p>
+                <p>⚖️ Арендуя карточку в чужом каталоге, вы платите за присутствие, но не
+                    владеете площадкой.
+                    С нашим решением вы получаете собственный сайт, полный контроль и экономите до 80% бюджета на
+                    привлечение клиентов.</p>
+            </div>
+
+            <!-- Кнопка призыва к действию -->
+
+            <div class="services__cta">
+                <a href="#contact" class="button">Заказать сайт</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О <span>нас</span></h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-container">
+                        <!-- <img src="site/img/photo_2026-01-24_11-45-32.jpg" alt="Рабочее место разработчика"> -->
+                        <!-- <img src="site/img//IMG-20220505-WA0005.jpg" alt="Рабочее место разработчика"> -->
+                        <img src="site/img/photo_2026-02-21_21-58-13.jpg" alt="Рабочее место разработчика">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p class="about-description">
+                        Я — фронтенд‑разработчик с более чем 2 годами опыта. Специализируюсь на создании современных,
+                        адаптивных и производительных веб‑интерфейсов, которые решают реальные бизнес-задачи.
+                    </p>
+                    <p class="about-description">
+                        В своей работе использую современный стек технологий: HTML5, CSS3 (Sass/SCSS), JavaScript
+                        (ES6+), React, TypeScript, Git. Стремлюсь к чистоте кода, доступности интерфейсов и оптимальной
+                        производительности.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">2+</div>
+                            <div class="stat-label">Года опыта</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">10</div>
+                            <div class="stat-label">Завершенных проектов</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Довольных клиентов</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number"> 24/7</div>
+                            <div class="stat-label">Поддержка</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- =====tech-stack===== -->
+
+    <section class="tech-stack">
+        <h2 class="tech-stack__title">Мой стек технологий</h2>
+        <p class="tech-stack__description">
+            Я занимаюсь фронтенд-разработкой, создаю админ-панели, провожу SEO-оптимизацию и настраиваю лидогенерацию.
+        </p>
+        <div class="tech-stack__grid">
+            <div class="tech-stack__item">
+                <img src="site/img/icons8-html5-48.png" alt="HTML5" class="tech-stack__logo">
+                <span class="tech-stack__name">HTML5</span>
+            </div>
+            <div class="tech-stack__item">
+                <img src="site/img/icons8-css3-48.png" alt="CSS3" class="tech-stack__logo">
+                <span class="tech-stack__name">CSS3 / SCSS</span>
+            </div>
+            <div class="tech-stack__item">
+                <img src="site/img/js.png" alt="JavaScript" class="tech-stack__logo">
+                <span class="tech-stack__name">JavaScript</span>
+            </div>
+            <div class="tech-stack__item">
+                <img src="site/img/programing.png" alt="React" class="tech-stack__logo">
+                <span class="tech-stack__name">React</span>
+            </div>
+            <div class="tech-stack__item">
+                <img src="site/img/icons8-vue-js-48.png" alt="Vue" class="tech-stack__logo">
+                <span class="tech-stack__name">Vue</span>
+            </div>
+            <div class="tech-stack__item">
+                <img src="site/img/icons8-node-js-32.png" alt="Node.js" class="tech-stack__logo">
+                <span class="tech-stack__name">Node.js</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Мои <span>проекты</span></h2>
+            <div class="swiper projects-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Проект 1 -->
+                    <div class="swiper-slide">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <!--                               
+                                <img src="site/img/youtalk/Rectangle3-1.png" height="200px" width="100%"
+                                    alt="Интернет-магазин" class="project-image"> -->
+                                <video height="200px" width="100%" autoplay muted loop playsinline>
+                                    <source src="site/video/IMG_3871.MP4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">YouTalk</h3>
+                                <div class="project-tags">
+                                    <span class="tag">HTML5</span>
+                                    <span class="tag">CSS3</span>
+                                    <span class="tag">JavaScript</span>
+                                    <span class="tag">API</span>
+                                </div>
+                                <p>Компания YouTalk планирует создать экспертный блог, чтобы привлечь сложную для
+                                    рекламы аудиторию — тех, кто скептически или настороженно относится к психологам.
+                                    Через полезные и откликающиеся материалы блог поможет преодолеть недоверие,
+                                    продемонстрировать компетенцию сервиса и постепенно превратить читателей в клиентов.
+                                </p>
+                                <a href="https://dimas-shumil.github.io/Youtalk/" target="_blank" class="project-link">
+                                    Посмотреть проект <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Проект 2 -->
+                    <div class="swiper-slide">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <!--                               
+                                <img src="site/img/youtalk/Rectangle3-1.png" height="200px" width="100%"
+                                    alt="Интернет-магазин" class="project-image"> -->
+                                <video height="200px" width="100%" autoplay muted loop playsinline>
+                                    <source src="site/video//video_2026-03-07_16-35-40.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+
+                            </div>
+
+                            <div class="project-content">
+                                <h3 class="project-title">Содружество - место сильных</h3>
+                                <div class="project-tags">
+                                    <span class="tag">HTML 5</span>
+                                    <span class="tag">Sass</span>
+                                    <span class="tag">JavaScript</span>
+                                </div>
+                                <p>Закаляй тело. Точи разум. Вступай в братство, где
+                                    чемпионами становятся, а не рождаются</p>
+                                <a href="https://xn----8sbaaddnii0c8abeymfro.xn--p1ai/" target="_blank"
+                                    class="project-link">
+                                    Посмотреть проект <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Проект 3 -->
+                    <div class="swiper-slide">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <!--                               
+                                <img src="site/img/youtalk/Rectangle3-1.png" height="200px" width="100%"
+                                    alt="Интернет-магазин" class="project-image"> -->
+                                <video height="200px" width="100%" autoplay muted loop playsinline>
+                                    <source src="site/video/video_2026-03-07_16-40-51.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+
+                            </div>
+
+                            <div class="project-content">
+                                <h3 class="project-title">Новостной портал с испанской телезвездой и возможностью
+                                    прослушивание аудио</h3>
+                                <div class="project-tags">
+                                    <span class="tag">HTML 5</span>
+                                    <span class="tag">CSS 3</span>
+                                    <span class="tag">SCSS</span>
+                                    <span class="tag">JavaScript</span>
+                                </div>
+                                <p>Корпоративная CRM-система для управления клиентами и задачами с аналитикой.</p>
+                                <a href="https://pabloalligator.github.io/Magaly-Meduna-News/" target="_blank"
+                                    class="project-link">
+                                    Посмотреть проект <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Проект 4 -->
+                    <div class="swiper-slide">
+                        <div class="project-card">
+                            <img src="site/img/image1.png" alt="Приложение для аналитики" class="project-image">
+                            <div class="project-content">
+                                <h3 class="project-title">Слайдер</h3>
+                                <div class="project-tags">
+                                    <span class="tag">HTML 5</span>
+                                    <span class="tag">CSS 3</span>
+                                    <span class="tag">JavaScript</span>
+                                </div>
+                                <p><b>Слайдер</b> – это специальный элемент веб-дизайна, представляющий собой блок
+                                    определенной
+                                    ширины чаще всего в шапке веб-страницы. Главная его фишка в изменяющихся в ручном
+                                    или автоматическом режиме элементах – картинок, текстов и ссылок.</p>
+                                <a href="https://dimas-shumil.github.io/Slider/" target="_blank" class="project-link">
+                                    Посмотреть проект <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Проект 5 -->
+                    <div class="swiper-slide">
+                        <div class="project-card">
+                            <div class="project-image">
+
+                                <!-- <img src="site/img/autoCat19/катализатор.png" height="200px" width="100%"
+                                    alt="Интернет-магазин" class="project-image"> -->
+                                <video min-height="200px" width="100%" autoplay muted loop playsinline>
+                                    <source src="site/video/IMG_3870.MP4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">autoCat19</h3>
+                                <div class="project-tags">
+                                    <span class="tag">Фундамент: HTML5</span>
+                                    <span class="tag">Внешний вид: CSS3</span>
+                                    <span class="tag">Sass/Scss</span>
+                                    <span class="tag">Интерактивность: JavaScript (ES6)</span>
+                                </div>
+                                <p>Полный спектр услуг от планового ТО до сложного ремонта двигателя.
+                                    Мы гарантируем высокое качество, доступные цены и
+                                    индивидуальный подход к каждому клиенту.</p>
+                                <a href="https://dimas-shumil.github.io/AutoCat19/" target="_blank"
+                                    class="project-link">
+                                    Посмотреть проект <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Проект 6 -->
+                    <div class="swiper-slide">
+                        <div class="project-card">
+                            <!-- <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Приложение для аналитики" class="project-image"> -->
+                            <div class="project-image">
+
+                                <!-- <img src="site/img/autoCat19/катализатор.png" height="200px" width="100%"
+                                    alt="Интернет-магазин" class="project-image"> -->
+                                <video min-height="200px" width="100%" autoplay muted loop playsinline>
+                                    <source src="site/video/176897-856259092_medium.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Аналитическая панель</h3>
+                                <div class="project-tags">
+                                    <span class="tag">React</span>
+                                    <span class="tag">D3.js</span>
+                                    <span class="tag">Chart.js</span>
+                                    <span class="tag">WebSocket</span>
+                                </div>
+                                <p>Панель управления с интерактивными графиками и дашбордами для анализа данных.</p>
+                                <a href="https://example.com/project4" target="_blank" class="project-link">
+                                    Посмотреть проект <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Проект 7 -->
+                    <div class="swiper-slide">
+                        <div class="project-card">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Приложение для аналитики" class="project-image">
+                            <div class="project-content">
+                                <h3 class="project-title">Аналитическая панель</h3>
+                                <div class="project-tags">
+                                    <span class="tag">React</span>
+                                    <span class="tag">D3.js</span>
+                                    <span class="tag">Chart.js</span>
+                                    <span class="tag">WebSocket</span>
+                                </div>
+                                <p>Панель управления с интерактивными графиками и дашбордами для анализа данных.</p>
+                                <a href="https://example.com/project4" target="_blank" class="project-link">
+                                    Посмотреть проект <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Проект 8 -->
+                    <div class="swiper-slide">
+                        <div class="project-card">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Приложение для аналитики" class="project-image">
+                            <div class="project-content">
+                                <h3 class="project-title">Аналитическая панель</h3>
+                                <div class="project-tags">
+                                    <span class="tag">React</span>
+                                    <span class="tag">D3.js</span>
+                                    <span class="tag">Chart.js</span>
+                                    <span class="tag">WebSocket</span>
+                                </div>
+                                <p>Панель управления с интерактивными графиками и дашбордами для анализа данных.</p>
+                                <a href="https://example.com/project4" target="_blank" class="project-link">
+                                    Посмотреть проект <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Проект 9 -->
+                    <div class="swiper-slide">
+                        <div class="project-card">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Приложение для аналитики" class="project-image">
+                            <div class="project-content">
+                                <h3 class="project-title">Аналитическая панель</h3>
+                                <div class="project-tags">
+                                    <span class="tag">React</span>
+                                    <span class="tag">D3.js</span>
+                                    <span class="tag">Chart.js</span>
+                                    <span class="tag">WebSocket</span>
+                                </div>
+                                <p>Панель управления с интерактивными графиками и дашбордами для анализа данных.</p>
+                                <a href="https://example.com/project4" target="_blank" class="project-link">
+                                    Посмотреть проект <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title contact-title">Свяжитесь <span>со мной</span></h2>
+            <p class="contact-subtitle">Готов обсудить ваш проект, ответить на вопросы или просто пообщаться о
+                технологиях</p>
+
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <!-- <i class="fas fa-phone"></i> -->
+                        <img src="site/img/phone-call.png" width="100%" alt="">
+                    </div>
+                    <h3>Телефон</h3>
+                    <p>Быстрый способ связаться</p>
+                    <a href="tel:+79235971877" class="contact-link">
+                        +7 (923) 597-18-77 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <!-- <i class="fas fa-envelope"></i> -->
+                        <img src="site/img/email.png" width="100%" alt="">
+                    </div>
+                    <h3>Email</h3>
+                    <p>Для детальных обсуждений</p>
+                    <a href="mailto:shum0@mail.ru" class="contact-link">
+                        shum0@mail.ru <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <!-- <i class="fab fa-telegram"></i> -->
+                        <img src="site/img/telegram.png" width="100%" alt="">
+                    </div>
+                    <h3>Telegram</h3>
+                    <p>Мгновенные сообщения</p>
+                    <a href="https://t.me/dmitry_frontend" target="_blank" class="contact-link">
+                        @dmitry_frontend <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <!-- <i class="fab fa-whatsapp"></i> -->
+                        <!-- <i class="fab fa-whatsapp"><img src="site/img/whatsapp.png" width="50px" alt=""></i> -->
+                        <img src="site/img/whatsapp.png" width="100%" alt="">
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>Быстрая связь</p>
+                    <a href="https://wa.me/7923597" target="_blank" class="contact-link">
+                        Написать в WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <!-- <i class="fab fa-whatsapp"></i> -->
+                        <img src="site/img/instagram.png" width="100%" alt="">
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>Быстрая связь</p>
+                    <a href="https://www.instagram.com/shumilov1456?igsh=MTYwNGIwNzIyY3I3Yw==" target="_blank"
+                        class="contact-link">
+                        Написать в instagram <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form class="contacts-right-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="61f614c1-33a1-4ca9-adcd-149f47b9e8e5">
+
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Ваше имя" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Ваш email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="message" class="form-control" placeholder="Сообщение" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Отправить сообщение
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home" class="footer-link">Главная</a>
+                <a href="#about" class="footer-link">Обо мне</a>
+                <a href="#projects" class="footer-link">Проекты</a>
+                <a href="#contact" class="footer-link">Контакты</a>
+            </div>
+            <p class="copyright">© 2025 Дмитрий. Frontend Разработчик. Все права защищены.</p>
+        </div>
+    </footer>
+
+    </main>
+
+    <script src="site/JavaScript/js.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 </body>
 
