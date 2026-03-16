@@ -1247,6 +1247,17 @@ body.no-scroll {
         width: 36px;
         height: 36px;
         border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+        }
 
         &--blue {
             background: #2563eb;
