@@ -558,7 +558,7 @@ body.no-scroll {
             @include gradient-text;
             text-shadow: 0 0 15px rgba(255, 107, 0, 0.3);
             animation: title-glow 4s ease-in-out infinite, flicker 3s infinite;
-            
+
         }
 
         &__two {
@@ -1163,6 +1163,144 @@ body.no-scroll {
         transform: translateY(0);
     }
 }
+
+
+// секция Products
+
+.products {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: $dark;
+
+    .products-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // gap: 30px;
+    }
+
+    &__title {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: $gray-light;
+            text-align: center;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 1.25rem;
+            color: $text-light;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            line-height: 1.5;
+        }
+    }
+
+    &__accardeon {
+        max-width: 900px;
+        margin: auto;
+        background: #0b1220;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    &__item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &__trigger {
+        width: 100%;
+        padding: 22px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+
+    &__left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 18px;
+    }
+
+    &__icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+
+        &--blue {
+            background: #2563eb;
+        }
+
+        &--pink {
+            background: #ec4899;
+        }
+
+        &--purple {
+            background: #8b5cf6;
+        }
+
+        &--green {
+            background: #22c55e;
+        }
+
+        &--orange {
+            background: #f97316;
+        }
+    }
+
+    &__arrow {
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid #94a3b8;
+        border-bottom: 2px solid #94a3b8;
+        transform: rotate(45deg);
+        transition: .3s;
+    }
+
+    &__item.active &__arrow {
+        transform: rotate(-135deg);
+    }
+
+    &__content {
+        max-height: 0;
+        overflow: hidden;
+        transition: all .35s ease;
+        padding: 0 24px;
+
+        p {
+            padding-bottom: 22px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+    }
+
+    &__item.active &__content {
+        max-height: 200px;
+    }
+
+}
+
 
 // Footer
 

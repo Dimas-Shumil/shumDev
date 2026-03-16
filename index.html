@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="site/css/main.css">
+    <link rel="stylesheet" href="site/sass/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,9 +29,6 @@
             <div class="progress-text" id="progressText">Запуск темных протоколов...</div>
         </div>
     </div> -->
-
-   <!-- made by Pasha -->
-    <div class="madeByPasha"></div>
 
     <!-- Header -->
 
@@ -72,7 +69,8 @@
                     <div class="hero-badge">Frontend Разработчик</div>
                     <h1 class="hero-title">
                         <span class="hero-title__one"> Создаем</span> <span class="hero-title__two">
-                            цифровое</span> <span class="hero-title__three"> будущее</span></h1>
+                            цифровое</span> <span class="hero-title__three"> будущее</span>
+                    </h1>
                     <p class="hero-description">
                         Мы проектируем и разрабатываем премиальные веб-приложения, лендинги и сложные сервисы, которые
                         помогают бизнесу расти.
@@ -119,8 +117,8 @@
                         <img src="site/img/photo_2026-02-21_21-58-13.jpg" alt="Рабочее место разработчика">
                     </div>
                 </div> -->
-                <div class="about-text">
-                    <!-- <p class="about-description">
+                    <div class="about-text">
+                        <!-- <p class="about-description">
                         Я — фронтенд‑разработчик с более чем 2 годами опыта. Специализируюсь на создании современных,
                         адаптивных и производительных веб‑интерфейсов, которые решают реальные бизнес-задачи.
                     </p>
@@ -129,30 +127,30 @@
                         (ES6+), React, TypeScript, Git. Стремлюсь к чистоте кода, доступности интерфейсов и оптимальной
                         производительности.
                     </p> -->
-                    <div class="about-stats">
-                        <div class="stat">
-                            <div class="stat-number">3+</div>
-                            <div class="stat-label">Года опыта</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">10</div>
-                            <div class="stat-label">Завершенных проектов</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Довольных клиентов</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number"> 24/7</div>
-                            <div class="stat-label">Поддержка</div>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <div class="stat-number">3+</div>
+                                <div class="stat-label">Года опыта</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">10</div>
+                                <div class="stat-label">Завершенных проектов</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Довольных клиентов</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number"> 24/7</div>
+                                <div class="stat-label">Поддержка</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
-     <!-- company -->
+    <!-- company -->
 
     <section id="Advantages" class="services">
         <div class="container">
@@ -236,9 +234,175 @@
     </section>
 
 
-    
+    <!-- products -->
 
-   
+    <section class="products">
+        <div class="products-container">
+            <div class="products__title">
+                <h2>
+                    Какие цифровые продукты можно заказать
+                </h2>
+                <p>
+                    Разрабатываем решения под любые задачи бизнеса
+                </p>
+            </div>
+
+            <div class="products__accardeon">
+
+                <div class="products__item active">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--blue"></div>
+                            <span>Лендинг</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Одностраничный сайт для продвижения конкретного продукта или услуги.
+                            Максимально заточен под конверсию и сбор лидов.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--pink"></div>
+                            <span>Сайт-визитка</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Компактный сайт из 3-5 страниц с основной информации о компании, услугах и контактах.
+                            Идеален для быстрого старта.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--blue"></div>
+                            <span>Копроратинвый сайт</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Многостраничный сайт для крупной организации с разделами команды, новостей, услуг, портфолио
+                            и интеграциями.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--blue"></div>
+                            <span>Сайты-порталы</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Крупные веб-платформы с личным кабинетом, базой данных, сложной архитектурой и нестандартным
+                            функционалом.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--blue"></div>
+                            <span>Интернет-магазины</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Полноценный e-commerce с каталогом, корзиной, онлайн-оплатой, интеграцией со службами
+                            доставки и управлением заказами.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--blue"></div>
+                            <span>Сайты на Tilda</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Красивые и быстрые сайты на популярпной платформе Tilda с нулевым порогом управления для маркетинговых задач
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--blue"></div>
+                            <span>Телеграмм-боты</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Автоматизация продаж, поддержки и уведомлений через Telegram. Интеграция с CRM и внешними сервисами.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--blue"></div>
+                            <span>HTML-подписи</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Профессиональные корпаративные подписи для email с логотипом, кликабельными контактами и соцсетями.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
     <!-- =====tech-stack===== -->
 
     <section class="tech-stack">

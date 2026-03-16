@@ -456,4 +456,23 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.removeItem('contactFormData');
         });
     }
+
+    const items = document.querySelectorAll('.products__item'); 
+
+    items.forEach(item => {
+
+        const trigger = item.querySelector(".products__trigger");
+
+        trigger.addEventListener("click", () => {
+
+            const active = document.querySelector('.products__item.active')
+
+            if (active && active != item) {
+                active.classList.remove("active");
+            }
+
+            item.classList.toggle("active");
+
+        });
+    })
 });
