@@ -445,7 +445,7 @@ body.no-scroll {
   -webkit-background-clip: text;
   background-clip: text;
   text-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
-  animation: title-glow 4s ease-in-out infinite, flicker 3s infinite;
+  animation: title-glow 5s ease-in-out infinite, flicker 3s infinite;
 }
 .hero-title__three {
   font-size: 4.5rem;
@@ -455,13 +455,20 @@ body.no-scroll {
   -webkit-background-clip: text;
   background-clip: text;
   text-shadow: 0 0 15px rgba(99, 232, 241, 0.3);
-  animation: title-glow 4s ease-in-out infinite, flicker 3s infinite;
+  animation: title-glow 6s ease-in-out infinite, flicker 3s infinite;
 }
 .hero-description {
   font-size: 1.125rem;
   color: #cbd5e1;
   margin-bottom: 30px;
   max-width: 500px;
+  color: transparent;
+  background: linear-gradient(90deg, #008cff, #00ffff, #0044ff, #ffd700, #ff8c00, #ff6b00);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(20, 214, 228, 0.3);
+  animation: title-glow 8s ease-in-out infinite, flicker 3s infinite;
 }
 .hero-features {
   list-style: none;
@@ -852,6 +859,13 @@ body.no-scroll {
   text-align: center;
   margin-bottom: 1rem;
   line-height: 1.2;
+  color: transparent;
+  background: linear-gradient(90deg, #008cff, #00ffff, #0044ff, #ffd700, #ff8c00, #ff6b00);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(99, 232, 241, 0.3);
+  animation: title-glow 5s ease-in-out infinite, flicker 3s infinite;
 }
 .services__subtitle {
   font-size: 1.25rem;

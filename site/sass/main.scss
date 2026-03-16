@@ -566,7 +566,7 @@ body.no-scroll {
             // color: $primary;
             @include gradient-text;
             text-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
-            animation: title-glow 4s ease-in-out infinite, flicker 3s infinite;
+            animation: title-glow 5s ease-in-out infinite, flicker 3s infinite;
 
         }
 
@@ -575,7 +575,7 @@ body.no-scroll {
             // color: $primary-dark;
             @include gradient-text;
             text-shadow: 0 0 15px rgba(99, 232, 241, 0.3);
-            animation: title-glow 4s ease-in-out infinite, flicker 3s infinite;
+            animation: title-glow 6s ease-in-out infinite, flicker 3s infinite;
 
         }
 
@@ -589,6 +589,9 @@ body.no-scroll {
         color: #cbd5e1;
         margin-bottom: 30px;
         max-width: 500px;
+        @include gradient-text;
+            text-shadow: 0 0 15px rgba(20, 214, 228, 0.3);
+            animation: title-glow 8s ease-in-out infinite, flicker 3s infinite;
     }
 
     &-features {
@@ -1044,6 +1047,9 @@ body.no-scroll {
         text-align: center;
         margin-bottom: 1rem;
         line-height: 1.2;
+        @include gradient-text;
+            text-shadow: 0 0 15px rgba(99, 232, 241, 0.3);
+            animation: title-glow 5s ease-in-out infinite, flicker 3s infinite;
     }
 
     &__subtitle {
