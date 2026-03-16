@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="site/css/main.css">
+    <link rel="stylesheet" href="site/sass/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,8 +44,8 @@
 
                 <nav class="nav">
                     <a href="#Advantages" class="nav-link">Преимущества</a>
-                    <a href="#about" class="nav-link">Услуги</a>
-                    <a href="#projects" class="nav-link">О нас</a>
+                    <a href="#products" class="nav-link">Услуги</a>
+                    <a href="#About" class="nav-link">О нас</a>
                     <a href="#contact" class="nav-link">Команда</a>
                     <a href="#contact" class="nav-link">Контакты</a>
                 </nav>
@@ -66,10 +66,11 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <div class="hero-badge">Frontend Разработчик</div>
+                    <div class="hero-badge">Разработка Web-продуктов</div>
                     <h1 class="hero-title">
                         <span class="hero-title__one"> Создаем</span> <span class="hero-title__two">
-                            цифровое</span> <span class="hero-title__three"> будущее</span></h1>
+                            цифровое</span> <span class="hero-title__three"> будущее</span>
+                    </h1>
                     <p class="hero-description">
                         Мы проектируем и разрабатываем премиальные веб-приложения, лендинги и сложные сервисы, которые
                         помогают бизнесу расти.
@@ -116,8 +117,8 @@
                         <img src="site/img/photo_2026-02-21_21-58-13.jpg" alt="Рабочее место разработчика">
                     </div>
                 </div> -->
-                <div class="about-text">
-                    <!-- <p class="about-description">
+                    <div class="about-text">
+                        <!-- <p class="about-description">
                         Я — фронтенд‑разработчик с более чем 2 годами опыта. Специализируюсь на создании современных,
                         адаптивных и производительных веб‑интерфейсов, которые решают реальные бизнес-задачи.
                     </p>
@@ -126,30 +127,30 @@
                         (ES6+), React, TypeScript, Git. Стремлюсь к чистоте кода, доступности интерфейсов и оптимальной
                         производительности.
                     </p> -->
-                    <div class="about-stats">
-                        <div class="stat">
-                            <div class="stat-number">3+</div>
-                            <div class="stat-label">Года опыта</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">10</div>
-                            <div class="stat-label">Завершенных проектов</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Довольных клиентов</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number"> 24/7</div>
-                            <div class="stat-label">Поддержка</div>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <div class="stat-number">3+</div>
+                                <div class="stat-label">Года опыта</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">10</div>
+                                <div class="stat-label">Завершенных проектов</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Довольных клиентов</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number"> 24/7</div>
+                                <div class="stat-label">Поддержка</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
-     <!-- company -->
+    <!-- company -->
 
     <section id="Advantages" class="services">
         <div class="container">
@@ -233,9 +234,512 @@
     </section>
 
 
-    
+    <!-- products -->
 
-   
+    <section class="products" id="products">
+        <div class="products-container">
+            <div class="products__title">
+                <h2>
+                    Какие цифровые продукты можно заказать
+                </h2>
+                <p>
+                    Разрабатываем решения под любые задачи бизнеса
+                </p>
+            </div>
+
+            <div class="products__accardeon">
+
+                <div class="products__item active">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--blue">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="6" rx="2" />
+                                    <rect x="3" y="12" width="8" height="8" rx="2" />
+                                    <rect x="13" y="12" width="8" height="8" rx="2" />
+                                </svg>
+                            </div>
+                            <span>Лендинг</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Одностраничный сайт для продвижения конкретного продукта или услуги.
+                            Максимально заточен под конверсию и сбор лидов.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--pink">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="3" y="5" width="18" height="12" rx="2" />
+                                    <path d="M9 19H15" />
+                                </svg>
+                            </div>
+                            <span>Сайт-визитка</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Компактный сайт из 3-5 страниц с основной информации о компании, услугах и контактах.
+                            Идеален для быстрого старта.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--blue">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9" />
+                                    <path d="M3 12H21" />
+                                    <path d="M12 3C15 6 16 9 16 12C16 15 15 18 12 21" />
+                                    <path d="M12 3C9 6 8 9 8 12C8 15 9 18 12 21" />
+                                </svg>
+                            </div>
+                            <span>Корпоративный сайт</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Многостраничный сайт для крупной организации с разделами команды, новостей, услуг, портфолио
+                            и интеграциями.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--purple">
+                                <svg viewBox="0 0 24 24">
+                                    <ellipse cx="12" cy="6" rx="7" ry="3" />
+                                    <path d="M5 6V12C5 14 8 15 12 15C16 15 19 14 19 12V6" />
+                                    <path d="M5 12V18C5 20 8 21 12 21C16 21 19 20 19 18V12" />
+                                </svg>
+                            </div>
+                            <span>Сайты-порталы</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Крупные веб-платформы с личным кабинетом, базой данных, сложной архитектурой и нестандартным
+                            функционалом.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--green">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="9" cy="20" r="1.5" />
+                                    <circle cx="17" cy="20" r="1.5" />
+                                    <path d="M3 4H6L8 16H18L21 7H7" />
+                                </svg>
+                            </div>
+                            <span>Интернет-магазины</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Полноценный e-commerce с каталогом, корзиной, онлайн-оплатой, интеграцией со службами
+                            доставки и управлением заказами.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--orange">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="4" y="5" width="16" height="14" rx="2" />
+                                    <path d="M8 9H16" />
+                                    <path d="M8 13H16" />
+                                </svg>
+                            </div>
+                            <span>Сайты на Tilda</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Красивые и быстрые сайты на популярпной платформе Tilda с нулевым порогом управления для
+                            маркетинговых задач
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--blue">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 4L3 11L10 13L12 20L21 4Z" />
+                                </svg>
+                            </div>
+                            <span>Телеграмм-боты</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Автоматизация продаж, поддержки и уведомлений через Telegram. Интеграция с CRM и внешними
+                            сервисами.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="products__item">
+
+                    <button class="products__trigger">
+                        <div class="products__left">
+                            <div class="products__icon products__icon--purple">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                                    <path d="M3 7L12 13L21 7" />
+                                </svg>
+                            </div>
+                            <span>HTML-подписи</span>
+                        </div>
+
+                        <div class="products__arrow"></div>
+                    </button>
+
+                    <div class="products__content">
+                        <p>
+                            Профессиональные корпаративные подписи для email с логотипом, кликабельными контактами и
+                            соцсетями.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- О НАС -->
+
+    <section class="double" id="About">
+
+        <div class="double-container">
+
+            <div class="double__header">
+                <h2>О НАС</h2>
+            </div>
+
+            <div class="double__tabs">
+                <button class="tab active" data-tab="individual">Чем мы занимаемся</button>
+                <button class="tab" data-tab="club">Проекты</button>
+            </div>
+
+            <div class="form active" id="individual">
+                <div class="about-work__box">
+                    <h2 class="about-work__title">
+                        Разрабатываем современные кастомные сайты для организаций,
+                        которые работают как полноценный рекламный инструмент
+                        <span>24/7</span>.
+                    </h2>
+
+                    <div class="about-work__list">
+                        <div class="about-work__item">
+                            <div class="about-work__icon about-work__icon--blue">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="8"></circle>
+                                    <path d="M9.5 12L11.2 13.7L14.8 10.3"></path>
+                                </svg>
+                            </div>
+
+                            <div class="about-work__content">
+                                <h3>Индивидуальный подход</h3>
+                                <p>
+                                    Полностью кастомный сайт, разработанный с нуля под ваш бизнес.
+                                    Никаких шаблонов и конструкторов — высокая скорость, гибкость и
+                                    SEO-оптимизация.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-work__item">
+                            <div class="about-work__icon about-work__icon--pink">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M12 8.5L13 6.5L15 7.2L14.8 9.4L16.4 10.6L18.2 9.6L19.3 11.5L17.8 13L18.1 15L20 15.8L19 18L16.9 17.5L15.6 19.1L16.4 21L14.2 22L13 20.4L11 20.5L9.8 22L7.6 21L8.4 19.1L7.1 17.5L5 18L4 15.8L5.9 15L6.2 13L4.7 11.5L5.8 9.6L7.6 10.6L9.2 9.4L9 7.2L11 6.5L12 8.5Z">
+                                    </path>
+                                    <circle cx="12" cy="14" r="2.2"></circle>
+                                </svg>
+                            </div>
+
+                            <div class="about-work__content">
+                                <h3>Управление без программиста</h3>
+                                <p>
+                                    Удобная админ-панель: меняйте текст, добавляйте услуги, новости,
+                                    фото, товары без знания кода в несколько кликов.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-work__item">
+                            <div class="about-work__icon about-work__icon--green">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 15L10 10L13 13L19 7"></path>
+                                    <path d="M14 7H19V12"></path>
+                                </svg>
+                            </div>
+
+                            <div class="about-work__content">
+                                <h3>Автоматизация заявок</h3>
+                                <p>
+                                    Заявки с сайта мгновенно приходят в Telegram и на email.
+                                    Встроенная аналитика: кто заходил, что смотрел, сколько
+                                    времени провел.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form" id="club">
+
+                <div class="double__projects">
+
+                    <!-- проект один начало -->
+
+                    <article class="project-card" data-modal="project1">
+                        <div class="project-card__preview project-card__preview--orange-red">
+                            <span class="project-card__badge">Лендинг</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>ВелоПрокат Москва</h3>
+                            <p>Лендинг для сервиса аренды велосипедов. Конверсия +45%...</p>
+                        </div>
+                    </article>
+
+                    <div class="projects-modal" id="project1">
+                        <div class="projects-modal__overlay"></div>
+                        <div class="projects-modal__dialog">
+                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <span class="projects-modal__badge">Лендинг</span>
+                            <h3 class="projects-modal__title">
+                                ВелоПрокат Москва
+                            </h3>
+                            <p class="projects-modal__description">
+                                Лендинг для сервиса аренды велосипедов.
+                            </p>
+                            <p class="projects-modal__details">
+                                Современный продающий сайт с акцентом на быстрые заявки,
+                                адаптивность и высокую конверсию.
+                            </p>
+                            <a href="#" class="projects-modal__link" target="_blank">
+                                Открыть сайт
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 3h7v7"></path>
+                                    <path d="M21 3l-9 9"></path>
+                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- проект один конец -->
+
+                    <article class="project-card" data-modal="project2">
+                        <div class="project-card__preview project-card__preview--green">
+                            <span class="project-card__badge">Корпоративный</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>МедКлиника Здоровье</h3>
+                            <p>Корпоративный сайт для частной клиники с онлайн-записью.</p>
+                        </div>
+                    </article>
+
+                    <div class="projects-modal" id="project2">
+                        <div class="projects-modal__overlay"></div>
+                        <div class="projects-modal__dialog">
+                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <span class="projects-modal__badge">Лендинг</span>
+                            <h3 class="projects-modal__title">
+                                ВелоПрокат Москва
+                            </h3>
+                            <p class="projects-modal__description">
+                                Лендинг для сервиса аренды велосипедов.
+                            </p>
+                            <p class="projects-modal__details">
+                                Современный продающий сайт с акцентом на быстрые заявки,
+                                адаптивность и высокую конверсию.
+                            </p>
+                            <a href="#" class="projects-modal__link" target="_blank">
+                                Открыть сайт
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 3h7v7"></path>
+                                    <path d="M21 3l-9 9"></path>
+                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <article class="project-card" data-modal="project3">
+                        <div class="project-card__preview project-card__preview--blue">
+                            <span class="project-card__badge">Сайт компании</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>ТехноСтрой</h3>
+                            <p>Сайт строительной компании с каталогом проектов и...</p>
+                        </div>
+                    </article>
+
+                    <div class="projects-modal" id="project3">
+                        <div class="projects-modal__overlay"></div>
+                        <div class="projects-modal__dialog">
+                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <span class="projects-modal__badge">Лендинг</span>
+                            <h3 class="projects-modal__title">
+                                ВелоПрокат Москва
+                            </h3>
+                            <p class="projects-modal__description">
+                                Лендинг для сервиса аренды велосипедов.
+                            </p>
+                            <p class="projects-modal__details">
+                                Современный продающий сайт с акцентом на быстрые заявки,
+                                адаптивность и высокую конверсию.
+                            </p>
+                            <a href="#" class="projects-modal__link" target="_blank">
+                                Открыть сайт
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 3h7v7"></path>
+                                    <path d="M21 3l-9 9"></path>
+                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <article class="project-card" data-modal="project4">
+                        <div class="project-card__preview project-card__preview--violet">
+                            <span class="project-card__badge">TG Бот</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>FoodDelivery Bot</h3>
+                            <p>Телеграм-бот для доставки еды с CRM-интеграцией.</p>
+                        </div>
+                    </article>
+
+                     <div class="projects-modal" id="project4">
+                        <div class="projects-modal__overlay"></div>
+                        <div class="projects-modal__dialog">
+                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <span class="projects-modal__badge">Лендинг</span>
+                            <h3 class="projects-modal__title">
+                                ВелоПрокат Москва
+                            </h3>
+                            <p class="projects-modal__description">
+                                Лендинг для сервиса аренды велосипедов.
+                            </p>
+                            <p class="projects-modal__details">
+                                Современный продающий сайт с акцентом на быстрые заявки,
+                                адаптивность и высокую конверсию.
+                            </p>
+                            <a href="#" class="projects-modal__link" target="_blank">
+                                Открыть сайт
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 3h7v7"></path>
+                                    <path d="M21 3l-9 9"></path>
+                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <article class="project-card" data-modal="project5">
+                        <div class="project-card__preview project-card__preview--pink">
+                            <span class="project-card__badge">E-commerce</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>LuxeMode</h3>
+                            <p>Интернет-магазин одежды с фильтрацией и интеграцией.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-modal="project6">
+                        <div class="project-card__preview project-card__preview--emerald">
+                            <span class="project-card__badge">Портал</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>АгроПлюс</h3>
+                            <p>Корпоративный портал для агропромышленного холдинга.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-modal="project7">
+                        <div class="project-card__preview project-card__preview--darkblue">
+                            <span class="project-card__badge">Веб-приложение</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>CryptoTrack</h3>
+                            <p>Веб-приложение мониторинга криптовалют.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-modal="project8">
+                        <div class="project-card__preview project-card__preview--orange">
+                            <span class="project-card__badge">Визитка</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>Юридический Центр</h3>
+                            <p>Сайт-визитка для юридической фирмы.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+    </section>
+
     <!-- =====tech-stack===== -->
 
     <section class="tech-stack">

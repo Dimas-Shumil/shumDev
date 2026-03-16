@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========== SWIPER ==========
-    
+
     if (swiperContainer && typeof Swiper !== 'undefined') {
         const projectsSwiper = new Swiper('.projects-swiper', {
             loop: true,
@@ -456,4 +456,89 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.removeItem('contactFormData');
         });
     }
+
+    // аккардеон для секции "products"
+    const items = document.querySelectorAll('.products__item');
+
+    items.forEach(item => {
+
+        const trigger = item.querySelector(".products__trigger");
+
+        trigger.addEventListener("click", () => {
+
+            const active = document.querySelector('.products__item.active')
+
+            if (active && active != item) {
+                active.classList.remove("active");
+            }
+
+            item.classList.toggle("active");
+
+        });
+    })
+});
+
+// табы для секции "double"
+
+const tabs = document.querySelectorAll('.tab');
+const forms = document.querySelectorAll('.form');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        forms.forEach(f => f.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+});
+
+
+const projectCards = document.querySelectorAll('.project-card');
+
+projectCards.forEach(card => {
+
+    card.addEventListener('click', () => {
+
+        const modalId = card.dataset.modal;
+        const modal = document.getElementById(modalId);
+
+        if (modal) {
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+        }
+
+    });
+
+});
+
+const modals = document.querySelectorAll('.projects-modal');
+
+modals.forEach(modal => {
+
+    const overlay = modal.querySelector('.projects-modal__overlay');
+    const closeBtn = modal.querySelector('.projects-modal__close');
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+    }
+
+    overlay.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+
+});
+
+document.addEventListener('keydown', e => {
+
+    if (e.key === "Escape") {
+
+        modals.forEach(modal => {
+            modal.classList.remove('active');
+        });
+
+        document.body.classList.remove('modal-open');
+
+    }
+
 });
