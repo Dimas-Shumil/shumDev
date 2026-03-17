@@ -39,13 +39,19 @@ $transition: all 0.3s ease;
 @mixin gradient-text {
     color: transparent;
     background: linear-gradient(90deg,
-        #00d4ff,     /* яркий бирюзово-голубой (как кубы слева) */
-        #00f0ff,     /* чистый циан */
-        #0099ff,     /* глубокий голубой */
-        #a020ff,     /* переход в фиолетовый */
-        #ff00cc,     /* яркий магента/розово-пурпурный */
-        #ff0088      /* насыщенный розово-фиолетовый (как правые элементы) */
-    );
+            #00d4ff,
+            /* яркий бирюзово-голубой (как кубы слева) */
+            #00f0ff,
+            /* чистый циан */
+            #0099ff,
+            /* глубокий голубой */
+            #a020ff,
+            /* переход в фиолетовый */
+            #ff00cc,
+            /* яркий магента/розово-пурпурный */
+            #ff0088
+            /* насыщенный розово-фиолетовый (как правые элементы) */
+        );
     background-size: 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -53,13 +59,17 @@ $transition: all 0.3s ease;
 
 @mixin gradient-bg {
     background: linear-gradient(90deg,
-        #00d4ff,     /* яркий бирюзово-голубой (как кубы слева) */
-        #00f0ff,     /* чистый циан */
-        #0099ff,     /* глубокий голубой */
-        #a020ff,     /* переход в фиолетовый */
-        #ff00cc,     /* яркий магента/розово-пурпурный */
-        #ff0088 
-    );
+            #00d4ff,
+            /* яркий бирюзово-голубой (как кубы слева) */
+            #00f0ff,
+            /* чистый циан */
+            #0099ff,
+            /* глубокий голубой */
+            #a020ff,
+            /* переход в фиолетовый */
+            #ff00cc,
+            /* яркий магента/розово-пурпурный */
+            #ff0088);
     background-size: 300% 100%;
 }
 
@@ -783,7 +793,7 @@ body.no-scroll {
     box-shadow: $shadow;
     text-align: center;
     transition: $transition;
-   
+
 
     &:hover {
         transform: translateY(-5px);
@@ -949,6 +959,158 @@ body.no-scroll {
     }
 }
 
+// cta section 
+.cta {
+    padding: 40px 20px;
+
+    background: linear-gradient(90deg,
+            #0a1a33 0%,
+            #0d2240 40%,
+            #1a2b5c 100%);
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+    &__left {
+        max-width: 600px;
+    }
+
+    &__label {
+        display: block;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #3b82f6;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    &__title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+
+    &__text {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.65);
+        max-width: 500px;
+        line-height: 1.5;
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-shrink: 0;
+    }
+
+    &__phone {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 20px;
+        height: 48px;
+
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+
+        background: rgba(255, 255, 255, 0.04);
+
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+
+        transition: 0.25s;
+
+        svg {
+            opacity: 0.8;
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+    }
+
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        height: 48px;
+        padding: 0 26px;
+
+        background-color: $primary-color;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+
+        transition: $transition;
+        box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+
+        .arrow {
+            transition: $transition;
+        }
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(59, 130, 246, 0.4);
+
+            .arrow {
+                transform: translateX(4px);
+            }
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 900px) {
+        &__wrapper {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        &__right {
+            width: 100%;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        &__phone,
+        &__btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 600px) {
+        &__title {
+            font-size: 24px;
+        }
+    }
+}
 
 // секция Products
 
@@ -1094,6 +1256,249 @@ body.no-scroll {
         max-height: 200px;
     }
 
+}
+
+.custom-cta {
+    padding: 90px 20px;
+    background: #010814;
+    position: relative;
+    overflow: hidden;
+
+    .container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    &__box {
+        max-width: 1030px;
+        margin: 0 auto;
+        padding: 52px 40px 46px;
+        border-radius: 22px;
+        background: linear-gradient(120deg,
+                #2f7cf6 0%,
+                #4f6cff 30%,
+                #6a5cff 55%,
+                #8a4fff 75%,
+                #a23be8 100%);
+        box-shadow:
+            0 20px 60px rgba(18, 38, 84, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        text-align: center;
+        position: relative;
+    }
+
+    &__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        height: 34px;
+        padding: 0 18px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1;
+        margin-bottom: 26px;
+
+        span {
+            font-size: 14px;
+            line-height: 1;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        color: #fff;
+        font-size: 56px;
+        line-height: 1.08;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+    }
+
+    &__text {
+        max-width: 700px;
+        margin: 18px auto 0;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 16px;
+        line-height: 1.7;
+        font-weight: 500;
+    }
+
+    &__actions {
+        margin-top: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    &__btn {
+        height: 50px;
+        min-width: 192px;
+        padding: 0 28px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 700;
+        transition: 0.3s ease;
+        border: 1px solid transparent;
+
+        svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    &__btn--light {
+        background: #ffffff;
+        color: #2f7cf6;
+        box-shadow: 0 10px 24px rgba(255, 255, 255, 0.16);
+
+        &:hover {
+            box-shadow: 0 14px 30px rgba(255, 255, 255, 0.22);
+        }
+    }
+
+    &__btn--glass {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.18);
+        color: #ffffff;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.16);
+        }
+    }
+
+    &__arrow {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    &__btn--glass:hover &__arrow {
+        transform: translateX(4px);
+    }
+
+    &__contacts {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 15px;
+        font-weight: 500;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            &:hover {
+                color: rgba(255, 255, 255, 0.82);
+            }
+
+            svg {
+                width: 16px;
+                display: block;
+            }
+
+            img {
+                width: 16px;
+                display: block;
+            }
+        }
+    }
+
+    @media (max-width: 992px) {
+        &__box {
+            padding: 42px 24px 38px;
+        }
+
+        &__title {
+            font-size: 42px;
+        }
+
+        &__text {
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 70px 16px;
+
+        &__title {
+            font-size: 34px;
+        }
+
+        &__actions {
+            flex-direction: column;
+        }
+
+        &__btn {
+            width: 100%;
+            max-width: 320px;
+        }
+
+        &__contacts {
+            gap: 12px;
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        &__box {
+            border-radius: 18px;
+            padding: 34px 18px 30px;
+        }
+
+        &__badge {
+            font-size: 12px;
+            padding: 0 14px;
+            height: 30px;
+            margin-bottom: 20px;
+        }
+
+        &__title {
+            font-size: 28px;
+        }
+
+        &__text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        &__btn {
+            min-width: 100%;
+            font-size: 15px;
+        }
+
+        &__contacts {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
 }
 
 // секция чем занимаемся и проекты
@@ -1824,6 +2229,7 @@ body.no-scroll {
         }
     }
 }
+
 // Contact Section
 
 .contact {
