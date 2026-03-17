@@ -542,3 +542,76 @@ document.addEventListener('keydown', e => {
     }
 
 });
+// team section animation
+
+gsap.registerPlugin(ScrollTrigger);
+
+const teamSection = document.querySelector('.team');
+const teamHeader = document.querySelector('.team__header');
+const teamCards = document.querySelectorAll('.team-card');
+
+if (teamSection && teamHeader && teamCards.length) {
+    gsap.set(teamHeader, {
+        opacity: 0,
+        y: 40
+    });
+
+    gsap.set(teamCards, {
+        opacity: 0,
+        y: 60,
+        scale: 0.92
+    });
+
+    const teamTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: teamSection,
+            start: 'top 75%',
+            once: true
+        }
+    });
+
+    teamTl
+        .to(teamHeader, {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: 'power3.out'
+        })
+        .to(teamCards, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.9,
+            stagger: 0.15,
+            ease: 'power3.out'
+        }, '-=0.45');
+}
+const cards = document.querySelectorAll('.team-card');
+
+cards.forEach((card) => {
+    const image = card.querySelector('.team-card__img img');
+
+    card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+            y: -8,
+            duration: 0.35,
+            ease: 'power2.out'
+        });
+
+        if (image) {
+            gsap.to(image, {
+                scale: 1.06,
+                duration: 0.45,
+                ease: 'power2.out'
+            });
+        }
+    });
+
+    card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+            y: 0,
+            duration: 0.35,
+            ease: 'power2.out'
+        });
+    });
+});
