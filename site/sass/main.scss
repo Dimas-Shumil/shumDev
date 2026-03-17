@@ -51,6 +51,18 @@ $transition: all 0.3s ease;
     background-clip: text;
 }
 
+@mixin gradient-bg {
+    background: linear-gradient(90deg,
+        #00d4ff,     /* яркий бирюзово-голубой (как кубы слева) */
+        #00f0ff,     /* чистый циан */
+        #0099ff,     /* глубокий голубой */
+        #a020ff,     /* переход в фиолетовый */
+        #ff00cc,     /* яркий магента/розово-пурпурный */
+        #ff0088 
+    );
+    background-size: 300% 100%;
+}
+
 // Анимации
 @keyframes smoke-dissipate {
     0% {
@@ -488,9 +500,10 @@ body.no-scroll {
     &-line {
         width: 100%;
         height: 2px;
-        background: $light;
+        @include gradient-bg;
         transition: $transition;
         border-radius: 2px;
+        animation: title-glow 5s ease-in-out infinite, flicker 3s infinite;
     }
 
     &.active {
@@ -554,10 +567,11 @@ body.no-scroll {
     }
 
     &-title {
-        // font-size: 3.5rem;
+        //  font-size: 3.5rem;
         font-weight: 700;
         line-height: 1.1;
         margin-bottom: 20px;
+        opacity: 1;
 
         &__one {
             font-size: 4.5rem;
@@ -763,12 +777,13 @@ body.no-scroll {
 }
 
 .stat {
-    background: white;
+    // background: white;
     padding: 25px;
     border-radius: $radius;
     box-shadow: $shadow;
     text-align: center;
     transition: $transition;
+   
 
     &:hover {
         transform: translateY(-5px);
@@ -778,13 +793,13 @@ body.no-scroll {
     &-number {
         font-size: 2.5rem;
         font-weight: 700;
-        color: $primary;
+        color: $light;
         margin-bottom: 5px;
     }
 
     &-label {
         font-size: 0.875rem;
-        color: $gray;
+        color: $light;
         font-weight: 500;
     }
 }
