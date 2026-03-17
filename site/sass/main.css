@@ -468,6 +468,35 @@ body.no-scroll {
   position: relative;
 }
 
+.btn.btn-primary {
+  min-height: 48px;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #1d7fff 0%, #2563eb 100%);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+.btn.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.btn.btn-primary:active {
+  transform: translateY(0);
+}
+.btn.btn-primary i {
+  font-size: 14px;
+}
+
 .image-container {
   position: relative;
   border-radius: 16px;
@@ -484,8 +513,7 @@ body.no-scroll {
   border-radius: 12px;
   display: block;
   transition: all 0.3s ease;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .image-container:hover img {
   transform: scale(1.03);
@@ -724,7 +752,7 @@ body.no-scroll {
   font-weight: 600;
   font-size: 1.1rem;
   padding: 16px 40px;
-  border-radius: 50px;
+  border-radius: 15px;
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
@@ -1209,16 +1237,14 @@ body.no-scroll {
   background: #0b1220;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  width: -moz-fit-content;
   width: fit-content;
 }
 .double .double__tabs .tab {
   padding: 12px 26px;
   border-radius: 12px;
-  border: none;
   background: transparent;
   color: #94a3b8;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -1290,7 +1316,6 @@ body.no-scroll {
   border: 1px solid rgba(122, 162, 255, 0.14);
   border-radius: 24px;
   background: linear-gradient(180deg, #05101f 0%, #020b18 100%);
-  padding: 56px 52px;
   max-width: 1400px;
   margin-top: 40px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 0 0 1px rgba(255, 255, 255, 0.015);
@@ -1365,7 +1390,7 @@ body.no-scroll {
 }
 .double .about-work__content p {
   margin: 0;
-  max-width: 1040px;
+  padding-right: 10px;
   font-size: 18px;
   line-height: 1.6;
   color: #9fb0c7;
@@ -1719,8 +1744,7 @@ body.no-scroll {
 .team-card__img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   transition: transform 0.5s ease;
   display: block;
 }
@@ -1815,8 +1839,7 @@ body.no-scroll {
   height: 250px;
   max-width: 600px;
   display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 14px;
 }
 .contact .contact-text__item {
@@ -1933,10 +1956,6 @@ body.no-scroll {
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
 }
-.form-control::-moz-placeholder {
-  color: #8fa3bf;
-  font-weight: 400;
-}
 .form-control::placeholder {
   color: #8fa3bf;
   font-weight: 400;
@@ -1959,36 +1978,6 @@ body.no-scroll {
 textarea.form-control {
   min-height: 150px;
   resize: vertical;
-}
-
-.btn.btn-primary {
-  width: 100%;
-  min-height: 58px;
-  padding: 16px 24px;
-  border: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #1d7fff 0%, #2563eb 100%);
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 700;
-  font-family: "Inter", sans-serif;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.14);
-}
-.btn.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-}
-.btn.btn-primary:active {
-  transform: translateY(0);
-}
-.btn.btn-primary i {
-  font-size: 14px;
 }
 
 /* ======================
