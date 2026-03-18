@@ -1453,13 +1453,15 @@ body.no-scroll {
 }
 .double .project-card__preview {
   position: relative;
-  height: 175px;
-  padding: 26px;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
 }
-.double .project-card__preview--orange-red {
+.double .project-card__preview--sport {
   background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
 }
-.double .project-card__preview--green {
+.double .project-card__preview--autocat19 {
   background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
 }
 .double .project-card__preview--blue {
