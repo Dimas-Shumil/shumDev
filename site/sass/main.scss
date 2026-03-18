@@ -1843,6 +1843,11 @@ body.no-scroll {
             box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
         }
 
+        .project-image {
+            display: block;
+            object-fit: cover;
+        }
+
         &__preview {
             position: relative;
             // height: 175px;
@@ -1951,6 +1956,26 @@ body.no-scroll {
             backdrop-filter: blur(8px);
         }
 
+        &__list {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+
+            li {
+                margin: 0 0 14px;
+                font-size: 18px;
+                line-height: 1.2;
+                color: #aab9d0;
+                padding: 0px;
+                margin-left: 20px;
+            }
+        }
+
+        img {
+            display: block;
+            object-fit: cover;
+        }
+
         &__dialog {
             position: relative;
             z-index: 2;
@@ -2010,7 +2035,8 @@ body.no-scroll {
             align-items: center;
             justify-content: center;
             padding: 8px 14px;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
+            margin-top: 8px;
             border-radius: 999px;
             background: rgba(37, 99, 235, 0.18);
             color: #8db7ff;
@@ -2553,11 +2579,13 @@ textarea.form-control {
 
         .contact-title {
             font-size: 24px;
+            align-self: center;
         }
 
         .contact-subtitle {
             font-size: 16px;
             margin-top: 0;
+            text-align: justify;
         }
 
         .contact-text {

@@ -513,7 +513,8 @@ body.no-scroll {
   border-radius: 12px;
   display: block;
   transition: all 0.3s ease;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .image-container:hover img {
   transform: scale(1.03);
@@ -1237,6 +1238,7 @@ body.no-scroll {
   background: #0b1220;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  width: -moz-fit-content;
   width: fit-content;
 }
 .double .double__tabs .tab {
@@ -1451,6 +1453,11 @@ body.no-scroll {
   border-color: rgba(70, 120, 255, 0.35);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
 }
+.double .project-card .project-image {
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .double .project-card__preview {
   position: relative;
   width: 100%;
@@ -1467,7 +1474,7 @@ body.no-scroll {
 .double .project-card__preview--YouTalk {
   background: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 100%);
 }
-.double .project-card__preview--violet {
+.double .project-card__preview--newsSpain {
   background: linear-gradient(135deg, #818cf8 0%, #a855f7 100%);
 }
 .double .project-card__preview--pink {
@@ -1535,6 +1542,24 @@ body.no-scroll {
   background: rgba(2, 8, 23, 0.78);
   backdrop-filter: blur(8px);
 }
+.double .projects-modal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+.double .projects-modal__list li {
+  margin: 0 0 14px;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #aab9d0;
+  padding: 0px;
+  margin-left: 20px;
+}
+.double .projects-modal img {
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .double .projects-modal__dialog {
   position: relative;
   z-index: 2;
@@ -1586,7 +1611,8 @@ body.no-scroll {
   align-items: center;
   justify-content: center;
   padding: 8px 14px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+  margin-top: 8px;
   border-radius: 999px;
   background: rgba(37, 99, 235, 0.18);
   color: #8db7ff;
@@ -1746,7 +1772,8 @@ body.no-scroll {
 .team-card__img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   transition: transform 0.5s ease;
   display: block;
 }
@@ -1841,7 +1868,8 @@ body.no-scroll {
   height: 250px;
   max-width: 600px;
   display: block;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 14px;
 }
 .contact .contact-text__item {
@@ -1958,6 +1986,10 @@ body.no-scroll {
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
 }
+.form-control::-moz-placeholder {
+  color: #8fa3bf;
+  font-weight: 400;
+}
 .form-control::placeholder {
   color: #8fa3bf;
   font-weight: 400;
@@ -2023,10 +2055,12 @@ textarea.form-control {
   }
   .contact .contact-title {
     font-size: 24px;
+    align-self: center;
   }
   .contact .contact-subtitle {
     font-size: 16px;
     margin-top: 0;
+    text-align: justify;
   }
   .contact .contact-text {
     gap: 16px;
