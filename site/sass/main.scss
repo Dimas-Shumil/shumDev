@@ -480,12 +480,16 @@ body.no-scroll {
             left: 0;
             width: 0;
             height: 2px;
-            background: $secondary;
+            background: $primary;
             transition: $transition;
+
+            &:hover {
+                color: $primary;
+            }
         }
 
         &:hover {
-            color: $secondary;
+            color: $primary;
 
             &:after {
                 width: 100%;
@@ -563,12 +567,10 @@ body.no-scroll {
 
         background:
             radial-gradient(circle at 50% 30%, rgba(124, 58, 237, 0.15), transparent 40%),
-            linear-gradient(
-                180deg,
+            linear-gradient(180deg,
                 rgba(5, 8, 22, 0.7) 0%,
                 rgba(5, 8, 22, 0.85) 60%,
-                rgba(5, 8, 22, 0.95) 100%
-            );
+                rgba(5, 8, 22, 0.95) 100%);
     }
 }
 
@@ -613,6 +615,7 @@ body.no-scroll {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1815,6 +1818,7 @@ body.no-scroll {
             &--newsSpain {
                 background: linear-gradient(135deg, #818cf8 0%, #a855f7 100%);
             }
+
             //slider
             &--slider {
                 background: linear-gradient(135deg, #ec4899 0%, #e11d48 100%);

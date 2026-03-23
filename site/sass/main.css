@@ -347,11 +347,14 @@ body.no-scroll {
   left: 0;
   width: 0;
   height: 2px;
-  background: #10b981;
+  background: #6366f1;
   transition: all 0.3s ease;
 }
+.nav-link:after:hover {
+  color: #6366f1;
+}
 .nav-link:hover {
-  color: #10b981;
+  color: #6366f1;
 }
 .nav-link:hover:after {
   width: 100%;
