@@ -253,8 +253,6 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: $dark;
-
-
     overflow-x: hidden;
 }
 
@@ -643,7 +641,8 @@ body.no-scroll {
 
     &__two {
         background: linear-gradient(90deg, #00d4ff, #7c3aed);
-        -webkit-background-clip: text;
+        // -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
 
         filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.4));
@@ -653,7 +652,8 @@ body.no-scroll {
 
     &__three {
         background: linear-gradient(90deg, #7c3aed, #00d4ff);
-        -webkit-background-clip: text;
+        // -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
 
         filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
