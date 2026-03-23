@@ -1451,6 +1451,10 @@ body.no-scroll {
   border-color: rgba(70, 120, 255, 0.35);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
 }
+.double .project-card .project-image {
+  display: block;
+  object-fit: cover;
+}
 .double .project-card__preview {
   position: relative;
   width: 100%;
@@ -1467,13 +1471,13 @@ body.no-scroll {
 .double .project-card__preview--YouTalk {
   background: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 100%);
 }
-.double .project-card__preview--violet {
+.double .project-card__preview--newsSpain {
   background: linear-gradient(135deg, #818cf8 0%, #a855f7 100%);
 }
-.double .project-card__preview--pink {
+.double .project-card__preview--slider {
   background: linear-gradient(135deg, #ec4899 0%, #e11d48 100%);
 }
-.double .project-card__preview--emerald {
+.double .project-card__preview--pablo {
   background: linear-gradient(135deg, #22c55e 0%, #059669 100%);
 }
 .double .project-card__preview--darkblue {
@@ -1535,6 +1539,23 @@ body.no-scroll {
   background: rgba(2, 8, 23, 0.78);
   backdrop-filter: blur(8px);
 }
+.double .projects-modal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+.double .projects-modal__list li {
+  margin: 0 0 14px;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #aab9d0;
+  padding: 0px;
+  margin-left: 20px;
+}
+.double .projects-modal img {
+  display: block;
+  object-fit: cover;
+}
 .double .projects-modal__dialog {
   position: relative;
   z-index: 2;
@@ -1586,7 +1607,8 @@ body.no-scroll {
   align-items: center;
   justify-content: center;
   padding: 8px 14px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+  margin-top: 8px;
   border-radius: 999px;
   background: rgba(37, 99, 235, 0.18);
   color: #8db7ff;
@@ -2023,10 +2045,12 @@ textarea.form-control {
   }
   .contact .contact-title {
     font-size: 24px;
+    align-self: center;
   }
   .contact .contact-subtitle {
     font-size: 16px;
     margin-top: 0;
+    text-align: justify;
   }
   .contact .contact-text {
     gap: 16px;

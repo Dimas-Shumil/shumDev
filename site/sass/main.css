@@ -513,8 +513,7 @@ body.no-scroll {
   border-radius: 12px;
   display: block;
   transition: all 0.3s ease;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .image-container:hover img {
   transform: scale(1.03);
@@ -1238,7 +1237,6 @@ body.no-scroll {
   background: #0b1220;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  width: -moz-fit-content;
   width: fit-content;
 }
 .double .double__tabs .tab {
@@ -1455,8 +1453,7 @@ body.no-scroll {
 }
 .double .project-card .project-image {
   display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .double .project-card__preview {
   position: relative;
@@ -1477,10 +1474,10 @@ body.no-scroll {
 .double .project-card__preview--newsSpain {
   background: linear-gradient(135deg, #818cf8 0%, #a855f7 100%);
 }
-.double .project-card__preview--pink {
+.double .project-card__preview--slider {
   background: linear-gradient(135deg, #ec4899 0%, #e11d48 100%);
 }
-.double .project-card__preview--emerald {
+.double .project-card__preview--pablo {
   background: linear-gradient(135deg, #22c55e 0%, #059669 100%);
 }
 .double .project-card__preview--darkblue {
@@ -1557,8 +1554,7 @@ body.no-scroll {
 }
 .double .projects-modal img {
   display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .double .projects-modal__dialog {
   position: relative;
@@ -1772,8 +1768,7 @@ body.no-scroll {
 .team-card__img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   transition: transform 0.5s ease;
   display: block;
 }
@@ -1868,8 +1863,7 @@ body.no-scroll {
   height: 250px;
   max-width: 600px;
   display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 14px;
 }
 .contact .contact-text__item {
@@ -1985,10 +1979,6 @@ body.no-scroll {
   line-height: 1.4;
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
-}
-.form-control::-moz-placeholder {
-  color: #8fa3bf;
-  font-weight: 400;
 }
 .form-control::placeholder {
   color: #8fa3bf;
