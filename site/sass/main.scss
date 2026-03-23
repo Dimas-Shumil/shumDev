@@ -534,248 +534,186 @@ body.no-scroll {
 }
 
 // Hero Section
-
 .hero {
+    position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 120px 0 80px;
-    position: relative;
+    justify-content: center;
     overflow: hidden;
+    padding: 120px 20px 80px;
+    background: #050816;
+    text-align: center;
 
-    &-bg {
+    &__media {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: $blackFon;
-        z-index: -2;
+        inset: 0;
+        z-index: 0;
     }
 
-    &-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: center;
+    &__video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.95) contrast(2) saturate(1.1);
+        transform: scale(1.05);
     }
 
-    &-text {
-        color: $light;
-    }
+    &__overlay {
+        position: absolute;
+        inset: 0;
 
-    &-badge {
-        display: inline-block;
-        background: rgba(99, 102, 241, 0.2);
-        color: $primary;
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 0.875rem;
-        font-weight: 500;
-        margin-bottom: 20px;
-        border: 1px solid rgba(99, 102, 241, 0.3);
-    }
-
-    &-title {
-        //  font-size: 3.5rem;
-        font-weight: 700;
-        line-height: 1.1;
-        margin-bottom: 20px;
-        opacity: 1;
-
-        &__one {
-            font-size: 4.5rem;
-            // @include gradient-text;
-            // text-shadow: 0 0 15px rgba(255, 107, 0, 0.3);
-            // animation: title-glow 4s ease-in-out infinite, flicker 3s infinite;
-            color: $light;
-        }
-
-        &__two {
-            font-size: 4.5rem;
-            // color: $primary;
-            @include gradient-text;
-            text-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
-            animation: title-glow 5s ease-in-out infinite, flicker 3s infinite;
-
-        }
-
-        &__three {
-            font-size: 4.5rem;
-            // color: $primary-dark;
-            @include gradient-text;
-            text-shadow: 0 0 15px rgba(99, 232, 241, 0.3);
-            animation: title-glow 6s ease-in-out infinite, flicker 3s infinite;
-
-        }
-
-        // span {
-        //      color: $secondary;
-        // }
-    }
-
-    &-description {
-        font-size: 1.125rem;
-        color: #cbd5e1;
-        margin-bottom: 30px;
-        max-width: 500px;
-        // @include gradient-text;
-        // text-shadow: 0 0 15px rgba(20, 214, 228, 0.3);
-        // animation: title-glow 8s ease-in-out infinite, flicker 3s infinite;
-    }
-
-    // &-features {
-    //     list-style: none;
-    //     margin-bottom: 40px;
-
-    //     li {
-    //         display: flex;
-    //         align-items: center;
-    //         gap: 10px;
-    //         margin-bottom: 12px;
-    //         color: #cbd5e1;
-
-    //         i {
-    //             color: $secondary;
-    //         }
-    //     }
-    // }
-
-    &-buttons {
-        display: flex;
-        gap: 20px;
-    }
-
-    &-image {
-        position: relative;
+        background:
+            radial-gradient(circle at 50% 30%, rgba(124, 58, 237, 0.15), transparent 40%),
+            linear-gradient(
+                180deg,
+                rgba(5, 8, 22, 0.7) 0%,
+                rgba(5, 8, 22, 0.85) 60%,
+                rgba(5, 8, 22, 0.95) 100%
+            );
     }
 }
 
-.btn.btn-primary {
-    // width: 100%;
-    min-height: 48px;
-    padding: 16px 20px;
-    border: none;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #1d7fff 0%, #2563eb 100%);
-    color: #ffffff;
-    font-size: 16px;
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 800px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+
+    color: #8fb4ff;
+
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
+}
+
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    margin: 0 0 20px;
+    line-height: 1.05;
     font-weight: 700;
-    font-family: 'Inter', sans-serif;
+
+    span {
+        display: inline-block;
+        font-size: clamp(42px, 6vw, 80px);
+
+        opacity: 0;
+        animation: fadeUp 0.8s ease forwards;
+    }
+
+    &__one {
+        color: #ffffff;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+        animation-delay: 0.1s;
+    }
+
+    &__two {
+        background: linear-gradient(90deg, #00d4ff, #7c3aed);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.4));
+
+        animation-delay: 0.3s;
+    }
+
+    &__three {
+        background: linear-gradient(90deg, #7c3aed, #00d4ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+
+        animation-delay: 0.5s;
+    }
+}
+
+.hero-description {
+    max-width: 560px;
+    margin: 0 0 30px;
+
+    font-size: 18px;
+    line-height: 1.6;
+    color: #cbd5f5;
+
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    height: 54px;
+    padding: 0 26px;
+    border-radius: 12px;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    cursor: pointer;
+
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+
     transition: all 0.3s ease;
-    box-shadow:
-        0 12px 30px rgba(37, 99, 235, 0.28),
-        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.btn-primary {
+    color: #fff;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
 
     &:hover {
-        transform: translateY(-2px);
-        box-shadow:
-            0 16px 36px rgba(37, 99, 235, 0.34),
-            inset 0 1px 0 rgba(255, 255, 255, 0.18);
-    }
-
-    &:active {
-        transform: translateY(0);
-    }
-
-    i {
-        font-size: 14px;
+        transform: translateY(-3px);
+        box-shadow: 0 16px 40px rgba(124, 58, 237, 0.4);
     }
 }
 
-.image-container {
-    position: relative;
-    border-radius: $radius;
-    overflow: hidden;
-    box-shadow: $shadow-lg;
-    @include glass-effect;
-    padding: 20px;
+.btn-outline {
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 
-    img {
-        width: 100%;
-        height: 400px;
-        border-radius: 12px;
-        display: block;
-        transition: $transition;
-        object-fit: cover;
-    }
-
-    &:hover img {
-        transform: scale(1.03);
-    }
-}
-
-.floating-element {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
-    @include glass-effect;
-    @include flex-center;
-    color: $light;
-    box-shadow: $shadow;
-    z-index: 10;
-}
-
-.floating-1 {
-    top: -20px;
-    right: -20px;
-    background: rgba(16, 185, 129, 0.2);
-    border-color: rgba(16, 185, 129, 0.3);
-    animation: float 6s ease-in-out infinite;
-}
-
-.floating-2 {
-    bottom: 30px;
-    left: -30px;
-    background: rgba(99, 102, 241, 0.2);
-    border-color: rgba(99, 102, 241, 0.3);
-    animation: float 8s ease-in-out infinite 1s;
-}
-
-// Buttons
-
-.btn {
-    padding: 14px 20px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 16px;
-    text-decoration: none;
-    transition: $transition;
-    display: inline-flex;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-    cursor: pointer;
-    border: none;
-
-    &-primary {
-        background: $primary;
-        color: white;
-        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-
-        &:hover {
-            background: $primary-dark;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px $primary;
-        }
-    }
-
-    &-outline {
-        background: transparent;
-        color: white;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-
-        &:hover {
-            border-color: $primary;
-            background: rgba(99, 102, 241, 0.1);
-            transform: translateY(-3px);
-        }
+    &:hover {
+        background: rgba(255, 255, 255, 0.05);
     }
 }
 
