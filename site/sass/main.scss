@@ -557,7 +557,7 @@ body.no-scroll {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: brightness(0.95) contrast(2) saturate(1.1);
+        filter: brightness(1) contrast(2) saturate(1.1);
         transform: scale(1.05);
     }
 
@@ -566,7 +566,7 @@ body.no-scroll {
         inset: 0;
 
         background:
-            radial-gradient(circle at 50% 30%, rgba(124, 58, 237, 0.15), transparent 40%),
+            radial-gradient(circle at 50% 30%, rgba(124, 58, 237, 0.15)),
             linear-gradient(180deg,
                 rgba(5, 8, 22, 0.7) 0%,
                 rgba(5, 8, 22, 0.85) 60%,
@@ -741,7 +741,7 @@ body.no-scroll {
         height: 100%;
         object-fit: cover;
 
-        filter: brightness(0.45) contrast(1.1);
+        filter: brightness(1) contrast(1.1);
     }
 
     .hero__overlay {
@@ -788,14 +788,9 @@ body.no-scroll {
             #7c3aed,
             #c084fc,
             #f472b6);
-    //     // display: grid;
-    //     // grid-template-columns: 1fr 1fr;
-    //     // gap: 60px;
-    //     // align-items: center;
-    // }
 
     &-text {
-        padding-right: 40px;
+        padding-right: 0;
     }
 
     &-description {
@@ -805,9 +800,8 @@ body.no-scroll {
 
     &-stats {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 50px;
-        // margin-top: 40px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 24px;
     }
 }
 
@@ -824,13 +818,19 @@ body.no-scroll {
 }
 
 .stat {
-    // background: white;
-    padding: 25px;
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+    padding: 20px;
     border-radius: $radius;
     box-shadow: $shadow;
     text-align: center;
     transition: $transition;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
         transform: translateY(-5px);
@@ -841,13 +841,125 @@ body.no-scroll {
         font-size: 2.5rem;
         font-weight: 700;
         color: $light;
-        margin-bottom: 5px;
+        margin-bottom: 6px;
+        line-height: 1;
     }
 
     &-label {
         font-size: 0.875rem;
         color: $light;
         font-weight: 500;
+        line-height: 1.2;
+        max-width: 120px;
+        margin: 0 auto;
+        overflow-wrap: break-word;
+    }
+}
+
+/* ===== АДАПТИВ ===== */
+
+@media (max-width: 992px) {
+    .about {
+        &-stats {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+    }
+
+    .stat {
+        padding: 16px;
+
+        &-number {
+            font-size: 2rem;
+        }
+
+        &-label {
+            font-size: 0.8rem;
+            max-width: 100px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: 40px 0;
+
+        &-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 12px;
+        }
+    }
+
+    .stat {
+        aspect-ratio: 1 / 1;
+        padding: 14px;
+        border-radius: 16px;
+
+        &-number {
+            font-size: 1.6rem;
+            margin-bottom: 4px;
+        }
+
+        &-label {
+            font-size: 0.75rem;
+            max-width: 90px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .about {
+        padding: 32px 0;
+
+        &-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 10px;
+        }
+    }
+
+    .stat {
+        aspect-ratio: 1 / 1;
+        padding: 10px;
+        border-radius: 14px;
+
+        &-number {
+            font-size: 1.3rem;
+            margin-bottom: 3px;
+        }
+
+        &-label {
+            font-size: 0.68rem;
+            line-height: 1.15;
+            max-width: 78px;
+        }
+    }
+}
+
+@media (max-width: 430px) {
+    .about {
+        padding: 28px 0;
+
+        &-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 8px;
+        }
+    }
+
+    .stat {
+        aspect-ratio: 1 / 1;
+        padding: 8px;
+        border-radius: 12px;
+
+        &-number {
+            font-size: 1.08rem;
+            margin-bottom: 2px;
+        }
+
+        &-label {
+            font-size: 0.62rem;
+            line-height: 1.1;
+            max-width: 68px;
+        }
     }
 }
 
