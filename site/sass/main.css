@@ -405,19 +405,10 @@ body.no-scroll {
 }
 .hero__video {
   width: 100%;
-<<<<<<< HEAD
-  height: 400px;
-  border-radius: 12px;
-  display: block;
-  transition: all 0.3s ease;
-  object-fit: cover;
-=======
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   filter: brightness(0.95) contrast(2) saturate(1.1);
   transform: scale(1.05);
->>>>>>> b1b30cd54a943b3b102cd7a9377b38a073ea0ea4
 }
 .hero__overlay {
   position: absolute;
