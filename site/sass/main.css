@@ -1381,7 +1381,7 @@ body.no-scroll {
   border-top: 1px solid rgba(120, 145, 190, 0.14);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
 }
 .double .about-work__description p {
   margin: 0 0 18px;
