@@ -2041,31 +2041,37 @@ body.no-scroll {
 .contact .container {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   gap: 40px;
 }
 .contact .contact-text {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   gap: 20px;
+  width: 100%;
+  max-width: 760px;
 }
 .contact-title {
   font-size: 28px;
+  line-height: 1.2;
   color: #e2e8f0;
-  text-align: center;
+  text-align: left;
+  margin: 0;
 }
 .contact-subtitle {
   font-size: 1.25rem;
+  line-height: 1.6;
   color: #6b7280;
   text-align: left;
   max-width: 700px;
-  margin-top: -10px;
+  margin: -10px 0 0;
 }
 .contact .contact-text__img {
   width: 100%;
   max-width: 60%;
   border-radius: 14px;
+  overflow: hidden;
 }
 .contact .contact-text__img img {
   width: 600px;
@@ -2083,12 +2089,11 @@ body.no-scroll {
 .contact .contact-text__item-img {
   width: 48px;
   height: 48px;
+  min-width: 48px;
   border-radius: 50%;
-  background: rgba(0, 255, 170, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 0 1px rgba(0, 255, 170, 0.06);
   transition: all 0.3s ease;
 }
 .contact .contact-text__item-img img {
@@ -2116,7 +2121,7 @@ body.no-scroll {
   box-shadow: inset 0 0 0 1px rgba(160, 185, 16, 0.25);
 }
 .contact .contact-text__item--gmail .contact-text__item-img:hover {
-  background: rgba(182, 185, 16, 0.582);
+  background: rgba(182, 185, 16, 0.45);
 }
 .contact .contact-text__item-text {
   display: flex;
@@ -2132,11 +2137,13 @@ body.no-scroll {
 }
 .contact .contact-text__item-text p {
   margin: 0;
+  color: #9fb0c9;
+  line-height: 1.5;
 }
 .contact .contact-text__item-text p a {
   font-size: 16px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.35;
   color: #ffffff;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -2156,8 +2163,9 @@ body.no-scroll {
 .contact-form .form-title {
   font-size: 28px;
   font-weight: 700;
+  line-height: 1.25;
   color: #ffffff;
-  margin-bottom: 24px;
+  margin: 0 0 24px;
 }
 .contact-form .form-label {
   display: block;
@@ -2173,6 +2181,10 @@ body.no-scroll {
 
 .form-group {
   margin-bottom: 18px;
+}
+.form-group--checkbox {
+  margin-top: 6px;
+  margin-bottom: 20px;
 }
 
 .form-control {
@@ -2213,8 +2225,60 @@ textarea.form-control {
   resize: vertical;
 }
 
+.form-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.55;
+  color: #c7d2e3;
+  font-size: 14px;
+}
+.form-checkbox input {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  accent-color: #2563eb;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.form-checkbox span {
+  display: block;
+}
+.form-checkbox a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.form-checkbox a:hover {
+  color: #cfe3ff;
+}
+
+.form-note {
+  margin: 14px 0 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #9fb0c9;
+}
+.form-note a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.form-note a:hover {
+  color: #cfe3ff;
+}
+.form-note--muted {
+  margin-top: 8px;
+  color: #8394ae;
+}
+
 /* ======================
-   1200px
+   1024px
 ====================== */
 @media (max-width: 1024px) {
   .contact .container {
@@ -2226,6 +2290,9 @@ textarea.form-control {
     width: 100%;
     max-width: 700px;
     align-items: center;
+    text-align: center;
+  }
+  .contact .contact-title {
     text-align: center;
   }
   .contact .contact-subtitle {
@@ -2245,6 +2312,9 @@ textarea.form-control {
     height: auto;
   }
 }
+/* ======================
+   768px
+====================== */
 @media (max-width: 768px) {
   .contact {
     padding: 80px 20px;
@@ -2272,12 +2342,16 @@ textarea.form-control {
   .contact .contact-text__item-img {
     width: 42px;
     height: 42px;
+    min-width: 42px;
   }
   .contact .contact-text__item-img img {
     width: 24px;
     height: 24px;
   }
   .contact .contact-text__item-text h3 {
+    font-size: 14px;
+  }
+  .contact .contact-text__item-text p {
     font-size: 14px;
   }
   .contact .contact-text__item-text p a {
@@ -2296,11 +2370,26 @@ textarea.form-control {
   textarea.form-control {
     min-height: 130px;
   }
+  .form-checkbox {
+    font-size: 13px;
+    gap: 10px;
+  }
+  .form-checkbox input {
+    width: 17px;
+    height: 17px;
+    min-width: 17px;
+  }
+  .form-note {
+    font-size: 12px;
+  }
   .btn.btn-primary {
     min-height: 54px;
     font-size: 15px;
   }
 }
+/* ======================
+   480px
+====================== */
 @media (max-width: 480px) {
   .contact {
     padding: 70px 16px;
@@ -2358,6 +2447,9 @@ textarea.form-control {
   .form-group {
     margin-bottom: 14px;
   }
+  .form-group--checkbox {
+    margin-bottom: 18px;
+  }
   .form-control {
     padding: 14px 16px;
     font-size: 14px;
@@ -2365,6 +2457,19 @@ textarea.form-control {
   }
   textarea.form-control {
     min-height: 120px;
+  }
+  .form-checkbox {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .form-checkbox input {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+  }
+  .form-note {
+    font-size: 12px;
+    line-height: 1.5;
   }
   .btn.btn-primary {
     min-height: 50px;
@@ -2374,31 +2479,156 @@ textarea.form-control {
   }
 }
 .footer {
-  padding: 40px 0;
-  text-align: center;
+  padding: 44px 0 32px;
   background: #0a0e1a;
   color: #94a3b8;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-x: hidden;
+}
+.footer .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  min-width: 0;
 }
 .footer-links {
   display: flex;
   justify-content: center;
-  gap: 25px;
-  margin-bottom: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  margin-bottom: 18px;
+  width: 100%;
 }
 .footer-link {
   color: #94a3b8;
   text-decoration: none;
-  transition: all 0.3s ease;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: color 0.25s ease;
+  display: inline-block;
+  text-align: center;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .footer-link:hover {
-  color: #6366f1;
+  color: #ffffff;
+}
+.footer .copyright {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #7f8ea3;
+  text-align: center;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.footer__legal {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(120, 145, 190, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.footer__legal p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #7f8ea3;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.footer__legal-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  width: 100%;
+}
+.footer__legal a {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #7f8ea3;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.25s ease;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-.copyright {
-  font-size: 0.875rem;
+@media (max-width: 768px) {
+  .footer {
+    padding: 36px 0 28px;
+  }
+  .footer-links {
+    gap: 10px 16px;
+    margin-bottom: 16px;
+  }
+  .footer-link {
+    font-size: 14px;
+  }
+  .footer .copyright {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .footer__legal {
+    margin-top: 20px;
+    padding-top: 16px;
+    gap: 8px;
+  }
+  .footer__legal p {
+    font-size: 12px;
+    line-height: 1.55;
+  }
+  .footer__legal-links {
+    gap: 8px 14px;
+  }
+  .footer__legal a {
+    font-size: 12px;
+  }
 }
-
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 0 24px;
+  }
+  .footer .container {
+    padding: 0 16px;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .footer-link {
+    font-size: 14px;
+    width: 100%;
+  }
+  .footer .copyright {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .footer__legal {
+    margin-top: 18px;
+    padding-top: 14px;
+  }
+  .footer__legal p {
+    font-size: 12px;
+  }
+  .footer__legal-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .footer__legal a {
+    font-size: 12px;
+  }
+}
 .notification {
   position: fixed;
   top: 20px;
