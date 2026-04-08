@@ -19,8 +19,6 @@ app.disable("x-powered-by");
 app.set("trust proxy", 1);
 
 // ===== CORS =====
-// Если фронт и бек на одном домене — этого достаточно.
-// Если потом захочешь ограничить origin, скажу как.
 app.use(cors());
 
 // ===== BODY PARSER =====
@@ -40,10 +38,7 @@ const sendLimiter = rateLimit({
 });
 
 // ===== СТАТИКА =====
-// Раздача корня проекта: index.html, robots.txt, sitemap.xml, favicon и т.д.
 app.use(express.static(__dirname));
-
-// Раздача папки /site
 app.use("/site", express.static(path.join(__dirname, "site")));
 
 // ===== SMTP =====
@@ -89,7 +84,6 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Health-check для проверки сервера
 app.get("/health", (req, res) => {
     res.status(200).json({
         success: true,
@@ -109,7 +103,7 @@ app.post("/send", sendLimiter, async (req, res) => {
             company,
         } = req.body;
 
-        // Honeypot
+        // honeypot
         if (company) {
             return res.status(400).json({
                 success: false,
