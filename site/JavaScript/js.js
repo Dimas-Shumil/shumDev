@@ -550,24 +550,53 @@ cards.forEach((card) => {
 });
 
 // ========== КОНТАКТНАЯ ФОРМА ==========
-
 const contactForm = document.getElementById('contactForm');
+
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
 
 if (contactForm) {
     const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const submitBtnText = submitBtn.querySelector('span') || submitBtn;
+    const submitBtnText = submitBtn?.querySelector('span') || submitBtn;
+
+    const savedData = JSON.parse(localStorage.getItem('contactFormData') || '{}');
+
+    Object.keys(savedData).forEach((key) => {
+        const input = contactForm.querySelector(`[name="${key}"]`);
+        if (!input) return;
+
+        if (input.type === 'checkbox') {
+            input.checked = Boolean(savedData[key]);
+        } else {
+            input.value = savedData[key];
+        }
+    });
+
+    contactForm.addEventListener('input', () => {
+        const data = {
+            name: contactForm.querySelector('[name="name"]')?.value.trim() || '',
+            phone: contactForm.querySelector('[name="phone"]')?.value.trim() || '',
+            email: contactForm.querySelector('[name="email"]')?.value.trim() || '',
+            message: contactForm.querySelector('[name="message"]')?.value.trim() || '',
+            personal_data_consent:
+                contactForm.querySelector('[name="personal_data_consent"]')?.checked || false
+        };
+
+        localStorage.setItem('contactFormData', JSON.stringify(data));
+    });
 
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        if (submitBtn.disabled) return;
+        if (submitBtn?.disabled) return;
 
-        const name = contactForm.name.value.trim();
-        const phone = contactForm.phone.value.trim();
-        const email = contactForm.email.value.trim();
-        const message = contactForm.message.value.trim();
-        const consent = contactForm.personal_data_consent.checked;
-        const company = contactForm.company.value.trim();
+        const name = contactForm.querySelector('[name="name"]')?.value.trim() || '';
+        const phone = contactForm.querySelector('[name="phone"]')?.value.trim() || '';
+        const email = contactForm.querySelector('[name="email"]')?.value.trim() || '';
+        const message = contactForm.querySelector('[name="message"]')?.value.trim() || '';
+        const consent = contactForm.querySelector('[name="personal_data_consent"]')?.checked || false;
+        const company = contactForm.querySelector('[name="company"]')?.value.trim() || '';
 
         if (!name) {
             showNotification('Введите ваше имя.', 'error');
@@ -584,7 +613,7 @@ if (contactForm) {
             return;
         }
 
-        if (email && !email.includes('@')) {
+        if (email && !isValidEmail(email)) {
             showNotification('Введите корректный email.', 'error');
             return;
         }
@@ -594,10 +623,15 @@ if (contactForm) {
             return;
         }
 
-        const originalText = submitBtnText.textContent;
+        const originalText = submitBtnText?.textContent || 'Отправить';
 
-        submitBtn.disabled = true;
-        submitBtnText.textContent = 'Отправка...';
+        if (submitBtn) {
+            submitBtn.disabled = true;
+        }
+
+        if (submitBtnText) {
+            submitBtnText.textContent = 'Отправка...';
+        }
 
         try {
             const response = await fetch('/send', {
@@ -629,6 +663,7 @@ if (contactForm) {
 
             showNotification('Заявка отправлена! Мы скоро свяжемся с вами 🚀', 'success');
             contactForm.reset();
+            localStorage.removeItem('contactFormData');
         } catch (error) {
             console.error('Ошибка отправки формы:', error);
 
@@ -637,8 +672,13 @@ if (contactForm) {
                 'error'
             );
         } finally {
-            submitBtn.disabled = false;
-            submitBtnText.textContent = originalText;
+            if (submitBtn) {
+                submitBtn.disabled = false;
+            }
+
+            if (submitBtnText) {
+                submitBtnText.textContent = originalText;
+            }
         }
     });
 }
