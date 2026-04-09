@@ -291,73 +291,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ========== ФОРМА ОБРАТНОЙ СВЯЗИ ==========
-    if (contactForm) {
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const formData = new FormData(contactForm);
-            const originalText = submitBtn.textContent;
-
-            submitBtn.textContent = "Отправка...";
-            submitBtn.disabled = true;
-
-            try {
-                const response = await fetch("https://api.web3forms.com/submit", {
-                    method: "POST",
-                    body: formData
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    showNotification("Сообщение успешно отправлено!", "success");
-                    contactForm.reset();
-                } else {
-                    showNotification("Ошибка: " + (data.message || "Неизвестная ошибка"), "error");
-                }
-            } catch (error) {
-                showNotification("Ошибка соединения. Попробуйте позже.", "error");
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-    }
-
-    // ========== УВЕДОМЛЕНИЯ ==========
-    function showNotification(message, type = 'info') {
-        const existing = document.querySelector('.notification');
-        if (existing) existing.remove();
-
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.textContent = message;
-        notification.style.cssText = `
-            position: fixed; top: 20px; right: 20px; padding: 15px 25px;
-            background: ${type === 'success' ? '#10b981' : '#ef4444'};
-            color: white; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 9999; animation: slideIn 0.3s ease;
-        `;
-        document.body.appendChild(notification);
-
-        setTimeout(() => {
-            notification.style.animation = 'slideOut 0.3s ease';
-            setTimeout(() => notification.remove(), 300);
-        }, 5000);
-    }
-
-    if (!document.querySelector('#notification-styles')) {
-        const style = document.createElement('style');
-        style.id = 'notification-styles';
-        style.textContent = `
-            @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-            @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
-        `;
-        document.head.appendChild(style);
-    }
 
     // ========== ПЛАВАЮЩИЕ ЭЛЕМЕНТЫ ==========
     floatingElements.forEach((el, index) => {
@@ -615,3 +548,161 @@ cards.forEach((card) => {
         });
     });
 });
+
+// ========== КОНТАКТНАЯ ФОРМА ==========
+
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const submitBtnText = submitBtn.querySelector('span') || submitBtn;
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (submitBtn.disabled) return;
+
+        const name = contactForm.name.value.trim();
+        const phone = contactForm.phone.value.trim();
+        const email = contactForm.email.value.trim();
+        const message = contactForm.message.value.trim();
+        const consent = contactForm.personal_data_consent.checked;
+        const company = contactForm.company.value.trim();
+
+        if (!name) {
+            showNotification('Введите ваше имя.', 'error');
+            return;
+        }
+
+        if (!message) {
+            showNotification('Введите сообщение.', 'error');
+            return;
+        }
+
+        if (!phone && !email) {
+            showNotification('Укажите хотя бы телефон или email.', 'error');
+            return;
+        }
+
+        if (email && !email.includes('@')) {
+            showNotification('Введите корректный email.', 'error');
+            return;
+        }
+
+        if (!consent) {
+            showNotification('Нужно согласие на обработку персональных данных.', 'error');
+            return;
+        }
+
+        const originalText = submitBtnText.textContent;
+
+        submitBtn.disabled = true;
+        submitBtnText.textContent = 'Отправка...';
+
+        try {
+            const response = await fetch('/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    phone,
+                    email,
+                    message,
+                    personal_data_consent: consent,
+                    company,
+                }),
+            });
+
+            let data = {};
+
+            try {
+                data = await response.json();
+            } catch (jsonError) {
+                data = {};
+            }
+
+            if (!response.ok) {
+                throw new Error(data.message || 'Ошибка отправки формы');
+            }
+
+            showNotification('Заявка отправлена! Мы скоро свяжемся с вами 🚀', 'success');
+            contactForm.reset();
+        } catch (error) {
+            console.error('Ошибка отправки формы:', error);
+
+            showNotification(
+                error.message || 'Ошибка соединения. Попробуйте позже.',
+                'error'
+            );
+        } finally {
+            submitBtn.disabled = false;
+            submitBtnText.textContent = originalText;
+        }
+    });
+}
+
+// ========== УВЕДОМЛЕНИЯ ==========
+
+function showNotification(message, type = 'info') {
+    const existing = document.querySelector('.notification');
+    if (existing) existing.remove();
+
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        max-width: 360px;
+        width: calc(100% - 40px);
+        padding: 16px 22px;
+        background: ${type === 'success' ? '#10b981' : '#ef4444'};
+        color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        z-index: 9999;
+        animation: slideIn 0.3s ease;
+        font-size: 14px;
+        line-height: 1.45;
+    `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
+}
+
+if (!document.querySelector('#notification-styles')) {
+    const style = document.createElement('style');
+    style.id = 'notification-styles';
+    style.textContent = `
+        @keyframes slideIn {
+            from {
+                transform: translateX(120%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(120%);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}

@@ -1,17 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="site/sass/main.css">
-    <link rel="icon" href="site/image/inimi-logo-Photoroom.png">
+
+    <title>Разработка сайтов и веб-приложений для бизнеса по России | ShumDev</title>
+    <meta name="description"
+        content="ShumDev — разработка сайтов, лендингов, интернет-магазинов, веб-приложений и digital-решений для бизнеса по всей России. Работаем из Абакана, запускаем проекты под ключ.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0b0f19">
+
+    <link rel="canonical" href="https://shumdev.ru/">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="site/image/inimi-logo-Photoroom.png" type="image/png">
+    <link rel="apple-touch-icon" href="site/image/inimi-logo-Photoroom.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ShumDev">
+    <meta property="og:title" content="Разработка сайтов и веб-приложений для бизнеса по России | ShumDev">
+    <meta property="og:description"
+        content="Создаём современные сайты, лендинги, интернет-магазины и веб-приложения для бизнеса по всей России. Индивидуальная разработка, поддержка и развитие проекта.">
+    <meta property="og:url" content="https://shumdev.ru/">
+    <meta property="og:image" content="https://shumdev.ru/site/image/og-cover.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ShumDev — разработка сайтов и веб-приложений для бизнеса по России">
+    <meta property="og:locale" content="ru_RU">
+
+    <!-- X / Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Разработка сайтов и веб-приложений для бизнеса по России | ShumDev">
+    <meta name="twitter:description"
+        content="Создаём современные сайты и веб-приложения для бизнеса по всей России. Индивидуальная разработка под ключ.">
+    <meta name="twitter:image" content="https://shumdev.ru/site/image/og-cover.jpg">
+    <meta name="twitter:image:alt" content="ShumDev — разработка сайтов и веб-приложений для бизнеса по России">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
         rel="stylesheet">
-    <title>ShumDev - разработка сайтов, веб-приложений и других цифровых продуктов в Абакане</title>
+
+    <link rel="stylesheet" href="site/sass/main.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ShumDev",
+      "url": "https://shumdev.ru/",
+      "logo": "https://shumdev.ru/site/image/inimi-logo-Photoroom.png",
+      "description": "Разработка сайтов и веб-приложений для бизнеса по всей России",
+      "email": "mailto:shum0@mail.com",
+      "telephone": "+79233906649",
+      "sameAs": [
+        "https://t.me/ShumDevWeb"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Абакан",
+        "addressCountry": "RU"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ShumDev",
+      "url": "https://shumdev.ru/"
+    }
+    </script>
 </head>
 
 <body>
@@ -31,15 +96,13 @@
     </div> -->
 
     <!-- Header -->
-
     <header class="header">
         <div class="container">
             <div class="header-content">
                 <a href="#home" class="logo">
                     <div class="logo-icon">
-                        <img src="site/image/image-Photoroom.png" alt="logo">
+                        <img src="site/image/image-Photoroom.png" alt="Логотип ShumDev">
                     </div>
-                    <!-- <span>Дмитрий</span> -->
                 </a>
 
                 <nav class="nav">
@@ -60,32 +123,29 @@
     </header>
 
     <!-- Hero Section -->
-
     <section id="home" class="hero">
-
-        <!-- ВИДЕО ФОН -->
         <div class="hero__media">
-            <video class="hero__video" autoplay muted loop playsinline>
-                <source src="site/image/backhero.MP4" type="video/mp4">
+            <video class="hero__video" autoplay muted loop playsinline preload="none"
+                poster="site/image/hero-poster.jpg">
+                <source src="site/image/hero-poster.jpg" type="video/mp4">
             </video>
             <div class="hero__overlay"></div>
         </div>
 
         <div class="container">
             <div class="hero-content">
-
                 <div class="hero-text">
-                    <div class="hero-badge">Разработка Web-продуктов</div>
+                    <div class="hero-badge">Разработка сайтов и digital-решений</div>
 
                     <h1 class="hero-title">
-                        <span class="hero-title__one">Создаем</span>
-                        <span class="hero-title__two">цифровое</span>
-                        <span class="hero-title__three">будущее</span>
+                        <span class="hero-title__one">Разработка сайтов</span>
+                        <span class="hero-title__two">и веб-приложений</span>
+                        <span class="hero-title__three">для бизнеса по России</span>
                     </h1>
 
                     <p class="hero-description">
-                        Мы проектируем и разрабатываем премиальные веб-приложения, лендинги и сложные сервисы,
-                        которые помогают бизнесу расти.
+                        Создаём сайты, лендинги, интернет-магазины и сложные веб-приложения под ключ.
+                        Помогаем бизнесу привлекать клиентов, увеличивать заявки и расти онлайн.
                     </p>
 
                     <div class="hero-buttons">
@@ -93,7 +153,6 @@
                         <a href="#contact" class="btn btn-outline">Связаться с нами</a>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -101,104 +160,502 @@
     <!-- About Section -->
     <section class="about">
         <div class="container">
-            <div class="about-stats">
-                <div class="stat">
-                    <div class="stat-number">3+</div>
-                    <div class="stat-label">Года опыта</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-number">10</div>
-                    <div class="stat-label">Завершенных проектов</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Довольных клиентов</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Поддержка</div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-text">
+                        <div class="about-stats">
+                            <div class="stat">
+                                <div class="stat-number">3+</div>
+                                <div class="stat-label">Года опыта</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">15</div>
+                                <div class="stat-label">Завершённых проектов</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Довольных клиентов</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">Поддержка</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- company -->
 
-    <section id="Advantages" class="services">
-        <div class="container">
-            <h2 class="services__title">Почему выбирают нас</h2>
-            <p class="services__subtitle">
-                Разрабатываем современные кастомные сайты для организаций, которые работают как полноценный рекламный
-                инструмент 24/7.
-            </p>
+    <!-- ЧЕМ МЫ ЗАНИМАЕМСЯ -->
+    <section class="double" id="About">
+        <div class="double-container">
+            <div class="double__header">
+                <h2>Чем мы занимаемся</h2>
+            </div>
 
-            <div class="services__grid">
-                <!-- Карточка 1 -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <img src="site/image/individual.png" alt="">
+            <div class="double__tabs">
+                <button class="tab active" data-tab="individual">Коммерческое предложение</button>
+                <button class="tab" data-tab="club">Проекты</button>
+            </div>
+
+            <div class="form active" id="individual">
+                <div class="about-work">
+                    <div class="about-work__header">
+                        <h2 class="about-work__heading">
+                            Разработка сайта для бизнеса <span>от 10 000 ₽ в месяц</span>
+                        </h2>
+
+                        <p class="about-work__subheading">
+                            Разрабатываем сайты под ключ без крупных вложений на старте.
+                            Вы получаете современный сайт для бизнеса и платите только
+                            <strong>10 000 ₽ в месяц</strong> за поддержку, обслуживание и развитие проекта.
+                        </p>
                     </div>
-                    <h3 class="service-card__title">Индивидуальный подход</h3>
-                    <p class="service-card__text">
-                        Полностью кастомный сайт, разработанный с нуля под ваш бизнес. Никаких шаблонов и конструкторов
-                        — высокая скорость, гибкость и SEO-оптимизация.
-                    </p>
-                </div>
 
-                <!-- Карточка 2 -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <img src="site/image/automatizatin.png" alt="">
-                    </div>
-                    <h3 class="service-card__title">Управление без программиста</h3>
-                    <p class="service-card__text">
-                        Удобная админ-панель: меняйте текст, добавляйте услуги, новости, фото, товары без знания кода.
-                    </p>
-                </div>
+                    <div class="about-work__description">
+                        <p>
+                            Мы занимаемся разработкой сайтов и веб-приложений для бизнеса по всей России.
+                            Создаём лендинги, сайты-визитки, корпоративные сайты, интернет-магазины
+                            и нестандартные digital-решения под задачи конкретной компании.
+                        </p>
 
-                <!-- Карточка 3 -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <img src="site/image/send.png" alt="">
-                    </div>
-                    <h3 class="service-card__title">Автоматизация заявок</h3>
-                    <p class="service-card__text">
-                        Заявки с сайта мгновенно приходят в Telegram и на email. Аналитика: кто заходил, что смотрел,
-                        сколько времени провел.
-                    </p>
-                </div>
+                        <p>
+                            В отличие от классических веб-студий, где разработка сайта обычно требует
+                            вложений от <strong>200 000 до 500 000 ₽</strong> уже на старте,
+                            у нас вы можете запустить сайт без крупного первоначального бюджета.
+                        </p>
 
-                <!-- Карточка 4 -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <img src="site/image/money.png" alt="">
+                        <p>
+                            Вы получаете готовый сайт под ключ — лендинг, корпоративный сайт или интернет-магазин —
+                            и оплачиваете только фиксированное сопровождение:
+                            <strong>10 000 ₽ в месяц</strong>.
+                        </p>
+
+                        <p>
+                            Такой формат помогает быстрее выйти в онлайн, снизить финансовую нагрузку
+                            и начать получать заявки с сайта уже в ближайшее время, не откладывая запуск
+                            из-за большого бюджета на разработку.
+                        </p>
+
+                        <p>
+                            Каждый проект мы разрабатываем индивидуально: без шаблонов, без конструкторов
+                            и без типовых решений. Это даёт высокую скорость работы сайта, гибкость в развитии,
+                            сильный визуал и лучшую адаптацию под задачи бизнеса.
+                        </p>
                     </div>
-                    <h3 class="service-card__title">Выгодная модель</h3>
-                    <p class="service-card__text">
-                        Индивидуальный подход к каждой организации. В рамках разработки собственной платформы для новых
-                        партнёров действуют специальные условия подключения и
-                        сопровождения.
-                    </p>
+
+                    <div class="about-work__features">
+                        <article class="about-work__feature">
+                            <h3>Сайт под ключ под ваш бизнес</h3>
+                            <p>
+                                Разрабатываем быстрые, адаптивные и визуально сильные сайты,
+                                которые помогают выделиться среди конкурентов и усиливают доверие к компании.
+                            </p>
+                        </article>
+
+                        <article class="about-work__feature">
+                            <h3>Поддержка и развитие сайта</h3>
+                            <p>
+                                После запуска проект не остаётся без сопровождения: обновляем контент,
+                                вносим правки, усиливаем отдельные блоки и помогаем сайту работать на результат.
+                            </p>
+                        </article>
+
+                        <article class="about-work__feature">
+                            <h3>Заявки, уведомления и автоматизация</h3>
+                            <p>
+                                Подключаем формы заявок, уведомления в Telegram и на email,
+                                а также базовую аналитику для понимания поведения пользователей на сайте.
+                            </p>
+                        </article>
+
+                        <article class="about-work__feature">
+                            <h3>Полное техническое сопровождение</h3>
+                            <p>
+                                Хостинг, SSL, резервные копии, техническая поддержка, исправления
+                                и небольшие доработки уже включены в ежемесячную стоимость обслуживания.
+                            </p>
+                        </article>
+                    </div>
+
+                    <div class="about-work__benefits">
+                        <p>
+                            Вы не переплачиваете за запуск и не замораживаете крупный бюджет в разработке.
+                            Вместо этого получаете готовый сайт для бизнеса и понятную модель оплаты —
+                            фиксированно <strong>10 000 ₽ в месяц</strong>.
+                        </p>
+
+                        <p>
+                            Мы работаем с компаниями из Абакана и других регионов России,
+                            поэтому проект можно запустить полностью удалённо — от обсуждения до запуска.
+                        </p>
+                    </div>
+
+                    <div class="about-work__cta">
+                        <h3>Обсудите разработку сайта для вашего бизнеса</h3>
+                        <p>Подберём формат проекта, оценим задачи и предложим оптимальное решение под ваш бюджет</p>
+
+                        <a href="#contact" class="btn-primary">
+                            Обсудить проект
+                        </a>
+
+                        <span class="cta-note">Ответим в ближайшее время</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Кнопка призыва к действию -->
+            <div class="form" id="club">
+                <div class="double__projects">
 
-            <div class="services__cta">
-                <a href="#contact" class="button">Заказать сайт</a>
+                    <!-- autoZavoz -->
+                    <article class="project-card" data-modal="project7">
+                        <div class="project-card__preview project-card__preview--emerald">
+                            <img src="site/image/autoZavoz/photo_2026-03-23_22-26-48.jpg" height="200" width="100%"
+                                alt="Сайт компании AutoZavoz по привозу автомобилей из Азии" class="project-image">
+                            <span class="project-card__badge">autoZavoz</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>ПОЧЕМУ ВЫБИРАЮТ НАС</h3>
+                            <p>Мы берем на себя все риски и заботы. Вы получаете
+                                готовый к эксплуатации автомобиль.</p>
+                        </div>
+                    </article>
+
+                    <div class="projects-modal" id="project7">
+                        <div class="projects-modal__overlay"></div>
+                        <div class="projects-modal__dialog">
+                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <img src="site/image/autoZavoz/bmw5g30.jpg" height="200" width="100%"
+                                alt="Проект сайта AutoZavoz" class="project-image">
+                            <span class="projects-modal__badge">autoZavoz</span>
+                            <h3 class="projects-modal__title">
+                                Привозим лучшие авто из Азии
+                            </h3>
+                            <p class="projects-modal__description"></p>
+                            <p class="projects-modal__details">Юридическая чистота</p>
+                            <p class="projects-modal__details">Таможня под ключ</p>
+                            <p class="projects-modal__details">Прямые поставки</p>
+                            <p class="projects-modal__details">Сопровождение на всех этапах покупки</p>
+                            <p class="projects-modal__details">Бесплатный расчёт стоимости автомобиля</p>
+                            <p class="projects-modal__details">Помощь в покупке автомобиля в кредит</p>
+
+                            <a href="https://avtozavoz19.ru/" class="projects-modal__link" target="_blank"
+                                rel="noopener noreferrer">
+                                Открыть сайт
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 3h7v7"></path>
+                                    <path d="M21 3l-9 9"></path>
+                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- содружество -->
+                    <article class="project-card" data-modal="project1">
+                        <div class="project-card__preview project-card__preview--sport">
+                            <img src="site/image/sport/11b659936f570e952704b88f0b31bf1c.jpg" height="200" width="100%"
+                                alt="Сайт спортивного клуба Содружество в Абакане" class="project-image">
+                            <span class="project-card__badge">Landing</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>Содружество — место сильных</h3>
+                            <p>Закаляй тело. Точи разум. Вступай в братство, где
+                                чемпионами становятся, а не рождаются.</p>
+                        </div>
+                    </article>
+
+                    <div class="projects-modal" id="project1">
+                        <div class="projects-modal__overlay"></div>
+                        <div class="projects-modal__dialog">
+                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <img src="site/image/sport/11b659936f570e952704b88f0b31bf1c.jpg" height="200" width="100%"
+                                alt="Лендинг спортивного клуба Содружество" class="project-image">
+                            <span class="projects-modal__badge">Лендинг</span>
+                            <h3 class="projects-modal__title">
+                                Бокс и кикбоксинг в Абакане
+                            </h3>
+                            <p class="projects-modal__description">
+                                Кастомная веб-платформа на чистом коде, которая включает в себя:
+                            </p>
+                            <ul class="projects-modal__list">
+                                <li>Индивидуальный дизайн;</li>
+                                <li>Аналитика действий;</li>
+                                <li>SEO-оптимизация;</li>
+                                <li>Админ-панель для внесения изменений на сайт без программиста;</li>
+                                <li>Обратная связь с заявками на почту.</li>
+                            </ul>
+
+                            <a href="https://xn----8sbaaddnii0c8abeymfro.xn--p1ai/" class="projects-modal__link"
+                                target="_blank" rel="noopener noreferrer">
+                                Открыть сайт
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 3h7v7"></path>
+                                    <path d="M21 3l-9 9"></path>
+                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- CAR life -->
+                    <article class="project-card" data-modal="project2">
+                        <div class="project-card__preview project-card__preview--autocat19">
+                            <img src="site/image/autoCat19/катализатор.png" height="200" width="100%"
+                                alt="Сайт автосервиса CarLife" class="project-image">
+                            <span class="project-card__badge">Авто сервис</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>CarLife</h3>
+                            <p>Полный спектр услуг от планового ТО до сложного ремонта двигателя.</p>
+                        </div>
+                    </article>
+
+                    <div class="projects-modal" id="project2">
+                        <div class="projects-modal__overlay"></div>
+                        <div class="projects-modal__dialog">
+                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <img src="site/image/autoCat19/катализатор.png" height="200" width="100%"
+                                alt="Проект сайта автосервиса CarLife" class="project-modal__image">
+                            <span class="projects-modal__badge">CarLife</span>
+
+                            <h3 class="projects-modal__title">CarLife</h3>
+                            <p class="projects-modal__description">
+                                Полный спектр услуг от планового ТО до сложного ремонта двигателя.
+                            </p>
+                            <p class="projects-modal__details">
+                                Мы гарантируем высокое качество, доступные цены и
+                                индивидуальный подход к каждому клиенту.
+                            </p>
+                            <a href="#" class="projects-modal__link" target="_blank" rel="noopener noreferrer">
+                                Открыть сайт
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 3h7v7"></path>
+                                    <path d="M21 3l-9 9"></path>
+                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Bronx -->
+                    <article class="project-card" data-modal="project3">
+                        <div class="project-card__preview project-card__preview--YouTalk">
+                            <img src="site/image/Bronx/bjj.png" height="200" width="100%"
+                                alt="Сайт спортивного клуба Bronx" class="project-image">
+                            <span class="project-card__badge">Portal</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>БРОНКС</h3>
+                            <p>Стань сильным. Тренировки по боксу, кикбоксингу, ММА, BJJ и грепплингу в Абакане.</p>
+                        </div>
+                    </article>
+
+                    <div class="projects-modal" id="project3">
+                        <div class="projects-modal__overlay"></div>
+                        <div class="projects-modal__dialog">
+                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <img src="site/image/Bronx/bjj2.png" height="200" width="100%"
+                                alt="Проект сайта спортивного клуба Bronx" class="project-image">
+                            <span class="projects-modal__badge">BRONX</span>
+                            <h3 class="projects-modal__title">BRONX</h3>
+                            <p class="projects-modal__description">
+                                Стань сильным. Тренировки по боксу, кикбоксингу, ММА, BJJ и грепплингу в Абакане.
+                            </p>
+                            <p class="projects-modal__details">
+                                Здесь ты не один на пути к результату.
+                                С первых тренировок ты попадаешь в среду, где поддерживают, подсказывают и двигаются
+                                вперёд вместе с тобой.
+                            </p>
+                            <a href="https://dimas-shumil.github.io/BRONX_SK_AB/" class="projects-modal__link"
+                                target="_blank" rel="noopener noreferrer">
+                                Открыть сайт
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 3h7v7"></path>
+                                    <path d="M21 3l-9 9"></path>
+                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- news spain -->
+                    <article class="project-card" data-modal="project4">
+                        <div class="project-card__preview project-card__preview--newsSpain">
+                            <img src="site/image/newsSpain/photo_2026-02-21_20-14-20.jpg" height="200" width="100%"
+                                alt="Новостной портал с аудиофункционалом" class="project-image">
+                            <span class="project-card__badge">Portal</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>News</h3>
+                            <p>Новостной портал с испанской телезвездой и возможностью прослушивания аудио.</p>
+                        </div>
+                    </article>
+
+                    <div class="projects-modal" id="project4">
+                        <div class="projects-modal__overlay"></div>
+                        <div class="projects-modal__dialog">
+                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <span class="projects-modal__badge">news spain</span>
+                            <h3 class="projects-modal__title">news spain</h3>
+                            <p class="projects-modal__description">
+                                Новостной портал с испанской телезвездой и возможностью прослушивания аудио.
+                            </p>
+                            <p class="projects-modal__details">
+                                Magaly Medina invierte 12,000,000 PEN en nueva plataforma de trading - Ahora disponible
+                                para el público, haciendo ricas a personas comunes
+                            </p>
+                            <a href="https://pabloalligator.github.io/Magaly-Meduna-News/" class="projects-modal__link"
+                                target="_blank" rel="noopener noreferrer">
+                                Открыть сайт
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 3h7v7"></path>
+                                    <path d="M21 3l-9 9"></path>
+                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- slider -->
+                    <article class="project-card" data-modal="project5">
+                        <div class="project-card__preview project-card__preview--slider">
+                            <img src="site/image/Slider/image1.png" height="200" width="100%"
+                                alt="Проект интерфейсного слайдера" class="project-image">
+                            <span class="project-card__badge">Slider</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>Slider</h3>
+                            <p><b>Слайдер</b> — это специальный элемент веб-дизайна, представляющий собой блок
+                                определённой ширины.</p>
+                        </div>
+                    </article>
+
+                    <div class="projects-modal" id="project5">
+                        <div class="projects-modal__overlay"></div>
+                        <div class="projects-modal__dialog">
+                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <span class="projects-modal__badge">Slider</span>
+                            <h3 class="projects-modal__title">Slider</h3>
+                            <p class="projects-modal__description"></p>
+                            <p class="projects-modal__details">
+                                <b>Слайдер</b> — это специальный элемент веб-дизайна, представляющий собой блок
+                                определённой ширины чаще всего в шапке веб-страницы. Главная его фишка в изменяющихся в
+                                ручном
+                                или автоматическом режиме элементах — картинках, текстах и ссылках.
+                            </p>
+                            <a href="https://dimas-shumil.github.io/Slider/" class="projects-modal__link"
+                                target="_blank" rel="noopener noreferrer">
+                                Открыть сайт
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 3h7v7"></path>
+                                    <path d="M21 3l-9 9"></path>
+                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- visitka pablo -->
+                    <article class="project-card" data-modal="project6">
+                        <div class="project-card__preview project-card__preview--pablo">
+                            <img src="site/image/Pablo-Visitka.jpg" height="200" width="100%"
+                                alt="Личный сайт-портфолио Павла Шумилова" class="project-image">
+                            <span class="project-card__badge">Visitka</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>CoderXDreamer</h3>
+                            <p>Ваш бизнес заслуживает сайт, который продаёт 24/7.</p>
+                        </div>
+                    </article>
+
+                    <div class="projects-modal" id="project6">
+                        <div class="projects-modal__overlay"></div>
+                        <div class="projects-modal__dialog">
+                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <img src="site/image/visitca/photo_2026-02-21_21-58-13.jpg" height="200" width="100%"
+                                alt="Личный сайт-портфолио Павла Шумилова" class="project-image">
+                            <span class="projects-modal__badge">Visitka</span>
+                            <h3 class="projects-modal__title">
+                                Привет! Это Павел
+                            </h3>
+                            <p class="projects-modal__description"></p>
+                            <p class="projects-modal__details">
+                                Меня зовут Павел Шумилов — я фронтенд-разработчик с более чем двухлетним опытом создания
+                                веб-сайтов и пользовательских интерфейсов.
+                            </p>
+                            <p class="projects-modal__details">
+                                Я создаю чистые, быстрые и адаптивные сайты на HTML, CSS, JavaScript и React. Работаю
+                                аккуратно, внимательно к деталям и всегда довожу проект до результата.
+                            </p>
+                            <p class="projects-modal__details">
+                                Сейчас я также являюсь автором концепции инновационного веб-приложения для туризма в
+                                России и Республике Хакасия — проекта, который вскоре выйдет в Google Play и App Store.
+                                Этот опыт позволяет мне понимать, как создавать сервисы, которые действительно решают
+                                задачи пользователей и бизнеса.
+                            </p>
+                            <a href="https://pabloalligator.github.io/Pavel-Shumilov-Frontend-developer/"
+                                class="projects-modal__link" target="_blank" rel="noopener noreferrer">
+                                Открыть сайт
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 3h7v7"></path>
+                                    <path d="M21 3l-9 9"></path>
+                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <article class="project-card" data-modal="project8">
+                        <div class="project-card__preview project-card__preview--darkblue">
+                            <span class="project-card__badge">Веб-приложение</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>CryptoTrack</h3>
+                            <p>Веб-приложение мониторинга криптовалют.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-modal="project9">
+                        <div class="project-card__preview project-card__preview--orange">
+                            <span class="project-card__badge">Визитка</span>
+                        </div>
+                        <div class="project-card__content">
+                            <h3>Юридический Центр</h3>
+                            <p>Сайт-визитка для юридической фирмы.</p>
+                        </div>
+                    </article>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- cta -->
-
     <section class="cta">
         <div class="container">
             <div class="cta__wrapper">
-
                 <div class="cta__left">
                     <span class="cta__label">готовы начать?</span>
 
@@ -218,37 +675,34 @@
                                 d="M22 16.92V20C22 20.55 21.55 21 21 21C10.51 21 3 13.49 3 3C3 2.45 3.45 2 4 2H7.09C7.57 2 7.97 2.34 8.07 2.8L8.9 6.43C8.98 6.81 8.85 7.2 8.57 7.46L6.69 9.34C8.14 12.35 11.65 15.86 14.66 17.31L16.54 15.43C16.8 15.15 17.19 15.02 17.57 15.1L21.2 15.93C21.66 16.03 22 16.43 22 16.92Z"
                                 fill="white" />
                         </svg>
-
                         +7 (923) 390-66-49
                     </a>
 
-                    <a href="mailtu:shum0@mail.ru" class="cta__btn">
+                    <a href="https://max.ru/u/f9LHodD0cOKFgeBDSJQSWosDXuLr-66-XAleQsDs7s5SohDnYOGQFfGpkN8"
+                        target="_blank" rel="noopener noreferrer" class="cta__btn">
                         Оставить заявку
                         <span class="arrow">→</span>
                     </a>
                 </div>
-
             </div>
         </div>
     </section>
 
     <!-- products -->
-
     <section class="products" id="products">
         <div class="products-container">
             <div class="products__title">
                 <h2>
-                    Какие цифровые продукты можно заказать
+                    Разработка сайтов и веб-приложений под любые задачи бизнеса
                 </h2>
                 <p>
-                    Разрабатываем решения под любые задачи бизнеса
+                    Создаём сайты, интернет-магазины, лендинги и веб-приложения для бизнеса по всей России
                 </p>
             </div>
 
             <div class="products__accardeon">
 
                 <div class="products__item active">
-
                     <button class="products__trigger">
                         <div class="products__left">
                             <div class="products__icon products__icon--blue">
@@ -266,14 +720,14 @@
 
                     <div class="products__content">
                         <p>
-                            Одностраничный сайт для продвижения конкретного продукта или услуги.
-                            Максимально заточен под конверсию и сбор лидов.
+                            Разработка лендингов под ключ для бизнеса. Создаём одностраничные сайты,
+                            которые максимально заточены под конверсию, привлечение клиентов и сбор заявок.
+                            Подходит для рекламы, запуска продукта или услуги.
                         </p>
                     </div>
                 </div>
 
                 <div class="products__item">
-
                     <button class="products__trigger">
                         <div class="products__left">
                             <div class="products__icon products__icon--pink">
@@ -290,14 +744,14 @@
 
                     <div class="products__content">
                         <p>
-                            Компактный сайт из 3-5 страниц с основной информации о компании, услугах и контактах.
-                            Идеален для быстрого старта.
+                            Разработка сайта-визитки для компании или специалиста.
+                            Компактный сайт из 3–5 страниц с информацией о бизнесе, услугах,
+                            преимуществах и контактами для связи.
                         </p>
                     </div>
                 </div>
 
                 <div class="products__item">
-
                     <button class="products__trigger">
                         <div class="products__left">
                             <div class="products__icon products__icon--blue">
@@ -316,14 +770,14 @@
 
                     <div class="products__content">
                         <p>
-                            Многостраничный сайт для крупной организации с разделами команды, новостей, услуг, портфолио
-                            и интеграциями.
+                            Разработка корпоративных сайтов для компаний.
+                            Многостраничные решения с разделами услуг, команды, кейсов, новостей
+                            и интеграциями с CRM, аналитикой и другими сервисами.
                         </p>
                     </div>
                 </div>
 
                 <div class="products__item">
-
                     <button class="products__trigger">
                         <div class="products__left">
                             <div class="products__icon products__icon--purple">
@@ -341,14 +795,14 @@
 
                     <div class="products__content">
                         <p>
-                            Крупные веб-платформы с личным кабинетом, базой данных, сложной архитектурой и нестандартным
-                            функционалом.
+                            Разработка веб-порталов и сложных веб-приложений.
+                            Подходит для сервисов с личным кабинетом, базой данных пользователей,
+                            сложной логикой и нестандартным функционалом.
                         </p>
                     </div>
                 </div>
 
                 <div class="products__item">
-
                     <button class="products__trigger">
                         <div class="products__left">
                             <div class="products__icon products__icon--green">
@@ -366,14 +820,14 @@
 
                     <div class="products__content">
                         <p>
-                            Полноценный e-commerce с каталогом, корзиной, онлайн-оплатой, интеграцией со службами
-                            доставки и управлением заказами.
+                            Разработка интернет-магазинов под ключ.
+                            Каталог товаров, корзина, онлайн-оплата, интеграции с доставкой,
+                            управление заказами и аналитика продаж.
                         </p>
                     </div>
                 </div>
 
                 <div class="products__item">
-
                     <button class="products__trigger">
                         <div class="products__left">
                             <div class="products__icon products__icon--orange">
@@ -391,14 +845,14 @@
 
                     <div class="products__content">
                         <p>
-                            Красивые и быстрые сайты на популярпной платформе Tilda с нулевым порогом управления для
-                            маркетинговых задач
+                            Разработка сайтов на Tilda для быстрых маркетинговых запусков.
+                            Подходит для лендингов, презентационных страниц и проектов,
+                            где важна скорость запуска и простота управления.
                         </p>
                     </div>
                 </div>
 
                 <div class="products__item">
-
                     <button class="products__trigger">
                         <div class="products__left">
                             <div class="products__icon products__icon--blue">
@@ -406,7 +860,7 @@
                                     <path d="M21 4L3 11L10 13L12 20L21 4Z" />
                                 </svg>
                             </div>
-                            <span>Телеграмм-боты</span>
+                            <span>Телеграм-боты</span>
                         </div>
 
                         <div class="products__arrow"></div>
@@ -414,14 +868,14 @@
 
                     <div class="products__content">
                         <p>
-                            Автоматизация продаж, поддержки и уведомлений через Telegram. Интеграция с CRM и внешними
-                            сервисами.
+                            Разработка Telegram-ботов для автоматизации бизнеса.
+                            Приём заявок, уведомления, интеграция с CRM, обработка клиентов
+                            и автоматизация коммуникации.
                         </p>
                     </div>
                 </div>
 
                 <div class="products__item">
-
                     <button class="products__trigger">
                         <div class="products__left">
                             <div class="products__icon products__icon--purple">
@@ -438,8 +892,9 @@
 
                     <div class="products__content">
                         <p>
-                            Профессиональные корпаративные подписи для email с логотипом, кликабельными контактами и
-                            соцсетями.
+                            Разработка HTML-подписей для email.
+                            Профессиональные корпоративные подписи с логотипом,
+                            кликабельными контактами и ссылками на соцсети.
                         </p>
                     </div>
                 </div>
@@ -448,13 +903,13 @@
         </div>
     </section>
 
-    <!-- ста после услуг -->
-
+    <!-- CTA после услуг -->
     <section class="custom-cta">
         <div class="container">
             <div class="custom-cta__box">
 
                 <div class="custom-cta__badge">
+                    <span>⚡</span>
                     Быстрый старт — от 7 дней
                 </div>
 
@@ -477,8 +932,9 @@
                         Позвонить нам
                     </a>
 
-                    <a href="https://t.me/ShumDevWeb" class="custom-cta__btn custom-cta__btn--glass">
-                        Написать в Telegram
+                    <a href="https://max.ru/u/f9LHodD0cOKFgeBDSJQSWosDXuLr-66-XAleQsDs7s5SohDnYOGQFfGpkN8"
+                        target="_blank" rel="noopener noreferrer" class="custom-cta__btn custom-cta__btn--glass">
+                        Написать в MAX
                         <span class="custom-cta__arrow">→</span>
                     </a>
                 </div>
@@ -490,557 +946,83 @@
                                 d="M22 16.92V20C22 20.55 21.55 21 21 21C10.51 21 3 13.49 3 3C3 2.45 3.45 2 4 2H7.09C7.57 2 7.97 2.34 8.07 2.8L8.9 6.43C8.98 6.81 8.85 7.2 8.57 7.46L6.69 9.34C8.14 12.35 11.65 15.86 14.66 17.31L16.54 15.43C16.8 15.15 17.19 15.02 17.57 15.1L21.2 15.93C21.66 16.03 22 16.43 22 16.92Z"
                                 fill="currentColor" />
                         </svg> +7 (923) 390-66-49</a>
-                    <a href="mailto:info@shumdev.ru"><img src="site/image/gmsil.png" alt=""> info@shumdev.ru</a>
-                    <a href="https://t.me/ShumDevWeb"><img src="site/image/telega.png" alt=""> @ShumdevWeb</a>
+                    <a href="mailto:infoShumdev@mail.ru"><img src="site/image/gmsil.png" alt="Иконка email">
+                        infoShumdev@mail.ru</a>
+                    <a href="https://t.me/ShumDevWeb" target="_blank" rel="noopener noreferrer"><img
+                            src="site/image/telega.png" alt="Иконка Telegram"> @ShumDevWeb</a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- О НАС -->
+    <!-- company -->
+    <section id="Advantages" class="services">
+        <div class="container">
+            <h2 class="services__title">Почему бизнес выбирает ShumDev для разработки сайтов</h2>
+            <p class="services__subtitle">
+                Создаём сайты и веб-приложения, которые привлекают клиентов,
+                увеличивают заявки и работают как инструмент продаж 24/7.
+            </p>
 
-    <section class="double" id="About">
-
-        <div class="double-container">
-
-            <div class="double__header">
-                <h2>О НАС</h2>
-            </div>
-
-            <div class="double__tabs">
-                <button class="tab active" data-tab="individual">Чем мы занимаемся</button>
-                <button class="tab" data-tab="club">Проекты</button>
-            </div>
-
-            <div class="form active" id="individual">
-
-                <div class="about-work__description">
-                    <p>
-                        Мы создаём не просто сайты — это полноценные цифровые
-                        инструменты для привлечения клиентов и
-                        роста бизнеса.
-                    </p>
-
-                    <p>
-                        В основе нашего предложения — полностью кастомный сайт, разработанный с нуля
-                        под вашу компанию.
-                        Это не шаблон и не конструктор, а индивидуальное решение,
-                        которое учитывает особенности вашего
-                        бизнеса и задачи.
-                    </p>
-
-                    <p>
-                        Сайты на конструкторах выглядят одинаково, имеют ограничения по
-                        функционалу,
-                        медленнее работают и хуже продвигаются в поиске.
-                        Вы фактически арендуете платформу и зависите от её правил.
-                    </p>
-
-                    <p>
-                        В нашем случае вы получаете полноценный сайт, который
-                        работает быстрее, не имеет ограничений,
-                        лучше индексируется в поисковых системах и
-                        полностью принадлежит вам.
-                    </p>
-
-                    <p>
-                        Такой сайт работает на вас 24/7: принимает заявки, презентует услуги,
-                        формирует доверие и помогает клиенту принять решение.
-                    </p>
-
-                    <p>
-                        Дополнительно вы получаете заявки напрямую в Telegram и на email,
-                        аналитику поведения пользователей,
-                        адаптацию под все устройства и
-                        SEO-основу для продвижения.
-                    </p>
-
-                    <p>
-                        Сейчас мы находимся на этапе разработки собственной платформы и формируем
-                        ограниченный пул организаций, которые будут размещены в системе на старте.
-                    </p>
-
-                    <p>
-                        В рамках этого этапа для новых партнёров действуют специальные условия
-                        подключения.
-                        Формат сотрудничества подбирается индивидуально — в зависимости от задач
-                        бизнеса и объёма работ.
+            <div class="services__grid">
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <img src="site/image/individual.png" alt="Индивидуальная разработка сайта">
+                    </div>
+                    <h3 class="service-card__title">Индивидуальная разработка под бизнес</h3>
+                    <p class="service-card__text">
+                        Каждый сайт создаётся с нуля под задачи конкретной компании.
+                        Без шаблонов и конструкторов — только кастомная разработка,
+                        высокая скорость работы и гибкость в развитии проекта.
                     </p>
                 </div>
 
-                <!-- CTA -->
-
-                <div class="about-work__cta">
-                    <h3>Забронируйте место на платформе до запуска</h3>
-                    <p>Количество компаний ограничено</p>
-                    <a href="#contact" class="btn-primary">Забронировать место<a>
-                            <span class="cta-note">Ответим в течение 15 минут</span>
-                </div>
-
-                <div class="about-work__box">
-                    <h2 class="about-work__title">
-                        Разрабатываем современные кастомные сайты для бизнеса,
-                        которые становятся полноценным инструментом привлечения клиентов и работают
-                        <span>24/7</span>.
-                    </h2>
-
-                    <div class="about-work__list">
-                        <div class="about-work__item">
-                            <div class="about-work__icon about-work__icon--blue">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <circle cx="12" cy="12" r="8"></circle>
-                                    <path d="M9.5 12L11.2 13.7L14.8 10.3"></path>
-                                </svg>
-                            </div>
-
-                            <div class="about-work__content">
-                                <h3>Полностью кастомная разработка</h3>
-                                <p>
-                                    Каждый сайт создаётся с нуля под задачи вашего бизнеса.
-                                    Без шаблонов и конструкторов — только высокая скорость работы,
-                                    гибкость в развитии и полноценная SEO-основа для роста в поиске.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="about-work__item">
-                            <div class="about-work__icon about-work__icon--pink">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M12 8.5L13 6.5L15 7.2L14.8 9.4L16.4 10.6L18.2 9.6L19.3 11.5L17.8 13L18.1 15L20 15.8L19 18L16.9 17.5L15.6 19.1L16.4 21L14.2 22L13 20.4L11 20.5L9.8 22L7.6 21L8.4 19.1L7.1 17.5L5 18L4 15.8L5.9 15L6.2 13L4.7 11.5L5.8 9.6L7.6 10.6L9.2 9.4L9 7.2L11 6.5L12 8.5Z">
-                                    </path>
-                                    <circle cx="12" cy="14" r="2.2"></circle>
-                                </svg>
-                            </div>
-
-                            <div class="about-work__content">
-                                <h3>Удобное управление без разработчика</h3>
-                                <p>
-                                    Встроенная админ-панель позволяет самостоятельно управлять сайтом:
-                                    редактировать тексты, добавлять услуги, публиковать новости и загружать
-                                    контент — без знаний программирования.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="about-work__item">
-                            <div class="about-work__icon about-work__icon--green">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M5 15L10 10L13 13L19 7"></path>
-                                    <path d="M14 7H19V12"></path>
-                                </svg>
-                            </div>
-
-                            <div class="about-work__content">
-                                <h3>Заявки и аналитика в реальном времени</h3>
-                                <p>
-                                    Все заявки с сайта автоматически приходят в Telegram и на email.
-                                    Вы видите поведение пользователей: кто зашёл, какие страницы смотрел
-                                    и сколько времени провёл — это помогает увеличивать конверсию и
-                                    контролировать результат.
-                                </p>
-                            </div>
-                        </div>
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <img src="site/image/automatizatin.png" alt="Управление сайтом без программиста">
                     </div>
+                    <h3 class="service-card__title">Управление сайтом без разработчика</h3>
+                    <p class="service-card__text">
+                        Удобная админ-панель позволяет самостоятельно менять контент:
+                        добавлять услуги, новости, фото и товары без знания кода
+                        и без постоянных обращений к программисту.
+                    </p>
                 </div>
 
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <img src="site/image/send.png" alt="Автоматизация заявок с сайта">
+                    </div>
+                    <h3 class="service-card__title">Заявки и автоматизация бизнеса</h3>
+                    <p class="service-card__text">
+                        Все заявки с сайта мгновенно поступают в Telegram и на email.
+                        Вы не теряете клиентов и можете быстро реагировать на каждый запрос.
+                        Дополнительно подключается базовая аналитика поведения пользователей.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <img src="site/image/money.png" alt="Запуск сайта без больших вложений">
+                    </div>
+                    <h3 class="service-card__title">Запуск сайта без больших вложений</h3>
+                    <p class="service-card__text">
+                        Вам не нужно платить сотни тысяч за разработку на старте.
+                        Вы получаете сайт под ключ и оплачиваете только сопровождение —
+                        фиксированно 10 000 ₽ в месяц, без скрытых платежей.
+                    </p>
+                </div>
 
             </div>
 
-            <div class="form" id="club">
-
-                <div class="double__projects">
-
-                    <!-- содружество -->
-
-                    <article class="project-card" data-modal="project1">
-                        <div class="project-card__preview project-card__preview--sport">
-                            <img src="site/image/sport/11b659936f570e952704b88f0b31bf1c.jpg" height="200px" width="100%"
-                                alt="Интернет-магазин" class="project-image">
-                            <span class="project-card__badge">Landing</span>
-                        </div>
-                        <div class="project-card__content">
-                            <h3>Содружество - место сильных</h3>
-                            <p>Закаляй тело. Точи разум. Вступай в братство, где
-                                чемпионами становятся, а не рождаются</p>
-                        </div>
-                    </article>
-
-                    <div class="projects-modal" id="project1">
-                        <div class="projects-modal__overlay"></div>
-                        <div class="projects-modal__dialog">
-                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
-                                <span></span>
-                                <span></span>
-                            </button>
-                            <img src="site/image/sport/11b659936f570e952704b88f0b31bf1c.jpg" height="200px" width="100%"
-                                alt="Интернет-магазин" class="project-image">
-                            <span class="projects-modal__badge">Лендинг</span>
-                            <h3 class="projects-modal__title">
-                                Бокс и кикбоксинг в Абакане
-                            </h3>
-                            <p class="projects-modal__description">
-                                Кастомная веб-платформа на чистом коде, которая включает в себя:
-                            </p>
-                            <ul class="projects-modal__list">
-                                <li>Индивидуальный дизайн;</li>
-                                <li>Аналитика действий;</li>
-                                <li>SEO-оптимизация;</li>
-                                <li>Админ-панель для вносения изменений на сайт без программиста;</li>
-                                <li>Обратная связь с заявками на почту.</li>
-                            </ul>
-
-                            <a href="https://xn----8sbaaddnii0c8abeymfro.xn--p1ai/" class="projects-modal__link"
-                                target="_blank">
-                                Открыть сайт
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 3h7v7"></path>
-                                    <path d="M21 3l-9 9"></path>
-                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- autoCat19 -->
-
-                    <article class="project-card" data-modal="project2">
-                        <div class="project-card__preview project-card__preview--autocat19">
-                            <img src="site/image/autoCat19/катализатор.png" height="200px" width="100%"
-                                alt="Интернет-магазин" class="project-image">
-
-                            <span class="project-card__badge">Visitka</span>
-                        </div>
-                        <div class="project-card__content">
-                            <h3>autoCat19</h3>
-                            <p>Полный спектр услуг от планового ТО до сложного ремонта двигателя.</p>
-                        </div>
-                    </article>
-
-                    <div class="projects-modal" id="project2">
-                        <div class="projects-modal__overlay"></div>
-                        <div class="projects-modal__dialog">
-                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
-                                <span></span>
-                                <span></span>
-                            </button>
-                            <img src="site/image/autoCat19/катализатор.png" height="200px" width="100%"
-                                alt="Интернет-магазин" class="project-modal__image">
-                            <span class="projects-modal__badge">autoCat19</span>
-
-                            <h3 class="projects-modal__title">
-                                autoCat19
-                            </h3>
-                            <p class="projects-modal__description">
-                                Полный спектр услуг от планового ТО до сложного ремонта двигателя.
-                            </p>
-                            <p class="projects-modal__details">
-                                Мы гарантируем высокое качество, доступные цены и
-                                индивидуальный подход к каждому клиенту.
-                            </p>
-                            <a href="https://dimas-shumil.github.io/AutoCat19/" class="projects-modal__link"
-                                target="_blank">
-                                Открыть сайт
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 3h7v7"></path>
-                                    <path d="M21 3l-9 9"></path>
-                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- youTalk -->
-
-                    <article class="project-card" data-modal="project3">
-                        <div class="project-card__preview project-card__preview--YouTalk">
-                            <img src="site/image/youtalk/Rectangle3-1.png" height="200px" width="100%"
-                                alt="Интернет-магазин" class="project-image">
-                            <span class="project-card__badge">Portal</span>
-                        </div>
-                        <div class="project-card__content">
-                            <h3>YouTalk</h3>
-                            <p>кто скептически или настороженно относится к психологам</p>
-                        </div>
-                    </article>
-
-                    <div class="projects-modal" id="project3">
-                        <div class="projects-modal__overlay"></div>
-                        <div class="projects-modal__dialog">
-                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
-                                <span></span>
-                                <span></span>
-                            </button>
-                            <img src="site/image/youtalk/Rectangle3-1.png" height="200px" width="100%"
-                                alt="Интернет-магазин" class="project-image">
-                            <span class="projects-modal__badge">YouTalk</span>
-                            <h3 class="projects-modal__title">
-                                YouTalk
-                            </h3>
-                            <p class="projects-modal__description">
-                                Лендинг для сервиса аренды велосипедов.
-                            </p>
-                            <p class="projects-modal__details">
-                                Компания YouTalk планирует создать экспертный блог, чтобы привлечь сложную для
-                                рекламы аудиторию — тех, кто скептически или настороженно относится к психологам.
-                                Через полезные и откликающиеся материалы блог поможет преодолеть недоверие,
-                                продемонстрировать компетенцию сервиса и постепенно превратить читателей в клиентов.
-                            </p>
-                            <a href="https://dimas-shumil.github.io/Youtalk/" class="projects-modal__link"
-                                target="_blank">
-                                Открыть сайт
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 3h7v7"></path>
-                                    <path d="M21 3l-9 9"></path>
-                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- news spain  -->
-
-                    <article class="project-card" data-modal="project4">
-                        <div class="project-card__preview project-card__preview--newsSpain">
-                            <img src="site/image/newsSpain/photo_2026-02-21_20-14-20.jpg" height="200px" width="100%"
-                                alt="Интернет-магазин" class="project-image">
-                            <span class="project-card__badge">Portal</span>
-                        </div>
-                        <div class="project-card__content">
-                            <h3>News</h3>
-                            <p>Новостной портал с испанской телезвездой и возможностью
-                                прослушивание аудио
-                            </p>
-                        </div>
-                    </article>
-
-                    <div class="projects-modal" id="project4">
-                        <div class="projects-modal__overlay"></div>
-                        <div class="projects-modal__dialog">
-                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
-                                <span></span>
-                                <span></span>
-                            </button>
-                            <span class="projects-modal__badge">news spain</span>
-                            <h3 class="projects-modal__title">
-                                news spain
-                            </h3>
-                            <p class="projects-modal__description">
-                                Новостной портал с испанской телезвездой и возможностью
-                                прослушивание аудио
-                            </p>
-                            <p class="projects-modal__details">
-                                Magaly Medina invierte 12,000,000 PEN en nueva plataforma de trading - Ahora disponible
-                                para el público, haciendo ricas a personas comunes
-                            </p>
-                            <a href="https://pabloalligator.github.io/Magaly-Meduna-News/" class="projects-modal__link"
-                                target="_blank">
-                                Открыть сайт
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 3h7v7"></path>
-                                    <path d="M21 3l-9 9"></path>
-                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- slider -->
-
-                    <article class="project-card" data-modal="project5">
-                        <div class="project-card__preview project-card__preview--slider">
-                            <img src="site/image/Slider/image1.png" height="200px" width="100%" alt="Интернет-магазин"
-                                class="project-image">
-                            <span class="project-card__badge">Slider</span>
-                        </div>
-                        <div class="project-card__content">
-                            <h3>Slider</h3>
-                            <p><b>Слайдер</b> – это специальный элемент веб-дизайна, представляющий собой блок
-                                определенной
-                                ширины чаще в
-                            </p>
-                        </div>
-                    </article>
-
-                    <div class="projects-modal" id="project5">
-                        <div class="projects-modal__overlay"></div>
-                        <div class="projects-modal__dialog">
-                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
-                                <span></span>
-                                <span></span>
-                            </button>
-                            <span class="projects-modal__badge">Slider</span>
-                            <h3 class="projects-modal__title">
-                                Slider
-                            </h3>
-                            <p class="projects-modal__description">
-                                <!-- Новостной портал с испанской телезвездой и возможностью
-                                прослушивание аудио -->
-                            </p>
-                            <p class="projects-modal__details">
-                                <b>Слайдер</b> – это специальный элемент веб-дизайна, представляющий собой блок
-                                определенной
-                                ширины чаще всего в шапке веб-страницы. Главная его фишка в изменяющихся в ручном
-                                или автоматическом режиме элементах – картинок, текстов и ссылок.
-                            </p>
-                            <a href="https://dimas-shumil.github.io/Slider/" class="projects-modal__link"
-                                target="_blank">
-                                Открыть сайт
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 3h7v7"></path>
-                                    <path d="M21 3l-9 9"></path>
-                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- visitka pablo -->
-
-                    <article class="project-card" data-modal="project6">
-                        <div class="project-card__preview project-card__preview--pablo">
-                            <img src="site/image/Pablo-Visitka.jpg" height="200px" width="100%" alt="Интернет-магазин"
-                                class="project-image">
-                            <span class="project-card__badge">Visitka</span>
-                        </div>
-                        <div class="project-card__content">
-                            <h3>CoderXDreamer</h3>
-                            <p>Ваш бизнес заслуживает сайт, который продает 24/7
-                            </p>
-                        </div>
-                    </article>
-
-                    <div class="projects-modal" id="project6">
-                        <div class="projects-modal__overlay"></div>
-                        <div class="projects-modal__dialog">
-                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
-                                <span></span>
-                                <span></span>
-                            </button>
-                            <img src="site/image/visitca/photo_2026-02-21_21-58-13.jpg" height="200px" width="100%"
-                                alt="Интернет-магазин" class="project-image">
-                            <span class="projects-modal__badge">Visitkz</span>
-                            <h3 class="projects-modal__title">
-                                Привет! Это Павел
-                            </h3>
-                            <p class="projects-modal__description">
-                                <!-- Новостной портал с испанской телезвездой и возможностью
-                                прослушивание аудио -->
-                            </p>
-                            <p class="projects-modal__details">
-                                Меня зовут Павел Шумилов — я фронтенд-разработчик с более чем двухлетним опытом создания
-                                веб-сайтов и пользовательских интерфейсов.
-                            </p>
-                            <p class="projects-modal__details">
-                                Я создаю чистые, быстрые и адаптивные сайты на HTML, CSS, JavaScript и React. Работаю
-                                аккуратно, внимательно к деталям и всегда довожу проект до результата.
-                            </p>
-                            <p class="projects-modal__details">
-                                Сейчас я также являюсь автором концепции инновационного веб-приложения для туризма в
-                                России и Республике Хакасия — проект, который вскоре выйдет в Google Play и App Store.
-                                Этот опыт позволяет мне понимать, как создавать сервисы, которые действительно решают
-                                задачи пользователей и бизнеса.
-                            </p>
-                            <a href="https://pabloalligator.github.io/Pavel-Shumilov-Frontend-developer/"
-                                class="projects-modal__link" target="_blank">
-                                Открыть сайт
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 3h7v7"></path>
-                                    <path d="M21 3l-9 9"></path>
-                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- autoZavoz -->
-                    <article class="project-card" data-modal="project7">
-                        <div class="project-card__preview project-card__preview--emerald">
-                            <img src="site/image/autoZavoz/photo_2026-03-23_22-26-48.jpg" height="200px" width="100%"
-                                alt="Интернет-магазин" class="project-image">
-                            <span class="project-card__badge">autoZavoz</span>
-                        </div>
-                        <div class="project-card__content">
-                            <h3>ПОЧЕМУ ВЫБИРАЮТ НАС</h3>
-                            <p>Мы берем на себя все риски и заботы. Вы получаете
-                                готовый к экспулатации автомобиль.</p>
-                        </div>
-                    </article>
-
-                    <div class="projects-modal" id="project7">
-                        <div class="projects-modal__overlay"></div>
-                        <div class="projects-modal__dialog">
-                            <button class="projects-modal__close" type="button" aria-label="Закрыть">
-                                <span></span>
-                                <span></span>
-                            </button>
-                            <img src="site/image/visitca/photo_2026-02-21_21-58-13.jpg" height="200px" width="100%"
-                                alt="Интернет-магазин" class="project-image">
-                            <span class="projects-modal__badge">autoZavoz</span>
-                            <h3 class="projects-modal__title">
-                                Привозим лучшие авто из азии
-                            </h3>
-                            <p class="projects-modal__description">
-                                <!-- Новостной портал с испанской телезвездой и возможностью
-                                прослушивание аудио -->
-                            </p>
-                            <p class="projects-modal__details">
-                                Юридическая чистота
-                            </p>
-                            <p class="projects-modal__details">
-                                Таможня под ключ
-                            </p>
-                            <p class="projects-modal__details">
-                                Прямые поставки
-                            </p>
-                            <p class="projects-modal__details">
-                                Сопровождение на всех этапах покупки
-                            </p>
-                            <p class="projects-modal__details">
-                                Бесплатный расчет стоимости автомобиля
-                            </p>
-                            <p class="projects-modal__details">
-                                Помощь покупки автомобиля в кредит
-                            </p>
-
-                            <a href="https://dimas-shumil.github.io/AutoZavoz/" class="projects-modal__link"
-                                target="_blank">
-                                Открыть сайт
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 3h7v7"></path>
-                                    <path d="M21 3l-9 9"></path>
-                                    <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <article class="project-card" data-modal="project7">
-                        <div class="project-card__preview project-card__preview--darkblue">
-                            <span class="project-card__badge">Веб-приложение</span>
-                        </div>
-                        <div class="project-card__content">
-                            <h3>CryptoTrack</h3>
-                            <p>Веб-приложение мониторинга криптовалют.</p>
-                        </div>
-                    </article>
-
-                    <article class="project-card" data-modal="project8">
-                        <div class="project-card__preview project-card__preview--orange">
-                            <span class="project-card__badge">Визитка</span>
-                        </div>
-                        <div class="project-card__content">
-                            <h3>Юридический Центр</h3>
-                            <p>Сайт-визитка для юридической фирмы.</p>
-                        </div>
-                    </article>
-                </div>
+            <div class="services__cta">
+                <a href="#contact" class="button">Заказать сайт</a>
             </div>
+        </div>
     </section>
 
     <!-- секция наша команда -->
-
     <section class="team" id="team">
         <div class="team-container">
 
@@ -1053,30 +1035,29 @@
             </div>
 
             <div class="team__grid">
-
                 <div class="team-card">
                     <div class="team-card__img">
-                        <img src="site/image/Boss.jpg" alt="">
+                        <img src="site/image/shumDewdad.jpg" alt="Дмитрий Шумилов">
                     </div>
                     <div class="team-card__content">
                         <h3>Дмитрий Шумилов</h3>
-                        <span>Frontend-developer / Founder</span>
+                        <span>Frontend Developer / Founder</span>
                     </div>
                 </div>
 
                 <div class="team-card">
                     <div class="team-card__img">
-                        <img src="site/image/vk.jpg" alt="">
+                        <img src="site/image/vk.jpg" alt="Владимир Хало">
                     </div>
                     <div class="team-card__content">
                         <h3>Владимир Хало</h3>
-                        <span>Тестировщик / Cайты на Tlda</span>
+                        <span>Тестировщик / Сайты на Tilda</span>
                     </div>
                 </div>
 
                 <div class="team-card">
                     <div class="team-card__img">
-                        <img src="site/image/mindo.jpg" alt="">
+                        <img src="site/image/mindo.jpg" alt="Давид Миндиашвили">
                     </div>
                     <div class="team-card__content">
                         <h3>Давид Миндиашвили</h3>
@@ -1086,14 +1067,13 @@
 
                 <div class="team-card">
                     <div class="team-card__img">
-                        <img src="site/image/PS.jpg" alt="">
+                        <img src="site/image/PS.jpg" alt="Павел Шумилов">
                     </div>
                     <div class="team-card__content">
                         <h3>Павел Шумилов</h3>
-                        <span>Fullstack-developer / Founder</span>
+                        <span>Fullstack Developer / Founder</span>
                     </div>
                 </div>
-
             </div>
 
         </div>
@@ -1101,84 +1081,121 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-
         <div class="container">
 
             <div class="contact-text">
-
-                <h2 class="contact-title">Свяжитесь с нами</h2>
-                <p class="contact-subtitle">Оставьте заявку, и мы свяжемся с вами в ближайшее время для обсуждения
-                    вашего
-                    проекта и расчета стоимости.</p>
+                <h2 class="contact-title">Обсудим ваш проект</h2>
+                <p class="contact-subtitle">
+                    Расскажите о задаче — подскажем решение, оценим сроки и предложим оптимальный формат разработки.
+                    Ответим в ближайшее время.
+                </p>
 
                 <div class="contact-text__item contact-text__item--telegram">
                     <div class="contact-text__item-img">
-                        <img src="site/image/telega.png" alt="">
+                        <img src="site/image/telega.png" alt="Telegram">
                     </div>
 
                     <div class="contact-text__item-text">
                         <h3>Telegram</h3>
-                        <p><a href="https://t.me/ShumDevWeb" target="_blank">@ShumDevWeb</a></p>
+                        <p>
+                            <a href="https://t.me/ShumDevWeb" target="_blank"
+                                rel="noopener noreferrer">@ShumDevWeb</a><br>
+                            Быстрый способ связи — отвечаем быстрее всего
+                        </p>
                     </div>
                 </div>
 
                 <div class="contact-text__item contact-text__item--phone">
                     <div class="contact-text__item-img">
-                        <img src="site/image/phone.png" alt="">
+                        <img src="site/image/phone.png" alt="Телефон">
                     </div>
 
                     <div class="contact-text__item-text">
                         <h3>Телефон</h3>
-                        <p><a href="tel:+79235971877">+7 (923) 597-18-77</a></p>
-                        <p><a href="tel:+79233906649">+7 (923) 390-66-49</a></p>
+                        <p>
+                            <a href="tel:+79235971877">+7 (923) 597-18-77</a><br>
+                            <a href="tel:+79233906649">+7 (923) 390-66-49</a><br>
+                            Можно позвонить или написать в мессенджеры
+                        </p>
                     </div>
                 </div>
 
                 <div class="contact-text__item contact-text__item--gmail">
                     <div class="contact-text__item-img">
-                        <img src="site/image/gmsil.png" alt="">
+                        <img src="site/image/gmsil.png" alt="Email">
                     </div>
 
                     <div class="contact-text__item-text">
-                        <h3>Gmail</h3>
-                        <p><a href="mailto:shum0@mail.com" target="_blank">shum0@mail.com</a></p>
+                        <h3>Email</h3>
+                        <p>
+                            <a href="mailto:infoShumdev@mail.ru">infoShumdev@mail.ru</a><br>
+                            Подходит для подробных запросов и ТЗ
+                        </p>
                     </div>
                 </div>
 
                 <div class="contact-text__img">
-                    <img src="site/image/85e6d399-7ae0-40a2-9326-e6845943df6d.png" alt="">
+                    <img src="site/image/85e6d399-7ae0-40a2-9326-e6845943df6d.png"
+                        alt="Иллюстрация связи с командой ShumDev">
                 </div>
-
             </div>
 
             <div class="contact-form">
-                <form class="contacts-right-form" action="https://api.web3forms.com/submit" method="POST">
-
-                    <h3 class="form-title">Оставьте заявку</h3>
-
-                    <input type="hidden" name="access_key" value="61f614c1-33a1-4ca9-adcd-149f47b9e8e5">
+                <form class="contacts-right-form" id="contactForm">
+                    <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;">
+                    <h3 class="form-title">Оставьте заявку — ответим в ближайшее время</h3>
 
                     <div class="form-group">
-                        <label class="form-label">Ваше имя</label>
-                        <input type="text" name="name" class="form-control" placeholder="Введите ваше имя" required>
+                        <label class="form-label" for="contact-name">Ваше имя</label>
+                        <input id="contact-name" type="text" name="name" class="form-control"
+                            placeholder="Как вас зовут?" autocomplete="name" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Email или телефон</label>
-                        <input type="text" name="contact" class="form-control" placeholder="Введите email или телефон"
-                            required>
+                        <label class="form-label" for="contact-phone">Телефон</label>
+                        <input id="contact-phone" type="tel" name="phone" class="form-control"
+                            placeholder="+7 (___) ___-__-__" autocomplete="tel">
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Сообщение</label>
-                        <textarea name="message" class="form-control"
-                            placeholder="Кратко опишите ваш проект и задачи..." required></textarea>
+                        <label class="form-label" for="contact-email">Email</label>
+                        <input id="contact-email" type="email" name="email" class="form-control"
+                            placeholder="example@mail.com" autocomplete="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="contact-message">Сообщение</label>
+                        <textarea id="contact-message" name="message" class="form-control"
+                            placeholder="Кратко опишите задачу: какой сайт нужен, ниша, цели..." required></textarea>
+                    </div>
+
+                    <div class="form-group form-group--checkbox">
+                        <label class="form-checkbox">
+                            <input type="checkbox" name="personal_data_consent" required>
+                            <span>
+                                Я даю согласие на обработку моих персональных данных и подтверждаю,
+                                что ознакомился(ась) с
+                                <a href="site/privacy-policy.html" target="_blank" rel="noopener noreferrer">
+                                    политикой конфиденциальности
+                                </a>.
+                            </span>
+                        </label>
                     </div>
 
                     <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Отправить заявку
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        <span>Отправить заявку</span>
                     </button>
 
+                    <p class="form-note">
+                        Отправляя форму, вы предоставляете имя, телефон, email и иные сведения,
+                        указанные в сообщении, для обработки заявки и обратной связи.
+                    </p>
+
+                    <p class="form-note form-note--muted">
+                        Для отзыва согласия на обработку персональных данных напишите на
+                        <a href="mailto:infoShumdev@mail.ru">infoShumdev@mail.ru</a>.
+                    </p>
                 </form>
             </div>
         </div>
@@ -1189,21 +1206,34 @@
         <div class="container">
             <div class="footer-links">
                 <a href="#home" class="footer-link">Главная</a>
-                <a href="#about" class="footer-link">О нас</a>
-                <a href="#projects" class="footer-link">Проекты</a>
+                <a href="#About" class="footer-link">О нас</a>
+                <a href="#products" class="footer-link">Услуги</a>
                 <a href="#contact" class="footer-link">Контакты</a>
+                <a href="site/privacy-policy.html" target="_blank" class="footer-link">Политика конфиденциальности</a>
             </div>
-            <p class="copyright">© 2026. ShumDev. Разработка сайтов, веб-приложений и других цифровых продуктов. Все
-                права защищены.</p>
+
+            <p class="copyright">
+                © 2026. ShumDev. Разработка сайтов, веб-приложений и других цифровых продуктов.
+                Все права защищены.
+            </p>
+
+            <div class="footer__legal">
+                <p>
+                    Самозанятый: Шумилов Павел Дмитриевич
+                </p>
+
+                <div class="footer__legal-links">
+                    <a href="mailto:infoShumdev@mail.ru">infoShumdev@mail.ru</a>
+                    <a href="tel:+79233906649">+7 (923) 390-66-49</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="site/JavaScript/js.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
-
 </body>
 
 </html>
