@@ -1701,7 +1701,6 @@ body.no-scroll {
 
 //price
 // секция Products
-
 .products {
     width: 100%;
     display: flex;
@@ -1720,7 +1719,6 @@ body.no-scroll {
         display: flex;
         flex-direction: column;
         align-items: center;
-        // gap: 12px;
 
         .services-h1 {
             font-size: 2.5rem;
@@ -1730,7 +1728,6 @@ body.no-scroll {
             margin-bottom: 1rem;
             @include gradient-text;
             animation: title-glow 5s ease-in-out infinite, flicker 3s infinite;
-            // line-height: 1.2;
         }
 
         p {
@@ -1739,12 +1736,12 @@ body.no-scroll {
             text-align: center;
             max-width: 700px;
             margin: 0 auto 40px;
-            // line-height: 1.5;
         }
     }
 
     &__accardeon {
         max-width: 900px;
+        width: 100%;
         margin: auto;
         background: #0b1220;
         border-radius: 14px;
@@ -1770,6 +1767,7 @@ body.no-scroll {
         border: none;
         color: white;
         cursor: pointer;
+        text-align: left;
     }
 
     &__left {
@@ -1786,6 +1784,7 @@ body.no-scroll {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
 
         svg {
             width: 20px;
@@ -1822,7 +1821,8 @@ body.no-scroll {
         border-right: 2px solid #94a3b8;
         border-bottom: 2px solid #94a3b8;
         transform: rotate(45deg);
-        transition: .3s;
+        transition: 0.3s;
+        flex-shrink: 0;
     }
 
     &__item.active &__arrow {
@@ -1832,21 +1832,103 @@ body.no-scroll {
     &__content {
         max-height: 0;
         overflow: hidden;
-        transition: all .35s ease;
+        transition: max-height 0.35s ease, padding 0.35s ease;
         padding: 0 24px;
 
         p {
-            padding-bottom: 22px;
+            padding-bottom: 18px;
             color: #94a3b8;
             line-height: 1.6;
+            margin: 0;
         }
     }
 
     &__item.active &__content {
-        max-height: 200px;
+        max-height: 320px;
+        padding-bottom: 24px;
     }
 
+    &__meta {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+    }
+
+    &__info {
+        min-width: 180px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    &__label {
+        font-size: 13px;
+        color: #7c8aa0;
+    }
+
+    &__value {
+        font-size: 17px;
+        font-weight: 700;
+        color: #f8fafc;
+    }
+
+    &__note {
+        display: block;
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.5;
+    }
 }
+
+@media (max-width: 768px) {
+    .products {
+        padding: 130px 16px 40px;
+
+        &__title {
+            .services-h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+                margin-bottom: 28px;
+            }
+        }
+
+        &__trigger {
+            padding: 18px 18px;
+        }
+
+        &__left {
+            gap: 12px;
+            font-size: 16px;
+        }
+
+        &__item.active &__content {
+            max-height: 420px;
+        }
+
+        &__meta {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        &__info {
+            min-width: 100%;
+        }
+
+        &__value {
+            font-size: 16px;
+        }
+    }
+}
+
+// кастом ста
 
 .custom-cta {
     padding: 90px 20px;
