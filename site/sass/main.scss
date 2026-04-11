@@ -235,6 +235,10 @@ $transition: all 0.3s ease;
     }
 }
 
+.services-title {
+    font-size: large;
+}
+
 // Базовые стили
 *,
 *::before,
@@ -964,14 +968,14 @@ body.no-scroll {
         }
     }
 }
-
+//price
 // ЧЕМ МЫ ЗАНИМАЕМСЯ
 .double {
     width: 100%;
     display: flex;
     justify-content: center;
     background: $dark;
-    padding: 50px 20px;
+    padding: 160px 20px 50px;
 
     .double-container {
         width: 100%;
@@ -983,7 +987,7 @@ body.no-scroll {
     }
 
     .double__header {
-        h2 {
+        .services-h1 {
             font-size: 2.5rem;
             font-weight: 700;
             color: $gray-light;
@@ -1695,13 +1699,14 @@ body.no-scroll {
     }
 }
 
+//price
 // секция Products
 
 .products {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 50px 20px;
+    padding: 160px 20px 50px;
     background-color: $blackFon;
 
     .products-container {
@@ -1717,7 +1722,7 @@ body.no-scroll {
         align-items: center;
         // gap: 12px;
 
-        h2 {
+        .services-h1 {
             font-size: 2.5rem;
             font-weight: 700;
             color: $gray-light;
