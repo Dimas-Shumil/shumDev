@@ -13,7 +13,7 @@ ShumDev — это современный веб-проект, который о
 
 ## 🌐 Live Demo
 
-👉 https://shumdev.ru/ *(укажи свой домен если отличается)*
+👉 https://shumdev.ru/ 
 
 ---
 
@@ -145,6 +145,8 @@ npm run dev
 ## 👨‍💻 Автор
 
 Dimas Shumil
+Frontend / Fullstack Developer
+PabloAlligator
 Frontend / Fullstack Developer
 
 GitHub: https://github.com/Dimas-Shumil
