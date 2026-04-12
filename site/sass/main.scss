@@ -1198,6 +1198,303 @@ body.no-scroll {
         }
     }
 }
+
+
+.offer {
+    padding: 110px 0 70px;
+    position: relative;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(79, 70, 229, 0.16), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.14), transparent 42%),
+        linear-gradient(180deg, #050816 0%, #030711 100%);
+
+    &__header {
+        max-width: 860px;
+        margin: 0 auto 42px;
+        text-align: center;
+    }
+
+    &__badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px;
+        margin-bottom: 18px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #8fb4ff;
+        background: rgba(99, 102, 241, 0.15);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
+    }
+
+    &__title {
+        margin: 0 0 18px;
+        font-size: clamp(34px, 5vw, 54px);
+        line-height: 1.08;
+        font-weight: 700;
+        color: #fff;
+
+        span {
+            @include gradient-text;
+        }
+    }
+
+    &__subtitle {
+        max-width: 760px;
+        margin: 0 auto;
+        font-size: 18px;
+        line-height: 1.75;
+        color: #cbd5f5;
+
+        strong {
+            color: #fff;
+            font-weight: 700;
+        }
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
+        gap: 24px;
+        align-items: stretch;
+    }
+
+    &__info,
+    &__card {
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.28);
+    }
+
+    &__info {
+        padding: 30px;
+    }
+
+    &__points {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    &__description {
+        margin-top: 24px;
+        padding-top: 22px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 17px;
+        line-height: 1.7;
+        color: #cbd5f5;
+    }
+
+    &__card {
+        padding: 28px 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    &__card-label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        padding: 8px 14px;
+        margin-bottom: 22px;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.18);
+        color: #8db7ff;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    &__price {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 18px;
+
+        strong {
+            font-size: clamp(40px, 5vw, 56px);
+            line-height: 1;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        span {
+            font-size: 17px;
+            color: #94a3b8;
+        }
+    }
+
+    &__card-text {
+        margin-bottom: 24px;
+        font-size: 16px;
+        line-height: 1.7;
+        color: #cbd5f5;
+    }
+
+    &__btn {
+        width: 100%;
+    }
+}
+
+.offer-point {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 16px;
+    align-items: start;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: $transition;
+
+    &:hover {
+        transform: translateY(-4px);
+        border-color: rgba(59, 130, 246, 0.25);
+        box-shadow: 0 20px 40px -18px rgba(59, 130, 246, 0.28);
+    }
+
+    &__icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        @include flex-center;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(124, 58, 237, 0.22));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    &__text {
+        h3 {
+            margin: 0 0 8px;
+            font-size: 22px;
+            line-height: 1.25;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.65;
+            color: #cbd5f5;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .offer {
+        &__content {
+            grid-template-columns: 1fr;
+        }
+
+        &__card {
+            padding: 24px 22px;
+        }
+
+        &__info {
+            padding: 24px 22px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .offer {
+        padding: 90px 0 60px;
+
+        &__header {
+            margin-bottom: 32px;
+        }
+
+        &__subtitle {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        &__description {
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        &__price {
+            strong {
+                font-size: 42px;
+            }
+
+            span {
+                font-size: 15px;
+            }
+        }
+
+        &__card-text {
+            font-size: 15px;
+            line-height: 1.65;
+        }
+    }
+
+    .offer-point {
+        grid-template-columns: 46px 1fr;
+        gap: 14px;
+        padding: 18px;
+
+        &__icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            font-size: 13px;
+        }
+
+        &__text {
+            h3 {
+                font-size: 19px;
+            }
+
+            p {
+                font-size: 15px;
+                line-height: 1.6;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .offer {
+        padding: 80px 0 50px;
+
+        &__badge {
+            font-size: 12px;
+            padding: 8px 14px;
+        }
+
+        &__info,
+        &__card {
+            padding: 18px;
+            border-radius: 18px;
+        }
+    }
+
+    .offer-point {
+        grid-template-columns: 1fr;
+        gap: 12px;
+
+        &__icon {
+            width: 42px;
+            height: 42px;
+        }
+    }
+}
+
+
+
 //price
 // ЧЕМ МЫ ЗАНИМАЕМСЯ
 .double {
