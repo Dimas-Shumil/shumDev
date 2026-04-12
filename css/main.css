@@ -1543,6 +1543,7 @@ body.no-scroll {
 }
 .products__accardeon {
   max-width: 900px;
+  width: 100%;
   margin: auto;
   background: #0b1220;
   border-radius: 14px;
@@ -1565,6 +1566,7 @@ body.no-scroll {
   border: none;
   color: white;
   cursor: pointer;
+  text-align: left;
 }
 .products__left {
   display: flex;
@@ -1579,6 +1581,7 @@ body.no-scroll {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 .products__icon svg {
   width: 20px;
@@ -1609,6 +1612,7 @@ body.no-scroll {
   border-bottom: 2px solid #94a3b8;
   transform: rotate(45deg);
   transition: 0.3s;
+  flex-shrink: 0;
 }
 .products__item.active .products__arrow {
   transform: rotate(-135deg);
@@ -1616,18 +1620,83 @@ body.no-scroll {
 .products__content {
   max-height: 0;
   overflow: hidden;
-  transition: all 0.35s ease;
+  transition: max-height 0.35s ease, padding 0.35s ease;
   padding: 0 24px;
 }
 .products__content p {
-  padding-bottom: 22px;
+  padding-bottom: 18px;
   color: #94a3b8;
   line-height: 1.6;
+  margin: 0;
 }
 .products__item.active .products__content {
-  max-height: 200px;
+  max-height: 320px;
+  padding-bottom: 24px;
+}
+.products__meta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.products__info {
+  min-width: 180px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.products__label {
+  font-size: 13px;
+  color: #7c8aa0;
+}
+.products__value {
+  font-size: 17px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+.products__note {
+  display: block;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
+@media (max-width: 768px) {
+  .products {
+    padding: 130px 16px 40px;
+  }
+  .products__title .services-h1 {
+    font-size: 2rem;
+  }
+  .products__title p {
+    font-size: 1rem;
+    margin-bottom: 28px;
+  }
+  .products__trigger {
+    padding: 18px 18px;
+  }
+  .products__left {
+    gap: 12px;
+    font-size: 16px;
+  }
+  .products__item.active .products__content {
+    max-height: 420px;
+  }
+  .products__meta {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .products__info {
+    min-width: 100%;
+  }
+  .products__value {
+    font-size: 16px;
+  }
+}
 .custom-cta {
   padding: 90px 20px;
   background: #010814;
