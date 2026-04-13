@@ -413,26 +413,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // табы для секции "double"
 
-const tabs = document.querySelectorAll('.tab');
-const forms = document.querySelectorAll('.form');
-
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        forms.forEach(f => f.classList.remove('active'));
-
-        tab.classList.add('active');
-        document.getElementById(tab.dataset.tab).classList.add('active');
-    });
-});
-
-
 const projectCards = document.querySelectorAll('.project-card');
+const modals = document.querySelectorAll('.projects-modal');
 
 projectCards.forEach(card => {
-
     card.addEventListener('click', () => {
-
         const modalId = card.dataset.modal;
         const modal = document.getElementById(modalId);
 
@@ -440,15 +425,10 @@ projectCards.forEach(card => {
             modal.classList.add('active');
             document.body.classList.add('modal-open');
         }
-
     });
-
 });
 
-const modals = document.querySelectorAll('.projects-modal');
-
 modals.forEach(modal => {
-
     const overlay = modal.querySelector('.projects-modal__overlay');
     const closeBtn = modal.querySelector('.projects-modal__close');
 
@@ -457,25 +437,24 @@ modals.forEach(modal => {
         document.body.classList.remove('modal-open');
     }
 
-    overlay.addEventListener('click', closeModal);
-    closeBtn.addEventListener('click', closeModal);
+    if (overlay) {
+        overlay.addEventListener('click', closeModal);
+    }
 
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
 });
 
 document.addEventListener('keydown', e => {
-
-    if (e.key === "Escape") {
-
+    if (e.key === 'Escape') {
         modals.forEach(modal => {
             modal.classList.remove('active');
         });
 
         document.body.classList.remove('modal-open');
-
     }
-
 });
-
 // team section animation
 
 gsap.registerPlugin(ScrollTrigger);

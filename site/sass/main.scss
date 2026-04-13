@@ -1831,16 +1831,15 @@ body.no-scroll {
         }
     }
 }
-
-// ЧЕМ МЫ ЗАНИМАЕМСЯ
-.double {
+// КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ
+.about-section {
     width: 100%;
     display: flex;
     justify-content: center;
     background: $dark;
-    padding: 50px 20px 50px;
+    padding: 50px 20px 30px;
 
-    .double-container {
+    .about-section-container {
         width: 100%;
         padding: 32px 16px;
         border-radius: 8px;
@@ -1849,7 +1848,7 @@ body.no-scroll {
         align-items: center;
     }
 
-    .double__header {
+    .about-section__header {
         h2 {
             font-size: 2.5rem;
             font-weight: 700;
@@ -1860,52 +1859,6 @@ body.no-scroll {
         }
     }
 
-    .double__tabs {
-        display: flex;
-        gap: 6px;
-        padding: 6px;
-        margin-top: 30px;
-        background: #0b1220;
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        width: fit-content;
-
-        .tab {
-            padding: 12px 26px;
-            border-radius: 12px;
-            background: transparent;
-            color: #94a3b8;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all .25s ease;
-
-            &:hover {
-                color: #e2e8f0;
-            }
-
-            &.active {
-                background: linear-gradient(135deg, #1d7fff, #2563eb);
-                color: white;
-                box-shadow:
-                    0 6px 18px rgba(37, 99, 235, 0.35),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-            }
-        }
-    }
-
-    .form {
-        width: 100%;
-        display: none;
-        flex-direction: column;
-        gap: 32px;
-
-        &.active {
-            display: flex;
-        }
-    }
-
-    // about-work
     .about-work {
         width: 100%;
         max-width: 1240px;
@@ -2123,7 +2076,144 @@ body.no-scroll {
         color: #7f93ad;
     }
 
-    // проекты
+    @media (max-width: 1200px) {
+        .about-work {
+            &__heading {
+                font-size: 34px;
+            }
+        }
+    }
+
+    @media (max-width: 900px) {
+        .about-work {
+            &__features {
+                grid-template-columns: 1fr;
+            }
+
+            &__header,
+            &__benefits,
+            &__cta {
+                padding-left: 22px;
+                padding-right: 22px;
+            }
+
+            &__heading {
+                font-size: 30px;
+            }
+        }
+    }
+
+    @media (max-width: 640px) {
+        padding: 40px 14px 20px;
+
+        .about-section-container {
+            padding: 24px 0;
+        }
+
+        .about-section__header {
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .about-work {
+            margin-top: 30px;
+            gap: 20px;
+
+            &__header,
+            &__benefits,
+            &__cta {
+                padding: 22px 18px;
+                border-radius: 18px;
+            }
+
+            &__heading {
+                font-size: 26px;
+            }
+
+            &__subheading {
+                font-size: 16px;
+                line-height: 1.65;
+            }
+
+            &__description {
+                p {
+                    font-size: 16px;
+                    line-height: 1.65;
+                }
+            }
+
+            &__feature {
+                padding: 22px 18px;
+                border-radius: 18px;
+
+                h3 {
+                    font-size: 19px;
+                }
+
+                p {
+                    font-size: 15px;
+                    line-height: 1.6;
+                }
+            }
+
+            &__benefits {
+                p {
+                    font-size: 16px;
+                    line-height: 1.65;
+                }
+            }
+
+            &__cta {
+                h3 {
+                    font-size: 24px;
+                }
+
+                p {
+                    font-size: 16px;
+                    line-height: 1.6;
+                }
+            }
+        }
+
+        .btn-primary {
+            width: 100%;
+            min-height: 54px;
+            padding: 15px 20px;
+            font-size: 15px;
+        }
+    }
+}
+
+
+// ПРОЕКТЫ
+.projects-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: $dark;
+    padding: 30px 20px 50px;
+
+    .projects-section-container {
+        width: 100%;
+        padding: 32px 16px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .projects-section__header {
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: $gray-light;
+            text-align: center;
+            @include gradient-text;
+            animation: title-glow 5s ease-in-out infinite, flicker 3s infinite;
+        }
+    }
+
     .double__projects {
         width: 100%;
         display: grid;
@@ -2262,12 +2352,11 @@ body.no-scroll {
             gap: 0;
 
             li {
-                margin: 0 0 14px;
                 font-size: 18px;
                 line-height: 1.2;
                 color: #aab9d0;
                 padding: 0;
-                margin-left: 20px;
+                margin: 0 0 14px 20px;
             }
         }
 
@@ -2392,136 +2481,34 @@ body.no-scroll {
     }
 
     @media (max-width: 1200px) {
-        .about-work {
-            &__heading {
-                font-size: 34px;
-            }
-        }
-
         .double__projects {
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
     }
 
     @media (max-width: 900px) {
-        .about-work {
-            &__features {
-                grid-template-columns: 1fr;
-            }
-
-            &__header,
-            &__benefits,
-            &__cta {
-                padding-left: 22px;
-                padding-right: 22px;
-            }
-
-            &__heading {
-                font-size: 30px;
-            }
-        }
-
         .double__projects {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
     }
 
     @media (max-width: 640px) {
-        padding: 40px 14px;
+        padding: 20px 14px 40px;
 
-        .double-container {
+        .projects-section-container {
             padding: 24px 0;
         }
 
-        .double__header {
+        .projects-section__header {
             h2 {
                 font-size: 2rem;
             }
         }
 
-        .double__tabs {
-            width: 100%;
-            max-width: 100%;
-            justify-content: center;
-            flex-wrap: wrap;
-
-            .tab {
-                flex: 1 1 auto;
-                text-align: center;
-                padding: 12px 18px;
-            }
-        }
-
-        .about-work {
-            margin-top: 30px;
-            gap: 20px;
-
-            &__header,
-            &__benefits,
-            &__cta {
-                padding: 22px 18px;
-                border-radius: 18px;
-            }
-
-            &__heading {
-                font-size: 26px;
-            }
-
-            &__subheading {
-                font-size: 16px;
-                line-height: 1.65;
-            }
-
-            &__description {
-                p {
-                    font-size: 16px;
-                    line-height: 1.65;
-                }
-            }
-
-            &__feature {
-                padding: 22px 18px;
-                border-radius: 18px;
-
-                h3 {
-                    font-size: 19px;
-                }
-
-                p {
-                    font-size: 15px;
-                    line-height: 1.6;
-                }
-            }
-
-            &__benefits {
-                p {
-                    font-size: 16px;
-                    line-height: 1.65;
-                }
-            }
-
-            &__cta {
-                h3 {
-                    font-size: 24px;
-                }
-
-                p {
-                    font-size: 16px;
-                    line-height: 1.6;
-                }
-            }
-        }
-
-        .btn-primary {
-            width: 100%;
-            min-height: 54px;
-            padding: 15px 20px;
-            font-size: 15px;
-        }
-
         .double__projects {
             grid-template-columns: 1fr;
             gap: 18px;
+            margin-top: 30px;
         }
 
         .project-card {
