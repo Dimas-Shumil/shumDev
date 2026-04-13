@@ -475,6 +475,7 @@ document.addEventListener('keydown', e => {
     }
 
 });
+
 // team section animation
 
 gsap.registerPlugin(ScrollTrigger);
