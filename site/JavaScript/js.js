@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initStatsCounter();
 
     // ========== АНИМАЦИЯ КАРТОЧЕК УСЛУГ (ДОБАВЛЕНО) ==========
-    const serviceCards = document.querySelectorAll('.service-card');
+    const serviceCards = document.querySelectorAll('.advantages-card');
     if (serviceCards.length > 0) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
