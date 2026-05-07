@@ -262,8 +262,8 @@ body {
     line-height: 1.6;
     color: $dark;
     overflow-x: hidden;
-    background: $blackFon; 
-    color: $light; 
+    background: $blackFon;
+    color: $light;
 
 }
 
@@ -1893,6 +1893,9 @@ body.no-scroll {
             margin-top: 8px;
             @include gradient-text;
             animation: title-glow 5s ease-in-out infinite, flicker 3s infinite;
+        }
+        .services-hero__title-span{
+            display: none;
         }
     }
 
