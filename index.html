@@ -145,30 +145,117 @@
       <div class="container">
         <div class="header-content">
           <a href="#home" class="logo">
-            <div class="logo-icon">
-              <img src="site/image/image-Photoroom.png" alt="Логотип ShumDev" />
-            </div>
+            <img src="site/image/image-Photoroom.png" alt="Логотип ShumDev" />
           </a>
 
           <nav class="nav">
-            <a href="#" class="nav-link">Главная</a>
+            <a href="#" class="nav-link active">Главная</a>
             <a href="site/pages/services.html" class="nav-link">Услуги</a>
             <a href="site/pages/Price.html" class="nav-link">Проекты</a>
-            <!-- <a href="#About" class="nav-link">О нас</a> -->
             <a href="#contact" class="nav-link">Контакты</a>
           </nav>
 
-          <button class="burger" aria-label="Меню">
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-          </button>
+          <div class="header-actions">
+            <a href="#contact" class="header-cta">
+              Обсудить проект
+              <span>↗</span>
+            </a>
+
+            <button
+              class="burger"
+              aria-label="Открыть меню"
+              aria-expanded="false"
+            >
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+            </button>
+          </div>
         </div>
       </div>
     </header>
 
+    <div class="mobile-menu-overlay"></div>
+
+    <div class="mobile-menu">
+      <div class="mobile-menu__dialog">
+        <button class="mobile-menu__close" aria-label="Закрыть меню">
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="mobile-menu__logo-wrap">
+          <div class="mobile-menu__logo-glow">
+            <img src="site/image/circle-logo.png" alt="Логотип ShumDev" />
+          </div>
+
+          <h3 class="mobile-menu__title">ShumDev</h3>
+          <p class="mobile-menu__subtitle">
+            Разработка сайтов<br />
+            и веб-приложений
+          </p>
+        </div>
+
+        <nav class="mobile-menu__nav">
+          <a href="#" class="mobile-menu__link active">
+            <span class="mobile-menu__icon mobile-menu__icon--home"></span>
+            <span class="mobile-menu__text">Главная</span>
+            <span class="mobile-menu__arrow">›</span>
+          </a>
+
+          <a href="site/pages/services.html" class="mobile-menu__link">
+            <span class="mobile-menu__icon mobile-menu__icon--services"></span>
+            <span class="mobile-menu__text">Услуги</span>
+            <span class="mobile-menu__arrow">›</span>
+          </a>
+
+          <a href="site/pages/Price.html" class="mobile-menu__link">
+            <span class="mobile-menu__icon mobile-menu__icon--projects"></span>
+            <span class="mobile-menu__text">Проекты</span>
+            <span class="mobile-menu__arrow">›</span>
+          </a>
+
+          <a href="#contact" class="mobile-menu__link">
+            <span class="mobile-menu__icon mobile-menu__icon--about"></span>
+            <span class="mobile-menu__text">О нас</span>
+            <span class="mobile-menu__arrow">›</span>
+          </a>
+
+          <a href="#contact" class="mobile-menu__link">
+            <span class="mobile-menu__icon mobile-menu__icon--contacts"></span>
+            <span class="mobile-menu__text">Контакты</span>
+            <span class="mobile-menu__arrow">›</span>
+          </a>
+        </nav>
+
+        <a href="#contact" class="mobile-menu__cta">
+          Обсудить проект
+          <span>↗</span>
+        </a>
+
+        <div class="mobile-menu__socials">
+          <a
+            href="tel:+79999999999"
+            class="mobile-menu__social mobile-menu__social--phone"
+            aria-label="Позвонить"
+          ></a>
+          <a
+            href="https://max.ru/"
+            target="_blank"
+            class="mobile-menu__social mobile-menu__social--max"
+            aria-label="MAX"
+          ></a>
+          <a
+            href="mailto:shum.pasha.03@gmail.com"
+            class="mobile-menu__social mobile-menu__social--mail"
+            aria-label="Почта"
+          ></a>
+        </div>
+      </div>
+    </div>
+
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- <section id="home" class="hero">
       <div class="hero__media">
 
           <video
@@ -211,6 +298,118 @@
           </div>
         </div>
       </div>
+    </section> -->
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero__media">
+        <picture>
+          <source
+            media="(max-width: 768px)"
+            srcset="site/image/newHeroMob.webp"
+          />
+          <img class="hero__bg" src="site/image/newHero.webp" alt="" />
+        </picture>
+
+        <div class="hero__overlay"></div>
+      </div>
+
+      <div class="container hero__container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <div class="hero-badge">Создание сайтов и веб-приложений</div>
+
+            <h1 class="hero-title">
+              <span class="hero-title__one">Цифровые решения,</span>
+              <span class="hero-title__two">которые выводят</span>
+              <span class="hero-title__three">ваш бизнес</span>
+              <span class="hero-title__four">на новый уровень</span>
+            </h1>
+
+            <p class="hero-description">
+              Создаём сайты и веб-приложения, которые помогают бизнесу получать
+              больше заявок, автоматизировать процессы и расти в интернете.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="site/pages/Price.html" class="btn btn-primary">
+                Смотреть проекты
+              </a>
+              <a href="#contact" class="btn btn-outline"> Обсудить проект </a>
+            </div>
+          </div>
+
+          <div class="hero-cards" data-parallax-area>
+            <div class="hero-card hero-card--growth" data-depth="0.8">
+              <span class="hero-card__label">Рост конверсии</span>
+              <strong class="hero-card__value">+170%</strong>
+              <div class="hero-card__chart"></div>
+            </div>
+
+            <div class="hero-card hero-card--start" data-depth="1.1">
+              <span class="hero-card__label">Запуск</span>
+              <strong class="hero-card__value">от 7 дней</strong>
+              <span class="hero-card__icon"></span>
+            </div>
+
+            <div class="hero-card hero-card--projects" data-depth="0.65">
+              <span class="hero-card__label">Проекты</span>
+              <strong class="hero-card__value">35+</strong>
+              <small>успешных проектов</small>
+            </div>
+
+            <div class="hero-card hero-card--support" data-depth="0.95">
+              <span class="hero-card__label">Поддержка</span>
+              <strong class="hero-card__value">24/7</strong>
+              <small>мы всегда на связи</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-features">
+          <div class="hero-feature">
+            <span class="hero-feature__icon">
+              <img src="site/image/zevs.png" alt="Быстрый старт сайта" />
+            </span>
+            <div class="hero-feature__text">
+              <strong>Быстрый старт</strong>
+              <p>Запускаем проекты от 7 дней</p>
+            </div>
+          </div>
+
+          <div class="hero-feature">
+            <span class="hero-feature__icon"
+              ><img src="site/image/hadshake.png" alt="Защищенный сайт"
+            /></span>
+            <div class="hero-feature__text">
+              <strong>Надёжность</strong>
+              <p>Современный стек и защита данных</p>
+            </div>
+          </div>
+
+          <div class="hero-feature">
+            <span class="hero-feature__icon"
+              ><img
+                src="site/image/stonks.png"
+                alt="Увеличение конверсии сайта"
+            /></span>
+            <div class="hero-feature__text">
+              <strong>Рост конверсии</strong>
+              <p>Продуманный UX/UI и маркетинговый подход</p>
+            </div>
+          </div>
+
+          <div class="hero-feature">
+            <span class="hero-feature__icon"
+              ><img src="site/image/operator.png" alt="Сопровождение сайта"
+            /></span>
+            <div class="hero-feature__text">
+              <strong>Поддержка 24/7</strong>
+              <p>Техническая поддержка и развитие проектов</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- About Section -->
@@ -225,7 +424,7 @@
                   <div class="stat-label">Года опыта</div>
                 </div>
                 <div class="stat">
-                  <div class="stat-number">15</div>
+                  <div class="stat-number">35</div>
                   <div class="stat-label">Завершённых проектов</div>
                 </div>
                 <div class="stat">
@@ -244,7 +443,7 @@
     </section>
 
     <!-- company -->
-    <section id="Advantages" class="advantages">
+    <!-- <section id="Advantages" class="advantages">
       <div class="container">
         <h2 class="advantages__title">
           Почему бизнес выбирает ShumDev для разработки сайтов
@@ -334,7 +533,7 @@
           <a href="#contact" class="button">Обсудить проект</a>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- offer Section -->
 
@@ -452,7 +651,7 @@
               class="cta__btn"
             >
               Оставить заявку
-              <span class="arrow">→</span>
+              <!-- <span class="arrow">→</span> -->
             </a>
           </div>
         </div>
@@ -461,7 +660,7 @@
 
     <!-- секция наша команда -->
 
-    <section class="team" id="team">
+    <!-- <section class="team" id="team">
       <div class="team-container">
         <div class="team__header">
           <h2>Наша команда</h2>
@@ -495,7 +694,7 @@
 
           <div class="team-card">
             <div class="team-card__img">
-              <img src="site/image/mindo-ph2.png" alt="Давид Миндиашвили" />
+              <img src="site/image/mindo-ph4.png" alt="Давид Миндиашвили" />
             </div>
             <div class="team-card__content">
               <h3>Давид Миндиашвили</h3>
@@ -505,7 +704,7 @@
 
           <div class="team-card">
             <div class="team-card__img">
-              <img src="site/image/pablo-ph.png" alt="Павел Шумилов" />
+              <img src="site/image/pablo-ph3.png" alt="Павел Шумилов" />
             </div>
             <div class="team-card__content">
               <h3>Павел Шумилов</h3>
@@ -514,7 +713,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Contact Section -->
 
@@ -668,9 +867,9 @@
             </button>
 
             <p class="form-note">
-              Отправляя форму, вы предоставляете имя, телефон, email и иные
-              сведения, указанные в сообщении, для обработки заявки и обратной
-              связи.
+              Нажимая кнопку "Отправить заявку", вы предоставляете имя, телефон,
+              email и иные сведения, указанные в сообщении, для обработки заявки
+              и обратной связи.
             </p>
 
             <p class="form-note form-note--muted">

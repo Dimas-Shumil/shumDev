@@ -66,9 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 spark.style.top = `85%`;
 
                 const hue = 30 + Math.random() * 20;
-                spark.style.background = `radial-gradient(circle, 
-                    hsla(${hue}, 100%, 50%, 0.9) 0%, 
-                    hsla(${hue + 10}, 100%, 60%, 0.7) 50%, 
+                spark.style.background = `radial-gradient(circle,
+                    hsla(${hue}, 100%, 50%, 0.9) 0%,
+                    hsla(${hue + 10}, 100%, 60%, 0.7) 50%,
                     transparent 70%)`;
 
                 const duration = 1 + Math.random() * 1.5;
@@ -133,49 +133,71 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(updateProgress, 800);
     }
 
-    // ========== БУРГЕР-МЕНЮ ==========
-    if (burger && nav) {
-        const navLinks = document.querySelectorAll('.nav-link');
+ // ========== MOBILE MENU ==========
 
-        function toggleMenu() {
-            burger.classList.toggle('active');
-            nav.classList.toggle('active');
-            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-        }
+const mobileMenu = document.querySelector('.mobile-menu');
+const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+const mobileMenuClose = document.querySelector('.mobile-menu__close');
+const mobileMenuLinks = document.querySelectorAll(
+    '.mobile-menu__link, .mobile-menu__cta, .mobile-menu__social'
+);
 
-        function closeMenu() {
-            burger.classList.remove('active');
-            nav.classList.remove('active');
-            document.body.style.overflow = '';
-        }
+if (burger && mobileMenu && mobileMenuOverlay && mobileMenuClose) {
+    function openMenu() {
+        burger.classList.add('active');
+        burger.setAttribute('aria-expanded', 'true');
 
-        burger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleMenu();
-        });
+        mobileMenu.classList.add('active');
+        mobileMenuOverlay.classList.add('active');
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!nav.contains(e.target) && !burger.contains(e.target) && nav.classList.contains('active')) {
-                closeMenu();
-            }
-        });
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768 && nav.classList.contains('active')) {
-                closeMenu();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && nav.classList.contains('active')) {
-                closeMenu();
-            }
-        });
+        document.body.classList.add('menu-open');
     }
+
+    function closeMenu() {
+        burger.classList.remove('active');
+        burger.setAttribute('aria-expanded', 'false');
+
+        mobileMenu.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+
+        document.body.classList.remove('menu-open');
+    }
+
+    burger.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        if (mobileMenu.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    mobileMenuClose.addEventListener('click', closeMenu);
+    mobileMenuOverlay.addEventListener('click', closeMenu);
+
+    mobileMenu.addEventListener('click', (e) => {
+    if (e.target === mobileMenu) {
+        closeMenu();
+    }
+});
+
+    mobileMenuLinks.forEach((link) => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+}
 
     // ========== SWIPER ==========
 
@@ -459,75 +481,129 @@ document.addEventListener('keydown', e => {
 
 gsap.registerPlugin(ScrollTrigger);
 
-const teamSection = document.querySelector('.team');
-const teamHeader = document.querySelector('.team__header');
-const teamCards = document.querySelectorAll('.team-card');
+// ========== HERO CARDS PREMIUM ANIMATION ==========
 
-if (teamSection && teamHeader && teamCards.length) {
-    gsap.set(teamHeader, {
+const hero = document.querySelector('.hero');
+const heroCards = document.querySelectorAll('.hero-card');
+
+if (hero && heroCards.length) {
+
+    gsap.from(heroCards, {
+        y: 80,
         opacity: 0,
-        y: 40
+        scale: 0.82,
+        duration: 1.2,
+        stagger: 0.16,
+        ease: 'power3.out',
+        delay: 0.4
     });
 
-    gsap.set(teamCards, {
-        opacity: 0,
-        y: 60,
-        scale: 0.92
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let currentX = 0;
+    let currentY = 0;
+
+    hero.addEventListener('mousemove', (event) => {
+        const rect = hero.getBoundingClientRect();
+
+        mouseX = (event.clientX - rect.left) / rect.width - 0.5;
+        mouseY = (event.clientY - rect.top) / rect.height - 0.5;
     });
 
-    const teamTl = gsap.timeline({
-        scrollTrigger: {
-            trigger: teamSection,
-            start: 'top 75%',
-            once: true
-        }
+    hero.addEventListener('mouseleave', () => {
+        mouseX = 0;
+        mouseY = 0;
     });
 
-    teamTl
-        .to(teamHeader, {
-            opacity: 1,
-            y: 0,
-            duration: 0.9,
-            ease: 'power3.out'
-        })
-        .to(teamCards, {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.9,
-            stagger: 0.15,
-            ease: 'power3.out'
-        }, '-=0.45');
+    function animateHeroCards() {
+        currentX += (mouseX - currentX) * 0.08;
+        currentY += (mouseY - currentY) * 0.08;
+
+        heroCards.forEach((card) => {
+            const depth = Number(card.dataset.depth) || 1;
+
+            const moveX = currentX * 45 * depth;
+            const moveY = currentY * 35 * depth;
+
+            card.style.translate = `${moveX}px ${moveY}px`;
+        });
+
+        requestAnimationFrame(animateHeroCards);
+    }
+
+    animateHeroCards();
 }
-const cards = document.querySelectorAll('.team-card');
 
-cards.forEach((card) => {
-    const image = card.querySelector('.team-card__img img');
+// const teamSection = document.querySelector('.team');
+// const teamHeader = document.querySelector('.team__header');
+// const teamCards = document.querySelectorAll('.team-card');
 
-    card.addEventListener('mouseenter', () => {
-        gsap.to(card, {
-            y: -8,
-            duration: 0.35,
-            ease: 'power2.out'
-        });
+// if (teamSection && teamHeader && teamCards.length) {
+//     gsap.set(teamHeader, {
+//         opacity: 0,
+//         y: 40
+//     });
 
-        if (image) {
-            gsap.to(image, {
-                scale: 1.06,
-                duration: 0.45,
-                ease: 'power2.out'
-            });
-        }
-    });
+//     gsap.set(teamCards, {
+//         opacity: 0,
+//         y: 60,
+//         scale: 0.92
+//     });
 
-    card.addEventListener('mouseleave', () => {
-        gsap.to(card, {
-            y: 0,
-            duration: 0.35,
-            ease: 'power2.out'
-        });
-    });
-});
+//     const teamTl = gsap.timeline({
+//         scrollTrigger: {
+//             trigger: teamSection,
+//             start: 'top 75%',
+//             once: true
+//         }
+//     });
+
+//     teamTl
+//         .to(teamHeader, {
+//             opacity: 1,
+//             y: 0,
+//             duration: 0.9,
+//             ease: 'power3.out'
+//         })
+//         .to(teamCards, {
+//             opacity: 1,
+//             y: 0,
+//             scale: 1,
+//             duration: 0.9,
+//             stagger: 0.15,
+//             ease: 'power3.out'
+//         }, '-=0.45');
+// }
+// const cards = document.querySelectorAll('.team-card');
+
+// cards.forEach((card) => {
+//     const image = card.querySelector('.team-card__img img');
+
+//     card.addEventListener('mouseenter', () => {
+//         gsap.to(card, {
+//             y: -8,
+//             duration: 0.35,
+//             ease: 'power2.out'
+//         });
+
+//         if (image) {
+//             gsap.to(image, {
+//                 scale: 1.06,
+//                 duration: 0.45,
+//                 ease: 'power2.out'
+//             });
+//         }
+//     });
+
+//     card.addEventListener('mouseleave', () => {
+//         gsap.to(card, {
+//             y: 0,
+//             duration: 0.35,
+//             ease: 'power2.out'
+//         });
+//     });
+// });
 
 // ========== КОНТАКТНАЯ ФОРМА ==========
 const contactForm = document.getElementById('contactForm');

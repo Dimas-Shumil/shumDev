@@ -149,28 +149,120 @@
     <header class="header">
       <div class="container">
         <div class="header-content">
-          <a href="#home" class="logo">
-            <div class="logo-icon">
-              <img src="../image/image-Photoroom.png" alt="Логотип ShumDev" />
-            </div>
+          <a href="../../index.html" class="logo">
+            <img src="../image/image-Photoroom.png" alt="Логотип ShumDev" />
           </a>
 
           <nav class="nav">
             <a href="../../index.html" class="nav-link">Главная</a>
-            <a href="#" class="nav-link">Услуги</a>
+            <a href="#" class="nav-link active">Услуги</a>
             <a href="../pages/Price.html" class="nav-link">Проекты</a>
-            <!-- <a href="#About" class="nav-link">О нас</a> -->
             <a href="#contact" class="nav-link">Контакты</a>
           </nav>
 
-          <button class="burger" aria-label="Меню">
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-          </button>
+          <div class="header-actions">
+            <a href="#contact" class="header-cta">
+              Обсудить проект
+              <span>↗</span>
+            </a>
+
+            <button
+              class="burger"
+              aria-label="Открыть меню"
+              aria-expanded="false"
+            >
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+            </button>
+          </div>
         </div>
       </div>
     </header>
+
+    <div class="mobile-menu-overlay"></div>
+
+    <div class="mobile-menu">
+      <div class="mobile-menu__dialog">
+        <button class="mobile-menu__close" aria-label="Закрыть меню">
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="mobile-menu__logo-wrap">
+          <div class="mobile-menu__logo-glow">
+            <img src="../image/circle-logo.png" alt="Логотип ShumDev" />
+          </div>
+
+          <h3 class="mobile-menu__title">ShumDev</h3>
+          <p class="mobile-menu__subtitle">
+            Разработка сайтов<br />
+            и веб-приложений
+          </p>
+        </div>
+
+        <nav class="mobile-menu__nav">
+          <a href="../../index.html" class="mobile-menu__link">
+            <span class="mobile-menu__icon mobile-menu__icon--home"></span>
+            <span class="mobile-menu__text">Главная</span>
+            <span class="mobile-menu__arrow">›</span>
+          </a>
+
+          <a href="#" class="mobile-menu__link active">
+            <span class="mobile-menu__icon mobile-menu__icon--services"></span>
+            <span class="mobile-menu__text">Услуги</span>
+            <span class="mobile-menu__arrow">›</span>
+          </a>
+
+          <a href="../pages/Price.html" class="mobile-menu__link">
+            <span class="mobile-menu__icon mobile-menu__icon--projects"></span>
+            <span class="mobile-menu__text">Проекты</span>
+            <span class="mobile-menu__arrow">›</span>
+          </a>
+
+          <a href="#About" class="mobile-menu__link">
+            <span class="mobile-menu__icon mobile-menu__icon--about"></span>
+            <span class="mobile-menu__text">О нас</span>
+            <span class="mobile-menu__arrow">›</span>
+          </a>
+
+          <a href="#contact" class="mobile-menu__link">
+            <span class="mobile-menu__icon mobile-menu__icon--contacts"></span>
+            <span class="mobile-menu__text">Контакты</span>
+            <span class="mobile-menu__arrow">›</span>
+          </a>
+        </nav>
+
+        <a href="#contact" class="mobile-menu__cta">
+          Обсудить проект
+          <span>↗</span>
+        </a>
+
+        <div class="mobile-menu__socials">
+          <a
+            href="tel:+79233906649"
+            class="mobile-menu__social mobile-menu__social--phone"
+            aria-label="Позвонить"
+          ></a>
+
+          <a
+            href="https://max.ru/u/f9LHodD0cOKFgeBDSJQSWosDXuLr-66-XAleQsDs7s5SohDnYOGQFfGpkN8"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-menu__social mobile-menu__social--max"
+            aria-label="MAX"
+          ></a>
+
+          <a
+            href="mailto:infoShumdev@mail.ru"
+            class="mobile-menu__social mobile-menu__social--mail"
+            aria-label="Почта"
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ХИРО -->
 
     <section class="services-hero" id="home">
       <div class="container">
