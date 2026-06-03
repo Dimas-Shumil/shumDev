@@ -1400,60 +1400,61 @@ body.menu-open {
     pointer-events: none;
   }
   .hero .hero-card {
-    width: 104px;
-    min-height: 78px;
-    padding: 9px 10px;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
+    width: 100px;
+    min-height: 105px;
+    padding: 12px;
+    border-radius: 14px;
+    backdrop-filter: blur(12px);
   }
   .hero .hero-card__label {
-    margin-bottom: 5px;
-    font-size: 7px;
-    line-height: 1.15;
+    margin-bottom: 6px;
+    font-size: 9px;
+    line-height: 1.2;
   }
   .hero .hero-card__value {
-    font-size: 17px;
+    font-size: 22px;
   }
   .hero .hero-card small {
-    margin-top: 4px;
-    font-size: 7px;
+    margin-top: 5px;
+    font-size: 8px;
   }
   .hero .hero-card__chart {
-    height: 22px;
-    margin-top: 7px;
+    height: 28px;
+    margin-top: 8px;
   }
   .hero .hero-card__icon {
-    width: 30px;
-    height: 30px;
-    margin-top: 7px;
+    width: 40px;
+    height: 40px;
+    margin-top: 8px;
   }
   .hero .hero-card__icon::before {
-    inset: 8px 11px;
+    inset: 10px 14px;
   }
   .hero .hero-card--growth {
-    top: 80%;
-    left: 1%;
-    transform: rotate(-7deg);
+    top: 78%;
+    left: -2%;
+    transform: rotate(-8deg);
   }
   .hero .hero-card--start {
-    top: 88%;
-    right: 2%;
-    transform: rotate(6deg);
+    top: 82%;
+    right: -2%;
+    transform: rotate(8deg);
   }
   .hero .hero-card--projects {
-    top: 135%;
-    left: 5%;
-    transform: rotate(7deg);
+    top: 128%;
+    left: 1%;
+    transform: rotate(6deg);
   }
   .hero .hero-card--support {
-    top: 135%;
-    right: 1%;
-    transform: rotate(-7deg);
+    top: 168%;
+    right: -1%;
+    transform: rotate(-6deg);
   }
   .hero .hero-features {
     margin-top: 250px;
     padding: 14px 16px;
     border-radius: 16px;
+    display: none;
   }
   .hero .hero-feature {
     min-height: 44px;
@@ -1482,7 +1483,7 @@ body.menu-open {
     line-height: 1.25;
   }
 }
-@media (max-width: 390px) {
+@media (max-width: 380px) {
   .hero__container {
     padding-left: 18px;
     padding-right: 18px;

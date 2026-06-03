@@ -2020,65 +2020,65 @@ body.menu-open {
     }
 
     .hero-card {
-      width: 104px;
-      min-height: 78px;
-      padding: 9px 10px;
-      border-radius: 10px;
+      width: 100px;
+      min-height: 105px;
+      padding: 12px;
+      border-radius: 14px;
 
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
 
       &__label {
-        margin-bottom: 5px;
-        font-size: 7px;
-        line-height: 1.15;
+        margin-bottom: 6px;
+        font-size: 9px;
+        line-height: 1.2;
       }
 
       &__value {
-        font-size: 17px;
+        font-size: 22px;
       }
 
       small {
-        margin-top: 4px;
-        font-size: 7px;
+        margin-top: 5px;
+        font-size: 8px;
       }
 
       &__chart {
-        height: 22px;
-        margin-top: 7px;
+        height: 28px;
+        margin-top: 8px;
       }
 
       &__icon {
-        width: 30px;
-        height: 30px;
-        margin-top: 7px;
+        width: 40px;
+        height: 40px;
+        margin-top: 8px;
 
         &::before {
-          inset: 8px 11px;
+          inset: 10px 14px;
         }
       }
 
       &--growth {
-        top: 80%;
-        left: 1%;
-        transform: rotate(-7deg);
+        top: 78%;
+        left: -2%;
+        transform: rotate(-8deg);
       }
 
       &--start {
-        top: 88%;
-        right: 2%;
-        transform: rotate(6deg);
+        top: 82%;
+        right: -2%;
+        transform: rotate(8deg);
       }
 
       &--projects {
-        top: 135%;
-        left: 5%;
-        transform: rotate(7deg);
+        top: 128%;
+        left: 1%;
+        transform: rotate(6deg);
       }
 
       &--support {
-        top: 135%;
-        right: 1%;
-        transform: rotate(-7deg);
+        top: 168%;
+        right: -1%;
+        transform: rotate(-6deg);
       }
     }
 
@@ -2086,6 +2086,7 @@ body.menu-open {
       margin-top: 250px;
       padding: 14px 16px;
       border-radius: 16px;
+      display: none;
     }
 
     .hero-feature {
@@ -2121,7 +2122,7 @@ body.menu-open {
     }
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 380px) {
     &__container {
       padding-left: 18px;
       padding-right: 18px;
@@ -2139,7 +2140,7 @@ body.menu-open {
       font-size: 10px;
     }
 
-     .hero-card {
+    .hero-card {
       width: 94px;
       min-height: 70px;
       padding: 8px 9px;
