@@ -479,7 +479,10 @@ document.addEventListener('keydown', e => {
 });
 // team section animation
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 // ========== HERO CARDS PREMIUM ANIMATION ==========
 

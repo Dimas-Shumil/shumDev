@@ -31,6 +31,9 @@
     />
     <link rel="apple-touch-icon" href="site/image/inimi-logo-Photoroom.png" />
 
+    <!-- preload для CSS -->
+    <!-- <link rel="preload" href="site/css/main.css" as="style" /> -->
+
     <meta http-equiv="Content-Language" content="ru" />
     <meta name="geo.region" content="RU-HA" />
     <meta name="geo.placename" content="Абакан" />
@@ -145,7 +148,12 @@
       <div class="container">
         <div class="header-content">
           <a href="#home" class="logo">
-            <img src="site/image/image-Photoroom.png" alt="Логотип ShumDev" />
+            <img
+              src="site/image/image-Photoroom.png"
+              alt="Логотип ShumDev"
+              loading="lazy"
+              decoding="async"
+            />
           </a>
 
           <nav class="nav">
@@ -186,7 +194,12 @@
 
         <div class="mobile-menu__logo-wrap">
           <div class="mobile-menu__logo-glow">
-            <img src="site/image/circle-logo.png" alt="Логотип ShumDev" />
+            <img
+              src="site/image/circle-logo.png"
+              alt="Логотип ShumDev"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           <h3 class="mobile-menu__title">ShumDev</h3>
@@ -228,9 +241,7 @@
           </a>
         </nav>
 
-        <a href="#contact" class="mobile-menu__cta">
-          Обсудить проект
-        </a>
+        <a href="#contact" class="mobile-menu__cta"> Обсудить проект </a>
 
         <div class="mobile-menu__socials">
           <a
@@ -307,7 +318,13 @@
             media="(max-width: 768px)"
             srcset="site/image/newHeromob.webp"
           />
-          <img class="hero__bg" src="site/image/newHero.webp" alt="hero" />
+          <img
+            class="hero__bg"
+            src="site/image/newHero.webp"
+            alt="hero"
+            loading="lazy"
+            decoding="async"
+          />
         </picture>
 
         <div class="hero__overlay"></div>
@@ -326,7 +343,8 @@
             </h1>
 
             <p class="hero-description">
-              Разрабатываем сайты и веб-приложения под ключ - от идеи и дизайна до запуска и поддержки
+              Разрабатываем сайты и веб-приложения под ключ - от идеи и дизайна
+              до запуска и поддержки
             </p>
 
             <div class="hero-buttons">
@@ -367,7 +385,12 @@
         <div class="hero-features">
           <div class="hero-feature">
             <span class="hero-feature__icon">
-              <img src="site/image/zevs.webp" alt="Быстрый старт сайта" />
+              <img
+                src="site/image/zevs.webp"
+                alt="Быстрый старт сайта"
+                loading="lazy"
+                decoding="async"
+              />
             </span>
             <div class="hero-feature__text">
               <strong>Быстрый старт</strong>
@@ -377,7 +400,11 @@
 
           <div class="hero-feature">
             <span class="hero-feature__icon"
-              ><img src="site/image/hadshake.webp" alt="Защищенный сайт"
+              ><img
+                src="site/image/hadshake.webp"
+                alt="Защищенный сайт"
+                loading="lazy"
+                decoding="async"
             /></span>
             <div class="hero-feature__text">
               <strong>Надёжность</strong>
@@ -390,6 +417,8 @@
               ><img
                 src="site/image/stonks.webp"
                 alt="Увеличение конверсии сайта"
+                loading="lazy"
+                decoding="async"
             /></span>
             <div class="hero-feature__text">
               <strong>Рост конверсии</strong>
@@ -399,7 +428,11 @@
 
           <div class="hero-feature">
             <span class="hero-feature__icon"
-              ><img src="site/image/operator.webp" alt="Сопровождение сайта"
+              ><img
+                src="site/image/operator.webp"
+                alt="Сопровождение сайта"
+                loading="lazy"
+                decoding="async"
             /></span>
             <div class="hero-feature__text">
               <strong>Поддержка 24/7</strong>
@@ -534,7 +567,7 @@
     </section> -->
 
     <!-- offer Section -->
-<!--
+    <!--
     <section class="offer" id="offer" aria-labelledby="offer-title">
       <div class="container">
         <div class="offer__header">
@@ -726,7 +759,12 @@
 
           <div class="contact-text__item contact-text__item--telegram">
             <div class="contact-text__item-img">
-              <img src="site/image/telega.png" alt="Telegram" />
+              <img
+                src="site/image/telega.png"
+                alt="Telegram"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
 
             <div class="contact-text__item-text">
@@ -745,7 +783,12 @@
 
           <div class="contact-text__item contact-text__item--phone">
             <div class="contact-text__item-img">
-              <img src="site/image/phone.png" alt="Телефон" />
+              <img
+                src="site/image/phone.png"
+                alt="Телефон"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
 
             <div class="contact-text__item-text">
@@ -760,7 +803,12 @@
 
           <div class="contact-text__item contact-text__item--gmail">
             <div class="contact-text__item-img">
-              <img src="site/image/gmsil.png" alt="Email" />
+              <img
+                src="site/image/gmsil.png"
+                alt="Email"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
 
             <div class="contact-text__item-text">
