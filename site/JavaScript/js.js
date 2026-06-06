@@ -444,6 +444,16 @@ projectCards.forEach(card => {
         const modal = document.getElementById(modalId);
 
         if (modal) {
+
+            // Ленивая загрузка изображений модалки
+            const modalImages = modal.querySelectorAll('img[data-src]');
+
+            modalImages.forEach(img => {
+                if (!img.getAttribute('src')) {
+                    img.src = img.dataset.src;
+                }
+            });
+
             modal.classList.add('active');
             document.body.classList.add('modal-open');
         }
