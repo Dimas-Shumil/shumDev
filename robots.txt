@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+Disallow: /api/
+Disallow: /node_modules/
+Disallow: /.env
+Disallow: /data/
+
 Sitemap: https://shumdev.ru/sitemap.xml
