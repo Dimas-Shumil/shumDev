@@ -34,11 +34,7 @@
       href="../favicon-16x16.png"
     />
     <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
-    <link
-      rel="icon"
-      href="../image/inimi- -Photoroom.webp"
-      type="image/webp"
-    />
+    <link rel="icon" href="../image/inimi- -Photoroom.webp" type="image/webp" />
     <link rel="apple-touch-icon" href="../image/inimi-logo-Photoroom.webp" />
 
     <meta http-equiv="Content-Language" content="ru" />
@@ -161,7 +157,8 @@
           <nav class="nav">
             <a href="../../index.html" class="nav-link">Главная</a>
             <a href="../pages/services.html" class="nav-link">Услуги</a>
-            <a href="#" class="nav-link active">Проекты</a>
+            <a href="../pages/Price.html" class="nav-link active">Проекты</a>
+            <a href="../pages/company.html" class="nav-link">О компании</a>
             <a href="#contact" class="nav-link">Контакты</a>
           </nav>
 
@@ -230,9 +227,9 @@
             <span class="mobile-menu__arrow">›</span>
           </a>
 
-          <a href="../../index.html#offer" class="mobile-menu__link">
+          <a href="../pages/company.html" class="mobile-menu__link">
             <span class="mobile-menu__icon mobile-menu__icon--about"></span>
-            <span class="mobile-menu__text">О нас</span>
+            <span class="mobile-menu__text">О компании</span>
             <span class="mobile-menu__arrow">›</span>
           </a>
 
@@ -418,142 +415,149 @@
         </div>
 
         <div class="double__projects">
+          <!-- autoZavoz -->
 
-                          <!-- autoZavoz -->
+          <article class="project-card" data-modal="project1">
+            <div class="project-card__preview project-card__preview--newsSpain">
+              <img
+                src="../image/autoZavoz/photo_2026-03-23_22-26-48.jpg"
+                height="200"
+                width="100%"
+                alt="Новостной портал с аудиофункционалом"
+                class="project-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="project-card__badge">autoZavoz19.ru</span>
+            </div>
+            <div class="project-card__content">
+              <h3>Авто под заказ</h3>
+              <p>ГОТОВЫ К СВОЕМУ ИДЕАЛЬНОМУ АВТО?</p>
+            </div>
+          </article>
 
-                        <article class="project-card" data-modal="project1">
-                          <div class="project-card__preview project-card__preview--newsSpain">
-                            <img
-                              src="../image/autoZavoz/photo_2026-03-23_22-26-48.jpg"
-                              height="200"
-                              width="100%"
-                              alt="Новостной портал с аудиофункционалом"
-                              class="project-image"
-                              loading="lazy"
-                              decoding="async"
-                            />
-                            <span class="project-card__badge">autoZavoz19.ru</span>
-                          </div>
-                          <div class="project-card__content">
-                            <h3>Авто под заказ</h3>
-                            <p>ГОТОВЫ К СВОЕМУ ИДЕАЛЬНОМУ АВТО?</p>
-                          </div>
-                        </article>
+          <div class="projects-modal" id="project1">
+            <div class="projects-modal__overlay"></div>
+            <div class="projects-modal__dialog">
+              <button
+                class="projects-modal__close"
+                type="button"
+                aria-label="Закрыть"
+              >
+                <span></span>
+                <span></span>
+              </button>
+              <img
+                data-src="../image/autoZavoz/bmw5g30.webp"
+                src=""
+                width="100%"
+                alt="Проект сайта автомобили под заказ"
+                class="project-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="projects-modal__badge">autoZavoz19.ru</span>
+              <h3 class="projects-modal__title">Авто под заказ</h3>
+              <p class="projects-modal__description">
+                Япония, Корея, Китай. Под ключ — от профессионального выбора на
+                аукционе до доставки в ваш город с полным оформлением.
+              </p>
+              <p class="projects-modal__details">
+                КАК МЫ РАБОТАЕМ Процесс прозрачный от первой консультации до
+                вручения ключей.
+              </p>
+              <a
+                href="https://avtozavoz19.ru/"
+                class="projects-modal__link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Открыть сайт
+                <svg viewBox="0 0 24 24">
+                  <path d="M14 3h7v7"></path>
+                  <path d="M21 3l-9 9"></path>
+                  <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3-3v-4"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
 
-                        <div class="projects-modal" id="project1">
-                          <div class="projects-modal__overlay"></div>
-                          <div class="projects-modal__dialog">
-                            <button
-                              class="projects-modal__close"
-                              type="button"
-                              aria-label="Закрыть"
-                            >
-                              <span></span>
-                              <span></span>
-                            </button>
-                            <img
-                              data-src="../image/autoZavoz/bmw5g30.webp"
-                              src=""
-                              width="100%"
-                              alt="Проект сайта автомобили под заказ"
-                              class="project-image"
-                              loading="lazy"
-                              decoding="async"
-                            />
-                            <span class="projects-modal__badge">autoZavoz19.ru</span>
-                            <h3 class="projects-modal__title">Авто под заказ</h3>
-                            <p class="projects-modal__description">
-                              Япония, Корея, Китай. Под ключ — от профессионального выбора на
-                              аукционе до доставки в ваш город с полным оформлением.
-                            </p>
-                            <p class="projects-modal__details">
-                              КАК МЫ РАБОТАЕМ Процесс прозрачный от первой консультации до
-                              вручения ключей.
-                            </p>
-                            <a
-                              href="https://avtozavoz19.ru/"
-                              class="projects-modal__link"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Открыть сайт
-                              <svg viewBox="0 0 24 24">
-                                <path d="M14 3h7v7"></path>
-                                <path d="M21 3l-9 9"></path>
-                                <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3-3v-4"></path>
-                              </svg>
-                            </a>
-                          </div>
-                        </div>
+          <!-- samir action -->
+          <!-- SAMIR WRESTLING -->
+          <article class="project-card" data-modal="project2">
+            <div class="project-card__preview project-card__preview--samir">
+              <img
+                src="../image/samirWrestling/hero.webp"
+                height="200"
+                width="100%"
+                alt="Сайт Samir Wrestling"
+                class="project-image project-image--samir"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="project-card__badge">Samir Wrestling</span>
+            </div>
 
-            <!-- samir action -->
+            <div class="project-card__content">
+              <h3>Samir Wrestling</h3>
+              <p>
+                Качество, комфорт и свобода движений для максимального
+                результата в каждой схватке.
+              </p>
+            </div>
+          </article>
 
-             <article class="project-card" data-modal="project2">
-                  <div class="project-card__preview project-card__preview--darkblue">
-                    <img
-                      src="../image/samirWrestling/hero.webp"
-                      height="200"
-                      width="100%"
-                      alt="УДАЛЕНИЕ КАТАЛИЗАТОРА"
-                      class="project-image"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <span class="project-card__badge">samir wrestling</span>
-                  </div>
-                  <div class="project-card__content">
-                    <h3>samir wrestling</h3>
-                    <p>
-                      samir wrestling — Качество, комфорт и свобода движений для максимального результата в каждой схватке.
-                  </div>
-                </article>
+          <div class="projects-modal" id="project2">
+            <div class="projects-modal__overlay"></div>
 
-                <div class="projects-modal" id="project2">
-                  <div class="projects-modal__overlay"></div>
-                  <div class="projects-modal__dialog">
-                    <button
-                      class="projects-modal__close"
-                      type="button"
-                      aria-label="Закрыть"
-                    >
-                      <span></span>
-                      <span></span>
-                    </button>
-                    <img
-                      data-src="../image/samirWrestling/hero.webp"
-                      src=""
-                      height="200"
-                      width="100%"
-                      alt="Проект интерфейсного слайдера"
-                      class="project-image"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <span class="projects-modal__badge">samir wrestling</span>
-                    <h3 class="projects-modal__title">samir wrestling</h3>
-                    <p class="projects-modal__description"></p>
-                    <p class="projects-modal__details">
-                      samir wrestling — это профессиональный сервис по проведению боев
-                      и тренировок по вольной борьбе. Предоставление качественного
-                      обучения и подготовки спортсменов.
-                    </p>
-                    <a
-                      href="https://samir-wrestling.ru/"
-                      class="projects-modal__link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Открыть сайт
-                      <svg viewBox="0 0 24 24">
-                        <path d="M14 3h7v7"></path>
-                        <path d="M21 3l-9 9"></path>
-                        <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3-3v-4"></path>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
+            <div class="projects-modal__dialog">
+              <button
+                class="projects-modal__close"
+                type="button"
+                aria-label="Закрыть"
+              >
+                <span></span>
+                <span></span>
+              </button>
 
-                      <!-- RioCar -->
+              <img
+                data-src="../image/samirWrestling/hero.webp"
+                src=""
+                height="200"
+                width="100%"
+                alt="Проект сайта Samir Wrestling"
+                class="project-image project-image--samir"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <span class="projects-modal__badge">Samir Wrestling</span>
+
+              <h3 class="projects-modal__title">Samir Wrestling</h3>
+
+              <p class="projects-modal__details">
+                Samir Wrestling — сайт для спортивного направления по вольной
+                борьбе: тренировки, подготовка спортсменов, мероприятия и
+                развитие спортивного бренда.
+              </p>
+
+              <a
+                href="https://samir-wrestling.ru/"
+                class="projects-modal__link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Открыть сайт
+                <svg viewBox="0 0 24 24">
+                  <path d="M14 3h7v7"></path>
+                  <path d="M21 3l-9 9"></path>
+                  <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3-3v-4"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- RioCar -->
+
           <article class="project-card" data-modal="project3">
             <div class="project-card__preview project-card__preview--slider">
               <img
@@ -620,7 +624,7 @@
             </div>
           </div>
 
-                 <!-- AUTO CAT SERVICE -->
+          <!-- AUTO CAT SERVICE -->
 
           <article class="project-card" data-modal="project4">
             <div class="project-card__preview project-card__preview--darkblue">
@@ -641,7 +645,54 @@
             </div>
           </article>
 
-
+          <div class="projects-modal" id="project4">
+            <div class="projects-modal__overlay"></div>
+            <div class="projects-modal__dialog">
+              <button
+                class="projects-modal__close"
+                type="button"
+                aria-label="Закрыть"
+              >
+                <span></span>
+                <span></span>
+              </button>
+              <img
+                data-src="../image/AKS service/фон.webp"
+                src=""
+                width="100%"
+                alt="Проект сайта автомобили под заказ"
+                class="project-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="projects-modal__badge">autocat-abakan.ru</span>
+              <h3 class="projects-modal__title">autocat-abakan</h3>
+              <p class="projects-modal__description">
+                Удаление и замена катализаторов, прошивка под Евро-2,
+                диагностика, слесарный ремонт, техническое обслуживание и ремонт
+                двигателя в Абакане. Работаем честно, качественно и без скрытых
+                платежей.
+              </p>
+              <p class="projects-modal__details">
+                Машина троит? Горит Check Engine? Увеличился расход топлива?
+                Выполним удаление катализатора, устраним ошибки и предложим
+                оптимальное решение под ваш автомобиль.
+              </p>
+              <a
+                href="https://autocat-abakan.ru/index.html"
+                class="projects-modal__link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Открыть сайт
+                <svg viewBox="0 0 24 24">
+                  <path d="M14 3h7v7"></path>
+                  <path d="M21 3l-9 9"></path>
+                  <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3-3v-4"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
 
           <!-- CAR life -->
           <article class="project-card" data-modal="project5">
@@ -716,7 +767,7 @@
             </div>
           </div>
 
-               <!-- TANY HAIR -->
+          <!-- TANY HAIR -->
 
           <article class="project-card" data-modal="project6">
             <div class="project-card__preview project-card__preview--darkblue">
@@ -870,7 +921,6 @@
             <div class="project-card__preview project-card__preview--darkblue">
               <img
                 src="../image/shumdevKanban/image_2026-04-23_12-21-25.webp"
-
                 height="200"
                 width="100%"
                 alt="УДАЛЕНИЕ КАТАЛИЗАТОРА"
@@ -1006,7 +1056,7 @@
             </div>
           </div>
 
-                 <!-- содружество -->
+          <!-- содружество -->
           <article class="project-card" data-modal="project11">
             <div class="project-card__preview project-card__preview--sport">
               <img
@@ -1080,7 +1130,7 @@
             </div>
           </div>
 
-    <!-- Bronx -->
+          <!-- Bronx -->
           <article class="project-card" data-modal="project12">
             <div class="project-card__preview project-card__preview--YouTalk">
               <img
@@ -1103,7 +1153,7 @@
             </div>
           </article>
 
-          <div class="projects-modal" id="projec12">
+          <div class="projects-modal" id="project12">
             <div class="projects-modal__overlay"></div>
             <div class="projects-modal__dialog">
               <button
@@ -1152,9 +1202,6 @@
               </a>
             </div>
           </div>
-
-              </div>
-            </div>
         </div>
       </div>
     </section>
@@ -1340,7 +1387,8 @@
         <div class="footer-links">
           <a href="../../index.html" class="footer-link">Главная</a>
           <a href="../pages/services.html" class="footer-link">Услуги</a>
-          <a href="#home" class="footer-link">Проекты</a>
+          <a href="../pages/Price.html" class="footer-link">Проекты</a>
+          <a href="../pages/company.html" class="footer-link">О компании</a>
           <a href="#contact" class="footer-link">Контакты</a>
           <a href="../public-offer.html" target="_blank" class="footer-link">
             Публичная оферта

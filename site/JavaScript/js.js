@@ -494,59 +494,59 @@ if (window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// ========== HERO CARDS PREMIUM ANIMATION ==========
+// // ========== HERO CARDS PREMIUM ANIMATION ==========
 
-const hero = document.querySelector('.hero');
-const heroCards = document.querySelectorAll('.hero-card');
+// const hero = document.querySelector('.hero');
+// const heroCards = document.querySelectorAll('.hero-card');
 
-if (hero && heroCards.length) {
+// if (hero && heroCards.length) {
 
-    gsap.from(heroCards, {
-        y: 80,
-        opacity: 0,
-        scale: 0.82,
-        duration: 1.2,
-        stagger: 0.16,
-        ease: 'power3.out',
-        delay: 0.4
-    });
+//     gsap.from(heroCards, {
+//         y: 80,
+//         opacity: 0,
+//         scale: 0.82,
+//         duration: 1.2,
+//         stagger: 0.16,
+//         ease: 'power3.out',
+//         delay: 0.4
+//     });
 
-    let mouseX = 0;
-    let mouseY = 0;
+//     let mouseX = 0;
+//     let mouseY = 0;
 
-    let currentX = 0;
-    let currentY = 0;
+//     let currentX = 0;
+//     let currentY = 0;
 
-    hero.addEventListener('mousemove', (event) => {
-        const rect = hero.getBoundingClientRect();
+//     hero.addEventListener('mousemove', (event) => {
+//         const rect = hero.getBoundingClientRect();
 
-        mouseX = (event.clientX - rect.left) / rect.width - 0.5;
-        mouseY = (event.clientY - rect.top) / rect.height - 0.5;
-    });
+//         mouseX = (event.clientX - rect.left) / rect.width - 0.5;
+//         mouseY = (event.clientY - rect.top) / rect.height - 0.5;
+//     });
 
-    hero.addEventListener('mouseleave', () => {
-        mouseX = 0;
-        mouseY = 0;
-    });
+//     hero.addEventListener('mouseleave', () => {
+//         mouseX = 0;
+//         mouseY = 0;
+//     });
 
-    function animateHeroCards() {
-        currentX += (mouseX - currentX) * 0.08;
-        currentY += (mouseY - currentY) * 0.08;
+//     function animateHeroCards() {
+//         currentX += (mouseX - currentX) * 0.08;
+//         currentY += (mouseY - currentY) * 0.08;
 
-        heroCards.forEach((card) => {
-            const depth = Number(card.dataset.depth) || 1;
+//         heroCards.forEach((card) => {
+//             const depth = Number(card.dataset.depth) || 1;
 
-            const moveX = currentX * 45 * depth;
-            const moveY = currentY * 35 * depth;
+//             const moveX = currentX * 45 * depth;
+//             const moveY = currentY * 35 * depth;
 
-            card.style.translate = `${moveX}px ${moveY}px`;
-        });
+//             card.style.translate = `${moveX}px ${moveY}px`;
+//         });
 
-        requestAnimationFrame(animateHeroCards);
-    }
+//         requestAnimationFrame(animateHeroCards);
+//     }
 
-    animateHeroCards();
-}
+//     animateHeroCards();
+// }
 
 // const teamSection = document.querySelector('.team');
 // const teamHeader = document.querySelector('.team__header');
@@ -617,6 +617,189 @@ if (hero && heroCards.length) {
 //         });
 //     });
 // });
+
+// ========== HERO CARDS PREMIUM ANIMATION ==========
+
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+function initHeroCardsAnimation(options) {
+  const {
+    sectionSelector,
+    cardSelector,
+    introSelector,
+    featureSelector,
+    cardMoveX = 45,
+    cardMoveY = 35,
+    introDelay = 0.12,
+    cardsDelay = 0.4,
+    featuresDelay = 0.75,
+  } = options;
+
+  const section = document.querySelector(sectionSelector);
+  const cards = document.querySelectorAll(cardSelector);
+  const features = document.querySelectorAll(featureSelector);
+
+  if (!section) return;
+
+  if (window.gsap) {
+    if (introSelector) {
+      gsap.from(introSelector, {
+        y: 34,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.08,
+        ease: 'power3.out',
+        delay: introDelay,
+      });
+    }
+
+    if (cards.length) {
+      gsap.from(cards, {
+        y: 80,
+        opacity: 0,
+        scale: 0.82,
+        duration: 1.2,
+        stagger: 0.16,
+        ease: 'power3.out',
+        delay: cardsDelay,
+      });
+    }
+
+    if (features.length) {
+      gsap.from(features, {
+        y: 26,
+        opacity: 0,
+        duration: 0.85,
+        stagger: 0.1,
+        ease: 'power3.out',
+        delay: featuresDelay,
+      });
+    }
+  }
+
+  if (!cards.length) return;
+
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (!canHover) return;
+
+  let mouseX = 0;
+  let mouseY = 0;
+  let currentX = 0;
+  let currentY = 0;
+
+  section.addEventListener('mousemove', (event) => {
+    const rect = section.getBoundingClientRect();
+
+    mouseX = (event.clientX - rect.left) / rect.width - 0.5;
+    mouseY = (event.clientY - rect.top) / rect.height - 0.5;
+  });
+
+  section.addEventListener('mouseleave', () => {
+    mouseX = 0;
+    mouseY = 0;
+  });
+
+  function animateCards() {
+    currentX += (mouseX - currentX) * 0.08;
+    currentY += (mouseY - currentY) * 0.08;
+
+    cards.forEach((card) => {
+      const depth = Number(card.dataset.depth) || 1;
+
+      const moveX = currentX * cardMoveX * depth;
+      const moveY = currentY * cardMoveY * depth;
+
+      card.style.translate = `${moveX}px ${moveY}px`;
+    });
+
+    requestAnimationFrame(animateCards);
+  }
+
+  animateCards();
+}
+
+// Главная страница
+initHeroCardsAnimation({
+  sectionSelector: '.hero',
+  cardSelector: '.hero-card',
+  introSelector: null,
+  featureSelector: '.hero-feature',
+});
+
+// Страница "О компании"
+initHeroCardsAnimation({
+  sectionSelector: '.company-hero',
+  cardSelector: '.company-hero-card',
+  introSelector:
+    '.company-hero__badge, .company-hero__title-line, .company-hero__description, .company-hero__actions',
+  featureSelector: '.company-hero-feature',
+});
+
+// ========== COMPANY TEAM ANIMATION ==========
+
+const companyTeamSection = document.querySelector('.company-team');
+const companyTeamHeader = document.querySelector('.company-team__header');
+const companyTeamCards = document.querySelectorAll('.company-team-card');
+const companyTeamStack = document.querySelector('.company-team-stack');
+
+if (companyTeamSection && window.gsap) {
+  if (window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  const companyTeamElements = [
+    companyTeamHeader,
+    ...companyTeamCards,
+    companyTeamStack,
+  ].filter(Boolean);
+
+  gsap.set(companyTeamElements, {
+    opacity: 0,
+    y: 44,
+  });
+
+  const companyTeamTl = gsap.timeline({
+    scrollTrigger: window.ScrollTrigger
+      ? {
+          trigger: companyTeamSection,
+          start: 'top 72%',
+          once: true,
+        }
+      : undefined,
+  });
+
+  companyTeamTl
+    .to(companyTeamHeader, {
+      opacity: 1,
+      y: 0,
+      duration: 0.9,
+      ease: 'power3.out',
+    })
+    .to(
+      companyTeamCards,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.95,
+        stagger: 0.12,
+        ease: 'power3.out',
+      },
+      '-=0.42'
+    )
+    .to(
+      companyTeamStack,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.75,
+        ease: 'power3.out',
+      },
+      '-=0.48'
+    );
+}
 
 // ========== КОНТАКТНАЯ ФОРМА ==========
 const contactForm = document.getElementById('contactForm');
