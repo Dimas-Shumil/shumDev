@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Allow: /site/pages/company.html
 
 Disallow: /api/
 Disallow: /node_modules/
