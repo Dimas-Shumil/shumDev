@@ -17,7 +17,8 @@ function cliValue(name) {
 }
 
 const app = express();
-const HOST = cliValue("--host") || process.env.HOST || "0.0.0.0";
+const defaultHost = process.env.NODE_ENV === "production" ? "127.0.0.1" : "0.0.0.0";
+const HOST = cliValue("--host") || process.env.HOST || defaultHost;
 const PORT = Number(cliValue("--port") || process.env.PORT || 3000);
 const root = __dirname;
 
@@ -100,18 +101,31 @@ app.get("/health", async (req, res) => {
     }
 });
 
-app.use(express.static(root, {
-    index: "index.html",
+const publicStaticOptions = {
     maxAge: process.env.NODE_ENV === "production" ? "1h" : 0,
+    dotfiles: "deny",
+    index: false,
     setHeaders(res, filePath) {
         if (filePath.endsWith(".html")) res.setHeader("Cache-Control", "no-cache");
     },
-}));
-app.use("/site", express.static(path.join(root, "site")));
+};
+
+app.get(["/", "/index.html"], (req, res) => {
+    res.setHeader("Cache-Control", "no-cache");
+    return res.sendFile(path.join(root, "index.html"));
+});
+app.get("/robots.txt", (req, res) => res.sendFile(path.join(root, "robots.txt")));
+app.get("/sitemap.xml", (req, res) => res.sendFile(path.join(root, "sitemap.xml")));
+app.use("/site/css", express.static(path.join(root, "site", "css"), publicStaticOptions));
+app.use("/site/image", express.static(path.join(root, "site", "image"), publicStaticOptions));
+app.use("/site/JavaScript", express.static(path.join(root, "site", "JavaScript"), publicStaticOptions));
+app.use("/site/pages", express.static(path.join(root, "site", "pages"), publicStaticOptions));
+app.get("/site/privacy-policy.html", (req, res) => res.sendFile(path.join(root, "site", "privacy-policy.html")));
+app.get("/site/public-offer.html", (req, res) => res.sendFile(path.join(root, "site", "public-offer.html")));
 
 app.use((req, res) => {
     if (req.path.startsWith("/api/")) return res.status(404).json({ success: false, message: "Маршрут не найден" });
-    return res.status(404).sendFile(path.join(root, "404.html"));
+    return res.status(404).type("text").send("Страница не найдена");
 });
 
 app.use((error, req, res, next) => {
