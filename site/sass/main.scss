@@ -1121,7 +1121,9 @@ body.menu-open {
     }
   }
 }
+
 // Hero Section
+
 .hero {
   position: relative;
   min-height: calc(100vh - 104px);
@@ -1961,9 +1963,20 @@ body.menu-open {
   }
 
   @media (max-width: 576px) {
+    height: 100svh;
     min-height: 100svh;
+    max-height: 100svh;
+
+    &__media {
+      height: 100%;
+    }
 
     &__container {
+      width: 100%;
+      height: 100%;
+      height: 100%;
+      min-height: 0;
+
       padding-top: 82px;
       padding-left: 24px;
       padding-right: 24px;
@@ -1971,6 +1984,8 @@ body.menu-open {
     }
 
     &__bg {
+      width: 100%;
+      height: 100%;
       object-position: 50% 92%;
       filter: brightness(1) contrast(1.08) saturate(1.08);
       transform: scale(1.1);
@@ -7509,9 +7524,18 @@ textarea.form-control {
 }
 @media (max-width: 576px) {
   .company-hero {
-    min-height: 95svh;
+    height: 100svh;
+    min-height: 100svh;
+    max-height: 100svh;
+
+    &__media {
+      height: 100%;
+    }
 
     &__container {
+      height: 100%;
+      min-height: 0;
+
       padding-top: 82px;
       padding-left: 24px;
       padding-right: 24px;
