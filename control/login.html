@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Вход — ShumDev Control</title>
+  <link rel="icon" href="/site/image/circle-logo.webp">
+  <link rel="stylesheet" href="/control/vendor/tabler/tabler-icons.min.css">
+  <link rel="stylesheet" href="/control/assets/control.css">
+</head>
+<body class="control-login">
+  <main class="login-shell">
+    <section class="login-panel" aria-labelledby="login-title">
+      <div class="brand brand--login">
+        <span class="brand__mark">SD</span>
+        <span class="brand__copy"><b>ShumDev Control</b><small>Внутренняя система команды</small></span>
+      </div>
+      <div class="login-panel__intro">
+        <span class="eyebrow"><i class="ti ti-shield-lock"></i> Защищённый доступ</span>
+        <h1 id="login-title">С возвращением</h1>
+        <p>Войдите, чтобы управлять проектами, задачами, заявками и временем команды.</p>
+      </div>
+      <form id="login-form" class="form-stack" novalidate>
+        <label class="field">
+          <span>Email</span>
+          <span class="input-wrap"><i class="ti ti-mail"></i><input type="email" name="email" autocomplete="username" placeholder="name@shumdev.ru" required></span>
+        </label>
+        <label class="field">
+          <span>Пароль</span>
+          <span class="input-wrap"><i class="ti ti-lock"></i><input id="password" type="password" name="password" autocomplete="current-password" placeholder="••••••••••••" minlength="12" required><button class="icon-btn icon-btn--inside" type="button" id="toggle-password" aria-label="Показать пароль"><i class="ti ti-eye"></i></button></span>
+        </label>
+        <div id="login-error" class="form-error" role="alert" hidden></div>
+        <button class="button button--primary button--wide" type="submit"><span>Войти в Control</span><i class="ti ti-arrow-right"></i></button>
+      </form>
+      <p class="login-panel__note"><i class="ti ti-info-circle"></i> Первый аккаунт создаётся командой <code>npm run create-owner</code>.</p>
+    </section>
+    <aside class="login-visual" aria-label="Возможности ShumDev Control">
+      <div class="login-visual__glow"></div>
+      <div class="login-orbit login-orbit--one"></div>
+      <div class="login-orbit login-orbit--two"></div>
+      <div class="preview-stack">
+        <div class="preview-card preview-card--main">
+          <span class="preview-card__icon preview-card__icon--purple"><i class="ti ti-layout-dashboard"></i></span>
+          <div><small>В центре внимания</small><strong>Вся работа команды<br>в одном месте</strong></div>
+        </div>
+        <div class="preview-card preview-card--tasks"><span><i class="ti ti-circle-check"></i> Задачи на сегодня</span><b>14</b><small>6 уже в работе</small></div>
+        <div class="preview-card preview-card--timer"><small>Активный таймер</small><b>01:24:36</b><span><i class="ti ti-player-play-filled"></i> Давид работает</span></div>
+      </div>
+    </aside>
+  </main>
+  <script src="/control/assets/login.js" defer></script>
+</body>
+</html>

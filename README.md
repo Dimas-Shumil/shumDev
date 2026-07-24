@@ -1,157 +1,94 @@
-# 🚀 ShumDev — Web Development Portfolio & Lead Generation Platform
+# ShumDev + ShumDev Control
 
-ShumDev — это современный веб-проект, который объединяет:
+Готовый сайт ShumDev и отдельная внутренняя система команды. Публичная часть
+осталась независимой: новый блок «Над чем сейчас мы работаем» — статический и не
+редактируется через админку. Control доступен по `/control/`.
 
-* 💼 портфолио разработчика
-* 📩 систему сбора заявок (lead generation)
-* ⚙️ backend на Node.js (Express)
-* 🔍 SEO-оптимизированную структуру
+## Что реализовано
 
-Проект ориентирован на реальные задачи бизнеса: привлечение клиентов, обработка заявок и масштабирование.
+- роли `OWNER`, `MANAGER`, `STAFF` и серверная проверка прав;
+- безопасные сессии в HttpOnly-cookie, CSRF-защита и ограничение попыток входа;
+- заявки с сайта сохраняются в SQLite до отправки email;
+- проекты, участники, этапы, сроки и прогресс;
+- назначенные и свободные задачи, атомарное взятие задачи сотрудником;
+- карточка задачи: описание, результат, чек-лист, комментарии, вложения, история;
+- один активный таймер на сотрудника, ручные записи времени для руководителей;
+- лента действий, уведомления и глобальный поиск;
+- адаптивные экраны для компьютера, планшета и телефона;
+- приватные вложения: они выдаются только после проверки доступа к задаче.
 
----
+## Локальный запуск
 
-## 🌐 Live Demo
-
-👉 https://shumdev.ru/ 
-
----
-
-## 🧠 Архитектура проекта
-
-### Frontend
-
-* HTML5 + SCSS (модульная структура)
-* Vanilla JavaScript
-* Адаптивная верстка (mobile-first)
-
-### Backend
-
-* Node.js + Express
-* REST API (обработка форм)
-* SMTP (отправка писем через Nodemailer)
-* Rate Limiting (защита от спама)
-* Валидация и санитизация данных
-
----
-
-## ⚙️ Основной функционал
-
-* 📩 Форма обратной связи
-* 🛡️ Защита от спама (honeypot + rate limit)
-* 📧 Отправка заявок на email
-* 🔍 SEO (robots.txt, sitemap.xml)
-* 🧪 Healthcheck endpoint `/health`
-
----
-
-## 🗂️ Структура проекта
-
-```
-shumDev/
-├── site/              # frontend (HTML, SCSS, JS)
-├── server.js          # backend (Express сервер)
-├── .env               # переменные окружения
-├── robots.txt         # SEO
-├── sitemap.xml        # SEO
-├── package.json
-```
-
----
-
-## 🚀 Быстрый старт
-
-### 1. Клонирование проекта
+Требуется Node.js 20 LTS или 22 LTS. Node.js 24 тоже поддерживается приложением,
+но для production рекомендуется LTS.
 
 ```bash
-git clone https://github.com/Dimas-Shumil/shumDev.git
-cd shumDev
+npm ci
+copy .env.example .env
+npm run prisma:generate
+npm run prisma:deploy
+npm run create-owner
+npm run build:css
+npm start
 ```
 
-### 2. Установка зависимостей
+На macOS/Linux вместо `copy`:
 
 ```bash
-npm install
+cp .env.example .env
 ```
 
-### 3. Настройка .env
+Перед запуском обязательно задайте в `.env`:
 
-Создай файл `.env`:
+- `DATABASE_URL="file:./production.db"`;
+- случайный `SESSION_SECRET` длиной не менее 32 символов;
+- SMTP-параметры, если нужны email-уведомления о заявках.
 
-```env
-PORT=5000
+После создания OWNER:
 
-SMTP_HOST=smtp.yourmail.com
-SMTP_PORT=465
-SMTP_USER=your@email.com
-SMTP_PASS=yourpassword
-SMTP_TO=your@email.com
-```
+- сайт: `http://localhost:3000/`;
+- Control: `http://localhost:3000/control/`;
+- проверка сервера и БД: `http://localhost:3000/health`.
 
-### 4. Запуск проекта
-
-```bash
-node server.js
-```
-
-или (рекомендуется):
+## Команды
 
 ```bash
 npm run dev
+npm run build:css
+npm test
+npm audit
+npm run prisma:deploy
+npm run create-owner
 ```
 
----
+Демо-данные удаляют текущие данные и поэтому включаются только явно:
 
-## 🔐 Безопасность
+```bash
+set ALLOW_DEMO_SEED=true
+set DEMO_PASSWORD=your-long-demo-password
+npm run seed:demo
+```
 
-* Ограничение количества запросов (rate limit)
-* Honeypot-поле для защиты от ботов
-* Валидация email
-* Санитизация HTML
-* Ограничение размера тела запроса
+## Production: PM2 + Nginx
 
----
+1. Скопируйте проект на сервер и создайте production `.env`.
+2. Выполните `npm ci --omit=dev`, `npm run prisma:generate`,
+   `npm run prisma:deploy`.
+3. Соберите CSS до `npm ci --omit=dev` либо установите dev-зависимости на этапе
+   сборки.
+4. Запустите `pm2 start ecosystem.config.cjs` и `pm2 save`.
+5. Возьмите конфигурацию из `deploy/nginx-shumdev.conf`, проверьте пути к
+   сертификатам и выполните `nginx -t` перед перезагрузкой Nginx.
 
-## 📈 SEO
+SQLite-файл и каталог `uploads/control` должны быть доступны на запись
+пользователю PM2. Делайте резервную копию обоих. Не публикуйте `.env`, базу,
+загрузки или резервные копии через веб-сервер.
 
-* robots.txt
-* sitemap.xml
-* SSR-ready структура (под расширение)
-* Чистые URL
+## Безопасность
 
----
-
-## 💡 Планы развития
-
-* [ ] Перевод фронта на Next.js
-* [ ] Добавление блога (SEO трафик)
-* [ ] Подключение аналитики (Google Analytics / Yandex Metrika)
-* [ ] Интеграция CRM
-* [ ] UI улучшения (анимации, UX)
-* [ ] API для управления заявками
-
----
-
-## 🧠 Чему учит проект
-
-* Построение fullstack-приложения
-* Работа с формами и SMTP
-* Защита backend
-* SEO-основа
-* Архитектура проекта
-
----
-
-## 👨‍💻 Автор
-
-Dimas Shumil
-Frontend / Fullstack Developer
-PabloAlligator
-Frontend / Fullstack Developer
-
-GitHub: https://github.com/Dimas-Shumil
-
----
-
-## ⭐ Если проект полезен — поставь звезду
-
+- Не используйте `npm audit fix --force` без отдельного тестирования.
+- После смены зависимостей выполните `npm audit`, `npm test` и ручной smoke-test.
+- Пароли хешируются `bcrypt` с cost 12; исходные пароли не сохраняются.
+- Для удаления/отключения сотрудника используйте OWNER-аккаунт.
+- Control закрыт от индексации HTTP-заголовком и `robots.txt`, но это не замена
+  аутентификации — доступ проверяется на сервере.

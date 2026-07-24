@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>ShumDev Control</title>
+  <link rel="icon" href="/site/image/circle-logo.webp">
+  <link rel="stylesheet" href="/control/vendor/tabler/tabler-icons.min.css">
+  <link rel="stylesheet" href="/control/assets/control.min.css">
+</head>
+<body class="control-app">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#/overview" aria-label="ShumDev Control">
+        <span class="brand__mark">SD</span><span class="brand__copy"><b>ShumDev Control</b><small>Внутренняя система</small></span>
+      </a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#/overview" data-route="overview"><i class="ti ti-home"></i><span>Обзор</span></a>
+        <a href="#/leads" data-route="leads" data-manager><i class="ti ti-file-description"></i><span>Заявки</span><em id="nav-leads"></em></a>
+        <a href="#/projects" data-route="projects"><i class="ti ti-folder"></i><span>Проекты</span></a>
+        <a href="#/tasks" data-route="tasks"><i class="ti ti-square-check"></i><span>Задачи</span></a>
+        <a href="#/team" data-route="team"><i class="ti ti-users"></i><span>Команда</span></a>
+        <a href="#/time" data-route="time"><i class="ti ti-clock"></i><span>Учёт времени</span></a>
+        <a href="#/activity" data-route="activity"><i class="ti ti-activity"></i><span>Активность</span></a>
+        <a href="#/settings" data-route="settings"><i class="ti ti-settings"></i><span>Настройки</span></a>
+      </nav>
+      <div class="sidebar__footer">
+        <button class="profile-chip" id="profile-menu" type="button">
+          <span class="avatar" id="sidebar-avatar">ПШ</span>
+          <span><b id="sidebar-name">Павел Шумилов</b><small id="sidebar-role">OWNER</small></span>
+          <i class="ti ti-chevron-up"></i>
+        </button>
+        <div class="profile-popover" id="profile-popover" hidden>
+          <a href="#/settings"><i class="ti ti-user-cog"></i> Профиль и безопасность</a>
+          <button type="button" id="logout"><i class="ti ti-logout"></i> Выйти</button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="app-content">
+      <header class="topbar">
+        <button class="icon-btn topbar__menu" id="mobile-menu" type="button" aria-label="Открыть меню"><i class="ti ti-menu-2"></i></button>
+        <div class="search">
+          <i class="ti ti-search"></i>
+          <input id="global-search" type="search" placeholder="Поиск по системе" autocomplete="off">
+          <kbd>⌘ K</kbd>
+          <div class="search-results" id="search-results" hidden></div>
+        </div>
+        <div class="topbar__actions">
+          <button class="icon-btn notification-button" id="notification-button" type="button" aria-label="Уведомления"><i class="ti ti-bell"></i><span id="notification-dot" hidden></span></button>
+          <span class="topbar__avatar avatar" id="topbar-avatar">ПШ</span>
+          <button class="button button--primary" type="button" id="quick-task" data-manager><i class="ti ti-plus"></i><span>Создать задачу</span></button>
+        </div>
+        <div class="notifications-popover" id="notifications-popover" hidden></div>
+      </header>
+
+      <main class="main" id="main" tabindex="-1">
+        <div class="page-loading"><span class="loader"></span><p>Загружаем рабочее пространство…</p></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <div class="modal-root" id="modal-root"></div>
+  <div class="toast-root" id="toast-root" aria-live="polite"></div>
+  <script src="/control/assets/control.js" defer></script>
+</body>
+</html>

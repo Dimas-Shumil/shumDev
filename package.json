@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "description": "ShumDev backend",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "build:public-css": "sass site/sass/main.scss site/css/main.css --style=expanded --source-map && sass site/sass/main.scss site/css/main.min.css --style=compressed --no-source-map",
+    "build:control-css": "sass control/assets/control.scss control/assets/control.css --style=compressed --no-source-map",
+    "build:css": "npm run build:public-css && npm run build:control-css",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:deploy": "prisma migrate deploy",
+    "create-owner": "node scripts/create-owner.js",
+    "test": "node --test"
   },
   "engines": {
     "node": ">=18"
@@ -20,10 +27,19 @@
   "author": "ShumDev",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
+    "@prisma/client": "6.19.3",
+    "@tabler/icons-webfont": "^3.34.1",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "express-rate-limit": "^8.3.2",
+    "helmet": "^8.1.0",
+    "multer": "^2.0.2",
     "nodemailer": "^9.0.3"
+  },
+  "devDependencies": {
+    "prisma": "6.19.3",
+    "sass": "^1.89.2"
   }
 }
