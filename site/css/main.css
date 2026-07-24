@@ -1360,12 +1360,18 @@ body.menu-open {
     max-height: 100svh;
   }
   .hero__media {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+  }
+  .hero__media picture {
+    width: 100%;
     height: 100%;
   }
   .hero__container {
     width: 100%;
     height: 100%;
-    height: 100%;
+    max-height: 100%;
     min-height: 0;
     padding-top: 82px;
     padding-left: 24px;
@@ -1375,9 +1381,11 @@ body.menu-open {
   .hero__bg {
     width: 100%;
     height: 100%;
+    max-height: 100%;
+    object-fit: cover;
     object-position: 50% 92%;
     filter: brightness(1) contrast(1.08) saturate(1.08);
-    transform: scale(1.1);
+    transform: none;
   }
   .hero .hero-badge {
     margin-bottom: 10px;
@@ -5573,10 +5581,18 @@ textarea.form-control {
     max-height: 100svh;
   }
   .company-hero__media {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+  }
+  .company-hero__media picture {
+    width: 100%;
     height: 100%;
   }
   .company-hero__container {
+    width: 100%;
     height: 100%;
+    max-height: 100%;
     min-height: 0;
     padding-top: 82px;
     padding-left: 24px;
@@ -5584,9 +5600,13 @@ textarea.form-control {
     padding-bottom: 30px;
   }
   .company-hero__bg {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: cover;
     object-position: 50% 92%;
     filter: brightness(1) contrast(1.08) saturate(1.08);
-    transform: scale(1.1);
+    transform: none;
   }
   .company-hero__overlay {
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.42) 42%, rgba(0, 0, 0, 0.12) 100%), linear-gradient(180deg, rgba(3, 7, 18, 0.42) 0%, rgba(3, 7, 18, 0.08) 48%, rgba(3, 7, 18, 0.92) 100%);

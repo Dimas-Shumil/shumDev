@@ -1968,13 +1968,20 @@ body.menu-open {
     max-height: 100svh;
 
     &__media {
+      width: 100%;
       height: 100%;
+      max-height: 100%;
+
+      picture {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     &__container {
       width: 100%;
       height: 100%;
-      height: 100%;
+      max-height: 100%;
       min-height: 0;
 
       padding-top: 82px;
@@ -1986,9 +1993,11 @@ body.menu-open {
     &__bg {
       width: 100%;
       height: 100%;
+      max-height: 100%;
+      object-fit: cover;
       object-position: 50% 92%;
       filter: brightness(1) contrast(1.08) saturate(1.08);
-      transform: scale(1.1);
+      transform: none;
     }
 
     .hero-badge {
@@ -7529,11 +7538,20 @@ textarea.form-control {
     max-height: 100svh;
 
     &__media {
+      width: 100%;
       height: 100%;
+      max-height: 100%;
+
+      picture {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     &__container {
+      width: 100%;
       height: 100%;
+      max-height: 100%;
       min-height: 0;
 
       padding-top: 82px;
@@ -7543,9 +7561,13 @@ textarea.form-control {
     }
 
     &__bg {
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      object-fit: cover;
       object-position: 50% 92%;
       filter: brightness(1) contrast(1.08) saturate(1.08);
-      transform: scale(1.1);
+      transform: none;
     }
 
     &__overlay {
