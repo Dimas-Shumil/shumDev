@@ -88,7 +88,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="site/css/main.css" />
+    <link rel="stylesheet" href="/site/css/main.min.css" />
 
     <script type="application/ld+json">
       {
@@ -443,90 +443,124 @@
       </div>
     </section>
 
-    <!-- Current Work Section -->
-    <section class="current-work" aria-labelledby="current-work-title">
+    <section class="preview" aria-labelledby="preview-title">
       <div class="container">
-        <div class="current-work__heading">
-          <div>
-            <span class="current-work__eyebrow">Проекты в работе</span>
-            <h2 id="current-work-title">Над чем сейчас мы работаем</h2>
+        <header class="preview__header">
+          <div class="preview__heading">
+            <span class="preview__label">Проекты в работе</span>
+
+            <h2 class="preview__title" id="preview-title">
+              Над чем сейчас
+              <span>мы работаем</span>
+            </h2>
           </div>
-          <p>
-            Показываем реальную работу команды: от исследования и дизайна до
-            разработки, тестирования и запуска.
+
+          <p class="preview__description">
+            Показываем проекты, которые прямо сейчас проходят этапы дизайна,
+            разработки, тестирования и подготовки к запуску.
           </p>
-        </div>
+        </header>
 
-        <div class="current-work__grid">
-          <article class="current-work-card current-work-card--violet">
-            <div class="current-work-card__media">
+        <div class="preview__cards">
+          <article class="preview-card">
+            <div class="preview-card__image">
               <img
-                src="site/image/TanyHair/36cacc93-7f08-4deb-8ad8-e35018dc3a09.webp"
-                alt="Проект сайта «Культура волос»"
+                src="/site/image/nadia-hair.webp"
+                alt="Сайт студии «Культура волос»"
                 loading="lazy"
                 decoding="async"
               />
-              <span class="current-work-card__status">В разработке</span>
+
+              <span class="preview-card__status">Тестирование</span>
             </div>
-            <div class="current-work-card__body">
-              <span class="current-work-card__type">Сайт и каталог</span>
-              <h3>Культура волос</h3>
-              <p>
+
+            <div class="preview-card__content">
+              <div class="preview-card__top">
+                <span class="preview-card__category">
+                  Сайт · Каталог · Интернет-магазин
+                </span>
+                <span class="preview-card__number">01</span>
+              </div>
+
+              <h3 class="preview-card__title">Культура волос</h3>
+
+              <p class="preview-card__description">
                 Создаём премиальную digital-платформу с понятным каталогом,
-                сильной подачей услуг и удобным путём до записи.
+                сильной подачей услуг и удобным путём от знакомства до записи.
               </p>
-              <div class="current-work-card__footer">
+
+              <footer class="preview-card__footer">
                 <span>UX/UI · Frontend · SEO</span>
-                <span>Сейчас: разработка</span>
-              </div>
+                <span>Финальная проверка</span>
+              </footer>
             </div>
           </article>
 
-          <article class="current-work-card current-work-card--purple">
-            <div class="current-work-card__media">
+          <article class="preview-card">
+            <div class="preview-card__image">
               <img
-                src="site/image/hero-abstract.png"
-                alt="Проект PETRUHA19"
+                src="/site/image/landshaft-park.webp"
+                alt="Проект сайта «Ландшафт Парк»"
                 loading="lazy"
                 decoding="async"
               />
-              <span class="current-work-card__status">Тестирование</span>
+
+              <span class="preview-card__status">Разработка</span>
             </div>
-            <div class="current-work-card__body">
-              <span class="current-work-card__type">Цифровой продукт</span>
-              <h3>PETRUHA19</h3>
-              <p>
-                Доводим интерфейсы и сценарии продукта до стабильного релиза,
-                проверяем адаптивность, скорость и пользовательский путь.
-              </p>
-              <div class="current-work-card__footer">
-                <span>Product · QA · Development</span>
-                <span>Сейчас: проверка</span>
+
+            <div class="preview-card__content">
+              <div class="preview-card__top">
+                <span class="preview-card__category">
+                  Сайт · Услуги · Каталог
+                </span>
+                <span class="preview-card__number">02</span>
               </div>
+
+              <h3 class="preview-card__title">Ландшафт Парк</h3>
+
+              <p class="preview-card__description">
+                Проектируем структуру сайта и разрабатываем интерфейсы
+                категорий, каталога и основных посадочных страниц.
+              </p>
+
+              <footer class="preview-card__footer">
+                <span>UX/UI · Frontend</span>
+                <span>Каталог и категории</span>
+              </footer>
             </div>
           </article>
 
-          <article class="current-work-card current-work-card--blue">
-            <div class="current-work-card__media">
+          <article class="preview-card">
+            <div class="preview-card__image">
               <img
-                src="site/image/autoZavoz/bmw5g30.webp"
-                alt="Проект автомобильного каталога AutoZavoz19"
+                src="/site/image/petruha19.webp"
+                alt="Проект сайта автосервиса PETRUHA19"
                 loading="lazy"
                 decoding="async"
               />
-              <span class="current-work-card__status">UX/UI и каталог</span>
+
+              <span class="preview-card__status">Разработка</span>
             </div>
-            <div class="current-work-card__body">
-              <span class="current-work-card__type">Автомобильный сервис</span>
-              <h3>AutoZavoz19</h3>
-              <p>
-                Проектируем каталог автомобилей под заказ, удобные фильтры,
-                карточки предложений и быстрый сценарий заявки.
-              </p>
-              <div class="current-work-card__footer">
-                <span>Strategy · UX/UI · Catalog</span>
-                <span>Сейчас: прототип</span>
+
+            <div class="preview-card__content">
+              <div class="preview-card__top">
+                <span class="preview-card__category">
+                  Автосервис · Портфолио · Управление
+                </span>
+                <span class="preview-card__number">03</span>
               </div>
+
+              <h3 class="preview-card__title">Петруха19</h3>
+
+              <p class="preview-card__description">
+                Разрабатываем систему добавления выполненных работ и удобное
+                представление проектов автосервиса.
+              </p>
+
+              <footer class="preview-card__footer">
+                <span>UX/UI · Frontend · Backend</span>
+                <span>Добавление работ</span>
+              </footer>
             </div>
           </article>
         </div>

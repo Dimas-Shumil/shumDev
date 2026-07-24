@@ -1,5 +1,3 @@
-// Единый JS файл
-
 document.addEventListener('DOMContentLoaded', () => {
     // Элементы
     const preloader = document.getElementById('preloader');
@@ -14,7 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const floatingElements = document.querySelectorAll('.floating-element');
     const statsNumbers = document.querySelectorAll('.stat-number');
 
-    // ========== ПРЕЛОУДЕР ==========
+    //  прелоудер
+
     if (preloader) {
         let progress = 0;
         let smokeParticles = [];
@@ -133,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(updateProgress, 800);
     }
 
- // ========== MOBILE MENU ==========
+//  мобильное меню
 
 const mobileMenu = document.querySelector('.mobile-menu');
 const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
@@ -199,7 +198,7 @@ if (burger && mobileMenu && mobileMenuOverlay && mobileMenuClose) {
     });
 }
 
-    // ========== SWIPER ==========
+    // свайпер
 
     if (swiperContainer && typeof Swiper !== 'undefined') {
         const projectsSwiper = new Swiper('.projects-swiper', {
@@ -264,7 +263,8 @@ if (burger && mobileMenu && mobileMenuOverlay && mobileMenuClose) {
         window.addEventListener('resize', () => setTimeout(() => projectsSwiper.update(), 300));
     }
 
-    // ========== ХЕДЕР ПРИ СКРОЛЛЕ ==========
+    // хедер при скролле
+
     if (header) {
         let lastScroll = 0;
         const scrollThreshold = 100;
@@ -293,7 +293,8 @@ if (burger && mobileMenu && mobileMenuOverlay && mobileMenuClose) {
         });
     }
 
-    // ========== ПЛАВНАЯ ПРОКРУТКА ==========
+    // плавная прокрутка
+
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -314,12 +315,14 @@ if (burger && mobileMenu && mobileMenuOverlay && mobileMenuClose) {
     });
 
 
-    // ========== ПЛАВАЮЩИЕ ЭЛЕМЕНТЫ ==========
+    // плавающие элементы
+
     floatingElements.forEach((el, index) => {
         el.style.animationDelay = `${index * 0.9}s`;
     });
 
-    // ========== СЧЁТЧИКИ СТАТИСТИКИ ==========
+    // счетчики статистики
+
     function initStatsCounter() {
         const statsNumbers = document.querySelectorAll('.stat-number');
         if (!statsNumbers.length) return;
@@ -363,7 +366,8 @@ if (burger && mobileMenu && mobileMenuOverlay && mobileMenuClose) {
 
     initStatsCounter();
 
-    // ========== АНИМАЦИЯ КАРТОЧЕК УСЛУГ (ДОБАВЛЕНО) ==========
+    // карточки услуг
+
     const serviceCards = document.querySelectorAll('.advantages-card');
     if (serviceCards.length > 0) {
         const observer = new IntersectionObserver((entries) => {
@@ -383,7 +387,8 @@ if (burger && mobileMenu && mobileMenuOverlay && mobileMenuClose) {
         serviceCards.forEach(card => observer.observe(card));
     }
 
-    // ========== ОБРАБОТКА ОШИБОК ИЗОБРАЖЕНИЙ ==========
+    // обработка ошибок изображений
+
     document.addEventListener('error', (e) => {
         if (e.target.tagName === 'IMG') {
             e.target.style.opacity = '0.5';
@@ -391,7 +396,8 @@ if (burger && mobileMenu && mobileMenuOverlay && mobileMenuClose) {
         }
     }, true);
 
-    // ========== АВТОСОХРАНЕНИЕ ФОРМЫ ==========
+    // автосохранение формы
+
     if (contactForm) {
         const savedData = JSON.parse(localStorage.getItem('contactFormData') || '{}');
         Object.keys(savedData).forEach(key => {
@@ -494,131 +500,7 @@ if (window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// // ========== HERO CARDS PREMIUM ANIMATION ==========
-
-// const hero = document.querySelector('.hero');
-// const heroCards = document.querySelectorAll('.hero-card');
-
-// if (hero && heroCards.length) {
-
-//     gsap.from(heroCards, {
-//         y: 80,
-//         opacity: 0,
-//         scale: 0.82,
-//         duration: 1.2,
-//         stagger: 0.16,
-//         ease: 'power3.out',
-//         delay: 0.4
-//     });
-
-//     let mouseX = 0;
-//     let mouseY = 0;
-
-//     let currentX = 0;
-//     let currentY = 0;
-
-//     hero.addEventListener('mousemove', (event) => {
-//         const rect = hero.getBoundingClientRect();
-
-//         mouseX = (event.clientX - rect.left) / rect.width - 0.5;
-//         mouseY = (event.clientY - rect.top) / rect.height - 0.5;
-//     });
-
-//     hero.addEventListener('mouseleave', () => {
-//         mouseX = 0;
-//         mouseY = 0;
-//     });
-
-//     function animateHeroCards() {
-//         currentX += (mouseX - currentX) * 0.08;
-//         currentY += (mouseY - currentY) * 0.08;
-
-//         heroCards.forEach((card) => {
-//             const depth = Number(card.dataset.depth) || 1;
-
-//             const moveX = currentX * 45 * depth;
-//             const moveY = currentY * 35 * depth;
-
-//             card.style.translate = `${moveX}px ${moveY}px`;
-//         });
-
-//         requestAnimationFrame(animateHeroCards);
-//     }
-
-//     animateHeroCards();
-// }
-
-// const teamSection = document.querySelector('.team');
-// const teamHeader = document.querySelector('.team__header');
-// const teamCards = document.querySelectorAll('.team-card');
-
-// if (teamSection && teamHeader && teamCards.length) {
-//     gsap.set(teamHeader, {
-//         opacity: 0,
-//         y: 40
-//     });
-
-//     gsap.set(teamCards, {
-//         opacity: 0,
-//         y: 60,
-//         scale: 0.92
-//     });
-
-//     const teamTl = gsap.timeline({
-//         scrollTrigger: {
-//             trigger: teamSection,
-//             start: 'top 75%',
-//             once: true
-//         }
-//     });
-
-//     teamTl
-//         .to(teamHeader, {
-//             opacity: 1,
-//             y: 0,
-//             duration: 0.9,
-//             ease: 'power3.out'
-//         })
-//         .to(teamCards, {
-//             opacity: 1,
-//             y: 0,
-//             scale: 1,
-//             duration: 0.9,
-//             stagger: 0.15,
-//             ease: 'power3.out'
-//         }, '-=0.45');
-// }
-// const cards = document.querySelectorAll('.team-card');
-
-// cards.forEach((card) => {
-//     const image = card.querySelector('.team-card__img img');
-
-//     card.addEventListener('mouseenter', () => {
-//         gsap.to(card, {
-//             y: -8,
-//             duration: 0.35,
-//             ease: 'power2.out'
-//         });
-
-//         if (image) {
-//             gsap.to(image, {
-//                 scale: 1.06,
-//                 duration: 0.45,
-//                 ease: 'power2.out'
-//             });
-//         }
-//     });
-
-//     card.addEventListener('mouseleave', () => {
-//         gsap.to(card, {
-//             y: 0,
-//             duration: 0.35,
-//             ease: 'power2.out'
-//         });
-//     });
-// });
-
-// ========== HERO CARDS PREMIUM ANIMATION ==========
+// карточки с анимацией
 
 if (window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
@@ -738,7 +620,7 @@ initHeroCardsAnimation({
   featureSelector: '.company-hero-feature',
 });
 
-// ========== COMPANY TEAM ANIMATION ==========
+// анимация страницы команда
 
 const companyTeamSection = document.querySelector('.company-team');
 const companyTeamHeader = document.querySelector('.company-team__header');
@@ -801,7 +683,8 @@ if (companyTeamSection && window.gsap) {
     );
 }
 
-// ========== КОНТАКТНАЯ ФОРМА ==========
+// форма отправки
+
 const contactForm = document.getElementById('contactForm');
 
 function isValidEmail(email) {
@@ -935,7 +818,7 @@ if (contactForm) {
     });
 }
 
-// ========== УВЕДОМЛЕНИЯ ==========
+// уведомления
 
 function showNotification(message, type = 'info') {
     const existing = document.querySelector('.notification');
