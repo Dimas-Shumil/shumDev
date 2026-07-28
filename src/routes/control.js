@@ -69,22 +69,6 @@ function projectAccessWhere(user) {
     };
 }
 
-function activityAccessWhere(user) {
-    if (isManager(user)) return {};
-    return {
-        AND: [
-            { entityType: { not: "LEAD" } },
-            {
-                OR: [
-                    { actorId: user.id },
-                    { project: { is: projectAccessWhere(user) } },
-                    { task: { is: taskAccessWhere(user) } },
-                ],
-            },
-        ],
-    };
-}
-
 async function getTaskForUser(id, user, include = {}) {
     return prisma.task.findFirst({
         where: { id, ...taskAccessWhere(user) },
@@ -111,11 +95,6 @@ function textRequired(value, field, maxLength = 500) {
 
 function enumValue(value, allowed, fallback) {
     return allowed.has(value) ? value : fallback;
-}
-
-function durationSeconds(entry, now = new Date()) {
-    if (entry.durationSeconds !== null) return entry.durationSeconds;
-    return Math.max(0, Math.floor(((entry.endedAt || now) - entry.startedAt) / 1000));
 }
 
 async function nextTaskCode(tx = prisma) {
@@ -205,79 +184,63 @@ router.post("/auth/password", asyncRoute(async (req, res) => {
 }));
 
 router.get("/dashboard", asyncRoute(async (req, res) => {
-    const start = new Date();
-    start.setHours(0, 0, 0, 0);
     const access = taskAccessWhere(req.user);
-    const [
-        newLeads,
-        activeProjects,
-        reviewTasks,
-        tasks,
-        projects,
-        leads,
-        activeTimers,
-        recentActivity,
-        todayTime,
-    ] = await Promise.all([
+    const [newLeads, activeProjects, reviewTasks, tasks, projects, leads] = await Promise.all([
         isManager(req.user) ? prisma.lead.count({ where: { status: "NEW" } }) : 0,
-        prisma.project.count({ where: { ...projectAccessWhere(req.user), status: { in: ["ACTIVE", "REVIEW", "SUPPORT"] } } }),
+        prisma.project.count({
+            where: {
+                ...projectAccessWhere(req.user),
+                status: { in: ["ACTIVE", "REVIEW", "SUPPORT"] },
+            },
+        }),
         prisma.task.count({ where: { ...access, status: "REVIEW" } }),
         prisma.task.findMany({
-            where: { ...access, status: { in: ["AVAILABLE", "ASSIGNED", "IN_PROGRESS", "PAUSED", "BLOCKED", "REVIEW"] } },
+            where: {
+                ...access,
+                status: { in: ["AVAILABLE", "ASSIGNED", "IN_PROGRESS", "PAUSED", "BLOCKED", "REVIEW"] },
+            },
             include: {
                 project: { select: { id: true, name: true, accentColor: true } },
                 assignee: { select: { id: true, name: true, avatarPath: true } },
-                timeEntries: { select: { startedAt: true, endedAt: true, durationSeconds: true } },
             },
             orderBy: [{ deadline: "asc" }, { priority: "desc" }, { createdAt: "desc" }],
             take: 8,
         }),
         prisma.project.findMany({
-            where: { ...projectAccessWhere(req.user), status: { in: ["ACTIVE", "REVIEW", "SUPPORT"] } },
-            include: { _count: { select: { tasks: true } }, tasks: { select: { status: true } } },
+            where: {
+                ...projectAccessWhere(req.user),
+                status: { in: ["ACTIVE", "REVIEW", "SUPPORT"] },
+            },
+            include: {
+                _count: { select: { tasks: true } },
+                tasks: { select: { status: true } },
+            },
             orderBy: { updatedAt: "desc" },
             take: 4,
         }),
-        isManager(req.user) ? prisma.lead.findMany({
-            include: { assignee: { select: { id: true, name: true, avatarPath: true } } },
-            orderBy: { createdAt: "desc" },
-            take: 5,
-        }) : [],
-        prisma.timeEntry.findMany({
-            where: { endedAt: null, task: taskAccessWhere(req.user) },
-            include: {
-                user: { select: { id: true, name: true, avatarPath: true } },
-                task: { select: { id: true, code: true, title: true, project: { select: { name: true } } } },
-            },
-            orderBy: { startedAt: "asc" },
-        }),
-        prisma.activity.findMany({
-            where: activityAccessWhere(req.user),
-            include: { actor: { select: { id: true, name: true, avatarPath: true } } },
-            orderBy: { createdAt: "desc" },
-            take: 8,
-        }),
-        prisma.timeEntry.findMany({
-            where: { startedAt: { gte: start } },
-            select: { startedAt: true, endedAt: true, durationSeconds: true },
-        }),
+        isManager(req.user)
+            ? prisma.lead.findMany({
+                include: { assignee: { select: { id: true, name: true, avatarPath: true } } },
+                orderBy: { createdAt: "desc" },
+                take: 5,
+            })
+            : [],
     ]);
 
     const projectRows = projects.map((project) => {
         const done = project.tasks.filter((task) => task.status === "DONE").length;
-        const progress = project.tasks.length ? Math.round((done / project.tasks.length) * 100) : 0;
+        const progress = project.tasks.length
+            ? Math.round((done / project.tasks.length) * 100)
+            : 0;
         return { ...project, progress };
     });
-    const todaySeconds = todayTime.reduce((sum, entry) => sum + durationSeconds(entry), 0);
 
     res.json({
         success: true,
-        metrics: { newLeads, activeProjects, reviewTasks, todaySeconds },
+        metrics: { newLeads, activeProjects, reviewTasks },
         tasks,
         projects: projectRows,
         leads,
-        activeTimers,
-        recentActivity,
     });
 }));
 
@@ -516,7 +479,6 @@ router.get("/tasks", asyncRoute(async (req, res) => {
             creator: { select: { id: true, name: true, avatarPath: true } },
             assignee: { select: { id: true, name: true, avatarPath: true } },
             checklist: { select: { id: true, isCompleted: true } },
-            timeEntries: { select: { startedAt: true, endedAt: true, durationSeconds: true, userId: true } },
         },
         orderBy: [{ status: "asc" }, { deadline: "asc" }, { priority: "desc" }, { createdAt: "desc" }],
     });
@@ -576,7 +538,6 @@ router.get("/tasks/:id", asyncRoute(async (req, res) => {
         checklist: { include: { completedBy: { select: { id: true, name: true } } }, orderBy: { sortOrder: "asc" } },
         comments: { include: { author: { select: { id: true, name: true, avatarPath: true, role: true } } }, orderBy: { createdAt: "asc" } },
         attachments: { include: { uploader: { select: { id: true, name: true } } }, orderBy: { createdAt: "desc" } },
-        timeEntries: { include: { user: { select: { id: true, name: true, avatarPath: true } } }, orderBy: { startedAt: "desc" } },
         activities: { include: { actor: { select: { id: true, name: true, avatarPath: true } } }, orderBy: { createdAt: "desc" } },
     });
     if (!task) return res.status(404).json({ success: false, message: "Задача не найдена или недоступна" });
@@ -623,6 +584,58 @@ router.patch("/tasks/:id", asyncRoute(async (req, res) => {
         title: `${req.user.name} обновил задачу ${task.code}`, details: { status: task.status, assigneeId: task.assigneeId },
     });
     res.json({ success: true, task });
+}));
+
+router.delete("/tasks/:id", requireRoles("OWNER"), asyncRoute(async (req, res) => {
+    const id = parsePositiveInt(req.params.id);
+    if (!id) {
+        return res.status(400).json({ success: false, message: "Некорректный идентификатор задачи" });
+    }
+
+    const task = await prisma.task.findUnique({
+        where: { id },
+        select: {
+            id: true,
+            code: true,
+            title: true,
+            attachments: { select: { storedName: true } },
+        },
+    });
+
+    if (!task) {
+        return res.status(404).json({ success: false, message: "Задача не найдена" });
+    }
+
+    const storedNames = task.attachments
+        .map((attachment) => attachment.storedName)
+        .filter(Boolean);
+
+    await prisma.$transaction(async (tx) => {
+        await tx.notification.deleteMany({
+            where: { href: `#/tasks/${id}` },
+        });
+
+        await tx.task.delete({ where: { id } });
+    });
+
+    const cleanupResults = await Promise.allSettled(
+        storedNames.map((storedName) => {
+            const safeName = path.basename(storedName);
+            const filePath = path.join(process.cwd(), "uploads", "control", safeName);
+            return fs.promises.unlink(filePath);
+        }),
+    );
+
+    cleanupResults.forEach((result, index) => {
+        if (result.status === "rejected" && result.reason?.code !== "ENOENT") {
+            console.error(`Не удалось удалить вложение ${storedNames[index]}:`, result.reason);
+        }
+    });
+
+    res.json({
+        success: true,
+        message: `Задача ${task.code} удалена`,
+    });
 }));
 
 router.post("/tasks/:id/claim", asyncRoute(async (req, res) => {
@@ -716,97 +729,6 @@ router.get("/attachments/:id/download", asyncRoute(async (req, res) => {
     const filePath = path.join(process.cwd(), "uploads", "control", attachment.storedName || "");
     if (!attachment.storedName || !fs.existsSync(filePath)) return res.status(404).json({ success: false, message: "Файл отсутствует" });
     res.download(filePath, attachment.originalName);
-}));
-
-router.get("/time", asyncRoute(async (req, res) => {
-    const userId = isManager(req.user) ? parsePositiveInt(req.query.userId) : req.user.id;
-    const from = parseOptionalDate(req.query.from);
-    const to = parseOptionalDate(req.query.to);
-    const where = {
-        ...(userId ? { userId } : {}),
-        ...(from || to ? { startedAt: { ...(from ? { gte: from } : {}), ...(to ? { lte: to } : {}) } } : {}),
-    };
-    const entries = await prisma.timeEntry.findMany({
-        where,
-        include: {
-            user: { select: { id: true, name: true, avatarPath: true } },
-            task: { select: { id: true, code: true, title: true, project: { select: { id: true, name: true } } } },
-        },
-        orderBy: { startedAt: "desc" },
-        take: 500,
-    });
-    res.json({ success: true, entries });
-}));
-
-router.post("/time/start", asyncRoute(async (req, res) => {
-    const taskId = parsePositiveInt(req.body.taskId);
-    const task = await getTaskForUser(taskId, req.user);
-    if (!task || task.assigneeId !== req.user.id) return res.status(403).json({ success: false, message: "Таймер можно запустить только по своей задаче" });
-    const active = await prisma.timeEntry.findFirst({ where: { userId: req.user.id, endedAt: null } });
-    if (active) return res.status(409).json({ success: false, message: "Сначала остановите текущий таймер", activeEntryId: active.id });
-    const entry = await prisma.timeEntry.create({ data: { taskId, userId: req.user.id } });
-    const taskData = { status: "IN_PROGRESS", ...(task.startedAt ? {} : { startedAt: new Date() }) };
-    await prisma.task.update({ where: { id: taskId }, data: taskData });
-    await recordActivity({ actorId: req.user.id, type: "TIMER_STARTED", entityType: "TIME", entityId: entry.id, taskId, projectId: task.projectId, title: `${req.user.name} начал работу над ${task.code}` });
-    res.status(201).json({ success: true, entry });
-}));
-
-router.post("/time/:id/stop", asyncRoute(async (req, res) => {
-    const id = parsePositiveInt(req.params.id);
-    const current = await prisma.timeEntry.findUnique({ where: { id }, include: { task: true } });
-    if (!current || current.endedAt) return res.status(404).json({ success: false, message: "Активный таймер не найден" });
-    if (current.userId !== req.user.id && !isManager(req.user)) return res.status(403).json({ success: false, message: "Нельзя остановить чужой таймер" });
-    const endedAt = new Date();
-    const duration = Math.max(1, Math.floor((endedAt - current.startedAt) / 1000));
-    const entry = await prisma.timeEntry.update({ where: { id }, data: { endedAt, durationSeconds: duration } });
-    await recordActivity({ actorId: req.user.id, type: "TIMER_STOPPED", entityType: "TIME", entityId: id, taskId: current.taskId, projectId: current.task.projectId, title: `${req.user.name} остановил таймер`, details: { durationSeconds: duration } });
-    res.json({ success: true, entry });
-}));
-
-router.post("/time/manual", requireRoles(...OWNER_MANAGER), asyncRoute(async (req, res) => {
-    const taskId = parsePositiveInt(req.body.taskId);
-    const userId = parsePositiveInt(req.body.userId);
-    const duration = Math.max(60, Math.min(Number(req.body.durationSeconds) || 0, 24 * 60 * 60));
-    if (!taskId || !userId || !duration) return res.status(400).json({ success: false, message: "Укажите сотрудника, задачу и длительность" });
-    const endedAt = parseOptionalDate(req.body.endedAt) || new Date();
-    const startedAt = new Date(endedAt.getTime() - duration * 1000);
-    const entry = await prisma.timeEntry.create({
-        data: { taskId, userId, startedAt, endedAt, durationSeconds: duration, isManual: true, note: normalizeText(req.body.note, 500) || null, editedById: req.user.id },
-    });
-    await recordActivity({ actorId: req.user.id, type: "TIME_MANUAL", entityType: "TIME", entityId: entry.id, taskId, title: `${req.user.name} добавил время вручную`, details: { userId, durationSeconds: duration } });
-    res.status(201).json({ success: true, entry });
-}));
-
-router.get("/activity", asyncRoute(async (req, res) => {
-    const { page, take } = parsePage(req.query);
-    const actorId = parsePositiveInt(req.query.actorId);
-    const projectId = parsePositiveInt(req.query.projectId);
-    const type = normalizeText(req.query.type, 80);
-    const from = parseOptionalDate(req.query.from);
-    const to = parseOptionalDate(req.query.to);
-    const baseWhere = {
-        ...(actorId ? { actorId } : {}),
-        ...(projectId ? { projectId } : {}),
-        ...(type ? { type } : {}),
-        ...(from || to ? { createdAt: { ...(from ? { gte: from } : {}), ...(to ? { lte: to } : {}) } } : {}),
-    };
-    const where = isManager(req.user) ? baseWhere : { AND: [baseWhere, activityAccessWhere(req.user)] };
-    const [activities, total] = await Promise.all([
-        prisma.activity.findMany({
-            where,
-            include: {
-                actor: { select: { id: true, name: true, avatarPath: true } },
-                project: { select: { id: true, name: true } },
-                task: { select: { id: true, code: true, title: true } },
-                lead: { select: { id: true, name: true } },
-            },
-            orderBy: { createdAt: "desc" },
-            skip: (page - 1) * take,
-            take,
-        }),
-        prisma.activity.count({ where }),
-    ]);
-    res.json({ success: true, activities, total, page });
 }));
 
 router.get("/notifications", asyncRoute(async (req, res) => {
