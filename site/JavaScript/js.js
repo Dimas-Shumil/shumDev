@@ -315,6 +315,20 @@ if (burger && mobileMenu && mobileMenuOverlay && mobileMenuClose) {
     });
 
 
+    // мобильные плавающие кнопки
+    const mobileFloatingActions = document.querySelector('.mobile-floating-actions');
+    const pageFooter = document.querySelector('.footer');
+
+    if (mobileFloatingActions && pageFooter) {
+        const footerObserver = new IntersectionObserver(([entry]) => {
+            mobileFloatingActions.classList.toggle('is-hidden', entry.isIntersecting);
+        }, {
+            threshold: 0.01
+        });
+
+        footerObserver.observe(pageFooter);
+    }
+
     // плавающие элементы
 
     floatingElements.forEach((el, index) => {

@@ -1982,7 +1982,7 @@ body.menu-open {
   transition: all 0.3s ease;
 }
 .cta__btn:hover {
-  background-color: rgb(11.1512195122, 99.1219512195, 242.8487804878);
+  background-color: rgb(4.3730272597%, 38.8713534194%, 95.2348158776%);
   transform: translateY(-2px);
   box-shadow: 0 8px 15px rgba(59, 130, 246, 0.4);
 }
@@ -6469,3 +6469,76 @@ html {
     transition: none;
   }
 }
+.mobile-floating-actions {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-floating-actions {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    z-index: 950;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 10px;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+  .mobile-floating-actions.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(18px);
+    pointer-events: none;
+  }
+  .mobile-floating-actions__btn {
+    min-width: 0;
+    min-height: 54px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    color: #fff;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .mobile-floating-actions__btn:active {
+    transform: translateY(1px);
+  }
+  .mobile-floating-actions__btn--phone {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(11, 15, 25, 0.94);
+  }
+  .mobile-floating-actions__btn--request {
+    border: 1px solid rgba(147, 197, 253, 0.28);
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    box-shadow: 0 12px 30px rgba(72, 76, 255, 0.3);
+  }
+}
+@media (max-width: 370px) {
+  .mobile-floating-actions {
+    left: 8px;
+    right: 8px;
+    gap: 8px;
+  }
+  .mobile-floating-actions__btn {
+    min-height: 50px;
+    padding: 0 9px;
+    font-size: 12px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
