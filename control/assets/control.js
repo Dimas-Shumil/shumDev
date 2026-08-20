@@ -493,6 +493,68 @@
     </article>`;
   }
 
+  function taskDeadline(task) {
+    if (!task.deadline)
+      return { text: 'Без срока', className: 'task-list-item__deadline--empty' };
+
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const rawDeadline = new Date(task.deadline);
+    const deadlineDay = new Date(
+      rawDeadline.getFullYear(),
+      rawDeadline.getMonth(),
+      rawDeadline.getDate(),
+    );
+    const diffDays = Math.round((deadlineDay - today) / 86400000);
+
+    if (task.status === 'DONE')
+      return { text: date(task.deadline, false), className: '' };
+    if (diffDays < 0)
+      return {
+        text: `Просрочено · ${date(task.deadline, false)}`,
+        className: 'task-list-item__deadline--overdue',
+      };
+    if (diffDays === 0)
+      return { text: 'Сегодня', className: 'task-list-item__deadline--today' };
+    if (diffDays === 1)
+      return { text: 'Завтра', className: 'task-list-item__deadline--soon' };
+    return { text: date(task.deadline, false), className: '' };
+  }
+
+  function taskListItem(task) {
+    const done = task.status === 'DONE';
+    const deadline = taskDeadline(task);
+    const canComplete = isManager() || task.assignee?.id === state.user.id;
+    const completedChecklist = task.checklist.filter((item) => item.isCompleted).length;
+    const checkboxTitle = canComplete
+      ? done
+        ? 'Вернуть задачу в работу'
+        : 'Отметить задачу выполненной'
+      : 'Статус меняет исполнитель или руководитель';
+
+    return `<article class="task-list-item ${done ? 'task-list-item--done' : ''}" data-open-task="${task.id}">
+      <label class="task-complete" data-task-complete-control title="${attr(checkboxTitle)}">
+        <input type="checkbox" data-task-complete data-task="${task.id}" ${done ? 'checked' : ''} ${canComplete ? '' : 'disabled'} aria-label="${attr(checkboxTitle)}">
+        <span class="task-complete__box"><i class="ti ti-check"></i></span>
+      </label>
+      <div class="task-list-item__main">
+        <div class="task-list-item__title-line">
+          <h4>${escapeHtml(task.title)}</h4>
+          <span class="task-list-item__code">${escapeHtml(task.code)}</span>
+        </div>
+        <div class="task-list-item__meta">
+          ${task.project ? `<span><i class="ti ti-folder"></i>${escapeHtml(task.project.name)}</span>` : '<span><i class="ti ti-folder-off"></i>Без проекта</span>'}
+          <span><i class="ti ti-progress-check"></i>${escapeHtml(labels.task[task.status] || task.status)}</span>
+          ${task.checklist.length ? `<span><i class="ti ti-checkbox"></i>${completedChecklist}/${task.checklist.length}</span>` : ''}
+        </div>
+      </div>
+      <div class="task-list-item__priority">${badge(labels.priority[task.priority], priorityColors[task.priority])}</div>
+      <div class="task-list-item__assignee">${avatar(task.assignee, 'avatar--xs')}<span>${escapeHtml(task.assignee?.name || (task.assignmentType === 'POOL' ? 'Свободная' : 'Не назначена'))}</span></div>
+      <div class="task-list-item__deadline ${deadline.className}"><i class="ti ti-calendar"></i><span>${escapeHtml(deadline.text)}</span></div>
+      <i class="ti ti-chevron-right task-list-item__arrow" aria-hidden="true"></i>
+    </article>`;
+  }
+
   async function renderTasks() {
     const data = await api('/tasks');
     const columns = [
@@ -502,6 +564,11 @@
       { title: 'На проверке', statuses: ['REVIEW'] },
       { title: 'Готово', statuses: ['DONE'] },
     ];
+    const priorityOrder = { URGENT: 0, HIGH: 1, MEDIUM: 2, LOW: 3 };
+    let currentView = 'list';
+    try {
+      currentView = localStorage.getItem('shumdev-task-view') === 'board' ? 'board' : 'list';
+    } catch {}
 
     const renderBoard = (tasks) =>
       columns
@@ -514,22 +581,83 @@
         })
         .join('');
 
+    const sortActiveTasks = (tasks) => [...tasks].sort((a, b) => {
+      if (a.deadline && b.deadline) {
+        const deadlineDiff = new Date(a.deadline) - new Date(b.deadline);
+        if (deadlineDiff) return deadlineDiff;
+      } else if (a.deadline) return -1;
+      else if (b.deadline) return 1;
+
+      const priorityDiff = (priorityOrder[a.priority] ?? 9) - (priorityOrder[b.priority] ?? 9);
+      if (priorityDiff) return priorityDiff;
+      return new Date(b.updatedAt) - new Date(a.updatedAt);
+    });
+
+    const renderList = (tasks) => {
+      const visible = tasks.filter((task) => task.status !== 'ARCHIVED');
+      const active = sortActiveTasks(visible.filter((task) => task.status !== 'DONE'));
+      const done = visible
+        .filter((task) => task.status === 'DONE')
+        .sort((a, b) => new Date(b.completedAt || b.updatedAt) - new Date(a.completedAt || a.updatedAt));
+
+      const listHead = `<div class="task-list-view__head" aria-hidden="true"><span></span><span>Задача</span><span>Приоритет</span><span>Исполнитель</span><span>Дедлайн</span><span></span></div>`;
+      const activeContent = active.length
+        ? active.map(taskListItem).join('')
+        : `<div class="task-list-view__empty"><i class="ti ti-circle-check"></i><span>Активных задач по выбранным фильтрам нет</span></div>`;
+      const doneContent = done.length
+        ? done.map(taskListItem).join('')
+        : `<div class="task-list-view__empty task-list-view__empty--compact"><span>Выполненных задач пока нет</span></div>`;
+
+      return `<section class="task-list-view">
+        <div class="task-list-group">
+          <header class="task-list-group__head"><div><h3>Активные</h3><p>Сначала задачи с ближайшим дедлайном</p></div><span>${active.length}</span></header>
+          ${listHead}
+          <div class="task-list-view__rows">${activeContent}</div>
+        </div>
+        <div class="task-list-group task-list-group--done">
+          <header class="task-list-group__head"><div><h3>Выполнено</h3><p>Снимите галочку, чтобы вернуть задачу в предыдущий статус</p></div><span>${done.length}</span></header>
+          ${listHead}
+          <div class="task-list-view__rows">${doneContent}</div>
+        </div>
+      </section>`;
+    };
+
     main.innerHTML = `<div class="page">${pageHeader('Задачи', 'Свободная, назначенная и выполненная работа команды', isManager() ? `<button class="button button--primary" data-action="new-task"><i class="ti ti-plus"></i> Создать задачу</button>` : '')}
-      <section class="panel filters">
+      <section class="panel filters task-filters">
         <input class="input" id="task-search" type="search" placeholder="Поиск по задаче или коду">
         <select class="select" id="task-project"><option value="">Все проекты</option>${[...new Map(data.tasks.filter((task) => task.project).map((task) => [task.project.id, task.project])).values()].map((project) => `<option value="${project.id}">${escapeHtml(project.name)}</option>`).join('')}</select>
         <select class="select" id="task-priority"><option value="">Любой приоритет</option>${Object.entries(labels.priority).map(([value, text]) => `<option value="${value}">${text}</option>`).join('')}</select>
         <button class="button" id="task-mine"><i class="ti ti-user-check"></i> Только мои</button>
+        <div class="task-view-toggle" role="group" aria-label="Вид задач">
+          <button type="button" data-task-view="list" aria-label="Список"><i class="ti ti-list"></i><span>Список</span></button>
+          <button type="button" data-task-view="board" aria-label="Доска"><i class="ti ti-layout-kanban"></i><span>Доска</span></button>
+        </div>
       </section>
-      <section class="task-board" id="task-board">${renderBoard(data.tasks)}</section>
+      <section id="task-view"></section>
     </div>`;
 
     let mine = false;
+    let filteredTasks = data.tasks;
+    const updateViewButtons = () => {
+      document.querySelectorAll('[data-task-view]').forEach((button) => {
+        const active = button.dataset.taskView === currentView;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+    };
+    const renderCurrentView = () => {
+      const view = document.querySelector('#task-view');
+      if (!view) return;
+      view.innerHTML = currentView === 'board'
+        ? `<section class="task-board">${renderBoard(filteredTasks)}</section>`
+        : renderList(filteredTasks);
+      updateViewButtons();
+    };
     const filter = () => {
       const query = document.querySelector('#task-search').value.toLowerCase();
       const projectId = Number(document.querySelector('#task-project').value);
       const priority = document.querySelector('#task-priority').value;
-      const filtered = data.tasks.filter(
+      filteredTasks = data.tasks.filter(
         (task) =>
           (task.title.toLowerCase().includes(query) ||
             task.code.toLowerCase().includes(query)) &&
@@ -538,7 +666,7 @@
           (!mine || task.assignee?.id === state.user.id),
       );
 
-      document.querySelector('#task-board').innerHTML = renderBoard(filtered);
+      renderCurrentView();
     };
 
     document.querySelector('#task-search').addEventListener('input', filter);
@@ -550,6 +678,17 @@
       event.currentTarget.setAttribute('aria-pressed', String(mine));
       filter();
     });
+    document.querySelectorAll('[data-task-view]').forEach((button) => {
+      button.addEventListener('click', () => {
+        currentView = button.dataset.taskView;
+        try {
+          localStorage.setItem('shumdev-task-view', currentView);
+        } catch {}
+        renderCurrentView();
+      });
+    });
+
+    renderCurrentView();
   }
 
   async function taskModal(task = null) {
@@ -726,7 +865,12 @@
     const userCard = event.target.closest('[data-user]');
     const editTask = event.target.closest('[data-edit-task]');
     const deleteTask = event.target.closest('[data-delete-task]');
+    const taskCompleteControl = event.target.closest('[data-task-complete-control], [data-task-complete]');
     try {
+      if (taskCompleteControl) {
+        event.stopPropagation();
+        return;
+      }
       if (action === 'retry') return renderRoute();
       if (action === 'new-task') return taskModal();
       if (action === 'new-project') return projectModal();
@@ -780,6 +924,28 @@
     }
   });
   main.addEventListener('change', async (event) => {
+    if (event.target.matches('[data-task-complete]')) {
+      const checkbox = event.target;
+      const row = checkbox.closest('.task-list-item');
+      const completed = checkbox.checked;
+      checkbox.disabled = true;
+      row?.classList.add('is-updating');
+      try {
+        await api(`/tasks/${checkbox.dataset.task}`, {
+          method: 'PATCH',
+          body: JSON.stringify({ completed }),
+        });
+        toast(completed ? 'Задача выполнена' : 'Задача возвращена в работу');
+        await new Promise((resolve) => setTimeout(resolve, 180));
+        return renderRoute();
+      } catch (error) {
+        checkbox.checked = !completed;
+        checkbox.disabled = false;
+        row?.classList.remove('is-updating');
+        return showError(error);
+      }
+    }
+
     if (event.target.matches('[data-check-item]')) {
       try {
         await api(

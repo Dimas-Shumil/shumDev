@@ -564,15 +564,45 @@ router.patch("/tasks/:id", asyncRoute(async (req, res) => {
             if (current.status === "AVAILABLE") data.status = "ASSIGNED";
         }
     }
-    if (req.body.status !== undefined) {
+    if (req.body.completed !== undefined) {
+        if (typeof req.body.completed !== "boolean") {
+            return res.status(400).json({ success: false, message: "Поле completed должно быть логическим значением" });
+        }
+        if (!isManager(req.user) && current.assigneeId !== req.user.id) {
+            return res.status(403).json({ success: false, message: "Статус меняет исполнитель или руководитель" });
+        }
+
+        if (req.body.completed && current.status !== "DONE") {
+            data.previousStatus = current.status;
+            data.status = "DONE";
+            data.completedAt = new Date();
+        } else if (!req.body.completed && current.status === "DONE") {
+            const previousStatus = current.previousStatus && TASK_STATUSES.has(current.previousStatus) && !["DONE", "ARCHIVED"].includes(current.previousStatus)
+                ? current.previousStatus
+                : current.assignmentType === "POOL" && !current.assigneeId
+                    ? "AVAILABLE"
+                    : current.assigneeId
+                        ? (current.startedAt ? "IN_PROGRESS" : "ASSIGNED")
+                        : "DRAFT";
+            data.status = previousStatus;
+            data.previousStatus = null;
+            data.completedAt = null;
+        }
+    } else if (req.body.status !== undefined) {
         const nextStatus = enumValue(req.body.status, TASK_STATUSES, current.status);
         if (!isManager(req.user) && current.assigneeId !== req.user.id) {
             return res.status(403).json({ success: false, message: "Статус меняет исполнитель или руководитель" });
         }
         data.status = nextStatus;
         if (nextStatus === "IN_PROGRESS" && !current.startedAt) data.startedAt = new Date();
-        if (nextStatus === "DONE") data.completedAt = new Date();
-        if (nextStatus !== "DONE" && current.status === "DONE") data.completedAt = null;
+        if (nextStatus === "DONE") {
+            if (current.status !== "DONE") data.previousStatus = current.status;
+            data.completedAt = new Date();
+        }
+        if (nextStatus !== "DONE" && current.status === "DONE") {
+            data.previousStatus = null;
+            data.completedAt = null;
+        }
     }
     const task = await prisma.task.update({
         where: { id },

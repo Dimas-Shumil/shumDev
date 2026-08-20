@@ -197,6 +197,7 @@ model Task {
   description      String?
   expectedResult   String?
   status           TaskStatus          @default(DRAFT)
+  previousStatus   TaskStatus?
   priority         TaskPriority        @default(MEDIUM)
   assignmentType   AssignmentType      @default(DIRECT)
   visibility       TaskVisibility      @default(TEAM)
