@@ -8881,6 +8881,22 @@ html {
     }
   }
 }
+// для 2 карточки
+.preview-card {
+  &--cargo {
+    .preview-card__image {
+      aspect-ratio: 16 / 9;
+      height: auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 47% center;
+      }
+    }
+  }
+}
 
 @media (max-width: 1050px) {
   .preview {
