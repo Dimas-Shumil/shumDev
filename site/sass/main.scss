@@ -6138,9 +6138,9 @@ body.menu-open {
         transform 0.28s ease;
 
       img {
-        width: 28px;
-        max-width: 28px;
-        height: 28px;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
         display: block;
         object-fit: contain;
       }
@@ -9121,8 +9121,8 @@ html {
   &--vk::before,
   &--telegram::before,
   &--whatsapp::before {
-    width: 21px;
-    height: 21px;
+    width: 100%;
+    height: 100%;
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: contain;
@@ -9182,8 +9182,8 @@ html {
 
     &::before {
       content: '';
-      width: 22px;
-      height: 22px;
+      width: 100%;
+      height: 100%;
       display: block;
       mask-repeat: no-repeat;
       mask-position: center;
