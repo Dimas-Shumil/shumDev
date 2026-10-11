@@ -1,6 +1,8 @@
 const express = require("express");
 const rateLimit = require("express-rate-limit");
 const prisma = require("../lib/prisma");
+const { notifyUsers } = require("../lib/activity");
+const { sendToUsers } = require("../lib/push");
 const { normalizeText, validEmail } = require("../lib/security");
 
 const router = express.Router();
@@ -62,6 +64,40 @@ module.exports = function publicRoutes({ transporter }) {
                     details: { source: "Сайт" },
                 },
             });
+
+            try {
+                const recipients = await prisma.user.findMany({
+                    where: {
+                        isActive: true,
+                        role: { in: ["OWNER", "MANAGER"] },
+                    },
+                    select: { id: true },
+                });
+                const recipientIds = recipients.map((user) => user.id);
+
+                await notifyUsers(recipientIds, {
+                    type: "LEAD_CREATED",
+                    title: `Новая заявка от ${name}`,
+                    message: "Новая заявка с сайта ShumDev.",
+                    href: "#/leads",
+                });
+
+                const pushResult = await sendToUsers(recipientIds, {
+                    title: "Новая заявка · ShumDev",
+                    body: `Новая заявка от ${name}. Откройте раздел «Заявки».`,
+                    url: "/control/app.html#/leads",
+                    tag: `lead-${lead.id}`,
+                });
+
+                if (pushResult.disabled) {
+                    console.warn("Web Push отключён: VAPID-ключи не настроены");
+                }
+            } catch (notificationError) {
+                console.error(
+                    `Не удалось отправить уведомления по заявке #${lead.id}:`,
+                    notificationError.message,
+                );
+            }
 
             if (transporter && process.env.MAIL_TO && process.env.SMTP_USER) {
                 try {

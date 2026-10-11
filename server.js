@@ -4,12 +4,13 @@ const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
+
+dotenv.config({ quiet: true });
+
 const prisma = require('./src/lib/prisma');
 const { loadSession } = require('./src/middleware/auth');
 const controlRoutes = require('./src/routes/control');
 const createPublicRoutes = require('./src/routes/public');
-
-dotenv.config({ quiet: true });
 
 function cliValue(name) {
   const index = process.argv.indexOf(name);
@@ -63,6 +64,20 @@ app.use(
   controlRoutes,
 );
 app.use(createPublicRoutes({ transporter }));
+
+app.get('/manifest.webmanifest', (req, res) => {
+  res.setHeader(
+    'Cache-Control',
+    process.env.NODE_ENV === 'production' ? 'public, max-age=3600' : 'no-cache',
+  );
+  return res.sendFile(path.join(root, 'manifest.webmanifest'));
+});
+
+app.get('/service-worker.js', (req, res) => {
+  res.setHeader('Service-Worker-Allowed', '/');
+  res.setHeader('Cache-Control', 'no-cache');
+  return res.sendFile(path.join(root, 'service-worker.js'));
+});
 
 app.use('/control', (req, res, next) => {
   res.set({

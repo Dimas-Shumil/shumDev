@@ -94,8 +94,9 @@ model User {
   checklistItems  TaskChecklistItem[] @relation("ChecklistCompleter")
   timeEntries     TimeEntry[]         @relation("TimeEntryUser")
   editedTime      TimeEntry[]         @relation("TimeEntryEditor")
-  activities      Activity[]
-  notifications   Notification[]
+  activities        Activity[]
+  notifications     Notification[]
+  pushSubscriptions PushSubscription[]
 
   @@index([role, isActive])
 }
@@ -324,4 +325,18 @@ model Notification {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, isRead, createdAt])
+}
+
+model PushSubscription {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }

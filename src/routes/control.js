@@ -4,6 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const prisma = require("../lib/prisma");
 const { recordActivity, notifyUsers } = require("../lib/activity");
+const { pushConfigured, sendToUser } = require("../lib/push");
 const {
     SESSION_COOKIE,
     sessionDays,
@@ -87,6 +88,16 @@ function textRequired(value, field, maxLength = 500) {
     const normalized = normalizeText(value, maxLength);
     if (!normalized) {
         const error = new Error(`Заполните поле «${field}»`);
+        error.status = 400;
+        throw error;
+    }
+    return normalized;
+}
+
+function pushValue(value, field, maxLength = 4000) {
+    const normalized = String(value || "").replace(/\0/g, "").trim();
+    if (!normalized || normalized.length > maxLength) {
+        const error = new Error(`Некорректное поле «${field}»`);
         error.status = 400;
         throw error;
     }
@@ -759,6 +770,86 @@ router.get("/attachments/:id/download", asyncRoute(async (req, res) => {
     const filePath = path.join(process.cwd(), "uploads", "control", attachment.storedName || "");
     if (!attachment.storedName || !fs.existsSync(filePath)) return res.status(404).json({ success: false, message: "Файл отсутствует" });
     res.download(filePath, attachment.originalName);
+}));
+
+router.get("/push/status", asyncRoute(async (req, res) => {
+    const devices = await prisma.pushSubscription.count({
+        where: { userId: req.user.id },
+    });
+    res.json({
+        success: true,
+        configured: pushConfigured(),
+        publicKey: process.env.VAPID_PUBLIC_KEY || null,
+        devices,
+    });
+}));
+
+router.post("/push/subscribe", asyncRoute(async (req, res) => {
+    if (!pushConfigured()) {
+        return res.status(503).json({
+            success: false,
+            message: "Web Push ещё не настроен на сервере",
+        });
+    }
+
+    const endpoint = pushValue(req.body.endpoint, "endpoint", 3000);
+    const p256dh = pushValue(req.body.keys?.p256dh, "p256dh", 1000);
+    const auth = pushValue(req.body.keys?.auth, "auth", 1000);
+
+    const subscription = await prisma.pushSubscription.upsert({
+        where: { endpoint },
+        create: {
+            userId: req.user.id,
+            endpoint,
+            p256dh,
+            auth,
+            userAgent: normalizeText(req.get("user-agent"), 500) || null,
+        },
+        update: {
+            userId: req.user.id,
+            p256dh,
+            auth,
+            userAgent: normalizeText(req.get("user-agent"), 500) || null,
+        },
+    });
+
+    res.status(201).json({
+        success: true,
+        subscription: { id: subscription.id },
+    });
+}));
+
+router.delete("/push/subscribe", asyncRoute(async (req, res) => {
+    const endpoint = pushValue(req.body.endpoint, "endpoint", 3000);
+    await prisma.pushSubscription.deleteMany({
+        where: { endpoint, userId: req.user.id },
+    });
+    res.json({ success: true });
+}));
+
+router.post("/push/test", asyncRoute(async (req, res) => {
+    if (!pushConfigured()) {
+        return res.status(503).json({
+            success: false,
+            message: "Web Push ещё не настроен на сервере",
+        });
+    }
+
+    const result = await sendToUser(req.user.id, {
+        title: "ShumDev Control",
+        body: "Тестовое уведомление работает.",
+        url: "/control/app.html#/settings",
+        tag: `push-test-${req.user.id}`,
+    });
+
+    if (!result.sent) {
+        return res.status(409).json({
+            success: false,
+            message: "Нет активной Push-подписки. Сначала включите уведомления на этом устройстве.",
+        });
+    }
+
+    res.json({ success: true, sent: result.sent });
 }));
 
 router.get("/notifications", asyncRoute(async (req, res) => {

@@ -231,7 +231,7 @@
       else if (route === 'tasks' && id) await renderTaskDetail(id);
       else if (route === 'tasks') await renderTasks();
       else if (route === 'team') await renderTeam();
-      else if (route === 'settings') renderSettings();
+      else if (route === 'settings') await renderSettings();
       else location.hash = '#/overview';
       main.focus({ preventScroll: true });
     } catch (error) {
@@ -813,10 +813,88 @@
     );
   }
 
-  function renderSettings() {
+  async function renderSettings() {
+    const supported =
+      'serviceWorker' in navigator &&
+      'PushManager' in window &&
+      'Notification' in window;
+    let pushStatus = {
+      configured: false,
+      devices: 0,
+    };
+
+    try {
+      pushStatus = await api('/push/status');
+    } catch {}
+
+    const permission = supported ? Notification.permission : 'unsupported';
+    const permissionLabel =
+      permission === 'granted'
+        ? 'Разрешены'
+        : permission === 'denied'
+          ? 'Заблокированы браузером'
+          : permission === 'default'
+            ? 'Не запрошены'
+            : 'Не поддерживаются';
+
     main.innerHTML = `<div class="page">${pageHeader('Настройки', 'Профиль, безопасность и параметры внутренней системы')}
           <section class="content-grid"><article class="panel"><div class="panel__header"><h2>Мой профиль</h2></div><div class="form-grid"><div class="field"><span>Имя</span><div>${escapeHtml(state.user.name)}</div></div><div class="field"><span>Email</span><div>${escapeHtml(state.user.email)}</div></div><div class="field"><span>Роль</span><div>${badge(labels.roles[state.user.role], state.user.role === 'OWNER' ? 'purple' : 'blue')}</div></div><div class="field"><span>Должность</span><div>${escapeHtml(state.user.position || '—')}</div></div></div></article>
-          <div class="stack"><article class="panel"><div class="panel__header"><h2>Безопасность</h2><i class="ti ti-shield-lock"></i></div><p style="color:#8591a6;font-size:11px">После смены пароля все остальные сессии будут завершены.</p><button class="button" data-action="change-password">Изменить пароль</button></article><article class="panel"><div class="panel__header"><h2>О системе</h2></div><div class="details-list"><div class="detail-row"><dt>Версия</dt><dd>1.0.0</dd></div><div class="detail-row"><dt>База данных</dt><dd>SQLite + Prisma</dd></div><div class="detail-row"><dt>Доступ</dt><dd>Только команда</dd></div></div></article></div></section></div>`;
+          <div class="stack"><article class="panel"><div class="panel__header"><h2>Безопасность</h2><i class="ti ti-shield-lock"></i></div><p style="color:#8591a6;font-size:11px">После смены пароля все остальные сессии будут завершены.</p><button class="button" data-action="change-password">Изменить пароль</button></article>
+          <article class="panel"><div class="panel__header"><h2>Web Push</h2><i class="ti ti-bell-ringing"></i></div><p style="color:#8591a6;font-size:11px">Получайте уведомление сразу после новой заявки с сайта, даже если Control закрыт.</p><div class="details-list" style="margin-bottom:14px"><div class="detail-row"><dt>Сервер</dt><dd>${pushStatus.configured ? 'Настроен' : 'Нужны VAPID-ключи'}</dd></div><div class="detail-row"><dt>Браузер</dt><dd>${escapeHtml(permissionLabel)}</dd></div><div class="detail-row"><dt>Устройств</dt><dd>${Number(pushStatus.devices || 0)}</dd></div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="button button--primary" data-action="enable-push" ${!supported || !pushStatus.configured ? 'disabled' : ''}><i class="ti ti-bell-plus"></i> ${permission === 'granted' ? 'Обновить подписку' : 'Включить уведомления'}</button><button class="button" data-action="test-push" ${!supported || !pushStatus.configured || !pushStatus.devices ? 'disabled' : ''}><i class="ti ti-send"></i> Тестовое уведомление</button></div>${permission === 'denied' ? '<p style="color:#ff9aa6;font-size:11px;margin-top:12px">Разрешите уведомления для shumdev.ru в настройках браузера и обновите страницу.</p>' : ''}</article>
+          <article class="panel"><div class="panel__header"><h2>О системе</h2></div><div class="details-list"><div class="detail-row"><dt>Версия</dt><dd>1.0.0</dd></div><div class="detail-row"><dt>База данных</dt><dd>SQLite + Prisma</dd></div><div class="detail-row"><dt>Доступ</dt><dd>Только команда</dd></div></div></article></div></section></div>`;
+  }
+
+  function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+    const raw = atob(
+      (base64String + padding).replace(/-/g, '+').replace(/_/g, '/'),
+    );
+    return Uint8Array.from([...raw].map((char) => char.charCodeAt(0)));
+  }
+
+  async function enablePush() {
+    if (
+      !('serviceWorker' in navigator) ||
+      !('PushManager' in window) ||
+      !('Notification' in window)
+    ) {
+      throw new Error('Этот браузер не поддерживает Web Push');
+    }
+
+    const permission = await Notification.requestPermission();
+    if (permission !== 'granted') {
+      throw new Error('Разрешение на уведомления не выдано');
+    }
+
+    const status = await api('/push/status');
+    if (!status.configured || !status.publicKey) {
+      throw new Error('Web Push ещё не настроен на сервере');
+    }
+
+    await navigator.serviceWorker.register('/service-worker.js');
+    const registration = await navigator.serviceWorker.ready;
+    const existing = await registration.pushManager.getSubscription();
+
+    if (existing) {
+      await api('/push/subscribe', {
+        method: 'DELETE',
+        body: JSON.stringify({ endpoint: existing.endpoint }),
+      }).catch(() => {});
+      await existing.unsubscribe().catch(() => {});
+    }
+
+    const subscription = await registration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(status.publicKey),
+    });
+
+    await api('/push/subscribe', {
+      method: 'POST',
+      body: JSON.stringify(subscription),
+    });
+
+    toast('Web Push включён на этом устройстве');
+    await renderSettings();
   }
 
   async function showNotifications() {
@@ -872,6 +950,17 @@
         return;
       }
       if (action === 'retry') return renderRoute();
+      if (action === 'enable-push') return enablePush();
+      if (action === 'test-push') {
+        const result = await api('/push/test', {
+          method: 'POST',
+          body: '{}',
+        });
+        toast(
+          `Тестовое уведомление отправлено${result.sent ? ` · устройств: ${result.sent}` : ''}`,
+        );
+        return;
+      }
       if (action === 'new-task') return taskModal();
       if (action === 'new-project') return projectModal();
       if (action === 'new-user') return userModal();
@@ -1231,6 +1320,9 @@
       state.user = auth.user;
       state.csrfToken = auth.csrfToken;
       setupUser();
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+      }
       await renderRoute();
       refreshNotificationDot();
       setInterval(refreshNotificationDot, 60000);
