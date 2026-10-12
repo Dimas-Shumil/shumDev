@@ -3606,3 +3606,684 @@ body {
   .lead-mobile-card__footer { display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; padding: 9px 10px; border-radius: 8px; background: #1a2850; color: #d6e2ff; font-size: 12px; font-weight: 700; }
   .lead-mobile-card__footer i { font-size: 15px; }
 }
+
+/* ==========================================================================
+   ShumDev Green Control Theme v1
+   Visual-only layer. No layout/business logic changes.
+   ========================================================================== */
+
+body.control-app {
+  background:
+    radial-gradient(circle at 12% -10%, rgba(0, 200, 150, 0.08), transparent 34%),
+    radial-gradient(circle at 100% 0%, rgba(32, 122, 78, 0.07), transparent 26%),
+    #040a07;
+  color: #f4faf6;
+}
+
+.control-app ::selection {
+  background: rgba(0, 200, 150, 0.28);
+}
+
+.control-app ::-webkit-scrollbar-thumb {
+  background: #254336;
+}
+
+.control-app .sidebar {
+  background:
+    radial-gradient(circle at 0 0, rgba(0, 200, 150, 0.08), transparent 35%),
+    linear-gradient(180deg, #05100b 0%, #030906 100%);
+  border-right-color: rgba(77, 135, 99, 0.22);
+  box-shadow: 20px 0 70px rgba(0, 0, 0, 0.18);
+}
+
+.control-app .brand {
+  min-height: 60px;
+  padding: 0 8px 22px;
+}
+
+.control-app .brand__logo {
+  width: 100%;
+  max-width: 185px;
+  height: 48px;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 10px;
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.control-app .nav__section {
+  color: #60766a;
+}
+
+.control-app .nav a {
+  color: #8fa097;
+}
+
+.control-app .nav a i {
+  color: #81968b;
+}
+
+.control-app .nav a:hover {
+  color: #f4faf6;
+  background: rgba(0, 200, 150, 0.055);
+}
+
+.control-app .nav a.is-active {
+  color: #f4faf6;
+  border-color: rgba(0, 200, 150, 0.42);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 200, 150, 0.18),
+    rgba(32, 122, 78, 0.09)
+  );
+  box-shadow:
+    inset 3px 0 #00c896,
+    0 0 28px rgba(0, 200, 150, 0.09);
+}
+
+.control-app .nav a.is-active i {
+  color: #7fffd4;
+}
+
+.control-app .nav a em {
+  background: rgba(0, 200, 150, 0.15);
+  color: #7fffd4;
+}
+
+.control-app .profile-chip,
+.control-app .profile-popover {
+  border-color: #1d382a;
+  background: #09140e;
+}
+
+.control-app .profile-chip small {
+  color: #7fffd4;
+  background: rgba(0, 200, 150, 0.12);
+}
+
+.control-app .avatar {
+  border-color: #2b5540;
+  background: #0d1c14;
+}
+
+.control-app .profile-popover a,
+.control-app .profile-popover button {
+  color: #bdcbc2;
+}
+
+.control-app .profile-popover a:hover,
+.control-app .profile-popover button:hover {
+  color: #f4faf6;
+  background: rgba(0, 200, 150, 0.07);
+}
+
+.control-app .profile-popover .sidebar__site-button {
+  color: #9dd7bb;
+}
+
+.control-app .profile-popover .sidebar__site-button:hover {
+  background: rgba(0, 200, 150, 0.09);
+}
+
+.control-app .app-content {
+  background:
+    radial-gradient(circle at 50% -20%, rgba(0, 200, 150, 0.045), transparent 34%),
+    #050b08;
+}
+
+.control-app .topbar {
+  background: rgba(5, 13, 9, 0.9);
+  border-bottom-color: rgba(58, 106, 76, 0.2);
+  backdrop-filter: blur(22px) saturate(1.1);
+}
+
+.control-app .search input,
+.control-app .select,
+.control-app .input,
+.control-app .field input,
+.control-app .field select,
+.control-app .field textarea {
+  border-color: #244431;
+  background: #0a1610;
+  color: #eaf4ed;
+}
+
+.control-app .search input::placeholder,
+.control-app .input::placeholder,
+.control-app textarea::placeholder {
+  color: #61766a;
+}
+
+.control-app .search input:focus,
+.control-app .select:focus,
+.control-app .input:focus,
+.control-app textarea:focus,
+.control-app .field input:focus,
+.control-app .field select:focus,
+.control-app .field textarea:focus {
+  border-color: #00c896;
+  box-shadow: 0 0 0 3px rgba(0, 200, 150, 0.1);
+}
+
+.control-app .search-results,
+.control-app .notifications-popover {
+  border-color: #23412f;
+  background: #08130d;
+}
+
+.control-app .search-result {
+  color: #d5e1d9;
+}
+
+.control-app .search-result:hover,
+.control-app .notification-item:hover {
+  background: #0e1d14;
+}
+
+.control-app .search-result i {
+  color: #7fffd4;
+}
+
+.control-app .icon-btn {
+  border-color: #244431;
+  background: #0a1610;
+  color: #c8d5cc;
+}
+
+.control-app .icon-btn:hover {
+  color: #f4faf6;
+  border-color: #397357;
+  background: #0d1d14;
+}
+
+.control-app .notification-button {
+  background: transparent;
+}
+
+.control-app .notification-button span {
+  background: #00c896;
+  box-shadow: 0 0 0 2px #040a07, 0 0 12px rgba(0, 200, 150, 0.6);
+}
+
+.control-app .button--primary {
+  border-color: #00c896;
+  background: linear-gradient(135deg, #00c896, #35a86f);
+  box-shadow: 0 10px 30px rgba(0, 200, 150, 0.17);
+}
+
+.control-app .button--primary:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 12px 34px rgba(0, 200, 150, 0.23);
+}
+
+.control-app .breadcrumb {
+  color: #6f8478;
+}
+
+.control-app .breadcrumb a,
+.control-app .panel__header a,
+.control-app .text-link {
+  color: #63d996;
+}
+
+.control-app .loader {
+  border-color: #173024;
+  border-top-color: #00c896;
+}
+
+.control-app .metric-card,
+.control-app .panel {
+  border-color: #213d2c;
+  background: linear-gradient(
+    145deg,
+    rgba(15, 27, 19, 0.97),
+    rgba(8, 18, 12, 0.97)
+  );
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.018),
+    0 18px 48px rgba(0, 0, 0, 0.09);
+}
+
+.control-app .metric-card__icon,
+.control-app .metric-card:nth-child(2) .metric-card__icon,
+.control-app .metric-card:nth-child(3) .metric-card__icon,
+.control-app .metric-card:nth-child(4) .metric-card__icon {
+  border-color: rgba(0, 200, 150, 0.28);
+  background: linear-gradient(
+    145deg,
+    rgba(0, 200, 150, 0.13),
+    rgba(32, 122, 78, 0.08)
+  );
+  color: #7fffd4;
+  box-shadow: inset 0 0 22px rgba(0, 200, 150, 0.04);
+}
+
+.control-app .metric-card em,
+.control-app .page-header p {
+  color: #90a197;
+}
+
+.control-app .metric-card em.is-positive {
+  color: #63d996;
+}
+
+.control-app .progress {
+  background: #183024;
+}
+
+.control-app .progress span {
+  background: linear-gradient(90deg, #00c896, #7fffd4);
+  box-shadow: 0 0 12px rgba(0, 200, 150, 0.25);
+}
+
+.control-app .tabs {
+  border-bottom-color: rgba(77, 135, 99, 0.2);
+}
+
+.control-app .tabs button {
+  color: #8d9d93;
+}
+
+.control-app .tabs button.is-active {
+  color: #f4faf6;
+}
+
+.control-app .tabs button.is-active::after {
+  background: #00c896;
+  box-shadow: 0 0 12px rgba(0, 200, 150, 0.35);
+}
+
+.control-app .filters {
+  border-color: #213d2c;
+  background: rgba(9, 20, 14, 0.7);
+}
+
+.control-app .data-table th {
+  border-bottom-color: #244431;
+  color: #82968a;
+}
+
+.control-app .data-table td {
+  border-bottom-color: rgba(38, 71, 51, 0.65);
+  color: #d4dfd7;
+}
+
+.control-app .data-table tbody tr:hover {
+  background: rgba(0, 200, 150, 0.035);
+}
+
+.control-app .project-card,
+.control-app .task-card,
+.control-app .member-card,
+.control-app .preview-card,
+.control-app .task-column,
+.control-app .task-list-group {
+  border-color: #213d2c;
+  background: #0b1710;
+}
+
+.control-app .project-card__cover {
+  background: #0f1d15;
+}
+
+.control-app .project-card__cover::after {
+  background: linear-gradient(transparent, #09140e);
+}
+
+.control-app .task-card:hover {
+  border-color: #35674c;
+}
+
+.control-app .task-column__head span {
+  background: #13291d;
+  color: #91aa9c;
+}
+
+.control-app .task-list-group__head,
+.control-app .task-list-item {
+  border-color: rgba(55, 100, 72, 0.25);
+  background: rgba(10, 23, 15, 0.76);
+}
+
+.control-app .task-list-item:hover {
+  background: rgba(14, 34, 22, 0.92);
+}
+
+.control-app .attention-row {
+  border-color: #264534;
+  color: #cbd8cf;
+}
+
+.control-app .empty-state i {
+  color: #4d705c;
+}
+
+.control-app .empty-state h3 {
+  color: #e3ede6;
+}
+
+.control-app .modal-backdrop {
+  background: rgba(0, 6, 3, 0.78);
+}
+
+.control-app .modal {
+  border-color: #285039;
+  background: #08130d;
+}
+
+.control-app .modal__header {
+  border-bottom-color: #244431;
+  background: rgba(8, 19, 13, 0.96);
+}
+
+.control-app .modal__footer {
+  border-top-color: #244431;
+}
+
+.control-app .check-row input {
+  accent-color: #00c896;
+}
+
+.control-app .toast {
+  border-color: #2a6648;
+  background: #0a1c12;
+  color: #dceae1;
+}
+
+@media (max-width: 680px) {
+  .control-app .topbar {
+    border-bottom-color: rgba(65, 112, 82, 0.2);
+  }
+
+  .control-app .mobile-nav {
+    border-color: rgba(61, 119, 82, 0.72);
+    background: rgba(5, 16, 10, 0.95);
+    box-shadow:
+      0 18px 50px rgba(0, 0, 0, 0.46),
+      0 0 28px rgba(0, 200, 150, 0.055),
+      inset 0 1px rgba(255, 255, 255, 0.025);
+  }
+
+  .control-app .mobile-nav > a,
+  .control-app .mobile-nav__more {
+    color: #7f9487;
+  }
+
+  .control-app .mobile-nav > .is-active,
+  .control-app .mobile-nav__more.is-active,
+  .control-app .mobile-nav__more[aria-expanded='true'] {
+    color: #f4faf6;
+    background: linear-gradient(
+      145deg,
+      rgba(0, 200, 150, 0.18),
+      rgba(32, 122, 78, 0.12)
+    );
+    box-shadow: inset 0 0 20px rgba(0, 200, 150, 0.045);
+  }
+
+  .control-app .mobile-nav > .is-active i,
+  .control-app .mobile-nav__more.is-active i,
+  .control-app .mobile-nav__more[aria-expanded='true'] i {
+    color: #7fffd4;
+  }
+
+  .control-app .mobile-nav em {
+    border-color: #07100b;
+    background: #00c896;
+  }
+
+  .control-app .mobile-more-backdrop {
+    background: rgba(0, 6, 3, 0.7);
+  }
+
+  .control-app .mobile-more-sheet {
+    border-color: #285039;
+    background: linear-gradient(180deg, #0b1b12 0%, #061009 100%);
+  }
+
+  .control-app .mobile-more-sheet__handle {
+    background: #345b44;
+  }
+
+  .control-app .mobile-more-sheet__header,
+  .control-app .mobile-more-sheet__actions {
+    border-color: rgba(67, 119, 84, 0.22);
+  }
+
+  .control-app .mobile-more-list a {
+    border-color: rgba(54, 105, 72, 0.62);
+    background: rgba(10, 28, 17, 0.8);
+  }
+
+  .control-app .mobile-more-list a > span {
+    background: rgba(0, 200, 150, 0.1);
+    color: #7fffd4;
+  }
+
+  .control-app .mobile-more-list a b {
+    color: #eef7f1;
+  }
+
+  .control-app .mobile-more-list a small {
+    color: #82958a;
+  }
+
+  .control-app .mobile-more-list a.is-active {
+    border-color: rgba(0, 200, 150, 0.7);
+    background: linear-gradient(
+      145deg,
+      rgba(0, 200, 150, 0.17),
+      rgba(32, 122, 78, 0.13)
+    );
+  }
+
+  .control-app .mobile-more-list a.is-active > span {
+    background: rgba(0, 200, 150, 0.18);
+    color: #a1ffe0;
+  }
+
+  .control-app .lead-mobile-card {
+    border-color: #294d37;
+    background: #0b1b12;
+    color: #f4faf6;
+  }
+
+  .control-app .lead-mobile-card:active {
+    background: #10271a;
+  }
+
+  .control-app .lead-mobile-card:focus-visible {
+    outline-color: #00c896;
+  }
+
+  .control-app .lead-mobile-card__eyebrow,
+  .control-app .lead-mobile-card__details > span > span {
+    color: #87a091;
+  }
+
+  .control-app .lead-mobile-card__name,
+  .control-app .lead-mobile-card__details b {
+    color: #edf7f0;
+  }
+
+  .control-app .lead-mobile-card__contact {
+    color: #aabbb0;
+  }
+
+  .control-app .lead-mobile-card__details {
+    border-color: #274b36;
+  }
+
+  .control-app .lead-mobile-card__footer {
+    background: #123522;
+    color: #d9f6e4;
+  }
+
+  .control-app .modal {
+    border-top-color: #285039;
+    background: #08130d;
+  }
+}
+
+/* ==========================================================================
+   ShumDev Green Control Theme v2
+   Removes legacy blue/purple accents from task and overview UI.
+   ========================================================================== */
+
+.control-app .attention-list--overview .attention-row {
+  border-color: #28513a;
+  background: linear-gradient(145deg, #0c1c13, #09160f);
+  color: #d4e1d8;
+}
+
+.control-app .attention-list--overview .attention-row:hover {
+  border-color: #3d7d58;
+  background: linear-gradient(145deg, #10271a, #0b1d13);
+}
+
+.control-app .attention-list--overview .attention-row > i:first-child,
+.control-app .attention-list--overview .attention-row:nth-child(2) > i:first-child,
+.control-app .attention-list--overview .attention-row:nth-child(3) > i:first-child {
+  border-color: rgba(0, 200, 150, 0.32);
+  background: rgba(0, 200, 150, 0.11);
+  color: #7fffd4;
+}
+
+.control-app .attention-list--overview .attention-row > i:last-child {
+  color: #668273;
+}
+
+.control-app .button {
+  border-color: #2a4c37;
+  background: #0b1911;
+  color: #eaf4ed;
+}
+
+.control-app .button:hover {
+  border-color: #42775a;
+  background: #10241a;
+}
+
+.control-app #task-mine.button--primary {
+  border-color: rgba(0, 200, 150, 0.62);
+  background: linear-gradient(135deg, #087e5e, #00c896);
+  box-shadow: 0 7px 22px rgba(0, 200, 150, 0.14);
+}
+
+.control-app .task-view-toggle {
+  border-color: #2b523b;
+  background: #07140d;
+}
+
+.control-app .task-view-toggle button {
+  color: #869b8f;
+}
+
+.control-app .task-view-toggle button:hover {
+  color: #e7f2ea;
+  background: rgba(0, 200, 150, 0.055);
+}
+
+.control-app .task-view-toggle button.is-active {
+  background: linear-gradient(135deg, #087e5e, #00c896);
+  color: #ffffff;
+  box-shadow: 0 5px 18px rgba(0, 200, 150, 0.17);
+}
+
+.control-app .task-list-group__head > span,
+.control-app .task-column__head span {
+  border-color: rgba(0, 200, 150, 0.24);
+  background: rgba(0, 200, 150, 0.09);
+  color: #8ce3be;
+}
+
+.control-app .task-list-group__head {
+  border-bottom-color: rgba(59, 109, 78, 0.3);
+  background: rgba(12, 30, 19, 0.7);
+}
+
+.control-app .task-list-group--done {
+  border-color: #254533;
+  background: rgba(7, 20, 12, 0.74);
+}
+
+.control-app .task-list-view__head {
+  border-bottom-color: rgba(55, 102, 73, 0.27);
+  color: #748d7e;
+}
+
+.control-app .task-row {
+  border-color: #294936;
+  background: #0b1a12;
+}
+
+.control-app .task-row:hover {
+  border-color: #3b6c50;
+  background: #0e2117;
+}
+
+.control-app .task-card {
+  border-color: #294936;
+  background: #0b1a12;
+}
+
+.control-app .task-card:hover {
+  border-color: #3f7657;
+}
+
+.control-app .badge--blue,
+.control-app .badge--purple,
+.control-app .badge--yellow {
+  color: #8ee6c0;
+  border-color: rgba(0, 200, 150, 0.3);
+  background: rgba(0, 200, 150, 0.09);
+}
+
+.control-app .badge--gray {
+  color: #9aada1;
+  border-color: #365343;
+  background: rgba(73, 102, 84, 0.12);
+}
+
+.control-app .preview-card__icon--purple {
+  color: #8fffd3;
+  background: rgba(0, 200, 150, 0.11);
+  border-color: rgba(0, 200, 150, 0.28);
+}
+
+.control-app .filters .button:not(.button--danger):not(.button--primary) {
+  border-color: #2b503a;
+  background: #0a1810;
+  color: #d8e5dc;
+}
+
+.control-app .filters .button:not(.button--danger):not(.button--primary):hover {
+  border-color: #407659;
+  background: #10241a;
+}
+
+.control-app .task-board .task-column {
+  border-color: #264a35;
+  background: rgba(7, 20, 12, 0.75);
+}
+
+.control-app .task-column__head h3 {
+  color: #d9e6dd;
+}
+
+@media (max-width: 680px) {
+  .control-app .attention-list--overview .attention-row {
+    border-color: #28513a;
+    background: #0b1b12;
+  }
+
+  .control-app .task-view-toggle {
+    border-color: #2c543c;
+    background: #07140d;
+  }
+
+  .control-app #task-mine.button--primary {
+    background: linear-gradient(135deg, #087e5e, #00c896);
+  }
+}
+
