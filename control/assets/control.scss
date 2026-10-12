@@ -4287,3 +4287,211 @@ body.control-app {
   }
 }
 
+/* ==========================================================================
+   ShumDev Green Login Theme v1
+   Matches Green Admin Theme v2.
+   ========================================================================== */
+
+.control-login {
+  background:
+    radial-gradient(circle at 18% 10%, rgba(0, 200, 150, 0.055), transparent 28%),
+    #040a07;
+  color: #f4faf6;
+}
+
+.control-login .login-shell {
+  background: #040a07;
+}
+
+.control-login .login-panel {
+  position: relative;
+}
+
+.control-login .brand--login {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 62px;
+}
+
+.control-login .login-brand__logo {
+  width: 190px;
+  height: 48px;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 10px;
+}
+
+.control-login .login-brand__label {
+  padding: 5px 8px;
+  border: 1px solid rgba(0, 200, 150, 0.28);
+  border-radius: 7px;
+  background: rgba(0, 200, 150, 0.07);
+  color: #8fffd3;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.control-login .login-panel__intro .eyebrow {
+  color: #63d996;
+}
+
+.control-login .login-panel__intro h1 {
+  color: #f4faf6;
+}
+
+.control-login .login-panel__intro p {
+  color: #91a298;
+}
+
+.control-login .field {
+  color: #b8c8be;
+}
+
+.control-login .input-wrap > i {
+  color: #678171;
+}
+
+.control-login .field input {
+  border-color: #284c37;
+  background: #0a1710;
+  color: #edf7f0;
+}
+
+.control-login .field input::placeholder {
+  color: #607569;
+}
+
+.control-login .field input:focus {
+  border-color: #00c896;
+  box-shadow: 0 0 0 3px rgba(0, 200, 150, 0.11);
+}
+
+.control-login .icon-btn--inside {
+  color: #7f9588;
+}
+
+.control-login .icon-btn--inside:hover {
+  color: #7fffd4;
+  background: rgba(0, 200, 150, 0.07);
+}
+
+.control-login .button--primary {
+  border-color: #00c896;
+  background: linear-gradient(135deg, #00c896 0%, #35a86f 100%);
+  color: #ffffff;
+  box-shadow:
+    0 12px 32px rgba(0, 200, 150, 0.17),
+    inset 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.control-login .button--primary:hover {
+  filter: brightness(1.06);
+  box-shadow:
+    0 15px 36px rgba(0, 200, 150, 0.24),
+    inset 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.control-login .login-panel__note {
+  color: #657a6e;
+}
+
+.control-login .login-panel__note code {
+  color: #91aa9c;
+}
+
+.control-login .login-visual {
+  border-left-color: rgba(61, 119, 82, 0.22);
+  background:
+    radial-gradient(circle at 64% 42%, rgba(0, 200, 150, 0.14), transparent 29%),
+    radial-gradient(circle at 40% 70%, rgba(32, 122, 78, 0.11), transparent 31%),
+    linear-gradient(145deg, #06110b 0%, #04100a 54%, #07160f 100%);
+}
+
+.control-login .login-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, transparent 58%, rgba(0, 200, 150, 0.035) 58%, transparent 72%);
+}
+
+.control-login .login-visual__glow {
+  background: rgba(0, 200, 150, 0.1);
+  filter: blur(88px);
+}
+
+.control-login .login-orbit {
+  border-color: rgba(0, 200, 150, 0.13);
+}
+
+.control-login .login-orbit--two {
+  border-color: rgba(75, 178, 120, 0.1);
+}
+
+.control-login .preview-card {
+  border-color: #28503a;
+  background: rgba(8, 24, 15, 0.92);
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.42),
+    inset 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.control-login .preview-card small {
+  color: #91a298;
+}
+
+.control-login .preview-card strong {
+  color: #f4faf6;
+}
+
+.control-login .preview-card__icon--purple {
+  border-color: rgba(0, 200, 150, 0.3);
+  background: rgba(0, 200, 150, 0.11);
+  color: #7fffd4;
+}
+
+.control-login .preview-card--tasks span {
+  color: #dce9e0;
+}
+
+.control-login .preview-card--tasks span i {
+  color: #63d996;
+}
+
+.control-login .preview-card--tasks small {
+  color: #63d996;
+}
+
+.control-login .preview-card--timer b {
+  color: #7fffd4;
+  text-shadow: 0 0 22px rgba(0, 200, 150, 0.18);
+}
+
+.control-login .preview-card--timer span {
+  color: #63d996;
+}
+
+.control-login .form-error {
+  border-color: rgba(255, 94, 112, 0.34);
+  background: rgba(255, 94, 112, 0.08);
+}
+
+@media (max-width: 680px) {
+  .control-login .login-panel {
+    width: min(460px, 100% - 36px);
+  }
+
+  .control-login .brand--login {
+    padding-bottom: 42px;
+  }
+
+  .control-login .login-brand__logo {
+    width: 165px;
+    height: 42px;
+  }
+}
+

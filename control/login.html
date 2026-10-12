@@ -8,21 +8,25 @@
   <link rel="icon" href="/site/image/circle-logo.webp">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="apple-touch-icon" href="/site/image/pwa-192.png">
-  <meta name="theme-color" content="#050c18">
+  <meta name="theme-color" content="#040a07">
   <link rel="stylesheet" href="/control/vendor/tabler/tabler-icons.min.css">
-  <link rel="stylesheet" href="/control/assets/control.css">
+  <link rel="stylesheet" href="/control/assets/control.css?v=20261012-green-login-1">
 </head>
 <body class="control-login">
   <main class="login-shell">
     <section class="login-panel" aria-labelledby="login-title">
       <div class="brand brand--login">
-        <span class="brand__mark">SD</span>
-        <span class="brand__copy"><b>ShumDev Control</b><small>Внутренняя система команды</small></span>
+        <img
+          class="login-brand__logo"
+          src="/site/image/shumdev-logo-green.webp"
+          alt="ShumDev Digital Solutions"
+        >
+        <span class="login-brand__label">Control</span>
       </div>
       <div class="login-panel__intro">
         <span class="eyebrow"><i class="ti ti-shield-lock"></i> Защищённый доступ</span>
         <h1 id="login-title">С возвращением</h1>
-        <p>Войдите, чтобы управлять проектами, задачами, заявками и временем команды.</p>
+        <p>Войдите, чтобы управлять проектами, задачами, заявками и работой компании.</p>
       </div>
       <form id="login-form" class="form-stack" novalidate>
         <label class="field">
@@ -34,7 +38,7 @@
           <span class="input-wrap"><i class="ti ti-lock"></i><input id="password" type="password" name="password" autocomplete="current-password" placeholder="••••••••••••" minlength="12" required><button class="icon-btn icon-btn--inside" type="button" id="toggle-password" aria-label="Показать пароль"><i class="ti ti-eye"></i></button></span>
         </label>
         <div id="login-error" class="form-error" role="alert" hidden></div>
-        <button class="button button--primary button--wide" type="submit"><span>Войти в Control</span><i class="ti ti-arrow-right"></i></button>
+        <button class="button button--primary button--wide" type="submit"><span>Войти в Control</span><i class="ti ti-login-2"></i></button>
       </form>
       <p class="login-panel__note"><i class="ti ti-info-circle"></i> Первый аккаунт создаётся командой <code>npm run create-owner</code>.</p>
     </section>
@@ -45,7 +49,7 @@
       <div class="preview-stack">
         <div class="preview-card preview-card--main">
           <span class="preview-card__icon preview-card__icon--purple"><i class="ti ti-layout-dashboard"></i></span>
-          <div><small>В центре внимания</small><strong>Вся работа команды<br>в одном месте</strong></div>
+          <div><small>В центре внимания</small><strong>Вся работа компании<br>в одном месте</strong></div>
         </div>
         <div class="preview-card preview-card--tasks"><span><i class="ti ti-circle-check"></i> Задачи на сегодня</span><b>14</b><small>6 уже в работе</small></div>
         <div class="preview-card preview-card--timer"><small>Активный таймер</small><b>01:24:36</b><span><i class="ti ti-player-play-filled"></i> Давид работает</span></div>
