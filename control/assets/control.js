@@ -191,15 +191,23 @@
   }
 
   function setupUser() {
+    const role = labels.roles[state.user.role] || state.user.role;
+    const avatarContent = state.user.avatarPath
+      ? `<img src="${attr(state.user.avatarPath)}" alt="">`
+      : initials(state.user.name);
+
     document.querySelector('#sidebar-name').textContent = state.user.name;
-    document.querySelector('#sidebar-role').textContent =
-      labels.roles[state.user.role] || state.user.role;
-    document.querySelector('#sidebar-avatar').innerHTML = state.user.avatarPath
-      ? `<img src="${attr(state.user.avatarPath)}" alt="">`
-      : initials(state.user.name);
-    document.querySelector('#topbar-avatar').innerHTML = state.user.avatarPath
-      ? `<img src="${attr(state.user.avatarPath)}" alt="">`
-      : initials(state.user.name);
+    document.querySelector('#sidebar-role').textContent = role;
+    document.querySelector('#sidebar-avatar').innerHTML = avatarContent;
+    document.querySelector('#topbar-avatar').innerHTML = avatarContent;
+
+    const mobileName = document.querySelector('#mobile-sheet-name');
+    const mobileRole = document.querySelector('#mobile-sheet-role');
+    const mobileAvatar = document.querySelector('#mobile-sheet-avatar');
+    if (mobileName) mobileName.textContent = state.user.name;
+    if (mobileRole) mobileRole.textContent = role;
+    if (mobileAvatar) mobileAvatar.innerHTML = avatarContent;
+
     if (!isManager())
       document
         .querySelectorAll('[data-manager]')
@@ -217,6 +225,23 @@
       .forEach((link) =>
         link.classList.toggle('is-active', link.dataset.route === route),
       );
+
+    document.querySelectorAll('[data-mobile-route]').forEach((link) => {
+      link.classList.toggle('is-active', link.dataset.mobileRoute === route);
+    });
+
+    document.querySelectorAll('[data-mobile-menu-route]').forEach((link) => {
+      link.classList.toggle(
+        'is-active',
+        link.dataset.mobileMenuRoute === route,
+      );
+    });
+
+    const moreButton = document.querySelector('#mobile-more-button');
+    if (moreButton) {
+      const primaryRoutes = ['overview', 'tasks', 'projects', 'leads'];
+      moreButton.classList.toggle('is-active', !primaryRoutes.includes(route));
+    }
   }
 
   async function renderRoute() {
@@ -258,8 +283,13 @@
   async function renderOverview() {
     const data = await api('/dashboard');
     const navLeads = document.querySelector('#nav-leads');
+    const mobileNavLeads = document.querySelector('#mobile-nav-leads');
 
     if (navLeads) navLeads.textContent = data.metrics.newLeads || '';
+    if (mobileNavLeads) {
+      mobileNavLeads.textContent = data.metrics.newLeads || '';
+      mobileNavLeads.hidden = !data.metrics.newLeads;
+    }
 
     const attentionItems = [
       isManager()
@@ -384,7 +414,7 @@
           <label class="field field--wide"><span>Следующий контакт</span><input id="lead-modal-date" type="datetime-local" value="${lead.nextContactAt ? new Date(new Date(lead.nextContactAt) - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16) : ''}"></label>
           <div class="field field--wide"><span>Комментарии</span><div class="comment-list">${lead.notes.map((note) => `<div class="comment">${avatar(note.author, 'avatar--sm')}<div><div class="comment__meta"><b>${escapeHtml(note.author.name)}</b><time>${date(note.createdAt)}</time></div><p>${escapeHtml(note.text)}</p></div></div>`).join('') || `<span style="color:#78869a">Комментариев пока нет</span>`}</div><form id="lead-note-form" class="comment-form"><input class="input" name="text" placeholder="Добавить комментарий…" required><button class="button" type="submit">Отправить</button></form></div>
         </div>`,
-      `<button class="button" data-close-modal>Отмена</button><button class="button button--primary" data-save-lead="${id}">Сохранить</button>`,
+      `${state.user?.role === 'OWNER' ? `<button class="button button--danger" data-delete-lead="${id}"><i class="ti ti-trash"></i> Удалить</button>` : ''}<button class="button" data-close-modal>Отмена</button><button class="button button--primary" data-save-lead="${id}">Сохранить</button>`,
     );
     document
       .querySelector('#lead-note-form')
@@ -1059,6 +1089,26 @@
     )
       return closeModal();
     try {
+      const deleteLead = event.target.closest('[data-delete-lead]');
+      if (deleteLead) {
+        const id = Number(deleteLead.dataset.deleteLead);
+        const title = modalRoot.querySelector('.modal__header h2')?.textContent || `Заявка #${id}`;
+        modal(
+          'Удалить заявку?',
+          `<div class="confirm-delete"><span class="confirm-delete__icon"><i class="ti ti-trash"></i></span><div><h3>${escapeHtml(title)}</h3><p>Заявка, комментарии и её история будут удалены без возможности восстановления.</p></div><div class="form-error confirm-delete__error" hidden></div></div>`,
+          `<button class="button" data-close-modal>Отмена</button><button class="button button--danger" data-confirm-delete-lead="${id}"><i class="ti ti-trash"></i> Удалить заявку</button>`,
+        );
+        return;
+      }
+      const confirmDeleteLead = event.target.closest('[data-confirm-delete-lead]');
+      if (confirmDeleteLead) {
+        confirmDeleteLead.disabled = true;
+        confirmDeleteLead.innerHTML = '<span class="button-loader"></span> Удаляем…';
+        await api(`/leads/${confirmDeleteLead.dataset.confirmDeleteLead}`, { method: 'DELETE' });
+        toast('Заявка удалена');
+        closeModal();
+        return renderRoute();
+      }
       const saveLead = event.target.closest('[data-save-lead]');
       if (saveLead) {
         await api(`/leads/${saveLead.dataset.saveLead}`, {
@@ -1165,6 +1215,11 @@
         return renderRoute();
       }
     } catch (error) {
+      const deleteLeadButton = modalRoot.querySelector('[data-confirm-delete-lead]');
+      if (deleteLeadButton) {
+        deleteLeadButton.disabled = false;
+        deleteLeadButton.innerHTML = '<i class="ti ti-trash"></i> Удалить заявку';
+      }
       const deleteTaskButton = modalRoot.querySelector(
         '[data-confirm-delete-task]',
       );
@@ -1246,14 +1301,16 @@
     }
   }
 
-  document
-    .querySelector('[data-return-to-site]')
-    ?.addEventListener('click', () => {
+  document.querySelectorAll('[data-return-to-site]').forEach((button) => {
+    button.addEventListener('click', () => {
       endSession('/');
     });
+  });
 
-  document.querySelector('[data-logout]')?.addEventListener('click', () => {
-    endSession('/control/login.html');
+  document.querySelectorAll('[data-logout]').forEach((button) => {
+    button.addEventListener('click', () => {
+      endSession('/control/login.html');
+    });
   });
   document
     .querySelector('#quick-task')
@@ -1275,6 +1332,40 @@
           body: JSON.stringify({ id: Number(item.dataset.notification) }),
         }).catch(() => {});
     });
+
+  const mobileMoreButton = document.querySelector('#mobile-more-button');
+  const mobileMoreSheet = document.querySelector('#mobile-more-sheet');
+  const mobileMoreBackdrop = document.querySelector('#mobile-more-backdrop');
+  const mobileMoreClose = document.querySelector('#mobile-more-close');
+
+  function openMobileMore() {
+    if (!mobileMoreSheet || !mobileMoreBackdrop || !mobileMoreButton) return;
+    mobileMoreBackdrop.hidden = false;
+    mobileMoreSheet.classList.add('is-open');
+    mobileMoreSheet.setAttribute('aria-hidden', 'false');
+    mobileMoreButton.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('mobile-menu-open');
+  }
+
+  function closeMobileMore() {
+    if (!mobileMoreSheet || !mobileMoreBackdrop || !mobileMoreButton) return;
+    mobileMoreSheet.classList.remove('is-open');
+    mobileMoreSheet.setAttribute('aria-hidden', 'true');
+    mobileMoreButton.setAttribute('aria-expanded', 'false');
+    mobileMoreBackdrop.hidden = true;
+    document.body.classList.remove('mobile-menu-open');
+  }
+
+  mobileMoreButton?.addEventListener('click', () => {
+    if (mobileMoreSheet?.classList.contains('is-open')) closeMobileMore();
+    else openMobileMore();
+  });
+  mobileMoreClose?.addEventListener('click', closeMobileMore);
+  mobileMoreBackdrop?.addEventListener('click', closeMobileMore);
+  mobileMoreSheet?.addEventListener('click', (event) => {
+    if (event.target.closest('[data-mobile-menu-route]')) closeMobileMore();
+  });
+
   const searchInput = document.querySelector('#global-search');
   searchInput.addEventListener('input', () => {
     clearTimeout(state.searchTimer);
@@ -1294,6 +1385,7 @@
     }
     if (event.key === 'Escape') {
       closeModal();
+      closeMobileMore();
       document.querySelector('#search-results').hidden = true;
       document.querySelector('#notifications-popover').hidden = true;
     }
@@ -1312,7 +1404,10 @@
     sidebar.classList.remove('is-open');
     backdrop.hidden = true;
   });
-  window.addEventListener('hashchange', renderRoute);
+  window.addEventListener('hashchange', () => {
+    closeMobileMore();
+    renderRoute();
+  });
 
   async function init() {
     try {

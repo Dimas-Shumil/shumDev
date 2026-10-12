@@ -376,6 +376,18 @@ router.patch("/leads/:id", requireRoles(...OWNER_MANAGER), asyncRoute(async (req
     res.json({ success: true, lead });
 }));
 
+router.delete("/leads/:id", requireRoles("OWNER"), asyncRoute(async (req, res) => {
+    const id = parsePositiveInt(req.params.id);
+    const existing = await prisma.lead.findUnique({ where: { id }, select: { id: true, name: true } });
+    if (!existing) return res.status(404).json({ success: false, message: "Заявка не найдена" });
+    await prisma.lead.delete({ where: { id } });
+    await recordActivity({
+        actorId: req.user.id, type: "LEAD_DELETED", entityType: "LEAD", entityId: id,
+        title: `${req.user.name} удалил заявку #${id} (${existing.name})`,
+    });
+    res.json({ success: true });
+}));
+
 router.post("/leads/:id/notes", requireRoles(...OWNER_MANAGER), asyncRoute(async (req, res) => {
     const leadId = parsePositiveInt(req.params.id);
     const text = textRequired(req.body.text, "Комментарий", 3000);

@@ -140,8 +140,108 @@
     </div>
 
     <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация">
+      <a href="#/overview" data-mobile-route="overview">
+        <i class="ti ti-home"></i>
+        <span>Обзор</span>
+      </a>
+      <a href="#/tasks" data-mobile-route="tasks">
+        <i class="ti ti-square-check"></i>
+        <span>Задачи</span>
+      </a>
+      <a href="#/projects" data-mobile-route="projects">
+        <i class="ti ti-folder"></i>
+        <span>Проекты</span>
+      </a>
+      <a href="#/leads" data-mobile-route="leads" data-manager>
+        <i class="ti ti-file-description"></i>
+        <span>Заявки</span>
+        <em id="mobile-nav-leads" hidden></em>
+      </a>
+      <button
+        class="mobile-nav__more"
+        id="mobile-more-button"
+        type="button"
+        aria-label="Открыть все разделы"
+        aria-controls="mobile-more-sheet"
+        aria-expanded="false"
+      >
+        <i class="ti ti-dots"></i>
+        <span>Ещё</span>
+      </button>
+    </nav>
+
+    <div class="mobile-more-backdrop" id="mobile-more-backdrop" hidden></div>
+    <section
+      class="mobile-more-sheet"
+      id="mobile-more-sheet"
+      aria-label="Все разделы"
+      aria-hidden="true"
+    >
+      <div class="mobile-more-sheet__handle" aria-hidden="true"></div>
+      <header class="mobile-more-sheet__header">
+        <div class="mobile-more-sheet__profile">
+          <span class="avatar" id="mobile-sheet-avatar">SD</span>
+          <span>
+            <b id="mobile-sheet-name">ShumDev</b>
+            <small id="mobile-sheet-role">Control</small>
+          </span>
+        </div>
+        <button
+          class="icon-btn mobile-more-sheet__close"
+          id="mobile-more-close"
+          type="button"
+          aria-label="Закрыть меню"
+        >
+          <i class="ti ti-x"></i>
+        </button>
+      </header>
+
+      <div class="mobile-more-sheet__content">
+        <span class="mobile-more-sheet__label">Разделы</span>
+        <nav class="mobile-more-list" aria-label="Все разделы системы">
+          <a href="#/overview" data-mobile-menu-route="overview">
+            <span><i class="ti ti-home"></i></span>
+            <div><b>Обзор</b><small>Главное по работе</small></div>
+          </a>
+          <a href="#/tasks" data-mobile-menu-route="tasks">
+            <span><i class="ti ti-square-check"></i></span>
+            <div><b>Задачи</b><small>Текущая работа и проверка</small></div>
+          </a>
+          <a href="#/projects" data-mobile-menu-route="projects">
+            <span><i class="ti ti-folder"></i></span>
+            <div><b>Проекты</b><small>Статусы, сроки и прогресс</small></div>
+          </a>
+          <a href="#/leads" data-mobile-menu-route="leads" data-manager>
+            <span><i class="ti ti-file-description"></i></span>
+            <div><b>Заявки</b><small>Обращения и продажи</small></div>
+          </a>
+          <a href="#/team" data-mobile-menu-route="team">
+            <span><i class="ti ti-users"></i></span>
+            <div><b>Сотрудники</b><small>Участники и роли</small></div>
+          </a>
+          <a href="#/settings" data-mobile-menu-route="settings">
+            <span><i class="ti ti-settings"></i></span>
+            <div><b>Настройки</b><small>Профиль и безопасность</small></div>
+          </a>
+        </nav>
+
+        <div class="mobile-more-sheet__actions">
+          <button type="button" data-return-to-site>
+            <i class="ti ti-world"></i>
+            <span>Вернуться на сайт</span>
+          </button>
+          <button class="is-danger" type="button" data-logout>
+            <i class="ti ti-logout"></i>
+            <span>Выйти</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <div class="modal-root" id="modal-root"></div>
     <div class="toast-root" id="toast-root" aria-live="polite"></div>
-    <script src="/control/assets/control.js?v=20261010-push" defer></script>
+    <script src="/control/assets/control.js?v=20261012-lead-delete" defer></script>
   </body>
 </html>
