@@ -358,7 +358,19 @@
         'Заявок пока нет',
         'Новые обращения с сайта появятся здесь автоматически.',
       );
-    return `<div class="table-wrap"><table class="data-table"><thead><tr><th>Клиент</th><th>Источник</th><th>Статус</th><th>Ответственный</th><th>Следующий контакт</th></tr></thead><tbody>${leads.map((lead) => `<tr data-open-lead="${lead.id}"><td><b>${escapeHtml(lead.name)}</b><br><small>${escapeHtml(lead.email || lead.phone || '')}</small></td><td>${escapeHtml(lead.source)}</td><td>${badge(labels.lead[lead.status], leadColors[lead.status])}</td><td>${lead.assignee ? person(lead.assignee) : '—'}</td><td>${date(lead.nextContactAt)}</td></tr>`).join('')}</tbody></table></div>`;
+    const mobileCards = `<div class="lead-mobile-list">${leads.map((lead) => `
+      <button type="button" class="lead-mobile-card" data-open-lead="${lead.id}" aria-label="Открыть заявку: ${attr(lead.name)}">
+        <span class="lead-mobile-card__top"><span class="lead-mobile-card__eyebrow">Заявка #${lead.id}</span>${badge(labels.lead[lead.status] || lead.status, leadColors[lead.status])}</span>
+        <span class="lead-mobile-card__name">${escapeHtml(lead.name)}</span>
+        <span class="lead-mobile-card__contact">${escapeHtml(lead.email || lead.phone || 'Контакт не указан')}</span>
+        <span class="lead-mobile-card__details">
+          <span><span>Источник</span><b>${escapeHtml(lead.source || '—')}</b></span>
+          <span><span>Ответственный</span><b>${lead.assignee ? escapeHtml(lead.assignee.name) : 'Не назначен'}</b></span>
+          <span><span>Следующий контакт</span><b>${date(lead.nextContactAt)}</b></span>
+        </span>
+        <span class="lead-mobile-card__footer">Открыть заявку <i class="ti ti-chevron-right" aria-hidden="true"></i></span>
+      </button>`).join('')}</div>`;
+    return `${mobileCards}<div class="table-wrap lead-desktop-table"><table class="data-table"><thead><tr><th>Клиент</th><th>Источник</th><th>Статус</th><th>Ответственный</th><th>Следующий контакт</th></tr></thead><tbody>${leads.map((lead) => `<tr data-open-lead="${lead.id}"><td><b>${escapeHtml(lead.name)}</b><br><small>${escapeHtml(lead.email || lead.phone || '')}</small></td><td>${escapeHtml(lead.source)}</td><td>${badge(labels.lead[lead.status], leadColors[lead.status])}</td><td>${lead.assignee ? person(lead.assignee) : '—'}</td><td>${date(lead.nextContactAt)}</td></tr>`).join('')}</tbody></table></div>`;
   }
   function person(user) {
     return `<span class="person">${avatar(user, 'avatar--sm')}<span><b>${escapeHtml(user.name)}</b><small>${escapeHtml(user.position || labels.roles[user.role] || '')}</small></span></span>`;

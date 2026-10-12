@@ -3777,3 +3777,31 @@ body {
     min-height: 66px;
   }
 }
+
+/* ShumDev Control: mobile lead cards (desktop table remains unchanged). */
+.lead-mobile-list { display: none; }
+@media (max-width: 768px) {
+  .lead-desktop-table { display: none; }
+  .lead-mobile-list { display: grid; gap: 12px; min-width: 0; }
+  .lead-mobile-card {
+    appearance: none; -webkit-appearance: none;
+    display: flex; flex-direction: column; gap: 9px;
+    width: 100%; min-width: 0; padding: 15px;
+    border: 1px solid #29415f; border-radius: 13px;
+    background: #0c1b30; color: #f5f7fb;
+    font: inherit; text-align: left; cursor: pointer;
+    overflow-wrap: anywhere;
+  }
+  .lead-mobile-card:active { background: #122640; }
+  .lead-mobile-card:focus-visible { outline: 2px solid #834cff; outline-offset: 2px; }
+  .lead-mobile-card__top { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; }
+  .lead-mobile-card__eyebrow { color: #91a6c2; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+  .lead-mobile-card__name { display: block; color: #f5f7fb; font-size: 16px; line-height: 1.35; font-weight: 700; }
+  .lead-mobile-card__contact { display: block; margin-top: -6px; color: #abbad0; font-size: 12px; overflow-wrap: anywhere; }
+  .lead-mobile-card__details { display: grid; gap: 10px; width: 100%; padding: 12px 0; margin-top: 3px; border-top: 1px solid #253b57; border-bottom: 1px solid #253b57; }
+  .lead-mobile-card__details > span { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; min-width: 0; font-size: 12px; }
+  .lead-mobile-card__details > span > span { color: #8da3bf; flex-shrink: 0; }
+  .lead-mobile-card__details b { min-width: 0; color: #ecf2fd; text-align: right; font-weight: 600; overflow-wrap: anywhere; }
+  .lead-mobile-card__footer { display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; padding: 9px 10px; border-radius: 8px; background: #1a2850; color: #d6e2ff; font-size: 12px; font-weight: 700; }
+  .lead-mobile-card__footer i { font-size: 15px; }
+}
