@@ -661,11 +661,7 @@ body.modal-open {
     border-radius: 28px;
 
     background:
-      linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.018) 0%,
-        transparent 32%
-      ),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.018) 0%, transparent 32%),
       rgba(8, 12, 10, 0.97);
 
     box-shadow:
@@ -1242,7 +1238,15 @@ body.menu-open {
     pointer-events: none;
 
     // Desktop: лёгкое нейтральное затемнение под текстом.
+    // Нижняя часть Hero плавно растворяется в фоне секции .preview.
     background:
+      linear-gradient(
+        to bottom,
+        rgba($home-bg, 0) 58%,
+        rgba($home-bg, 0.28) 74%,
+        rgba($home-bg, 0.78) 90%,
+        $home-bg 100%
+      ),
       linear-gradient(
         90deg,
         rgba(2, 5, 4, 0.34) 0%,
@@ -3477,11 +3481,7 @@ body.menu-open {
         rgba(99, 217, 150, 0.035),
         transparent 28%
       ),
-      linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.012) 0%,
-        transparent 24%
-      );
+      linear-gradient(180deg, rgba(255, 255, 255, 0.012) 0%, transparent 24%);
     pointer-events: none;
   }
 
@@ -5365,6 +5365,8 @@ body.menu-open {
       overflow: hidden;
       position: relative;
 
+
+
       &--sport {
         background: linear-gradient(135deg, #101712 0%, #07100b 100%);
       }
@@ -6829,11 +6831,7 @@ textarea.form-control {
 .custom-cta__btn--light,
 .about-work__cta .btn-primary {
   border: 1px solid rgba(99, 217, 150, 0.18);
-  background: linear-gradient(
-    135deg,
-    $home-green-dark 0%,
-    $home-green 100%
-  );
+  background: linear-gradient(135deg, $home-green-dark 0%, $home-green 100%);
   box-shadow:
     0 16px 40px rgba(0, 0, 0, 0.28),
     0 0 20px rgba(53, 168, 111, 0.08),
@@ -7221,12 +7219,20 @@ textarea.form-control {
       background 0.28s ease;
 
     &--primary {
-      background: linear-gradient(135deg, $home-green-dark 0%, $home-green 100%);
-      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.3), 0 0 20px rgba(53, 168, 111, 0.08);
+      background: linear-gradient(
+        135deg,
+        $home-green-dark 0%,
+        $home-green 100%
+      );
+      box-shadow:
+        0 18px 46px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(53, 168, 111, 0.08);
 
       &:hover {
         transform: translateY(-4px);
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.36), 0 0 26px rgba(53, 168, 111, 0.14);
+        box-shadow:
+          0 24px 60px rgba(0, 0, 0, 0.36),
+          0 0 26px rgba(53, 168, 111, 0.14);
       }
     }
 
@@ -7309,7 +7315,12 @@ textarea.form-control {
     z-index: -1;
 
     border-radius: inherit;
-    background: linear-gradient(135deg, $home-green-bright, $home-green, $home-green-bright);
+    background: linear-gradient(
+      135deg,
+      $home-green-bright,
+      $home-green,
+      $home-green-bright
+    );
     background-size: 220% 220%;
     opacity: 0;
     filter: blur(14px);
@@ -8006,7 +8017,6 @@ textarea.form-control {
   }
 }
 
-
 @media (max-width: 380px) {
   .company-hero {
     &__container {
@@ -8041,7 +8051,6 @@ textarea.form-control {
     }
   }
 }
-
 
 // company team
 
@@ -8660,14 +8669,52 @@ html {
 
 .preview {
   position: relative;
+  isolation: isolate;
   padding: 120px 0 56px;
   overflow: hidden;
   background: $home-bg;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
 
+  // Зелёные диагонали — тот же фон, что у .digital-products.
   &::before,
   &::after {
-    content: none;
+    content: '';
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    width: 160px;
+    height: 160%;
+    top: -30%;
+    transform: rotate(39deg);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(16, 160, 113, 0.04) 35%,
+      rgba(16, 160, 113, 0.14) 98%,
+      rgba(70, 220, 168, 0.3)
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      #000 22%,
+      #000 78%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      #000 22%,
+      #000 78%,
+      transparent
+    );
+  }
+
+  &::before {
+    left: 13%;
+  }
+
+  &::after {
+    right: 15%;
+    width: 230px;
   }
 
   &__header {
@@ -9246,5 +9293,843 @@ html {
       height: 42px;
       flex-basis: 42px;
     }
+  }
+}
+
+// Главная: интерактивная витрина цифровых продуктов.
+$products-accent: #50d8aa;
+$products-bg: #020d0b;
+$products-muted: #b4c5bf;
+.digital-products {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 88px 0 64px;
+  background:
+    radial-gradient(
+      ellipse at 83% 35%,
+      rgba(0, 111, 80, 0.23),
+      transparent 55%
+    ),
+    $products-bg;
+  color: $home-text;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    width: 160px;
+    height: 160%;
+    top: -30%;
+    transform: rotate(39deg);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(16, 160, 113, 0.04) 35%,
+      rgba(16, 160, 113, 0.14) 98%,
+      rgba(70, 220, 168, 0.3)
+    );
+  }
+  &::before {
+    left: 13%;
+  }
+  &::after {
+    right: 15%;
+    width: 230px;
+  }
+  &__container {
+    position: relative;
+    max-width: 1720px;
+    padding: 0 80px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.25fr);
+    gap: 26px 32px;
+    align-items: center;
+  }
+  &__intro {
+    min-width: 0;
+  }
+  &__eyebrow {
+    color: $products-accent;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    margin: 0 0 20px;
+  }
+  &__title {
+    font-size: clamp(32px, 3.1vw, 52px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+    margin: 0 0 22px;
+    span {
+      display: block;
+      color: $products-accent;
+    }
+  }
+  &__description {
+    font-size: 14px;
+    line-height: 1.65;
+    color: $products-muted;
+    max-width: 530px;
+    margin: 0 0 28px;
+  }
+  &__tabs {
+    display: grid;
+    gap: 12px;
+  }
+  &__tab {
+    width: 100%;
+    min-height: 94px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    border: 1px solid rgba(80, 216, 170, 0.17);
+    border-radius: 15px;
+    padding: 18px 20px;
+    background: rgba(4, 17, 16, 0.8);
+    color: $home-text;
+    cursor: pointer;
+    font: inherit;
+    transition:
+      border-color 0.7s,
+      background 0.7s,
+      box-shadow 0.7s,
+      transform 0.7s;
+    &:hover {
+      border-color: rgba(80, 216, 170, 0.6);
+      background: rgba(6, 47, 35, 0.8);
+      transform: translateY(-2px);
+    }
+    &[aria-selected='true'] {
+      border-color: $products-accent;
+      background: linear-gradient(
+        115deg,
+        rgba(6, 71, 48, 0.55),
+        rgba(1, 35, 28, 0.8)
+      );
+      box-shadow:
+        0 0 24px rgba(20, 179, 112, 0.17),
+        inset 0 0 20px rgba(23, 157, 112, 0.09);
+    }
+  }
+  &__icon {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+  }
+  &__tab-info {
+    flex: 1;
+    min-width: 0;
+    strong {
+      display: block;
+      font-size: 23px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+    > span {
+      display: block;
+      font-size: 11px;
+      color: $products-muted;
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+  }
+  &__tab-price {
+    flex: 0 0 auto;
+    border-left: 1px solid rgba(121, 191, 162, 0.2);
+    padding-left: 17px;
+    font-size: 19px;
+    font-weight: 700;
+    white-space: nowrap;
+    small {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      color: $products-muted;
+      margin-bottom: 3px;
+    }
+  }
+  &__presentation {
+    display: grid;
+    min-width: 0;
+    border: 1px solid rgba(112, 212, 171, 0.55);
+    border-radius: 15px;
+    background:
+      radial-gradient(
+        ellipse at 65% 3%,
+        rgba(0, 142, 97, 0.16),
+        transparent 60%
+      ),
+      rgba(1, 15, 12, 0.77);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 26px 70px rgba(0, 0, 0, 0.2);
+  }
+  &__panel {
+    grid-area: 1 / 1;
+    position: relative;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    row-gap: 18px;
+    min-width: 0;
+    min-height: 726px;
+    padding: 30px 26px 24px;
+    border-radius: inherit;
+    overflow: hidden;
+
+    // Мягкая светотень поверх техники, но за текстом. Без дополнительных изображений.
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg,
+          rgba(1, 17, 14, 0.96) 0%,
+          rgba(1, 25, 19, 0.91) 24%,
+          rgba(2, 31, 23, 0.74) 39%,
+          rgba(2, 34, 25, 0.3) 55%,
+          transparent 75%),
+        radial-gradient(ellipse at 59% 30%, rgba(5, 116, 80, 0.19), transparent 59%);
+    }
+    &[hidden] {
+      display: grid;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    &.is-entering .digital-products__copy {
+      animation: products-copy-in 0.75s both;
+    }
+    &.is-entering .digital-products__visual {
+      animation: products-device-in 0.85s both;
+    }
+  }
+  &__brand {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    color: #a6b8ae;
+    letter-spacing: 0.2em;
+    font-size: 10px;
+  }
+  &__copy {
+    position: relative;
+    z-index: 2;
+    width: 52%;
+    pointer-events: none;
+    h3 {
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 20px 0 4px;
+    }
+  }
+  &__badge {
+    display: inline-block;
+    border: 1px solid rgba(40, 204, 146, 0.3);
+    border-radius: 30px;
+    background: rgba(1, 114, 75, 0.3);
+    color: $products-accent;
+    padding: 6px 14px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+  }
+  &__subtitle {
+    color: $products-muted;
+    font-size: 15px;
+    line-height: 1.45;
+    margin: 0 0 15px;
+  }
+  &__price {
+    font-size: 29px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0 0 5px;
+    white-space: nowrap;
+  }
+  &__payment {
+    color: $products-muted;
+    font-size: 13px;
+    line-height: 1.65;
+    margin: 0 0 20px;
+    min-height: 43px;
+  }
+  &__features {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+    margin: 0 0 4px;
+    padding: 0;
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      font-size: 11px;
+      line-height: 1.5;
+      color: #d4e3db;
+    }
+    img {
+      flex: 0 0 31px;
+      margin-top: -3px;
+      border: 1px solid rgba(80, 216, 170, 0.3);
+      border-radius: 9px;
+      padding: 6px;
+      width: 31px;
+      height: 31px;
+      background: rgba(1, 53, 39, 0.31);
+      box-shadow: inset 0 1px 0 rgba(116, 255, 202, 0.05);
+    }
+  }
+  // Прозрачные изображения уже содержат оба устройства и перспективу.
+  &__visual {
+    position: absolute;
+    z-index: 0;
+    right: -22px;
+    top: 102px;
+    width: 69%;
+    height: 498px;
+    pointer-events: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__artwork {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.38));
+    }
+  }
+  &__cta {
+    position: relative;
+    z-index: 3;
+    justify-self: start;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+    padding: 12px 25px;
+    border: 1px solid #4be6ad;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #0c9e68, #04784e);
+    box-shadow:
+      inset 0 1px 8px rgba(129, 255, 191, 0.25),
+      0 0 25px rgba(13, 173, 108, 0.15);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      box-shadow 0.6s,
+      background 0.6s;
+    &:hover {
+      background: #0c9865;
+      box-shadow: 0 0 25px rgba(13, 173, 108, 0.35);
+    }
+  }
+  &__benefits {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    align-items: center;
+    margin: 0;
+    padding: 14px 7px;
+    min-width: 0;
+    list-style: none;
+    border: 1px solid rgba(92, 194, 158, 0.17);
+    border-radius: 13px;
+    background: linear-gradient(105deg, rgba(0, 16, 14, 0.84), rgba(4, 34, 27, 0.71));
+    box-shadow: inset 0 1px 0 rgba(143, 239, 201, 0.04);
+  }
+  &__benefit {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 10px;
+    padding: 0 13px;
+    &:not(:last-child) {
+      border-right: 1px solid rgba(130, 202, 169, 0.24);
+    }
+    > img {
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      padding: 7px;
+      border: 1px solid rgba(88, 228, 173, 0.48);
+      border-radius: 10px;
+      background: rgba(3, 61, 44, 0.26);
+    }
+    > span {
+      display: block;
+      min-width: 0;
+    }
+    strong,
+    small {
+      display: block;
+      line-height: 1.45;
+    }
+    strong {
+      font-weight: 600;
+      font-size: 10px;
+      color: #effbf4;
+    }
+    small {
+      font-size: 9px;
+      color: $products-muted;
+      margin-top: 2px;
+    }
+  }
+  &__tab:focus-visible,
+  &__cta:focus-visible,
+  &__panel:focus-visible {
+    outline: 2px solid #b0ffdb;
+    outline-offset: 5px;
+  }
+  &__terms {
+    grid-column: 1 / -1;
+    max-width: 1000px;
+    color: #8fa69b;
+    font-size: 11px;
+    line-height: 1.7;
+    margin: 0;
+  }
+  &__noscript {
+    padding: 20px 32px;
+    color: $products-muted;
+    a {
+      color: $products-accent;
+    }
+  }
+  &.is-revealing &__container {
+    animation: products-copy-in 0.85s both;
+  }
+}
+@keyframes products-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes products-device-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+@media (min-width: 1500px) {
+  .digital-products {
+    &__panel {
+      min-height: 780px;
+      padding: 36px 32px 28px;
+      row-gap: 20px;
+    }
+    &__visual {
+      right: -24px;
+      width: 70%;
+      height: 556px;
+      top: 98px;
+    }
+    &__features li {
+      font-size: 13px;
+    }
+    &__features {
+      gap: 13px;
+    }
+    &__benefit strong { font-size: 11px; }
+    &__benefit small { font-size: 10px; }
+    &__copy h3 {
+      font-size: 44px;
+    }
+    &__tab-info > span {
+      font-size: 13px;
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .digital-products {
+    &__container {
+      padding: 0 40px;
+      gap: 25px;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.2fr);
+    }
+    &__tab {
+      padding: 16px 14px;
+      gap: 12px;
+    }
+    &__tab-info strong {
+      font-size: 20px;
+    }
+    &__tab-price {
+      font-size: 17px;
+      padding-left: 12px;
+    }
+    &__icon {
+      width: 30px;
+      height: 30px;
+      flex-basis: 30px;
+    }
+    &__visual {
+      width: 61%;
+      right: 0;
+    }
+    &__copy {
+      width: 55%;
+    }
+    &__benefit {
+      padding-inline: 8px;
+      gap: 7px;
+    }
+    &__benefit > img {
+      flex-basis: 29px;
+      width: 29px;
+      height: 29px;
+      padding: 6px;
+    }
+    &__panel::before {
+      background:
+        linear-gradient(90deg,
+          rgba(1, 17, 14, 0.98) 0%,
+          rgba(1, 25, 19, 0.95) 32%,
+          rgba(2, 27, 21, 0.88) 48%,
+          rgba(2, 34, 25, 0.5) 61%,
+          transparent 80%),
+        radial-gradient(ellipse at 59% 30%, rgba(5, 116, 80, 0.14), transparent 59%);
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .digital-products {
+    &__container {
+      grid-template-columns: 1fr;
+    }
+    &__intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 30px;
+    }
+    &__eyebrow,
+    &__title,
+    &__description {
+      grid-column: 1;
+    }
+    &__tabs {
+      grid-column: 2;
+      grid-row: 1 / 4;
+      align-self: center;
+    }
+    &__panel {
+      min-height: 742px;
+      padding: 30px;
+    }
+    &__copy {
+      width: 52%;
+    }
+    &__features li {
+      font-size: 13px;
+    }
+    &__visual {
+      width: 66%;
+      top: 92px;
+      height: 508px;
+      right: -20px;
+    }
+  }
+}
+// На планшетах у правой витрины нет тесного наложения списка на технику.
+// Левая колонка и карточки продуктов сохраняют прежнюю адаптивную сетку.
+@media (min-width: 761px) and (max-width: 1000px) {
+  .digital-products {
+    &__panel {
+      min-height: 0;
+      grid-template-rows: auto auto auto auto;
+      row-gap: 14px;
+    }
+    &__panel::before {
+      background: radial-gradient(ellipse at 75% 38%, rgba(5, 116, 80, 0.16), transparent 65%);
+    }
+    &__copy {
+      width: 100%;
+    }
+    &__features {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 24px;
+      margin-bottom: 3px;
+    }
+    &__visual {
+      position: relative;
+      top: auto;
+      right: auto;
+      width: 100%;
+      max-width: 640px;
+      height: 365px;
+      justify-self: center;
+    }
+  }
+}
+@media (max-width: 760px) {
+  .digital-products {
+    padding: 56px 0 42px;
+    &__container {
+      padding: 0 32px;
+      gap: 24px;
+    }
+    &__intro {
+      display: block;
+    }
+    &__eyebrow {
+      font-size: 9px;
+      margin-bottom: 17px;
+    }
+    &__title {
+      font-size: clamp(30px, 7.8vw, 48px);
+      line-height: 1.1;
+    }
+    &__description {
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+    &__tabs {
+      gap: 10px;
+    }
+    &__tab {
+      min-height: 79px;
+      padding: 14px;
+    }
+    &__tab-info strong {
+      font-size: 21px;
+    }
+    &__tab-info > span {
+      font-size: 10px;
+    }
+    &__tab-price {
+      font-size: 17px;
+    }
+    &__presentation {
+      border-radius: 16px;
+    }
+    &__panel {
+      min-height: 0;
+      padding: 24px 20px;
+      grid-template-rows: auto auto auto auto;
+      row-gap: 10px;
+      overflow: hidden;
+      &::before {
+        // На мобильных устройствах текст и техника идут друг под другом.
+        background: radial-gradient(ellipse at 80% 30%, rgba(4, 113, 76, 0.12), transparent 65%);
+      }
+    }
+    &__brand {
+      top: 23px;
+      right: 20px;
+      font-size: 8px;
+    }
+    &__copy {
+      width: 100%;
+    }
+    &__copy h3 {
+      font-size: 34px;
+      margin-top: 19px;
+    }
+    &__subtitle {
+      font-size: 14px;
+    }
+    &__features {
+      margin-bottom: 6px;
+      gap: 11px;
+    }
+    &__features li {
+      font-size: 12px;
+      align-items: center;
+    }
+    &__payment {
+      margin-bottom: 18px;
+    }
+    &__visual {
+      position: relative;
+      top: auto;
+      right: auto;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      aspect-ratio: 4 / 3;
+      padding: 8px 0 4px;
+      align-self: end;
+      pointer-events: none;
+    }
+    &__cta {
+      justify-self: stretch;
+      min-height: 50px;
+      font-size: 13px;
+    }
+    &__benefits {
+      margin-top: 7px;
+      padding: 12px 6px;
+    }
+    &__benefit {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 5px;
+      padding: 0 6px;
+    }
+    &__benefit strong {
+      font-size: 10px;
+    }
+    &__benefit small {
+      font-size: 9px;
+    }
+    &__terms {
+      font-size: 10px;
+    }
+  }
+}
+@media (max-width: 380px) {
+  .digital-products {
+    &__container {
+      padding: 0 24px;
+    }
+    &__tab {
+      gap: 9px;
+      padding: 12px 10px;
+    }
+    &__icon {
+      flex-basis: 24px;
+      width: 24px;
+    }
+    &__tab-info strong {
+      font-size: 18px;
+    }
+    &__tab-info > span {
+      font-size: 9px;
+    }
+    &__tab-price {
+      font-size: 15px;
+      padding-left: 9px;
+    }
+    &__panel {
+      padding: 22px 16px;
+    }
+    &__visual {
+      padding-left: 2px;
+      padding-right: 2px;
+    }
+    &__benefits {
+      grid-template-columns: 1fr;
+      padding: 6px 12px;
+    }
+    &__benefit {
+      flex-direction: row;
+      text-align: left;
+      justify-content: flex-start;
+      gap: 10px;
+      padding: 9px 0;
+      &:not(:last-child) {
+        border-right: 0;
+        border-bottom: 1px solid rgba(130, 202, 169, 0.18);
+      }
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .digital-products {
+    &,
+    & *,
+    & *::before,
+    & *::after {
+      animation: none;
+      transition: none;
+      scroll-behavior: auto;
+    }
+  }
+}
+
+// Главная: единая сетка с витриной продуктов (не затрагивает внутренние страницы).
+// Контейнер 1720px, горизонтальные отступы на десктопе 80px.
+body.home-page {
+  .container,
+  .digital-products__container {
+    width: 100%;
+    max-width: 1720px;
+    margin-inline: auto;
+    padding-inline: 80px;
+  }
+
+  // Фон секции совпадает с базовым фоном страницы; декоративные
+  // зелёные диагонали остаются, но не создают отдельной цветовой плашки.
+  .digital-products {
+    background: $home-bg;
+
+    &::before,
+    &::after {
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        #000 22%,
+        #000 78%,
+        transparent
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        #000 22%,
+        #000 78%,
+        transparent
+      );
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  body.home-page .container,
+  body.home-page .digital-products__container {
+    padding-inline: 40px;
+  }
+}
+
+@media (max-width: 760px) {
+  body.home-page .container,
+  body.home-page .digital-products__container {
+    padding-inline: 32px;
+  }
+}
+
+@media (max-width: 380px) {
+  body.home-page .container,
+  body.home-page .digital-products__container {
+    padding-inline: 24px;
+  }
+}
+
+// На смартфонах навигация сохраняет прежнюю компактную ширину.
+@media (max-width: 576px) {
+  body.home-page .header .container {
+    padding-inline: 12px;
   }
 }

@@ -1403,3 +1403,67 @@ if (!document.querySelector('#notification-styles')) {
     `;
     document.head.appendChild(style);
 }
+
+// Digital products: manual, keyboard-accessible tabs. No timers or auto-rotation.
+(() => {
+    const section = document.querySelector('.digital-products');
+    if (!section) return;
+    const tabs = [...section.querySelectorAll('[role="tab"]')];
+    const panels = [...section.querySelectorAll('[role="tabpanel"]')];
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    section.classList.add('is-enhanced');
+
+    function selectProduct(tab, moveFocus = false) {
+        const key = tab.dataset.product;
+        tabs.forEach((item) => {
+            const selected = item === tab;
+            item.setAttribute('aria-selected', String(selected));
+            item.tabIndex = selected ? 0 : -1;
+        });
+        panels.forEach((panel) => {
+            const selected = panel.dataset.product === key;
+            panel.hidden = !selected;
+            panel.inert = !selected;
+            panel.classList.toggle('is-entering', selected && !reducedMotion.matches);
+        });
+        if (moveFocus) tab.focus();
+    }
+    tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+            if (tab.getAttribute('aria-selected') !== 'true') selectProduct(tab);
+        });
+        tab.addEventListener('keydown', (event) => {
+            let next;
+            if (['ArrowDown', 'ArrowRight'].includes(event.key)) next = (index + 1) % tabs.length;
+            if (['ArrowUp', 'ArrowLeft'].includes(event.key)) next = (index - 1 + tabs.length) % tabs.length;
+            if (event.key === 'Home') next = 0;
+            if (event.key === 'End') next = tabs.length - 1;
+            if (next === undefined) return;
+            event.preventDefault();
+            selectProduct(tabs[next], true);
+        });
+    });
+    section.querySelectorAll('[data-product-cta]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const form = document.getElementById('contactForm');
+            const message = form?.querySelector('[name="message"]');
+            if (!message) return; // Preserve the working #contact link as a fallback.
+            event.preventDefault();
+            const productLine = `Интересует продукт ShumDev ${link.dataset.productCta}.`;
+            const existing = message.value.replace(/^Интересует продукт ShumDev (START|BUSINESS|SYSTEM)\.\s*/u, '');
+            message.value = existing ? `${productLine}\n${existing}` : `${productLine}\n`;
+            message.dispatchEvent(new Event('input', { bubbles: true }));
+            const nameInput = form.querySelector('[name="name"]');
+            nameInput?.focus({ preventScroll: true });
+            form.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'center' });
+        });
+    });
+    if ('IntersectionObserver' in window && !reducedMotion.matches) {
+        const observer = new IntersectionObserver((entries) => {
+            if (!entries.some((entry) => entry.isIntersecting)) return;
+            section.classList.add('is-revealing');
+            observer.disconnect();
+        }, { threshold: 0.12 });
+        observer.observe(section);
+    }
+})();

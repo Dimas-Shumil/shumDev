@@ -3214,7 +3214,6 @@ body {
     align-self: center;
   }
 }
-/* Mobile control navigation */
 .mobile-nav,
 .mobile-more-sheet,
 .mobile-more-backdrop {
@@ -3225,25 +3224,20 @@ body {
   html {
     scroll-padding-bottom: 104px;
   }
-
   body.control-app {
     padding-bottom: env(safe-area-inset-bottom);
   }
-
   body.mobile-menu-open {
     overflow: hidden;
   }
-
   .sidebar,
   .sidebar-backdrop,
   .topbar__menu {
     display: none;
   }
-
   .app-content {
     min-height: 100dvh;
   }
-
   .topbar {
     height: 60px;
     gap: 8px;
@@ -3252,12 +3246,10 @@ body {
     background: rgba(3, 11, 25, 0.86);
     backdrop-filter: blur(18px) saturate(1.15);
   }
-
   .search {
     min-width: 0;
     flex: 1;
   }
-
   .search input {
     height: 40px;
     padding-right: 12px;
@@ -3266,16 +3258,13 @@ body {
     background: rgba(8, 20, 38, 0.88);
     font-size: 13px;
   }
-
   .search > i {
     left: 12px;
   }
-
   .topbar__actions {
     flex: 0 0 auto;
     gap: 4px;
   }
-
   .notification-button,
   .topbar .button {
     width: 40px;
@@ -3283,58 +3272,48 @@ body {
     min-height: 40px;
     border-radius: 12px;
   }
-
   .notification-button {
     border: 1px solid rgba(72, 94, 128, 0.5);
     background: rgba(8, 20, 38, 0.72);
   }
-
   .topbar .button {
     border-color: rgba(117, 85, 255, 0.72);
     box-shadow: none;
   }
-
   .main {
     min-height: calc(100dvh - 60px);
     padding: 8px 10px calc(104px + env(safe-area-inset-bottom));
   }
-
   .page-header {
     min-height: 82px;
     gap: 10px;
     padding: 12px 2px 10px;
   }
-
   .page-header h1 {
     font-size: 25px;
     line-height: 1.1;
     letter-spacing: -0.65px;
   }
-
   .page-header p {
     max-width: 36rem;
     margin-top: 5px;
     font-size: 12px;
     line-height: 1.45;
   }
-
   .page-header__actions {
     gap: 8px;
     padding-bottom: 2px;
     scrollbar-width: none;
   }
-
   .page-header__actions::-webkit-scrollbar {
     display: none;
   }
-
   .page-header__actions .button {
     min-height: 42px;
     flex: 0 0 auto;
     border-radius: 10px;
     padding-inline: 14px;
   }
-
   .metric-grid,
   .dashboard-grid,
   .project-grid,
@@ -3343,37 +3322,30 @@ body {
   .task-detail-grid {
     gap: 10px;
   }
-
   .metric-card,
   .panel {
     border-radius: 13px;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.13);
   }
-
   .metric-card {
     min-height: 104px;
     padding: 14px;
   }
-
   .panel {
     padding: 14px;
   }
-
   .panel__header {
     gap: 10px;
     margin-bottom: 12px;
   }
-
   .filters {
     gap: 8px;
   }
-
   .filters .input,
   .filters .select {
     width: 100%;
     min-width: 0;
   }
-
   .table-wrap {
     margin-inline: -14px;
     padding-inline: 14px;
@@ -3381,32 +3353,26 @@ body {
     overscroll-behavior-inline: contain;
     scrollbar-width: none;
   }
-
   .table-wrap::-webkit-scrollbar {
     display: none;
   }
-
   .data-table {
     min-width: 680px;
   }
-
   .task-board {
     margin-inline: -10px;
     padding-inline: 10px;
     scroll-padding-inline: 10px;
     scrollbar-width: none;
   }
-
   .task-board::-webkit-scrollbar {
     display: none;
   }
-
   .modal-backdrop {
     place-items: end center;
     padding: 0;
     background: rgba(0, 4, 13, 0.74);
   }
-
   .modal {
     width: 100%;
     max-height: min(88dvh, 760px);
@@ -3415,29 +3381,23 @@ body {
     padding-bottom: env(safe-area-inset-bottom);
     box-shadow: 0 -24px 70px rgba(0, 0, 0, 0.46);
   }
-
   .modal__header {
     padding: 14px 14px 12px;
   }
-
   .modal__header h2 {
     font-size: 16px;
   }
-
   .modal__body {
     padding: 14px;
   }
-
   .modal__footer {
     gap: 8px;
     padding: 12px 14px 14px;
   }
-
   .modal__footer .button {
     min-height: 44px;
     flex: 1;
   }
-
   .mobile-nav {
     position: fixed;
     left: 8px;
@@ -3452,12 +3412,9 @@ body {
     border: 1px solid rgba(71, 93, 128, 0.68);
     border-radius: 19px;
     background: rgba(7, 17, 33, 0.94);
-    box-shadow:
-      0 18px 50px rgba(0, 0, 0, 0.46),
-      inset 0 1px rgba(255, 255, 255, 0.035);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.46), inset 0 1px rgba(255, 255, 255, 0.035);
     backdrop-filter: blur(22px) saturate(1.18);
   }
-
   .mobile-nav > a,
   .mobile-nav__more {
     position: relative;
@@ -3474,22 +3431,16 @@ body {
     color: #7f8da3;
     font: inherit;
     cursor: pointer;
-    transition:
-      color 0.18s ease,
-      background 0.18s ease,
-      transform 0.18s ease;
+    transition: color 0.18s ease, background 0.18s ease, transform 0.18s ease;
   }
-
   .mobile-nav > a:active,
   .mobile-nav__more:active {
     transform: scale(0.96);
   }
-
   .mobile-nav i {
     font-size: 21px;
     line-height: 1;
   }
-
   .mobile-nav span {
     overflow: hidden;
     max-width: 100%;
@@ -3498,24 +3449,17 @@ body {
     font-weight: 600;
     white-space: nowrap;
   }
-
   .mobile-nav > .is-active,
   .mobile-nav__more.is-active,
-  .mobile-nav__more[aria-expanded='true'] {
+  .mobile-nav__more[aria-expanded=true] {
     color: #f5f7fb;
-    background: linear-gradient(
-      145deg,
-      rgba(78, 104, 255, 0.2),
-      rgba(126, 76, 255, 0.2)
-    );
+    background: linear-gradient(145deg, rgba(78, 104, 255, 0.2), rgba(126, 76, 255, 0.2));
   }
-
   .mobile-nav > .is-active i,
   .mobile-nav__more.is-active i,
-  .mobile-nav__more[aria-expanded='true'] i {
+  .mobile-nav__more[aria-expanded=true] i {
     color: #8ea1ff;
   }
-
   .mobile-nav em {
     position: absolute;
     top: 4px;
@@ -3533,7 +3477,6 @@ body {
     font-style: normal;
     line-height: 1;
   }
-
   .mobile-more-backdrop {
     position: fixed;
     inset: 0;
@@ -3542,7 +3485,6 @@ body {
     background: rgba(0, 4, 13, 0.7);
     backdrop-filter: blur(4px);
   }
-
   .mobile-more-sheet {
     position: fixed;
     left: 0;
@@ -3562,17 +3504,13 @@ body {
     transform: translateY(calc(100% + 28px));
     visibility: hidden;
     pointer-events: none;
-    transition:
-      transform 0.28s cubic-bezier(0.22, 0.78, 0.24, 1),
-      visibility 0.28s;
+    transition: transform 0.28s cubic-bezier(0.22, 0.78, 0.24, 1), visibility 0.28s;
   }
-
   .mobile-more-sheet.is-open {
     transform: translateY(0);
     visibility: visible;
     pointer-events: auto;
   }
-
   .mobile-more-sheet__handle {
     width: 42px;
     height: 4px;
@@ -3581,7 +3519,6 @@ body {
     border-radius: 999px;
     background: #344a69;
   }
-
   .mobile-more-sheet__header {
     min-height: 58px;
     display: flex;
@@ -3591,19 +3528,16 @@ body {
     padding: 5px 2px 12px;
     border-bottom: 1px solid rgba(100, 126, 164, 0.2);
   }
-
   .mobile-more-sheet__profile {
     min-width: 0;
     display: flex;
     align-items: center;
     gap: 10px;
   }
-
   .mobile-more-sheet__profile > span:last-child {
     min-width: 0;
     display: grid;
   }
-
   .mobile-more-sheet__profile b {
     overflow: hidden;
     color: #f6f8fc;
@@ -3611,31 +3545,26 @@ body {
     font-size: 13px;
     white-space: nowrap;
   }
-
   .mobile-more-sheet__profile small {
     margin-top: 2px;
     color: #8d9bb0;
     font-size: 10px;
   }
-
   .mobile-more-sheet__close {
     width: 38px;
     height: 38px;
     flex: 0 0 auto;
     border-radius: 11px;
   }
-
   .mobile-more-sheet__content {
     overflow-y: auto;
     overscroll-behavior: contain;
     padding-top: 13px;
     scrollbar-width: none;
   }
-
   .mobile-more-sheet__content::-webkit-scrollbar {
     display: none;
   }
-
   .mobile-more-sheet__label {
     display: block;
     margin: 0 4px 8px;
@@ -3645,13 +3574,11 @@ body {
     letter-spacing: 1.05px;
     text-transform: uppercase;
   }
-
   .mobile-more-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
   }
-
   .mobile-more-list a {
     min-width: 0;
     min-height: 82px;
@@ -3663,16 +3590,11 @@ body {
     border: 1px solid rgba(71, 94, 131, 0.58);
     border-radius: 14px;
     background: rgba(10, 27, 49, 0.76);
-    transition:
-      border-color 0.18s ease,
-      background 0.18s ease,
-      transform 0.18s ease;
+    transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
   }
-
   .mobile-more-list a:active {
     transform: scale(0.98);
   }
-
   .mobile-more-list a > span {
     width: 36px;
     height: 36px;
@@ -3682,17 +3604,14 @@ body {
     background: rgba(79, 107, 255, 0.1);
     color: #8da1ff;
   }
-
   .mobile-more-list a i {
     font-size: 19px;
   }
-
   .mobile-more-list a > div {
     min-width: 0;
     display: grid;
     gap: 2px;
   }
-
   .mobile-more-list a b {
     overflow: hidden;
     color: #edf2f9;
@@ -3700,7 +3619,6 @@ body {
     font-size: 12px;
     white-space: nowrap;
   }
-
   .mobile-more-list a small {
     display: -webkit-box;
     overflow: hidden;
@@ -3710,21 +3628,14 @@ body {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
-
   .mobile-more-list a.is-active {
     border-color: rgba(110, 104, 255, 0.72);
-    background: linear-gradient(
-      145deg,
-      rgba(69, 92, 196, 0.22),
-      rgba(105, 61, 190, 0.22)
-    );
+    background: linear-gradient(145deg, rgba(69, 92, 196, 0.22), rgba(105, 61, 190, 0.22));
   }
-
   .mobile-more-list a.is-active > span {
     background: rgba(117, 85, 255, 0.2);
     color: #b0a4ff;
   }
-
   .mobile-more-sheet__actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -3733,7 +3644,6 @@ body {
     padding-top: 12px;
     border-top: 1px solid rgba(100, 126, 164, 0.2);
   }
-
   .mobile-more-sheet__actions button {
     min-height: 44px;
     display: inline-flex;
@@ -3750,72 +3660,146 @@ body {
     font-weight: 600;
     cursor: pointer;
   }
-
   .mobile-more-sheet__actions button.is-danger {
     border-color: rgba(255, 94, 112, 0.28);
     color: #ff9fac;
     background: rgba(255, 94, 112, 0.075);
   }
 }
-
 @media (max-width: 420px) {
   .mobile-nav {
     left: 6px;
     right: 6px;
     bottom: calc(6px + env(safe-area-inset-bottom));
   }
-
   .mobile-nav span {
     font-size: 8px;
   }
-
   .mobile-more-list {
     grid-template-columns: 1fr;
   }
-
   .mobile-more-list a {
     min-height: 66px;
   }
 }
-
 /* ShumDev Control: mobile lead cards (desktop table remains unchanged). */
-.lead-mobile-list { display: none; }
-@media (max-width: 768px) {
-  .lead-desktop-table { display: none; }
-  .lead-mobile-list { display: grid; gap: 12px; min-width: 0; }
-  .lead-mobile-card {
-    appearance: none; -webkit-appearance: none;
-    display: flex; flex-direction: column; gap: 9px;
-    width: 100%; min-width: 0; padding: 15px;
-    border: 1px solid #29415f; border-radius: 13px;
-    background: #0c1b30; color: #f5f7fb;
-    font: inherit; text-align: left; cursor: pointer;
-    overflow-wrap: anywhere;
-  }
-  .lead-mobile-card:active { background: #122640; }
-  .lead-mobile-card:focus-visible { outline: 2px solid #834cff; outline-offset: 2px; }
-  .lead-mobile-card__top { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; }
-  .lead-mobile-card__eyebrow { color: #91a6c2; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
-  .lead-mobile-card__name { display: block; color: #f5f7fb; font-size: 16px; line-height: 1.35; font-weight: 700; }
-  .lead-mobile-card__contact { display: block; margin-top: -6px; color: #abbad0; font-size: 12px; overflow-wrap: anywhere; }
-  .lead-mobile-card__details { display: grid; gap: 10px; width: 100%; padding: 12px 0; margin-top: 3px; border-top: 1px solid #253b57; border-bottom: 1px solid #253b57; }
-  .lead-mobile-card__details > span { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; min-width: 0; font-size: 12px; }
-  .lead-mobile-card__details > span > span { color: #8da3bf; flex-shrink: 0; }
-  .lead-mobile-card__details b { min-width: 0; color: #ecf2fd; text-align: right; font-weight: 600; overflow-wrap: anywhere; }
-  .lead-mobile-card__footer { display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; padding: 9px 10px; border-radius: 8px; background: #1a2850; color: #d6e2ff; font-size: 12px; font-weight: 700; }
-  .lead-mobile-card__footer i { font-size: 15px; }
+.lead-mobile-list {
+  display: none;
 }
 
+@media (max-width: 768px) {
+  .lead-desktop-table {
+    display: none;
+  }
+  .lead-mobile-list {
+    display: grid;
+    gap: 12px;
+    min-width: 0;
+  }
+  .lead-mobile-card {
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    width: 100%;
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid #29415f;
+    border-radius: 13px;
+    background: #0c1b30;
+    color: #f5f7fb;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    overflow-wrap: anywhere;
+  }
+  .lead-mobile-card:active {
+    background: #122640;
+  }
+  .lead-mobile-card:focus-visible {
+    outline: 2px solid #834cff;
+    outline-offset: 2px;
+  }
+  .lead-mobile-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  .lead-mobile-card__eyebrow {
+    color: #91a6c2;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .lead-mobile-card__name {
+    display: block;
+    color: #f5f7fb;
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: 700;
+  }
+  .lead-mobile-card__contact {
+    display: block;
+    margin-top: -6px;
+    color: #abbad0;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+  .lead-mobile-card__details {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 0;
+    margin-top: 3px;
+    border-top: 1px solid #253b57;
+    border-bottom: 1px solid #253b57;
+  }
+  .lead-mobile-card__details > span {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    min-width: 0;
+    font-size: 12px;
+  }
+  .lead-mobile-card__details > span > span {
+    color: #8da3bf;
+    flex-shrink: 0;
+  }
+  .lead-mobile-card__details b {
+    min-width: 0;
+    color: #ecf2fd;
+    text-align: right;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+  .lead-mobile-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    padding: 9px 10px;
+    border-radius: 8px;
+    background: #1a2850;
+    color: #d6e2ff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .lead-mobile-card__footer i {
+    font-size: 15px;
+  }
+}
 /* ==========================================================================
    ShumDev Green Control Theme v1
    Visual-only layer. No layout/business logic changes.
    ========================================================================== */
-
 body.control-app {
-  background:
-    radial-gradient(circle at 12% -10%, rgba(0, 200, 150, 0.08), transparent 34%),
-    radial-gradient(circle at 100% 0%, rgba(32, 122, 78, 0.07), transparent 26%),
-    #040a07;
+  background: radial-gradient(circle at 12% -10%, rgba(0, 200, 150, 0.08), transparent 34%), radial-gradient(circle at 100% 0%, rgba(32, 122, 78, 0.07), transparent 26%), #040a07;
   color: #f4faf6;
 }
 
@@ -3828,9 +3812,7 @@ body.control-app {
 }
 
 .control-app .sidebar {
-  background:
-    radial-gradient(circle at 0 0, rgba(0, 200, 150, 0.08), transparent 35%),
-    linear-gradient(180deg, #05100b 0%, #030906 100%);
+  background: radial-gradient(circle at 0 0, rgba(0, 200, 150, 0.08), transparent 35%), linear-gradient(180deg, #05100b 0%, #030906 100%);
   border-right-color: rgba(77, 135, 99, 0.22);
   box-shadow: 20px 0 70px rgba(0, 0, 0, 0.18);
 }
@@ -3870,14 +3852,8 @@ body.control-app {
 .control-app .nav a.is-active {
   color: #f4faf6;
   border-color: rgba(0, 200, 150, 0.42);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 200, 150, 0.18),
-    rgba(32, 122, 78, 0.09)
-  );
-  box-shadow:
-    inset 3px 0 #00c896,
-    0 0 28px rgba(0, 200, 150, 0.09);
+  background: linear-gradient(90deg, rgba(0, 200, 150, 0.18), rgba(32, 122, 78, 0.09));
+  box-shadow: inset 3px 0 #00c896, 0 0 28px rgba(0, 200, 150, 0.09);
 }
 
 .control-app .nav a.is-active i {
@@ -3925,9 +3901,7 @@ body.control-app {
 }
 
 .control-app .app-content {
-  background:
-    radial-gradient(circle at 50% -20%, rgba(0, 200, 150, 0.045), transparent 34%),
-    #050b08;
+  background: radial-gradient(circle at 50% -20%, rgba(0, 200, 150, 0.045), transparent 34%), #050b08;
 }
 
 .control-app .topbar {
@@ -4033,14 +4007,8 @@ body.control-app {
 .control-app .metric-card,
 .control-app .panel {
   border-color: #213d2c;
-  background: linear-gradient(
-    145deg,
-    rgba(15, 27, 19, 0.97),
-    rgba(8, 18, 12, 0.97)
-  );
-  box-shadow:
-    inset 0 1px rgba(255, 255, 255, 0.018),
-    0 18px 48px rgba(0, 0, 0, 0.09);
+  background: linear-gradient(145deg, rgba(15, 27, 19, 0.97), rgba(8, 18, 12, 0.97));
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.018), 0 18px 48px rgba(0, 0, 0, 0.09);
 }
 
 .control-app .metric-card__icon,
@@ -4048,11 +4016,7 @@ body.control-app {
 .control-app .metric-card:nth-child(3) .metric-card__icon,
 .control-app .metric-card:nth-child(4) .metric-card__icon {
   border-color: rgba(0, 200, 150, 0.28);
-  background: linear-gradient(
-    145deg,
-    rgba(0, 200, 150, 0.13),
-    rgba(32, 122, 78, 0.08)
-  );
+  background: linear-gradient(145deg, rgba(0, 200, 150, 0.13), rgba(32, 122, 78, 0.08));
   color: #7fffd4;
   box-shadow: inset 0 0 22px rgba(0, 200, 150, 0.04);
 }
@@ -4193,142 +4157,105 @@ body.control-app {
   .control-app .topbar {
     border-bottom-color: rgba(65, 112, 82, 0.2);
   }
-
   .control-app .mobile-nav {
     border-color: rgba(61, 119, 82, 0.72);
     background: rgba(5, 16, 10, 0.95);
-    box-shadow:
-      0 18px 50px rgba(0, 0, 0, 0.46),
-      0 0 28px rgba(0, 200, 150, 0.055),
-      inset 0 1px rgba(255, 255, 255, 0.025);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.46), 0 0 28px rgba(0, 200, 150, 0.055), inset 0 1px rgba(255, 255, 255, 0.025);
   }
-
   .control-app .mobile-nav > a,
   .control-app .mobile-nav__more {
     color: #7f9487;
   }
-
   .control-app .mobile-nav > .is-active,
   .control-app .mobile-nav__more.is-active,
-  .control-app .mobile-nav__more[aria-expanded='true'] {
+  .control-app .mobile-nav__more[aria-expanded=true] {
     color: #f4faf6;
-    background: linear-gradient(
-      145deg,
-      rgba(0, 200, 150, 0.18),
-      rgba(32, 122, 78, 0.12)
-    );
+    background: linear-gradient(145deg, rgba(0, 200, 150, 0.18), rgba(32, 122, 78, 0.12));
     box-shadow: inset 0 0 20px rgba(0, 200, 150, 0.045);
   }
-
   .control-app .mobile-nav > .is-active i,
   .control-app .mobile-nav__more.is-active i,
-  .control-app .mobile-nav__more[aria-expanded='true'] i {
+  .control-app .mobile-nav__more[aria-expanded=true] i {
     color: #7fffd4;
   }
-
   .control-app .mobile-nav em {
     border-color: #07100b;
     background: #00c896;
   }
-
   .control-app .mobile-more-backdrop {
     background: rgba(0, 6, 3, 0.7);
   }
-
   .control-app .mobile-more-sheet {
     border-color: #285039;
     background: linear-gradient(180deg, #0b1b12 0%, #061009 100%);
   }
-
   .control-app .mobile-more-sheet__handle {
     background: #345b44;
   }
-
   .control-app .mobile-more-sheet__header,
   .control-app .mobile-more-sheet__actions {
     border-color: rgba(67, 119, 84, 0.22);
   }
-
   .control-app .mobile-more-list a {
     border-color: rgba(54, 105, 72, 0.62);
     background: rgba(10, 28, 17, 0.8);
   }
-
   .control-app .mobile-more-list a > span {
     background: rgba(0, 200, 150, 0.1);
     color: #7fffd4;
   }
-
   .control-app .mobile-more-list a b {
     color: #eef7f1;
   }
-
   .control-app .mobile-more-list a small {
     color: #82958a;
   }
-
   .control-app .mobile-more-list a.is-active {
     border-color: rgba(0, 200, 150, 0.7);
-    background: linear-gradient(
-      145deg,
-      rgba(0, 200, 150, 0.17),
-      rgba(32, 122, 78, 0.13)
-    );
+    background: linear-gradient(145deg, rgba(0, 200, 150, 0.17), rgba(32, 122, 78, 0.13));
   }
-
   .control-app .mobile-more-list a.is-active > span {
     background: rgba(0, 200, 150, 0.18);
     color: #a1ffe0;
   }
-
   .control-app .lead-mobile-card {
     border-color: #294d37;
     background: #0b1b12;
     color: #f4faf6;
   }
-
   .control-app .lead-mobile-card:active {
     background: #10271a;
   }
-
   .control-app .lead-mobile-card:focus-visible {
     outline-color: #00c896;
   }
-
   .control-app .lead-mobile-card__eyebrow,
   .control-app .lead-mobile-card__details > span > span {
     color: #87a091;
   }
-
   .control-app .lead-mobile-card__name,
   .control-app .lead-mobile-card__details b {
     color: #edf7f0;
   }
-
   .control-app .lead-mobile-card__contact {
     color: #aabbb0;
   }
-
   .control-app .lead-mobile-card__details {
     border-color: #274b36;
   }
-
   .control-app .lead-mobile-card__footer {
     background: #123522;
     color: #d9f6e4;
   }
-
   .control-app .modal {
     border-top-color: #285039;
     background: #08130d;
   }
 }
-
 /* ==========================================================================
    ShumDev Green Control Theme v2
    Removes legacy blue/purple accents from task and overview UI.
    ========================================================================== */
-
 .control-app .attention-list--overview .attention-row {
   border-color: #28513a;
   background: linear-gradient(145deg, #0c1c13, #09160f);
@@ -4475,14 +4402,203 @@ body.control-app {
     border-color: #28513a;
     background: #0b1b12;
   }
-
   .control-app .task-view-toggle {
     border-color: #2c543c;
     background: #07140d;
   }
-
   .control-app #task-mine.button--primary {
     background: linear-gradient(135deg, #087e5e, #00c896);
   }
 }
+/* ==========================================================================
+   ShumDev Green Login Theme v1
+   Matches Green Admin Theme v2.
+   ========================================================================== */
+.control-login {
+  background: radial-gradient(circle at 18% 10%, rgba(0, 200, 150, 0.055), transparent 28%), #040a07;
+  color: #f4faf6;
+}
 
+.control-login .login-shell {
+  background: #040a07;
+}
+
+.control-login .login-panel {
+  position: relative;
+}
+
+.control-login .brand--login {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 62px;
+}
+
+.control-login .login-brand__logo {
+  width: 190px;
+  height: 48px;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 10px;
+}
+
+.control-login .login-brand__label {
+  padding: 5px 8px;
+  border: 1px solid rgba(0, 200, 150, 0.28);
+  border-radius: 7px;
+  background: rgba(0, 200, 150, 0.07);
+  color: #8fffd3;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.control-login .login-panel__intro .eyebrow {
+  color: #63d996;
+}
+
+.control-login .login-panel__intro h1 {
+  color: #f4faf6;
+}
+
+.control-login .login-panel__intro p {
+  color: #91a298;
+}
+
+.control-login .field {
+  color: #b8c8be;
+}
+
+.control-login .input-wrap > i {
+  color: #678171;
+}
+
+.control-login .field input {
+  border-color: #284c37;
+  background: #0a1710;
+  color: #edf7f0;
+}
+
+.control-login .field input::placeholder {
+  color: #607569;
+}
+
+.control-login .field input:focus {
+  border-color: #00c896;
+  box-shadow: 0 0 0 3px rgba(0, 200, 150, 0.11);
+}
+
+.control-login .icon-btn--inside {
+  color: #7f9588;
+}
+
+.control-login .icon-btn--inside:hover {
+  color: #7fffd4;
+  background: rgba(0, 200, 150, 0.07);
+}
+
+.control-login .button--primary {
+  border-color: #00c896;
+  background: linear-gradient(135deg, #00c896 0%, #35a86f 100%);
+  color: #ffffff;
+  box-shadow: 0 12px 32px rgba(0, 200, 150, 0.17), inset 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.control-login .button--primary:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 15px 36px rgba(0, 200, 150, 0.24), inset 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.control-login .login-panel__note {
+  color: #657a6e;
+}
+
+.control-login .login-panel__note code {
+  color: #91aa9c;
+}
+
+.control-login .login-visual {
+  border-left-color: rgba(61, 119, 82, 0.22);
+  background: radial-gradient(circle at 64% 42%, rgba(0, 200, 150, 0.14), transparent 29%), radial-gradient(circle at 40% 70%, rgba(32, 122, 78, 0.11), transparent 31%), linear-gradient(145deg, #06110b 0%, #04100a 54%, #07160f 100%);
+}
+
+.control-login .login-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, transparent 58%, rgba(0, 200, 150, 0.035) 58%, transparent 72%);
+}
+
+.control-login .login-visual__glow {
+  background: rgba(0, 200, 150, 0.1);
+  filter: blur(88px);
+}
+
+.control-login .login-orbit {
+  border-color: rgba(0, 200, 150, 0.13);
+}
+
+.control-login .login-orbit--two {
+  border-color: rgba(75, 178, 120, 0.1);
+}
+
+.control-login .preview-card {
+  border-color: #28503a;
+  background: rgba(8, 24, 15, 0.92);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.42), inset 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.control-login .preview-card small {
+  color: #91a298;
+}
+
+.control-login .preview-card strong {
+  color: #f4faf6;
+}
+
+.control-login .preview-card__icon--purple {
+  border-color: rgba(0, 200, 150, 0.3);
+  background: rgba(0, 200, 150, 0.11);
+  color: #7fffd4;
+}
+
+.control-login .preview-card--tasks span {
+  color: #dce9e0;
+}
+
+.control-login .preview-card--tasks span i {
+  color: #63d996;
+}
+
+.control-login .preview-card--tasks small {
+  color: #63d996;
+}
+
+.control-login .preview-card--timer b {
+  color: #7fffd4;
+  text-shadow: 0 0 22px rgba(0, 200, 150, 0.18);
+}
+
+.control-login .preview-card--timer span {
+  color: #63d996;
+}
+
+.control-login .form-error {
+  border-color: rgba(255, 94, 112, 0.34);
+  background: rgba(255, 94, 112, 0.08);
+}
+
+@media (max-width: 680px) {
+  .control-login .login-panel {
+    width: min(460px, 100% - 36px);
+  }
+  .control-login .brand--login {
+    padding-bottom: 42px;
+  }
+  .control-login .login-brand__logo {
+    width: 165px;
+    height: 42px;
+  }
+}
