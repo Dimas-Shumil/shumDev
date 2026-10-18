@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "build:public-css": "sass site/sass/main.scss site/css/main.css --style=expanded --source-map && sass site/sass/main.scss site/css/main.min.css --style=compressed --no-source-map",
+    "build:public-css": "sass site/sass/main.scss site/css/main.css --style=expanded --source-map && sass site/sass/main.scss site/css/main.min.css --style=compressed --no-source-map && sass site/sass/pwa.scss site/css/pwa.css --style=compressed --no-source-map",
     "build:control-css": "sass control/assets/control.scss control/assets/control.css --style=compressed --no-source-map",
     "build:css": "npm run build:public-css && npm run build:control-css",
     "prisma:generate": "prisma generate",

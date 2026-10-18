@@ -65,6 +65,12 @@ app.use(
 );
 app.use(createPublicRoutes({ transporter }));
 
+app.get('/public.webmanifest', (req, res) => {
+  res.type('application/manifest+json');
+  res.setHeader('Cache-Control', 'no-cache');
+  return res.sendFile(path.join(root, 'public.webmanifest'));
+});
+
 app.get('/manifest.webmanifest', (req, res) => {
   res.setHeader(
     'Cache-Control',

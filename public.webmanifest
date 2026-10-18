@@ -1,0 +1,23 @@
+{
+  "name": "ShumDev",
+  "short_name": "ShumDev",
+  "description": "Цифровые продукты ShumDev для бизнеса",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050807",
+  "theme_color": "#050807",
+  "icons": [
+    {
+      "src": "/site/image/pwa-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/site/image/pwa-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "id": "/public-app"
+}

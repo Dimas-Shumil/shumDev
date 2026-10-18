@@ -25,7 +25,7 @@
     <link rel="alternate" hreflang="ru-RU" href="https://shumdev.ru/" />
     <link rel="alternate" hreflang="x-default" href="https://shumdev.ru/" />
     <link rel="icon" href="/site/image/circle-logo.webp" type="image/webp" />
-    <link rel="apple-touch-icon" href="/site/image/inimi-logo-Photoroom.png" />
+    <link rel="apple-touch-icon" href="/site/image/pwa-192.png" />
 
     <!-- preload для CSS -->
     <!-- <link rel="preload" href="site/css/main.css" as="style" /> -->
@@ -149,7 +149,12 @@
         }
       }
     </script>
-  </head>
+    <link rel="manifest" href="/public.webmanifest" />
+  <link rel="stylesheet" href="/site/css/pwa.css" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="ShumDev" />
+  <script src="/site/JavaScript/pwa-install.js" defer></script>
+</head>
 
   <body class="home-page">
     <!-- Header -->
