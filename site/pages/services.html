@@ -96,7 +96,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="/site/css/main.min.css?v=20260911-2" />
+    <link rel="stylesheet" href="/site/css/main.min.css?v=20261018-solutions-r4" />
 
     <script type="application/ld+json">
       {
@@ -376,80 +376,53 @@
 
     <!-- ХИРО -->
 
-    <section class="services-hero" id="home">
-      <div class="container">
-        <div class="services-hero__wrapper">
+    <section class="services-hero" id="home" aria-labelledby="services-hero-title">
+      <div class="services-hero__media" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 767px)" srcset="/site/image/services-hero-mobile-320.webp 320w, /site/image/services-hero-mobile-430.webp 430w, /site/image/services-hero-mobile-640.webp 640w, /site/image/services-hero-mobile-768.webp 768w, /site/image/services-hero-mobile-941.webp 941w" sizes="100vw" />
+            <source media="(min-width: 768px) and (max-aspect-ratio: 3/2), (min-width: 768px) and (max-width: 1100px)" srcset="/site/image/services-hero-tablet-768.webp 768w, /site/image/services-hero-tablet-1100.webp 1100w, /site/image/services-hero-tablet-1254.webp 1254w" sizes="100vw" />
+            <img class="services-hero__bg" src="/site/image/services-hero-desktop-1280.webp" srcset="/site/image/services-hero-desktop-640.webp 640w, /site/image/services-hero-desktop-768.webp 768w, /site/image/services-hero-desktop-960.webp 960w, /site/image/services-hero-desktop-1024.webp 1024w, /site/image/services-hero-desktop-1280.webp 1280w, /site/image/services-hero-desktop-1440.webp 1440w, /site/image/services-hero-desktop-1672.webp 1672w" sizes="100vw" width="1280" height="720" alt="" fetchpriority="high" decoding="async" />
+          </picture>
+        </div>
+        <div class="services-hero__overlay" aria-hidden="true"></div>
+      <div class="services-hero__stage">
+        <div class="container services-hero__container">
           <div class="services-hero__content">
-            <span class="services-hero__badge"> Решения ShumDev </span>
-
-            <h1 class="services-hero__title">
-              Цифровая платформа
-              <span class="services-hero__title-span">для вашего бизнеса</span>
-              <span>под собственным брендом</span>
+            <div class="services-hero__badge">Цифровые решения для любого этапа бизнеса</div>
+            <h1 class="services-hero__title" id="services-hero-title">
+              <span class="services-hero__title-line">От небольшого</span>
+              <span class="services-hero__title-line">сайта до</span>
+              <span class="services-hero__title-line services-hero__title-line--accent">полноценной</span>
+              <span class="services-hero__title-line services-hero__title-line--accent">бизнес-системы</span>
             </h1>
-
-            <p class="services-hero__description">
-              Объединяем услуги, товары, работы, цены, заявки и управление в
-              одном пространстве. Платформа готова к продвижению через Яндекс,
-              2ГИС, социальные сети, поиск и рекламу.
-            </p>
-
+            <div class="services-hero__description">
+              <p>Три уровня цифровых решений — START, BUSINESS и SYSTEM.</p>
+              <p>Помогаем выбрать оптимальный формат, который решает ваши задачи сегодня и масштабируется завтра.</p>
+            </div>
             <div class="services-hero__actions">
               <a href="#contact" class="btn btn-primary">Обсудить задачу</a>
-              <a href="#About" class="btn btn-outline"
-                >Посмотреть предложение</a
-              >
+              <a href="#solutions" class="btn btn-outline">Сравнить решения</a>
             </div>
-
-            <div class="services-hero__stats">
-              <div class="services-hero__stat">
-                <strong>10 000 ₽</strong>
-                <span>в месяц</span>
-              </div>
-
-              <div class="services-hero__stat">
-                <strong>12 месяцев</strong>
-                <span>минимальный срок</span>
-              </div>
-
-              <div class="services-hero__stat">
-                <strong>120 000 ₽</strong>
-                <span>полная стоимость за год</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="services-hero__card">
-            <span class="services-hero__card-badge">Формат работы</span>
-
-            <h2 class="services-hero__card-title">
-              ShumDev Business
-              <span>создание и сопровождение</span>
-            </h2>
-
-            <p class="services-hero__card-text">
-              Проектирование, индивидуальный дизайн, разработка, запуск и
-              техническое сопровождение в едином ежемесячном платеже.
-            </p>
-
-            <div class="services-hero__price">
-              <strong>10 000 ₽</strong>
-              <span>в месяц</span>
-            </div>
-
-            <ul class="services-hero__list">
-              <li>Индивидуальный дизайн и разработка</li>
-              <li>Адаптация, запуск и базовая SEO-подготовка</li>
-              <li>Аналитика и формы заявок</li>
-              <li>Домен, SSL и размещение — если предусмотрено договором</li>
-              <li>Техническое сопровождение по договору</li>
-            </ul>
-
-            <a href="#contact" class="services-hero__card-btn">
-              Получить предложение
-            </a>
           </div>
         </div>
+      </div>
+      <div class="container services-hero__features">
+        <article class="services-hero__feature">
+          <span class="services-hero__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 8h10M7 12h5"/></svg></span>
+          <div><h2>START</h2><p>Сайты для быстрого запуска и привлечения клиентов.</p></div>
+        </article>
+        <article class="services-hero__feature">
+          <span class="services-hero__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10m7 10V4m7 16v-7M2 20h20"/></svg></span>
+          <div><h2>BUSINESS</h2><p>Расширенные возможности для роста и автоматизации.</p></div>
+        </article>
+        <article class="services-hero__feature">
+          <span class="services-hero__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="8" height="8" rx="2"/><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l3 3m8 8 3 3M5 19l3-3m8-8 3-3"/></svg></span>
+          <div><h2>SYSTEM</h2><p>Комплексные платформы для управления бизнесом.</p></div>
+        </article>
+        <article class="services-hero__feature">
+          <span class="services-hero__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><path d="M3 8V3h5m8 18h5v-5"/></svg></span>
+          <div><h2>МАСШТАБИРОВАНИЕ</h2><p>Решения, которые растут вместе с вашей компанией.</p></div>
+        </article>
       </div>
     </section>
 
@@ -570,7 +543,7 @@
     </section>
 
     <!-- products -->
-    <section class="products">
+    <section class="products" id="solutions">
       <div class="products-container">
         <div class="products__title">
           <h2 class="services-h1">
@@ -1419,6 +1392,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="/site/JavaScript/js.js?v=20260911-2"></script>
+    <script src="/site/JavaScript/services-hero.js?v=20261018-r5"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
   </body>
 </html>

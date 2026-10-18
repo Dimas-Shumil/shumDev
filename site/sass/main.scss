@@ -3460,73 +3460,108 @@ body.menu-open {
 
 //services
 
+// Локальное начертание 900 только для заголовка «Решения».
+@font-face {
+  font-family: 'Inter Solutions';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('./fonts/inter-hero-cyrillic-900.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Inter Solutions';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('./fonts/inter-hero-latin-900.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+// Единая сцена под контентом и преимуществами. Точка привязки — верх.
+$services-hero-shade: 0.4;
+$services-hero-mobile-shade: 0.8;
+
 .services-hero {
   position: relative;
-  padding: 170px 0 90px;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: max(720px, 100svh);
   overflow: hidden;
   background: $home-bg;
+  color: $home-text;
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(
-        circle at 12% 18%,
-        rgba(53, 168, 111, 0.065),
-        transparent 32%
-      ),
-      radial-gradient(
-        circle at 86% 22%,
-        rgba(99, 217, 150, 0.035),
-        transparent 28%
-      ),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.012) 0%, transparent 24%);
-    pointer-events: none;
-  }
-
-  &__wrapper {
+  &__stage {
     position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 430px);
-    gap: 32px;
-    align-items: center;
+    z-index: 1;
+    flex: 1;
+    width: 100%;
   }
-
-  &__content {
-    max-width: 760px;
+  &__media, &__overlay { position: absolute; inset: 0; pointer-events: none; }
+  &__media { z-index: -2; }
+  &__media picture { display: block; width: 100%; height: 100%; }
+  &__bg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
   }
-
+  &__overlay {
+    z-index: -1;
+    background:
+      linear-gradient(90deg, rgba($home-bg, $services-hero-shade), rgba($home-bg, 0.22) 34%, transparent 54%),
+      linear-gradient(180deg, rgba($home-bg, 0.06), transparent 50%, rgba($home-bg, 0.35));
+  }
+  &__container {
+    position: relative;
+    width: 85%;
+    max-width: 1720px;
+    padding: clamp(118px, 16svh, 180px) 0 28px;
+  }
+  &__content { width: 45%; max-width: 740px; }
   &__badge {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-height: 38px;
-    padding: 8px 16px;
-    margin-bottom: 24px;
+    gap: 8px;
+    max-width: 100%;
+    padding: 7px 13px;
+    margin-bottom: 22px;
+    border: 1px solid rgba($home-green-bright, 0.28);
     border-radius: 999px;
-    font-size: 13px;
-    font-weight: 600;
-    color: $home-green-bright;
-    background: rgba(53, 168, 111, 0.09);
-    border: 1px solid rgba(99, 217, 150, 0.22);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    background: rgba(8, 14, 10, 0.62);
+    backdrop-filter: blur(12px);
+    font-size: clamp(8px, 0.65vw, 12px);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    &::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      flex: 0 0 7px;
+      border-radius: 50%;
+      background: $home-green-bright;
+      box-shadow: 0 0 14px rgba($home-green-bright, 0.45);
+    }
   }
-
   &__title {
-    margin: 0 0 22px;
-    font-size: clamp(40px, 5vw, 68px);
+    margin: 0 0 24px;
+    font-family: 'Inter Solutions', 'Inter', sans-serif;
+    font-size: clamp(28px, 3.6vw, 68px);
     line-height: 1.02;
-    font-weight: 800;
-    color: #ffffff;
+    font-weight: 900;
     letter-spacing: -0.03em;
-
-    span {
-      display: block;
-      margin-top: 8px;
-      color: transparent;
+    text-transform: uppercase;
+  }
+  &__title-line {
+    display: block;
+    white-space: nowrap;
+    color: #fff;
+    &--accent {
+      color: $home-green-bright;
       background: linear-gradient(
         90deg,
         #d8f2e2 0%,
@@ -3538,289 +3573,104 @@ body.menu-open {
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 14px rgba($home-green, 0.14));
       animation: title-glow 5s ease-in-out infinite;
     }
-    .services-hero__title-span {
-      display: none;
-    }
   }
-
   &__description {
-    max-width: 680px;
-    margin: 0 0 32px;
-    font-size: 18px;
-    line-height: 1.75;
-    color: rgba(220, 232, 224, 0.66);
+    max-width: 88%;
+    margin-bottom: 26px;
+    color: rgba(235, 244, 238, 0.84);
+    font-size: clamp(12px, 1vw, 17px);
+    line-height: 1.55;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    p + p { margin-top: 2px; }
   }
-
   &__actions {
     display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 34px;
-  }
-
-  &__stats {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
-    max-width: 760px;
-  }
-
-  &__stat {
-    padding: 18px 18px 16px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.035);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.025),
-      0 12px 30px rgba(0, 0, 0, 0.16);
-    backdrop-filter: blur(10px);
-
-    strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 22px;
-      line-height: 1.15;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    span {
-      display: block;
-      font-size: 14px;
-      line-height: 1.4;
-      color: rgba(194, 211, 201, 0.55);
+    .btn {
+      min-width: 0;
+      width: clamp(174px, 14.6vw, 280px);
+      min-height: clamp(46px, 3.5vw, 64px);
+      padding: 0 18px;
+      font-size: clamp(11px, 0.8vw, 15px);
+      border-radius: 9px;
     }
   }
-
-  &__card {
+  &__features {
     position: relative;
-    padding: 28px 24px 24px;
-    border-radius: 24px;
-    background:
-      radial-gradient(
-        circle at top left,
-        rgba(53, 168, 111, 0.11),
-        transparent 36%
-      ),
-      linear-gradient(180deg, #0a100d 0%, #060a08 100%);
-    border: 1px solid rgba(99, 217, 150, 0.13);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.035),
-      0 25px 60px rgba(0, 0, 0, 0.28);
-    overflow: hidden;
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: -80px;
-      right: -80px;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(
-        circle,
-        rgba(99, 217, 150, 0.09),
-        transparent 70%
-      );
-      pointer-events: none;
-    }
+    z-index: 1;
+    width: 85%;
+    max-width: 1720px;
+    padding: 24px 0 40px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-
-  &__card-badge {
-    display: inline-flex;
+  &__feature {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0 26px;
+    min-width: 0;
+    &:first-child { padding-left: 0; }
+    &:last-child { padding-right: 0; }
+    &:not(:last-child) { border-right: 1px solid rgba(255, 255, 255, 0.18); }
+    h2 { margin: 0 0 7px; font-size: clamp(10px, 0.85vw, 15px); font-weight: 800; line-height: 1.25; }
+    p { margin: 0; font-size: clamp(10px, 0.8vw, 14px); line-height: 1.4; color: rgba(225, 236, 229, 0.76); }
+  }
+  &__icon {
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 14px;
-    margin-bottom: 18px;
-    border-radius: 999px;
-    background: rgba(53, 168, 111, 0.09);
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    border: 1px solid rgba($home-green-bright, 0.28);
+    border-radius: 12px;
+    background: rgba(8, 14, 10, 0.46);
     color: $home-green-bright;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 1;
+    svg { width: 27px; height: 27px; }
   }
 
-  &__card-title {
-    margin: 0 0 14px;
-    font-size: 30px;
-    line-height: 1.15;
-    font-weight: 800;
-    color: #ffffff;
-
-    span {
-      display: block;
-      color: $home-green-bright;
-      text-shadow: 0 0 24px rgba(53, 168, 111, 0.14);
-    }
+  @media (max-width: 1440px) {
+    &__feature { gap: 12px; padding: 0 20px; }
+    &__icon { width: 42px; height: 42px; flex-basis: 42px; }
   }
-
-  &__card-text {
-    margin: 0 0 22px;
-    font-size: 16px;
-    line-height: 1.7;
-    color: rgba(205, 220, 210, 0.62);
+  @media (min-width: 768px) and (max-width: 1100px) {
+    min-height: max(740px, 100svh);
+    &__container { width: 88%; padding-top: 140px; }
+    &__content { width: 48%; }
+    &__badge { font-size: 8px; }
+    &__actions { gap: 10px; .btn { width: 48%; padding: 0 10px; font-size: 11px; } }
+    &__description { font-size: 13px; }
+    &__overlay { background: linear-gradient(90deg, rgba($home-bg, 0.64), rgba($home-bg, 0.3) 39%, transparent 65%), linear-gradient(180deg, transparent 70%, rgba($home-bg, 0.45)); }
+    &__features { width: 88%; }
+    &__feature { gap: 9px; padding: 0 12px; }
+    &__icon { width: 34px; height: 34px; flex-basis: 34px; border-radius: 9px; svg { width: 23px; height: 23px; } }
   }
-
-  &__price {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 22px;
-
-    strong {
-      font-size: clamp(40px, 4vw, 54px);
-      line-height: 1;
-      font-weight: 800;
-      color: #ffffff;
-    }
-
-    span {
-      font-size: 15px;
-      color: rgba(194, 211, 201, 0.55);
-    }
+  @media (min-width: 768px) and (max-width: 999px) {
+    &__features { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 0; }
+    &__feature { padding: 0 22px; &:nth-child(odd) { padding-left: 0; } &:nth-child(even) { border: 0; padding-right: 0; } h2 { font-size: 12px; } p { font-size: 12px; } }
   }
-
-  &__list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin: 0 0 24px;
-    padding: 0;
-
-    li {
-      position: relative;
-      padding-left: 26px;
-      font-size: 15px;
-      line-height: 1.55;
-      color: rgba(226, 238, 230, 0.78);
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 9px;
-        left: 0;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, $home-green-bright, $home-green);
-        box-shadow: 0 0 12px rgba(53, 168, 111, 0.28);
-      }
-    }
+  @media (max-width: 767px) {
+    min-height: 0;
+    &__media { bottom: 240px; }
+    &__bg { object-fit: contain; object-position: center bottom; }
+    &__overlay { background: linear-gradient(180deg, rgba($home-bg, $services-hero-mobile-shade), rgba($home-bg, 0.9) 42%, transparent 70%, rgba($home-bg, 0.6) 88%, $home-bg); }
+    &__container { width: 100%; padding: 132px 32px 290px; }
+    &__content { width: 100%; max-width: 550px; }
+    &__badge { font-size: 9px; padding: 9px 12px; }
+    &__title { font-size: clamp(24px, 6.7vw, 46px); margin-bottom: 22px; }
+    &__title-line { white-space: normal; }
+    &__description { max-width: 100%; font-size: 15px; line-height: 1.6; margin-bottom: 25px; p + p { margin-top: 10px; } }
+    &__actions { flex-direction: column; gap: 12px; .btn { width: 100%; min-height: 56px; font-size: 14px; } }
+    &__features { width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 26px 32px 32px; gap: 24px 0; }
+    &__feature { flex-direction: column; align-items: flex-start; gap: 12px; padding: 0 16px; &:nth-child(odd) { padding-left: 0; } &:nth-child(even) { border: 0; padding-right: 0; } h2 { font-size: 12px; overflow-wrap: anywhere; } p { font-size: 13px; } }
   }
-
-  &__card-btn {
-    width: 100%;
-    min-height: 54px;
-    padding: 14px 20px;
-    border-radius: 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 700;
-    color: #ffffff;
-    background: linear-gradient(135deg, $home-green-dark, $home-green);
-    box-shadow:
-      0 12px 28px rgba(0, 0, 0, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.14);
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease,
-      filter 0.25s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow:
-        0 18px 38px rgba(0, 0, 0, 0.34),
-        inset 0 1px 0 rgba(255, 255, 255, 0.16);
-      filter: brightness(1.03);
-    }
-  }
-
-  @media (max-width: 1100px) {
-    &__wrapper {
-      grid-template-columns: 1fr;
-    }
-
-    &__content {
-      max-width: 100%;
-    }
-
-    &__card {
-      max-width: 520px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    padding: 140px 0 70px;
-
-    &__title {
-      font-size: clamp(34px, 8vw, 48px);
-    }
-
-    &__description {
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    &__actions {
-      flex-direction: column;
-
-      a {
-        width: 100%;
-      }
-    }
-
-    &__stats {
-      grid-template-columns: 1fr;
-    }
-
-    &__card {
-      padding: 22px 18px 20px;
-      border-radius: 20px;
-    }
-
-    &__card-title {
-      font-size: 24px;
-    }
-
-    &__price {
-      strong {
-        font-size: 40px;
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    padding: 130px 0 60px;
-
-    &__badge {
-      font-size: 12px;
-      padding: 8px 14px;
-    }
-
-    &__title {
-      font-size: 32px;
-    }
-
-    &__description {
-      font-size: 15px;
-    }
-
-    &__stat {
-      padding: 16px 16px 14px;
-
-      strong {
-        font-size: 20px;
-      }
-
-      span {
-        font-size: 13px;
-      }
-    }
+  @media (prefers-reduced-motion: reduce) {
+    &__title-line--accent { animation: none; }
+    &__actions .btn { transition: none; &:hover { transform: none; } }
   }
 }
 
@@ -9479,7 +9329,7 @@ $products-muted: #b4c5bf;
     min-height: 726px;
     padding: 30px 26px 24px;
     border-radius: inherit;
-    overflow: hidden;
+    overflow: visible;
 
     // Мягкая светотень поверх техники, но за текстом. Без дополнительных изображений.
     &::before {
@@ -9490,12 +9340,13 @@ $products-muted: #b4c5bf;
       pointer-events: none;
       background:
         linear-gradient(90deg,
-          rgba(1, 17, 14, 0.96) 0%,
-          rgba(1, 25, 19, 0.91) 24%,
-          rgba(2, 31, 23, 0.74) 39%,
-          rgba(2, 34, 25, 0.3) 55%,
-          transparent 75%),
-        radial-gradient(ellipse at 59% 30%, rgba(5, 116, 80, 0.19), transparent 59%);
+          rgba(1, 14, 12, 0.995) 0%,
+          rgba(1, 17, 14, 0.985) 12%,
+          rgba(1, 21, 17, 0.955) 26%,
+          rgba(1, 27, 20, 0.84) 38%,
+          rgba(1, 31, 23, 0.58) 48%,
+          rgba(1, 34, 24, 0.18) 59%,
+          transparent 70%);
     }
     &[hidden] {
       display: grid;
@@ -9520,7 +9371,7 @@ $products-muted: #b4c5bf;
   &__copy {
     position: relative;
     z-index: 2;
-    width: 52%;
+    width: 50%;
     pointer-events: none;
     h3 {
       font-size: 36px;
@@ -9591,10 +9442,10 @@ $products-muted: #b4c5bf;
   &__visual {
     position: absolute;
     z-index: 0;
-    right: -22px;
-    top: 102px;
+    right: 0px;
+    top: 84px;
     width: 69%;
-    height: 498px;
+    height: 540px;
     pointer-events: none;
     margin: 0;
     display: flex;
@@ -9614,7 +9465,8 @@ $products-muted: #b4c5bf;
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.38));
+      object-position: left center;
+      filter: drop-shadow(0 22px 24px rgba(0, 0, 0, 0.4));
     }
   }
   &__cta {
@@ -9751,10 +9603,10 @@ $products-muted: #b4c5bf;
       row-gap: 20px;
     }
     &__visual {
-      right: -24px;
-      width: 70%;
-      height: 556px;
-      top: 98px;
+      right: -88px;
+      width: 80%;
+      height: 606px;
+      top: 84px;
     }
     &__features li {
       font-size: 13px;
@@ -9796,11 +9648,13 @@ $products-muted: #b4c5bf;
       flex-basis: 30px;
     }
     &__visual {
-      width: 61%;
-      right: 0;
+      width: 74%;
+      right: -52px;
+      top: 90px;
+      height: 500px;
     }
     &__copy {
-      width: 55%;
+      width: 50%;
     }
     &__benefit {
       padding-inline: 8px;
@@ -9815,12 +9669,13 @@ $products-muted: #b4c5bf;
     &__panel::before {
       background:
         linear-gradient(90deg,
-          rgba(1, 17, 14, 0.98) 0%,
-          rgba(1, 25, 19, 0.95) 32%,
-          rgba(2, 27, 21, 0.88) 48%,
-          rgba(2, 34, 25, 0.5) 61%,
-          transparent 80%),
-        radial-gradient(ellipse at 59% 30%, rgba(5, 116, 80, 0.14), transparent 59%);
+          rgba(1, 14, 12, 0.995) 0%,
+          rgba(1, 17, 14, 0.985) 2%,
+          rgba(1, 21, 17, 0.955) 26%,
+          rgba(1, 27, 20, 0.84) 38%,
+          rgba(1, 31, 23, 0.58) 48%,
+          rgba(1, 34, 24, 0.18) 59%,
+          transparent 20%);
     }
   }
 }
@@ -9847,6 +9702,12 @@ $products-muted: #b4c5bf;
     &__panel {
       min-height: 742px;
       padding: 30px;
+
+      // На планшетах и телефонах техника находится под текстом:
+      // накладывать на неё десктопный затемняющий слой не нужно.
+      &::before {
+        display: none;
+      }
     }
     &__copy {
       width: 52%;
@@ -9855,10 +9716,16 @@ $products-muted: #b4c5bf;
       font-size: 13px;
     }
     &__visual {
-      width: 66%;
-      top: 92px;
-      height: 508px;
-      right: -20px;
+      width: 74%;
+      top: 84px;
+      height: 520px;
+      right: -56px;
+      justify-self: center;
+      justify-content: center;
+      margin-inline: auto;
+    }
+    &__artwork img {
+      object-position: center;
     }
   }
 }
@@ -9870,9 +9737,6 @@ $products-muted: #b4c5bf;
       min-height: 0;
       grid-template-rows: auto auto auto auto;
       row-gap: 14px;
-    }
-    &__panel::before {
-      background: radial-gradient(ellipse at 75% 38%, rgba(5, 116, 80, 0.16), transparent 65%);
     }
     &__copy {
       width: 100%;
@@ -9890,6 +9754,8 @@ $products-muted: #b4c5bf;
       max-width: 640px;
       height: 365px;
       justify-self: center;
+      justify-content: center;
+      margin-inline: auto;
     }
   }
 }
@@ -9940,10 +9806,6 @@ $products-muted: #b4c5bf;
       grid-template-rows: auto auto auto auto;
       row-gap: 10px;
       overflow: hidden;
-      &::before {
-        // На мобильных устройствах текст и техника идут друг под другом.
-        background: radial-gradient(ellipse at 80% 30%, rgba(4, 113, 76, 0.12), transparent 65%);
-      }
     }
     &__brand {
       top: 23px;
@@ -9980,7 +9842,10 @@ $products-muted: #b4c5bf;
       min-height: 0;
       aspect-ratio: 4 / 3;
       padding: 8px 0 4px;
-      align-self: end;
+      align-self: center;
+      justify-self: center;
+      justify-content: center;
+      margin-inline: auto;
       pointer-events: none;
     }
     &__cta {
