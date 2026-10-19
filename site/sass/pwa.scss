@@ -3,7 +3,8 @@
   position: fixed;
   z-index: 1100;
   right: 24px;
-  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  top: calc(16px + env(safe-area-inset-top, 0px));
+  animation: pwa-install-enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
   display: flex;
   gap: 14px;
   box-sizing: border-box;
@@ -30,4 +31,29 @@
 .pwa-install button:disabled { opacity: .6; cursor: wait; }
 .pwa-install__help { margin: 14px 0 0; color: #d3e6d9; }
 .pwa-install [hidden] { display: none; }
-@media (max-width: 600px) { .pwa-install { right: 16px; bottom: calc(88px + env(safe-area-inset-bottom, 0px)); padding: 18px; } }
+@keyframes pwa-install-enter {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-100% - 40px));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .pwa-install {
+    right: 16px;
+    left: 16px;
+    width: auto;
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pwa-install {
+    animation: none;
+  }
+}
